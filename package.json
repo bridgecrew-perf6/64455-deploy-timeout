@@ -1,0 +1,22 @@
+{
+  "name": "@atelierfabien/next-development",
+  "version": "0.0.0",
+  "description": "Next Development mono-repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fabien/next-development.git"
+  },
+  "author": "Fabien Franzen <info@atelierfabien.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabien/next-development/issues"
+  },
+  "homepage": "https://github.com/fabien/next-development#readme",
+  "workspaces": [
+    "./packages/modules/*"
+  ]
+}
