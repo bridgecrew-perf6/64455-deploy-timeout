@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fabien/next-development#readme",
   "workspaces": [
+    "./packages/app/*",
     "./packages/modules/*"
   ]
 }
