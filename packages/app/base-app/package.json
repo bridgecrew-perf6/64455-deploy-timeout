@@ -1,6 +1,7 @@
 {
   "name": "@atelierfabien/next-base",
   "version": "0.0.0",
+  "author": "Fabien Franzen <info@atelierfabien.com>",
   "scripts": {
     "dev": "next",
     "build": "next build",
