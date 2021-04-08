@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@atelierfabien/mono-next": "^0.0.0",
     "@atelierfabien/nextjs-sitemap": "^1.1.3",
     "@atelierfabien/uikit": "^3.6.18",
     "@styled-jsx/plugin-sass": "^3.0.0",
