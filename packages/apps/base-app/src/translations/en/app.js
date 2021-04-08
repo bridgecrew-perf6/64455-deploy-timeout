@@ -2,7 +2,11 @@ async function getData() {
   return {
     pages: {
       home: 'Home',
-      about: 'About Us'
+      about: 'About Us',
+      blog: 'Blog'
+    },
+    blog: {
+      overview: 'Overview'
     }
   }
 }

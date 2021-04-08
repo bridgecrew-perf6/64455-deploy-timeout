@@ -88,8 +88,10 @@ export function settingsContext(options = {}) {
   useEffect(() => {
     if (typeof window !== 'undefined' && previousLocale &&
       locale && router.locale && locale !== router.locale) {
-      const url = router.normalizedUrl;
-      router.push(url, url, { locale, scroll: false });
+      router.push({
+        pathname: router.normalizedUrl,
+        query: router.query
+      }, router.asPath, { locale, scroll: false });
     }
   }, [locale]);
 

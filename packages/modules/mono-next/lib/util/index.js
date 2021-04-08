@@ -59,3 +59,14 @@ export function isExternalUrl(url, strict = false) {
   }
   return false;
 }
+
+export function localePaths(entries, locales = []) {
+  return entries.reduce((memo, entry) => {
+    if (typeof entry === 'object') {
+      return memo.concat(locales.map((locale) => ({ ...entry, locale }))); 
+    } else if (typeof entry === 'string') {
+      const e = { params: { slug: entry } };
+      return memo.concat(locales.map((locale) => ({ ...e, locale }))); 
+    }
+  }, []);
+}

@@ -1,4 +1,4 @@
-import { useTranslation, useCurrency } from '@mono/hooks';
+import { useTranslation, useCurrency } from '@mono/next';
 
 import LocaleList from '@mono/components/LocaleList';
 import CurrencyList from '@mono/components/CurrencyList';

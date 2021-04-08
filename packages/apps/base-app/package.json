@@ -2,6 +2,7 @@
   "name": "@atelierfabien/next-base-app",
   "version": "0.0.0",
   "author": "Fabien Franzen <info@atelierfabien.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -15,6 +16,7 @@
     "@atelierfabien/uikit": "^3.6.18",
     "@styled-jsx/plugin-sass": "^3.0.0",
     "dotenv-flow": "^3.2.0",
+    "esm": "^3.2.25",
     "next": "^10.1.1",
     "next-compose-plugins": "^2.2.1",
     "next-data-hooks": "^0.5.0",
@@ -26,7 +28,7 @@
     "react-use": "^17.2.1",
     "sass": "1.32.4"
   },
-  "license": "MIT",
+  
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.9",
     "@tailwindcss/jit": "^0.1.8",

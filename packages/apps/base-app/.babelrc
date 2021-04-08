@@ -8,5 +8,6 @@
         }
       }
     ]
-  ]
+  ],
+  "plugins": ["next-data-hooks/babel"]
 }

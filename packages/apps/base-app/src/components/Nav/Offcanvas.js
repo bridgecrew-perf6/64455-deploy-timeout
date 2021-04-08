@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useTranslation } from '@mono/hooks';
+import { useTranslation } from '@mono/next';
 
 import LocaleListItems from '@mono/components/LocaleList/Items';
 import CurrencyListItems from '@mono/components/CurrencyList/Items';

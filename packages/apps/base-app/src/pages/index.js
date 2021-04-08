@@ -1,5 +1,5 @@
-import { useTranslation, useSettings } from '@mono/hooks';
-import { useGoogleAnalytics } from '@mono/hooks';
+import { useTranslation, useSettings } from '@mono/next';
+import { useGoogleAnalytics } from '@mono/next';
 
 export default function Home() {
   const { t, lang } = useTranslation();

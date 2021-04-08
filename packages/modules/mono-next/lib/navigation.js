@@ -56,7 +56,7 @@ export function useCurrentRoute(options = {}) {
   return [active, match];
 }
 
-export function Link({ children, activeClassName, matchClassName, as, ...props }) {
+export function Link({ children, activeClassName, matchClassName, as, partial, ...props }) {
   let child = React.isValidElement(children) ? Children.only(children) : null;
   if (!(React.isValidElement(child) && child.type === 'a')) {
     child = <a {...props}>{children}</a>;
@@ -77,7 +77,7 @@ export function Link({ children, activeClassName, matchClassName, as, ...props }
     const activeClass = activeClassName ?? Link.defaults.activeClassName;
     const matchClass = matchClassName ?? Link.defaults.matchClassName;
     let classNames = [].concat(childClassName || []);
-    classNames = classNames.concat((active ? activeClass : []) || []);
+    classNames = classNames.concat(((active || (match && partial)) ? activeClass : []) || []);
     classNames = classNames.concat((match ? matchClass : []) || []);
     return classNames.length > 0 ? classNames.join(' ') : null;
   }, [props, active, match, childClassName, activeClassName, matchClassName]);

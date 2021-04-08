@@ -10,7 +10,8 @@
       "@mono/*": [
         "./node_modules/@atelierfabien/mono-next/*",
         "../../../node_modules/@atelierfabien/mono-next/*"
-      ]
+      ],
+      "@slices/*": ["./slices/*"]
     }
   },
   "exclude": ["node_modules"]

@@ -1,4 +1,4 @@
-import { Link } from '@mono/hooks';
+import { Link } from '@mono/next';
 
 import Logo from '@app/components/Logo';
 import LocaleListItems from '@mono/components/LocaleList/Items';
