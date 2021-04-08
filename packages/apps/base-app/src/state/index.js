@@ -1,15 +1,15 @@
-import { tree } from '@atelierfabien/mono-next/lib/baobab';
-import { Currency } from '@atelierfabien/mono-next/lib/currency';
+import { tree } from '@mono/lib/baobab';
+import { Currency } from '@mono/lib/currency';
 
 import currencyConfig from '@app/config/currency';
 import initialState from '@app/config/state';
 
 export { default as useTranslation } from 'next-translate/useTranslation';
 
-export * from '@atelierfabien/mono-next/lib/baobab';
-export * from '@atelierfabien/mono-next/lib/currency';
-export * from '@atelierfabien/mono-next/lib/settings';
-export * from '@atelierfabien/mono-next/lib/site';
+export * from '@mono/lib/baobab';
+export * from '@mono/lib/currency';
+export * from '@mono/lib/settings';
+export * from '@mono/lib/site';
 
 Currency.setDefault(currencyConfig.default || 'EUR');
 

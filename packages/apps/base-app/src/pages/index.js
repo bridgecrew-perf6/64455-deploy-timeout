@@ -1,5 +1,5 @@
 import { useTranslation, useSettings } from '@app/state';
-import { useGoogleAnalytics } from '@atelierfabien/mono-next/lib/analytics';
+import { useGoogleAnalytics } from '@mono/lib/analytics';
 
 export default function Home() {
   const { t, lang } = useTranslation('common');

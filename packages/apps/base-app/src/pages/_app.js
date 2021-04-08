@@ -1,7 +1,7 @@
-import Head from '@atelierfabien/mono-next/components/Head';
-import CookieConsent from '@atelierfabien/mono-next/components/CookieConsent';
-import { Link } from '@atelierfabien/mono-next/lib/navigation';
-import { UIkit } from '@atelierfabien/mono-next/lib/uikit';
+import Head from '@mono/components/Head';
+import CookieConsent from '@mono/components/CookieConsent';
+import { Link } from '@mono/lib/navigation';
+import { UIkit } from '@mono/lib/uikit';
 
 import { settingsContext } from '@app/state';
 

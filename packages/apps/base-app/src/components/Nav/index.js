@@ -1,9 +1,9 @@
-import { Link } from '@atelierfabien/mono-next/lib/navigation';
+import { Link } from '@mono/lib/navigation';
 import useTranslation from 'next-translate/useTranslation';
 
 import Logo from '@app/components/Logo';
-import LocaleListItems from '@atelierfabien/mono-next/components/LocaleList/Items';
-import CurrencyListItems from '@atelierfabien/mono-next/components/CurrencyList/Items';
+import LocaleListItems from '@mono/components/LocaleList/Items';
+import CurrencyListItems from '@mono/components/CurrencyList/Items';
 
 import Links from './Links';
 

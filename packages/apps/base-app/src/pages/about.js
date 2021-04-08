@@ -1,7 +1,7 @@
 import { useTranslation, useCurrency } from '@app/state';
 
-import LocaleList from '@atelierfabien/mono-next/components/LocaleList';
-import CurrencyList from '@atelierfabien/mono-next/components/CurrencyList';
+import LocaleList from '@mono/components/LocaleList';
+import CurrencyList from '@mono/components/CurrencyList';
 
 export default function About() {
   const { t, lang } = useTranslation('common');
