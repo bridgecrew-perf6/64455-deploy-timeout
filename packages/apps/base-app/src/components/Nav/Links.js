@@ -1,5 +1,5 @@
-import { Link } from '@mono/lib/navigation';
-import { useTranslation } from '@app/state';
+import { Link } from '@mono/hooks';
+import { useTranslation } from '@mono/hooks';
 
 export default function Links() {
   const { t } = useTranslation();

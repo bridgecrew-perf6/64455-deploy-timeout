@@ -1,9 +1,9 @@
 import Head from '@mono/components/Head';
 import CookieConsent from '@mono/components/CookieConsent';
-import { Link } from '@mono/lib/navigation';
-import { UIkit } from '@mono/lib/uikit';
+import { Link } from '@mono/hooks';
+import { UIkit } from '@mono/hooks';
 
-import { settingsContext } from '@app/state';
+import { settingsContext } from '@mono/hooks';
 
 import Nav from '@app/components/Nav';
 import OffCanvas from '@app/components/Nav/Offcanvas';
