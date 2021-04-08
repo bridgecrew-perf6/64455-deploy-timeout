@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import LocaleListItems from '../LocaleList/Items';
-import CurrencyListItems from '../CurrencyList/Items';
+import LocaleListItems from '@atelierfabien/mono-next/components/LocaleList/Items';
+import CurrencyListItems from '@atelierfabien/mono-next/components/CurrencyList/Items';
 
 import Links from './Links';
 

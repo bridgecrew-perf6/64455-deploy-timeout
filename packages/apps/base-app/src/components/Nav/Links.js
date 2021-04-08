@@ -1,4 +1,4 @@
-import { Link } from 'lib/navigation';
+import { Link } from '@atelierfabien/mono-next/lib/navigation';
 import useTranslation from 'next-translate/useTranslation';
 
 export default function Links() {

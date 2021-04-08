@@ -2,8 +2,8 @@ import { useState, useCallback, useEffect, useMemo } from 'react';
 import Router, { useRouter } from 'next/router';
 import ReactGA from 'react-ga';
 import { useCookie } from 'next-universal-cookie';
-import { useSettingEffect } from 'state';
-import { isErrorPage } from 'lib/util';
+import { useSettingEffect } from './settings';
+import { isErrorPage } from './util';
 
 const doNotTrack = typeof window !== 'undefined' && 
   typeof window.navigator !== 'undefined' &&

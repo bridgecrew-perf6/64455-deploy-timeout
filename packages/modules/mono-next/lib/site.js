@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import useTranslation from 'next-translate/useTranslation';
-import { canonicalizeLocale, simplifyLocale } from 'lib/util';
-import site from 'config/site';
+import { canonicalizeLocale, simplifyLocale } from './util';
+import site from '@app/config/site';
 
 export * from 'next-seo';
 

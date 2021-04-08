@@ -1,0 +1,35 @@
+{
+  "name": "@atelierfabien/mono-next",
+  "version": "0.0.0",
+  "description": "Shared code for NextJS projects",
+  "module": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabien/next-development.git"
+  },
+  "author": "Fabien Franzen <info@atelierfabien.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabien/next-development/issues"
+  },
+  "homepage": "https://github.com/fabien/next-development#readme",
+  "dependencies": {
+    "@atelierfabien/uikit": "^3.6.18",
+    "baobab": "^2.6.1",
+    "baobab-react": "^4.0.2",
+    "dinero.js": "^1.8.1",
+    "next-seo": "^4.23.0",
+    "next-translate": "^1.0.5",
+    "next-transpile-modules": "^6.4.0",
+    "next-universal-cookie": "^2.0.0",
+    "react-ga": "^3.3.0"
+  },
+  "peerDependencies": {
+    "next": "^10.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

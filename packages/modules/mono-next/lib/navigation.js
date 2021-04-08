@@ -1,7 +1,7 @@
 import { useRouter as _useRouter } from 'next/router';
 import { default as NextLink } from 'next/link';
 import React, { Children, useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { isExternalUrl } from 'lib/util';
+import { isExternalUrl } from './util';
 
 export function useRouter() {
   const router = _useRouter();

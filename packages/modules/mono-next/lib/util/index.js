@@ -1,5 +1,5 @@
 
-import locales from '../data/locales';
+import locales from '../../data/locales';
 
 const URL_REGEXP = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
 

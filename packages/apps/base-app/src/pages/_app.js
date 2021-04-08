@@ -1,16 +1,16 @@
-import Head from 'components/Head';
-import CookieConsent from 'components/CookieConsent';
-import { Link } from 'lib/navigation';
-import { UIkit } from 'lib/uikit';
+import Head from '@atelierfabien/mono-next/components/Head';
+import CookieConsent from '@atelierfabien/mono-next/components/CookieConsent';
+import { Link } from '@atelierfabien/mono-next/lib/navigation';
+import { UIkit } from '@atelierfabien/mono-next/lib/uikit';
 
-import { settingsContext } from 'state';
+import { settingsContext } from '@app/state';
 
-import Nav from 'components/Nav';
-import OffCanvas from 'components/Nav/Offcanvas';
+import Nav from '@app/components/Nav';
+import OffCanvas from '@app/components/Nav/Offcanvas';
 
 // Global scss
-import 'styles/uikit.scss';
-import 'styles/global.scss';
+import '@app/styles/uikit.scss';
+import '@app/styles/global.scss';
 
 Link.defaults.activeClassName = 'uk-active';
 Link.defaults.matchClassName = 'uk-active-match';

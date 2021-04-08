@@ -1,5 +1,11 @@
 const withPlugins = require('next-compose-plugins');
 
+const withTM = require('next-transpile-modules')([
+  '@atelierfabien/mono-next'
+], {
+  resolveSymlinks: true
+});
+
 const withPreval = require('next-plugin-preval/config')();
 const withTranslations = require('next-translate');
 
@@ -16,7 +22,8 @@ const nextConfig = {
 };
 
 module.exports = withPlugins([
-  withPreval(),
+  withPreval(), // first
+  withTM,       // second
   withTranslations,
   withBundleAnalyzer
 ], nextConfig);
