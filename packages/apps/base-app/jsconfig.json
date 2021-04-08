@@ -6,6 +6,10 @@
       "@app/config/*": [
         "./config/*", "./config/*.preval", 
         "./src/config/*", "./src/config/*.preval"
+      ],
+      "@mono/*": [
+        "./node_modules/@atelierfabien/mono-next/*",
+        "../../../node_modules/@atelierfabien/mono-next/*"
       ]
     }
   },
