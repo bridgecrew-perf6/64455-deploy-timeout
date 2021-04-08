@@ -1,11 +1,11 @@
 import { Link } from '@mono/lib/navigation';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '@app/state';
 
 export default function Links() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
 
   return (<>
-    <Link href="/" as="li">{t('pages.home')}</Link>
-    <Link href="/about" as="li">{t('pages.about')}</Link>
+    <Link href="/" as="li">{t('app:pages.home')}</Link>
+    <Link href="/about" as="li">{t('app:pages.about')}</Link>
   </>);
 }

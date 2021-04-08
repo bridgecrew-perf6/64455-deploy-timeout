@@ -1,5 +1,4 @@
 import { Link } from '@mono/lib/navigation';
-import useTranslation from 'next-translate/useTranslation';
 
 import Logo from '@app/components/Logo';
 import LocaleListItems from '@mono/components/LocaleList/Items';
@@ -8,8 +7,6 @@ import CurrencyListItems from '@mono/components/CurrencyList/Items';
 import Links from './Links';
 
 export default function Nav() {
-  const { t } = useTranslation('common');
-
   return (
     <nav className="transition uk-navbar-container uk-navbar-container-centered uk-navbar-transparent" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" uk-navbar="">
       <div className="uk-flex uk-container">

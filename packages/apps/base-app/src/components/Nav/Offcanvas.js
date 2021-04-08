@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '@app/state';
 
 import LocaleListItems from '@mono/components/LocaleList/Items';
 import CurrencyListItems from '@mono/components/CurrencyList/Items';
@@ -8,7 +8,7 @@ import Links from './Links';
 
 export default function OffCanvas() {
   const ref = useRef();
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
 
   function onClick() {
     if (ref.current) {
@@ -26,9 +26,9 @@ export default function OffCanvas() {
             <Links />
           </ul>
           <ul className="uk-nav uk-nav-default uk-margin-top">
-            <li className="uk-nav-header">{t('language')}</li>
+            <li className="uk-nav-header">{t('common:language')}</li>
             <LocaleListItems />
-            <li className="uk-nav-header">{t('currency')}</li>
+            <li className="uk-nav-header">{t('common:currency')}</li>
             <CurrencyListItems />
           </ul>
         </div>

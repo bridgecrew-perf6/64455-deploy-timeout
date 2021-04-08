@@ -2,7 +2,7 @@ import { useTranslation, useSettings } from '@app/state';
 import { useGoogleAnalytics } from '@mono/lib/analytics';
 
 export default function Home() {
-  const { t, lang } = useTranslation('common');
+  const { t, lang } = useTranslation();
   const { enabled: gaEnabled } = useGoogleAnalytics();
   const { settings } = useSettings();
 
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="uk-container uk-margin-top">
       <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
-        <span>{t(`languages.${lang}`)}</span>
+        <span>{t(`common:languages.${lang}`)}</span>
         {gaEnabled && <button className="uk-button uk-button-default" onClick={onClick}>Toggle Consent</button>}
       </h1>
       <div className="uk-column-1-2@m space-y-4 uk-margin-bottom">

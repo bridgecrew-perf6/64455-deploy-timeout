@@ -4,13 +4,13 @@ import LocaleList from '@mono/components/LocaleList';
 import CurrencyList from '@mono/components/CurrencyList';
 
 export default function About() {
-  const { t, lang } = useTranslation('common');
+  const { t, lang } = useTranslation();
   const c = useCurrency();
 
   return (
     <div className="uk-container uk-margin-top">
       <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
-        <span>{t('pages.about')}</span>
+        <span>{t('app:pages.about')}</span>
         <span className="uk-text-muted uk-text-light">{c.format(16.45)}</span>
       </h1>
       <div className="uk-column-1-2@m space-y-4 uk-margin-bottom">
@@ -20,11 +20,11 @@ export default function About() {
       </div>
       <div className="uk-grid uk-child-width-1-2@m space-y-4 md:space-y-0">
         <div>
-          <h3 className="uk-text-medium uk-text-bold uk-margin-bottom">{t('language')} <span className="uk-text-light">{t(`languages.${lang}`)}</span></h3>
+          <h3 className="uk-text-medium uk-text-bold uk-margin-bottom">{t('common:language')} <span className="uk-text-light">{t(`common:languages.${lang}`)}</span></h3>
           <LocaleList />
         </div>
         <div>
-          <h3 className="uk-text-medium uk-text-bold uk-margin-bottom">{t('currency')} <span className="uk-text-light">{c.name}</span></h3>
+          <h3 className="uk-text-medium uk-text-bold uk-margin-bottom">{t('common:currency')} <span className="uk-text-light">{c.name}</span></h3>
           <CurrencyList />
         </div>
       </div>

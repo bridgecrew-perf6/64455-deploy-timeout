@@ -52,17 +52,17 @@ export function PageSeo({ openGraph, ...props }) {
 }
 
 export function useLocale() {
-  const { t, lang } = useTranslation('common');
+  const { t, lang } = useTranslation();
   const router = useRouter();
   const locale = router.locale || 'en';
   const lc = simplifyLocale(locale);
-  const language = t(`languages.${locale}`, {}, { fallback: [`languages.${lc}`] });
+  const language = t(`common:languages.${locale}`, {}, { fallback: [`languages.${lc}`] });
 
   const locales = useMemo(() => {
     return [].concat(router.locales || []).map((code) => {
       const isDefault = code === router.defaultLocale;
       const lang = simplifyLocale(code);
-      const name = t(`languages.${code}`, {}, { fallback: [`languages.${lang}`] });
+      const name = t(`common:languages.${code}`, {}, { fallback: [`common:languages.${lang}`] });
       const href = isDefault ? router.asPath : `/${code}${router.asPath}`;
       return { code, lang, name, active: code === locale, href };
     });   
