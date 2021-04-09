@@ -1,18 +1,9 @@
-import { useRouter as _useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { default as NextLink } from 'next/link';
 import React, { Children, useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { isExternalUrl } from './util';
 
-export function useRouter() {
-  const router = _useRouter();
-  let [p, hash] = router.asPath.split('#');
-  let [, query] = p.split('?');
-  let normalizedUrl = router.pathname;
-  if (query) normalizedUrl = normalizedUrl + '?' + query;
-  if (hash) normalizedUrl = normalizedUrl + '#' + hash;
-  router.normalizedUrl = normalizedUrl;
-  return router;
-}
+export { useRouter };
 
 export function useLocationHash(fn) {
   const isBrowser = typeof window !== 'undefined';

@@ -89,7 +89,7 @@ export function settingsContext(options = {}) {
     if (typeof window !== 'undefined' && previousLocale &&
       locale && router.locale && locale !== router.locale) {
       router.push({
-        pathname: router.normalizedUrl,
+        pathname: router.pathname,
         query: router.query
       }, router.asPath, { locale, scroll: false });
     }
