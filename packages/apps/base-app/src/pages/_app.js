@@ -2,8 +2,7 @@ import { NextDataHooksProvider } from 'next-data-hooks';
 
 import Head from '@mono/components/Head';
 import CookieConsent from '@mono/components/CookieConsent';
-import { Link } from '@mono/next';
-import { UIkit } from '@mono/next';
+import { LayoutTree, Link, UIkit } from '@mono/next';
 
 import { settingsContext } from '@mono/next';
 
@@ -27,7 +26,7 @@ export default function App({ Component, pageProps }) {
       <Settings cookie={cookie}>
         <Nav />
         <NextDataHooksProvider {...props}>
-          <Component {...props}>{children}</Component>
+        <LayoutTree Component={Component} pageProps={pageProps} />
         </NextDataHooksProvider>
       </Settings>
     </UIkit>

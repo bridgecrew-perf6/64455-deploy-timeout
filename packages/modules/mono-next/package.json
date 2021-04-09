@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fabien/next-development#readme",
   "dependencies": {
+    "@moxy/next-layout": "^2.2.3",
     "baobab": "^2.6.1",
     "baobab-react": "^4.0.2",
     "dinero.js": "^1.8.1",
