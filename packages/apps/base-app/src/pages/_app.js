@@ -1,13 +1,11 @@
 import { NextDataHooksProvider } from 'next-data-hooks';
 
 import Head from '@mono/components/Head';
-import CookieConsent from '@mono/components/CookieConsent';
-import { LayoutTree, Link, UIkit } from '@mono/next';
+import { LayoutTree, Link } from '@mono/next';
 
 import { settingsContext } from '@mono/next';
 
-import Nav from '@app/components/Nav';
-import OffCanvas from '@app/components/Nav/Offcanvas';
+import MainLayout from '@app/layouts/main';
 
 // Global scss
 import '@app/styles/uikit.scss';
@@ -22,15 +20,14 @@ export default function App({ Component, pageProps }) {
 
   return (<>
     <Head />
-    <UIkit>
       <Settings cookie={cookie}>
-        <Nav />
         <NextDataHooksProvider {...props}>
-        <LayoutTree Component={Component} pageProps={pageProps} />
+        <LayoutTree 
+          Component={Component} 
+          pageProps={pageProps} 
+          defaultLayout={<MainLayout />}
+        />
         </NextDataHooksProvider>
       </Settings>
-    </UIkit>
-    <OffCanvas />
-    <CookieConsent />
   </>);
 }
