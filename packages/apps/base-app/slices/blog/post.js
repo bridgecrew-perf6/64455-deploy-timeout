@@ -20,7 +20,7 @@ function BlogPost() {
       </Link>
 
       <div className="space-y-4 uk-margin-top">
-        <h1 className="uk-heading-medium">{title}</h1>
+        <h2 className="text-4xl">{title}</h2>
         <p>{content}</p>
       </div>
     </>

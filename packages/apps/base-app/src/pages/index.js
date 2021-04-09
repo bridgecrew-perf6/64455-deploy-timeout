@@ -11,7 +11,7 @@ export default function Home() {
   }
 
   return (
-    <div className="uk-container uk-margin-top">
+    <div className="uk-container uk-margin-medium-top">
       <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
         <span>{t(`common:languages.${lang}`)}</span>
         {gaEnabled && <button className="uk-button uk-button-default" onClick={onClick}>Toggle Consent</button>}

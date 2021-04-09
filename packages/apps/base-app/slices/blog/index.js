@@ -16,16 +16,17 @@ function BlogPostIndex() {
       <Link href="/">
         <a className="hover:no-underline">← {t('app:pages.home')}</a>
       </Link>
-
-      <ul className="uk-nav uk-margin-top">
-        {blogPostIndex.map(({ title, slug }) => (
-          <li key={slug}>
-            <Link href={`/blog/${slug}`}>
-              <a>{title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="uk-margin-top">
+        <ul className="text-4xl space-y-4 uk-nav-default">
+          {blogPostIndex.map(({ title, slug }) => (
+            <li key={slug}>
+              <Link href={`/blog/${slug}`}>
+                <a>{title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

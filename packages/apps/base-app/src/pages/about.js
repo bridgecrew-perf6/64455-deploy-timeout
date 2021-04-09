@@ -8,7 +8,7 @@ export default function About() {
   const c = useCurrency();
 
   return (
-    <div className="uk-container uk-margin-top">
+    <div className="uk-container">
       <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
         <span>{t('app:pages.about')}</span>
         <span className="uk-text-muted uk-text-light">{c.format(16.45)}</span>
