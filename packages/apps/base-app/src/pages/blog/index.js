@@ -19,3 +19,5 @@ export default function Blog(props) {
     </div>
   )
 };
+
+Blog.layout = ['main', 'blog']; // explicit hierarchy

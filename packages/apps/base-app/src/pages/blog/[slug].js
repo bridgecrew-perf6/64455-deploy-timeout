@@ -31,3 +31,5 @@ export default function Post(props) {
     </div>
   )
 };
+
+Post.layout = 'blog'; // implicit main layout

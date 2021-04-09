@@ -31,3 +31,9 @@ export default function About() {
     </div>
   );
 }
+
+About.layout = ({ children, ...props }) => {
+  return (<div className="uk-background-secondary uk-light uk-padding uk-padding-remove-horizontal uk-animation-fade uk-animation-fast" uk-height-viewport="offset-top: true">
+    {children}
+  </div>);
+};

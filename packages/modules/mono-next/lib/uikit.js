@@ -26,5 +26,5 @@ export function useUIkit(fn) {
 
 export function UIkit({ children }) {
   const ready = useUIkit();
-  return <div hidden={!ready}>{children}</div>;
+  return (ready ? (<>{children}</>) : null);
 }

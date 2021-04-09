@@ -17,7 +17,7 @@ export default function OffCanvas() {
   }
 
   return (<>
-    <div id="offcanvas" ref={ref} uk-offcanvas="mode: push; overlay: true; container: #__next" onClick={onClick} className="uk-offcanvas">
+    <div id="offcanvas" className="uk-offcanvas" ref={ref} uk-offcanvas="mode: push; overlay: true; container: #__next" onClick={onClick}>
       <div className="uk-offcanvas-bar">
         <button className="uk-offcanvas-close" type="button" uk-close=""></button>
         <div className="uk-panel">
