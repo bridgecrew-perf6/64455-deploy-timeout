@@ -5,6 +5,7 @@ import { LayoutTree, Link } from '@mono/next';
 
 import { settingsContext, withAppLayout } from '@mono/next';
 
+// Layouts
 import MainLayout from '@app/layouts/main';
 import BlogLayout from '@slices/blog/layouts/main';
 
