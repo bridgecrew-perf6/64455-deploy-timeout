@@ -4,6 +4,7 @@ export * from './context';
 export * from './currency';
 export * from './hooks';
 export * from './navigation';
+export * from './props';
 export * from './settings';
 export * from './site';
 export * from './uikit';

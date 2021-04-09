@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useSeo, DefaultSeo } from '../../lib/site';
+import { useSeo, DefaultSeo } from '../../lib';
 
 export default function AppHead({ children }) {
   const seo = useSeo();

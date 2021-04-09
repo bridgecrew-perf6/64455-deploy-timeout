@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
-import { useLocale } from '../../lib/site';
-import { useSettings } from '../../lib/settings';
+import { useLocale, useSettings } from '../../lib';
 
 export default function LocaleListItems({ activeClassName }) {
   const { locales } = useLocale();

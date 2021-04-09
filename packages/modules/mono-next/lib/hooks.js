@@ -19,3 +19,9 @@ export function useMappedState(initialState, ...mapFns) {
   const memo = useMemo(() => mapFns.map(mapFn => mapFn(state)), [state]);
   return [state, setState, memo];
 }
+
+export function useMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []); // browser only
+  return mounted;
+}

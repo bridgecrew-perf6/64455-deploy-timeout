@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
-import { useCurrency } from '../../lib/currency';
-import { useSettings } from '../../lib/settings';
+import { useCurrency, useSettings } from '../../lib';
 
 export default function CurrencyListItems({ activeClassName }) {
   const currency = useCurrency();
