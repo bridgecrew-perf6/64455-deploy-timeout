@@ -1,5 +1,5 @@
 import { getDataHooksProps } from 'next-data-hooks';
-import { localePaths } from '@mono/next';
+import { localePaths, dataHookProps } from '@mono/next';
 import BlogPost from '@slices/blog/post';
 import getBlogPosts from '@slices/blog/lib/get-blog-posts';
 
@@ -19,8 +19,13 @@ export const getStaticProps = async (context) => {
     dataHooks: BlogPost.dataHooks,
   });
 
+  const special = !!dataHookProps('BlogPost', dataHooksProps)?.special;
+
   return {
-    props: { ...dataHooksProps },
+    props: {
+      ...dataHooksProps,
+      pageLayout: { layout: 'blog', special } // dynamic layout
+    },
   };
 };
 
@@ -32,4 +37,4 @@ export default function Post(props) {
   )
 };
 
-Post.layout = 'blog'; // implicit main layout
+// Post.pageLayout = 'blog'; // implicit main layout

@@ -47,3 +47,7 @@ export function withCommonProps(commonProps, defaults = {}) {
     };
   };
 }
+
+export function dataHookProps(key, dataHooksProps = {}) {
+  return dataHooksProps?.nextDataHooks?.[key];
+}

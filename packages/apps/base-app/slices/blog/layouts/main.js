@@ -2,9 +2,12 @@ import { useTranslation } from '@mono/next';
 
 export default function BlogLayout({ children, ...props }) {
   const { t } = useTranslation();
-  
+
+  const className = props.special ? 
+    `transition uk-heading-medium uk-text-primary` : 'transition uk-heading-medium';
+
   return (<div className="uk-container">
-    <h1 className="uk-heading-medium">{t('app:pages.blog')}</h1>
+    <h1 className={className}>{t('app:pages.blog')}</h1>
     {children}
   </div>);
 }

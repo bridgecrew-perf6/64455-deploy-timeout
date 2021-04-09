@@ -3,46 +3,83 @@ import { withLayout } from '@moxy/next-layout';
 
 export * from '@moxy/next-layout';
 
-export function lookupLayout(Component, layout) {
-  let wrap;
-  if (React.isValidElement(layout) || typeof layout === 'function') {
-    wrap = withLayout(layout);
-  } else if (typeof layout === 'string') {
-    wrap = withLayout((options) => wrapLayout(Component, options), { layout });
-  } else if (typeof layout === 'object') {
-    wrap = withLayout((options) => wrapLayout(Component, options), layout);
-  }
-  return typeof wrap === 'function' ? wrap : (Component) => Component;
-}
+// Layout specs - will be wrapped in app layout by default:
+//
+// - pageLayout: 'string'
+// - pageLayout: { layout: 'string', someProp: true }
+// - pageLayout: ({ children, ...props }) => <MyLayout {...props}>{children}</MyLayout>
+//
+// Use an array of specs to define an explicit hierarchy (without app layout):
+//
+// - pageLayout: ['foo', 'bar'] (can be any of the above, even mixed types)
+//
+// Static - set as page component property:
+//
+// MyPage.pageLayout = <spec>
+//
+// Dynamic - return as part of getStaticProps or getServerSideProps:
+//
+// return {
+//   props: {
+//     content,
+//     pageLayout: { layout: content.layout }
+//   },
+// };
+//
+// Note: you can redefine appLayout and pageLayouts dynamically, too.
 
-export function withAppLayout(layout) {
-  return (Component) => {
-    return lookupLayout(Component, layout ?? {})(Component);
+export function withAppLayout(config = {}) {
+  return (Component, props = {}) => {
+    return lookupLayout(Component, {
+      ...config, ...props,
+      pageLayouts: {
+        ...config.pageLayouts,
+        ...props.pageLayouts
+      }
+    })(Component);
   };
 }
 
-function wrapLayout(Component, { layout, layouts, ...props }) {
-  const _normalize = normalize.bind(null, layouts || {});
-  layout = _normalize(layout);
-  if (Array.isArray(Component.layout)) {
-    return wrapComponents(Component.layout.map(_normalize), props);
-  } else if (typeof Component.layout === 'string' || typeof Component.layout === 'function') {
-    const nesting = [].concat(layout ?? []).concat(Component.layout);
-    return wrapComponents(nesting.map(_normalize), props);
-  } else if (typeof layout === 'function' && Component.layout !== false) { // within main
-    const Layout = layout;
-    return (<Layout {...props}><Component /></Layout>);
-  } else if (React.isValidElement(layout) && Component.layout !== false) { // within main
-    return React.cloneElement(layout, props, Component.layout);
+export function lookupLayout(Component, props = {}) {
+  const wrap = withLayout((options) => wrapInLayout(Component, options), props);
+  return typeof wrap === 'function' ? wrap : (Component) => Component;
+}
+
+function wrapInLayout(Component, { appLayout, pageLayout, pageLayouts }) {
+  const _normalize = normalize.bind(null, pageLayouts || {});
+  const layout = isLayout(pageLayout) ? pageLayout : Component.pageLayout;
+  if (Array.isArray(layout)) { // explicit hierarchy
+    return wrapComponents(layout.map(_normalize));
+  } else {
+    const nesting = [].concat(appLayout ?? []).concat(isLayout(layout) ? layout : []);
+    return wrapComponents(nesting.map(_normalize));
   }
 };
 
-function normalize(layouts, layout) {
-  return typeof layout === 'string' ? layouts?.[layout] : layout;
+function isLayout(layout, objType = false) {
+  return typeof layout === 'string' || typeof layout === 'function' ||
+    (!objType && typeof layout === 'object' && isLayout(layout.layout, true));  
 }
 
-function wrapComponents(components, props = {}) {
-  return components.concat([]).reverse().reduce((component, Layout) => {
+function normalize(layouts, layout) {
+  if (typeof layout === 'string') {
+    return { Layout: layouts?.[layout] };
+  } else if (typeof layout === 'function') {
+    return { Layout: layout };
+  } else if (typeof layout === 'object' && isLayout(layout.layout, true)) {
+    const { layout: _, ...props } = layout;
+    const normalized = normalize(layouts, layout.layout);
+    return { ...normalized, props };
+  } else {
+    return {};
+  }
+}
+
+function wrapComponents(components) {
+  return components.concat([]).reverse().reduce((component, {
+    Layout, props = {}
+  }) => {
+    if (typeof Layout !== 'function') return null;
     return (<Layout {...props}>{component}</Layout>);
   }, null);
 }

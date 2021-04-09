@@ -9,13 +9,13 @@ import { settingsContext, withAppLayout } from '@mono/next';
 import MainLayout from '@app/layouts/main';
 import BlogLayout from '@slices/blog/layouts/main';
 
-const layoutConfig = {
-  layout: 'main',
-  layouts: {
+const withLayout = withAppLayout({
+  appLayout: 'main',
+  pageLayouts: {
     main: MainLayout,
     blog: BlogLayout
   }
-};
+});
 
 // Global scss
 import '@app/styles/uikit.scss';
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
       <Settings cookie={cookie}>
         <NextDataHooksProvider {...props}>
         <LayoutTree 
-          Component={withAppLayout(layoutConfig)(Component)} 
+          Component={withLayout(Component, props)} 
           pageProps={pageProps}
         />
         </NextDataHooksProvider>
