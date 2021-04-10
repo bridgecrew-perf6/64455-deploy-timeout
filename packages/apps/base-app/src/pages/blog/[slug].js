@@ -1,4 +1,5 @@
 import { localePaths, getDataHooksProps, dataHookProps } from '@mono/next';
+
 import BlogPost from '@slices/blog/post';
 import getBlogPosts from '@slices/blog/lib/get-blog-posts';
 

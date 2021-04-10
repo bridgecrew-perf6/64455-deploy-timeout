@@ -29,7 +29,8 @@ export function useUIkit(fn) {
   return ready;
 }
 
-export function UIkit({ children }) {
+export function UIkit({ fadeIn, children, ...props }) {
   const ready = useUIkit();
-  return (ready ? (<>{children}</>) : null);
+  const className = ready ? (fadeIn ? 'uk-animation-fade' : null) : 'uk-hidden';
+  return (<div className={className} {...props}>{children}</div>);
 }

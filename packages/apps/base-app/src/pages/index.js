@@ -1,5 +1,4 @@
-import { useTranslation, useSettings } from '@mono/next';
-import { useGoogleAnalytics } from '@mono/next';
+import { useTranslation, useSettings, useGoogleAnalytics, PageSeo } from '@mono/next';
 
 export default function Home() {
   const { t, lang } = useTranslation();
@@ -10,7 +9,8 @@ export default function Home() {
     settings.toggle('analytics', { on: true, off: null });
   }
 
-  return (
+  return (<>
+    <PageSeo title={t(`common:languages.${lang}`)} />
     <div className="uk-container uk-margin-medium-top">
       <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
         <span>{t(`common:languages.${lang}`)}</span>
@@ -27,5 +27,5 @@ export default function Home() {
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
       </div>
     </div>
-  );
+  </>);
 }

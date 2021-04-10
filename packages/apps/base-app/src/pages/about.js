@@ -1,4 +1,4 @@
-import { useTranslation, useCurrency } from '@mono/next';
+import { useTranslation, useCurrency, PageSeo } from '@mono/next';
 
 import LocaleList from '@mono/components/LocaleList';
 import CurrencyList from '@mono/components/CurrencyList';
@@ -7,7 +7,8 @@ export default function About() {
   const { t, lang } = useTranslation();
   const c = useCurrency();
 
-  return (
+  return (<>
+    <PageSeo title={t(`app:pages.about`)} />
     <div className="uk-container">
       <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
         <span>{t('app:pages.about')}</span>
@@ -29,7 +30,7 @@ export default function About() {
         </div>
       </div>
     </div>
-  );
+  </>);
 }
 
 About.pageLayout = ({ children, ...props }) => {

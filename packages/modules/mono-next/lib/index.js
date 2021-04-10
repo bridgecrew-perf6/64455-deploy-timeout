@@ -7,6 +7,7 @@ export * from './layout';
 export * from './navigation';
 export * from './props';
 export * from './settings';
+export * from './seo';
 export * from './site';
 export * from './uikit';
 
