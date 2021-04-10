@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 
+export * from 'next-data-hooks';
+
 export function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {

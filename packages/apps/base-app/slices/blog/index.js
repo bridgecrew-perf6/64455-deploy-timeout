@@ -1,5 +1,4 @@
-import { createDataHook } from 'next-data-hooks';
-import { useTranslation, Link } from '@mono/next';
+import { useTranslation, createDataHook, Link } from '@mono/next';
 import getBlogPosts from './lib/get-blog-posts';
 
 const useBlogPostIndex = createDataHook('BlogPostIndex', async () => {

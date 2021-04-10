@@ -65,8 +65,8 @@ export function Link({ children, activeClassName, matchClassName, as, partial, .
   const [active, match] = useCurrentRoute(props);
 
   const className = useMemo(() => {
-    const activeClass = activeClassName ?? Link.defaults.activeClassName;
-    const matchClass = matchClassName ?? Link.defaults.matchClassName;
+    const activeClass = activeClassName ?? Link.defaults.activeClassName ?? 'active';
+    const matchClass = matchClassName ?? Link.defaults.matchClassName ?? 'match';
     let classNames = [].concat(childClassName || []);
     classNames = classNames.concat(((active || (match && partial)) ? activeClass : []) || []);
     classNames = classNames.concat((match ? matchClass : []) || []);
@@ -84,8 +84,8 @@ export function Link({ children, activeClassName, matchClassName, as, partial, .
 }
 
 Link.defaults = {
-  activeClassName: 'active',
-  matchClassName: 'match',
+  // activeClassName: 'active', // not set here
+  // matchClassName: 'match',
 }
 
 function startsWith(a, b) {

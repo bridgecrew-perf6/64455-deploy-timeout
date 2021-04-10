@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from './navigation';
 
 export function useUIkit(fn) {
   const [ready, setReady] = useState(false);
@@ -7,6 +8,10 @@ export function useUIkit(fn) {
   ref.current = fn;
 
   useEffect(() => {
+    // Setup Link classes to use UIkit
+    Link.defaults.activeClassName = Link.defaults.activeClassName ?? 'uk-active';
+    Link.defaults.matchClassName = Link.defaults.matchClassName ?? 'uk-active-match';
+
     const isBrowser = typeof window !== 'undefined';
     if (isBrowser && !window.UIkit) {
       const UIkit = require('@atelierfabien/uikit');
