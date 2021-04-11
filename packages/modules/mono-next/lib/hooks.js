@@ -1,6 +1,23 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useContext } from 'react';
+import { NextDataHooksContext } from 'next-data-hooks';
 
 export * from 'next-data-hooks';
+
+export function useDataHook(key, strict = true) {
+  const dataHooksContext = useContext(NextDataHooksContext);
+  if (strict && !dataHooksContext) {
+    throw new Error(
+      'Could not find `NextDataHooksContext`. Ensure `NextDataHooksProvider` is configured correctly.'
+    );
+  }
+  const dataHooksValue = dataHooksContext[key];
+  if (strict && !Object.keys(dataHooksContext).includes(key)) {
+    throw new Error(
+      `Did not find a data hook named "${key}". Ensure it was provided to getDataHooksProps.`
+    );
+  }
+  return dataHooksValue;
+}
 
 export function usePrevious(value) {
   const ref = useRef();
