@@ -1,12 +1,12 @@
 import { useRef } from 'react';
-import { useTranslation } from '@foundation/next';
+import { useTranslation, withPortal } from '@foundation/next';
 
 import LocaleListItems from '@foundation/components/LocaleList/Items';
 import CurrencyListItems from '@foundation/components/CurrencyList/Items';
 
 import Links from './Links';
 
-export default function OffCanvas() {
+const OffCanvas = withPortal(() => {
   const ref = useRef();
   const { t } = useTranslation();
 
@@ -47,4 +47,6 @@ export default function OffCanvas() {
       </div>
     </>
   );
-}
+});
+
+export default OffCanvas;

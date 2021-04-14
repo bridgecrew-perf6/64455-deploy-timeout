@@ -2,6 +2,7 @@ export * from './analytics';
 export * from './baobab';
 export * from './context';
 export * from './currency';
+export * from './hocs';
 export * from './hooks';
 export * from './layout';
 export * from './navigation';

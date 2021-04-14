@@ -1,4 +1,4 @@
-import locales from '../../data/locales.json';
+import locales from '../../data/locales';
 
 export function matchLocale(lc, locales = []) {
   lc = typeof lc === 'string' ? lc : '';

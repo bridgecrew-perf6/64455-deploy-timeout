@@ -6,7 +6,7 @@ import OffCanvas from '@app/components/Nav/Offcanvas';
 
 export default function MainLayout({ children }) {
   return (
-    <UIkit fadeIn>
+    <UIkit>
       <Nav />
       {children}
       <OffCanvas />
