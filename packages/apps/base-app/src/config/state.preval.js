@@ -1,9 +1,7 @@
 import preval from 'next-plugin-preval';
 
 async function getData() {
-  return {
-    colors: ['yellow', 'blue', 'orange']
-  };
+  return {};
 }
 
 export default preval(getData());
