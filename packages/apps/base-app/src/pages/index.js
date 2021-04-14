@@ -10,7 +10,7 @@ export default function Home() {
   const { enabled: gaEnabled } = useGoogleAnalytics();
   const { settings } = useSettings();
 
-  function onClick(e) {
+  function onClick() {
     settings.toggle('analytics', { on: true, off: null });
   }
 
@@ -21,7 +21,11 @@ export default function Home() {
         <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
           <span>{t(`common:languages.${lang}`)}</span>
           {gaEnabled && (
-            <button className="uk-button uk-button-default" onClick={onClick}>
+            <button
+              className="uk-button uk-button-default"
+              type="button"
+              onClick={onClick}
+            >
               Toggle Consent
             </button>
           )}

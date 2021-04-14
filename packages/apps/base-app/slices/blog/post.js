@@ -9,12 +9,12 @@ import getBlogPosts from './lib/get-blog-posts';
 const useBlogPost = createDataHook('BlogPost', async context => {
   const slug = context.params?.slug;
   const blogPosts = await getBlogPosts();
-  const blogPost = blogPosts.find(blogPost => blogPost.slug === slug);
+  const blogPost = blogPosts.find(post => post.slug === slug);
   return blogPost;
 });
 
 function BlogPost() {
-  const { t, lang } = useTranslation();
+  const { t } = useTranslation();
   const { title, content } = useBlogPost();
 
   return (

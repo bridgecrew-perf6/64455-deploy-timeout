@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { default as NextLink } from 'next/link';
+import NextLink from 'next/link';
 import React, {
   Children,
   useState,

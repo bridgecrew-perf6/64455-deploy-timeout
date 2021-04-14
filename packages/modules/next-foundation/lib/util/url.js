@@ -1,4 +1,4 @@
-const URL_REGEXP = /^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
+const URL_REGEXP = /^([^:/?#]+:)?(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
 
 const ERROR_PAGE_REGEXP = /^\/(404|500|_error)/;
 
@@ -14,11 +14,8 @@ export function isUrl(url) {
 
 export function isExternalUrl(url, strict = false) {
   const match = String(url || '').match(URL_REGEXP) || [];
-  if (
-    strict &&
-    typeof window !== 'undefined' &&
-    typeof location !== 'undefined'
-  ) {
+  if (strict && typeof window !== 'undefined') {
+    const { location } = window;
     const replace = new RegExp(`:(${PORT_MAPPING[location.protocol]})?$`);
     if (
       typeof match[1] === 'string' &&

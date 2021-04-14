@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-global-assign
 require = require('esm')(module);
 
 require('dotenv-flow').config();
@@ -25,6 +26,7 @@ getDynamicPaths().then(paths => {
   });
 
   Sitemap.generateSitemap().then(() => {
+    // eslint-disable-next-line no-console
     console.log('+ written sitemap.xml');
   });
 });

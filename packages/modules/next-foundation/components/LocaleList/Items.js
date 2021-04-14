@@ -7,7 +7,7 @@ export default function LocaleListItems({ activeClassName }) {
 
   if (locales.length === 0) return null; // skip
 
-  activeClassName = activeClassName ?? 'uk-active';
+  const className = activeClassName ?? 'uk-active';
 
   const onClick = useCallback(
     e => {
@@ -20,7 +20,7 @@ export default function LocaleListItems({ activeClassName }) {
   return (
     <>
       {locales.map(({ code, active, name, href }) => (
-        <li key={code} className={active ? activeClassName : ''}>
+        <li key={code} className={active ? className : ''}>
           <a href={href} data-code={code} hrefLang={code} onClick={onClick}>
             {name}
           </a>

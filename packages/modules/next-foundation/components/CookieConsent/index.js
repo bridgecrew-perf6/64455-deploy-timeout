@@ -35,6 +35,7 @@ export default function CookieConsent(props) {
       >
         <button
           className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
+          type="button"
           onClick={() => onClose(reject)}
           uk-close=""
         ></button>
@@ -49,6 +50,7 @@ export default function CookieConsent(props) {
         </p>
         <button
           className="w-full md:w-auto uk-button uk-button-primary uk-button-small"
+          type="button"
           onClick={() => onClose(accept)}
         >
           {t('common:cookieConsent.accept')}

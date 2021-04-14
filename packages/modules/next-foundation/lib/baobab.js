@@ -25,7 +25,7 @@ export function useCursor(path, fn) {
     if (arguments.length === 2 && !tree.exists(path)) {
       tree.set(path, fn);
     }
-    fn = (tree, value) => [value, v => tree.set(path, v)];
+    fn = (t, value) => [value, v => t.set(path, v)];
   }
 
   const [state, setState] = useState(previousData => {
@@ -52,12 +52,12 @@ export function useCursor(path, fn) {
 
 export function useCursors(cursors, fn) {
   const [state, setState] = useState(() => {
-    const mapping = typeof cursors === 'function' ? cursors(context) : cursors;
+    const mapping = typeof cursors === 'function' ? cursors() : cursors;
     return fn(tree.project(mapping), tree);
   });
 
   useEffect(() => {
-    const mapping = typeof cursors === 'function' ? cursors(context) : cursors;
+    const mapping = typeof cursors === 'function' ? cursors() : cursors;
     const watcher = tree.watch(mapping);
     watcher.on('update', () => {
       setState(fn(tree.project(mapping), tree));

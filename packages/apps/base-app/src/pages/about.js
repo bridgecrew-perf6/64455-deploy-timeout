@@ -58,7 +58,7 @@ export default function About() {
   );
 }
 
-About.pageLayout = ({ children, ...props }) => {
+About.pageLayout = ({ children }) => {
   return (
     <div
       className="uk-background-secondary uk-light uk-padding uk-padding-remove-horizontal uk-animation-fade uk-animation-fast"

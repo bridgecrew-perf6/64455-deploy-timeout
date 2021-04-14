@@ -20,6 +20,7 @@ export function useCookieConsent(type, options = {}) {
   let isEnabled = typeof window !== 'undefined' && options.enabled;
   isEnabled = isEnabled && !isErrorPage(router.route);
 
+  // eslint-disable-next-line no-shadow
   useSettingEffect(type, (enabled, prompt, settings) => {
     setEnabled(enabled);
     setSettings(settings);
@@ -32,8 +33,8 @@ export function useCookieConsent(type, options = {}) {
 
   const accept = useCallback(
     e => {
-      e && e.preventDefault();
-      settings && settings.set(type, true);
+      if (e) e.preventDefault();
+      if (settings) settings.set(type, true);
       if (settings && typeof options.accept === 'function') {
         options.accept(type, settings, e);
       }
@@ -43,8 +44,8 @@ export function useCookieConsent(type, options = {}) {
 
   const reject = useCallback(
     e => {
-      e && e.preventDefault();
-      settings && settings.set(type, false);
+      if (e) e.preventDefault();
+      if (settings) settings.set(type, false);
       if (settings && typeof options.reject === 'function') {
         options.reject(type, settings, e);
       }
@@ -63,7 +64,7 @@ export function useGoogleAnalytics(options = {}) {
   const tracking = ignoreDoNotTrack ? true : !doNotTrack;
   const enabled = analyticsId && (tracking || force || isDevelopment);
 
-  const [cookies, setCookie, removeCookie] = useCookie(['_ga', '_gat', '_gid']);
+  const [, , removeCookie] = useCookie(['_ga', '_gat', '_gid']);
 
   const consent = useCookieConsent('analytics', {
     enabled,
@@ -74,6 +75,7 @@ export function useGoogleAnalytics(options = {}) {
     },
   });
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (initialize && consent.enabled && !consent.prompt) {
       if (isProduction) ReactGA.initialize(analyticsId);
@@ -119,6 +121,7 @@ function logPageView() {
       ReactGA.set({ page: window.location.pathname });
       ReactGA.pageview(window.location.pathname);
     } else {
+      // eslint-disable-next-line no-console
       console.log('[react-ga] %s (dev)', window.location.pathname);
     }
   }

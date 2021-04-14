@@ -3,7 +3,7 @@ import { useCookie, NextCookieProvider } from 'next-universal-cookie';
 import { createContextProvider } from './context';
 import { usePrevious } from './hooks';
 import { useRouter } from './navigation';
-import { Currency } from './currency';
+import Currency from './util/currency';
 
 const Settings = {}; // singleton by ref
 
@@ -118,7 +118,7 @@ export function settingsContext(options = {}) {
   const Context = createContextProvider(SettingsContext, Settings);
 
   return useMemo(() => {
-    return function({ cookie, children }) {
+    return ({ cookie, children }) => {
       return (
         <NextCookieProvider cookie={cookie}>
           <Context>{children}</Context>
@@ -133,7 +133,7 @@ export function useSettings() {
 }
 
 export function useSetting(key, options = {}) {
-  let [current, _setValue] = useState(() => {
+  const [current, _setValue] = useState(() => {
     if (typeof options.initial === 'function') {
       return options.initial(key) ?? getDefault();
     }
@@ -149,6 +149,7 @@ export function useSetting(key, options = {}) {
     if (typeof options.default !== 'undefined') {
       return options.default;
     }
+    return undefined;
   }
 
   function setValue(value) {
@@ -177,29 +178,30 @@ export function useSetting(key, options = {}) {
     previous = previous ?? defaultValue;
 
     const initial = typeof previous === 'undefined';
+    let curr = current;
     let reset = false;
 
     if (typeof options.get === 'function') {
-      current = options.get(current, previous, initial);
+      curr = options.get(curr, previous, initial);
     } else if (typeof options.check === 'function') {
-      reset = !initial && options.check(current, previous, defaultValue);
-    } else if (options.resetDefault && current === defaultValue) {
+      reset = !initial && options.check(curr, previous, defaultValue);
+    } else if (options.resetDefault && curr === defaultValue) {
       reset = !initial;
     }
 
-    if (isValid(current) && !reset) {
-      if (current !== previous && typeof options.set === 'function') {
-        current = options.set(current, previous, initial) ?? current;
+    if (isValid(curr) && !reset) {
+      if (curr !== previous && typeof options.set === 'function') {
+        curr = options.set(curr, previous, initial) ?? curr;
       }
     } else if (typeof options.unset === 'function') {
-      current = options.unset(current, previous, initial) ?? current;
+      curr = options.unset(curr, previous, initial) ?? curr;
     }
 
     if (typeof options.transform === 'function') {
-      current = options.transform(current, setValue, isValid) ?? current;
+      curr = options.transform(curr, setValue, isValid) ?? curr;
     }
 
-    return [current, setValue, isValid, previousValue];
+    return [curr, setValue, isValid, previousValue];
   }, [current]);
 }
 
@@ -221,13 +223,15 @@ export function useCookieSetting(key, options = {}) {
       if (typeof value === 'string') {
         try {
           return JSON.parse(value);
-        } catch {}
+        } catch (e) {
+          // eslint-disable-next-line no-console
+          console.error(e.message);
+        }
       } else if (typeof value === 'object') {
         return value;
       }
-    } else {
-      return value;
     }
+    return value;
   }
 
   function coerceValue(value) {
@@ -250,7 +254,7 @@ export function useCookieSetting(key, options = {}) {
       }
     },
     unset: (current, previous, initial) => {
-      !initial && removeCookie(cookieName);
+      if (!initial) removeCookie(cookieName);
     },
     ...options,
   });

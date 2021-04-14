@@ -12,7 +12,7 @@ const useBlogPostIndex = createDataHook('BlogPostIndex', async () => {
 });
 
 function BlogPostIndex() {
-  const { t, lang } = useTranslation();
+  const { t } = useTranslation();
   const blogPostIndex = useBlogPostIndex();
 
   return (

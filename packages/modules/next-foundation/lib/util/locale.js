@@ -1,4 +1,4 @@
-import locales from '../../data/locales';
+import locales from '../../data/locales.json';
 
 export function matchLocale(lc, locales = []) {
   lc = typeof lc === 'string' ? lc : '';
@@ -43,5 +43,6 @@ export function localePaths(entries, locales = []) {
       const e = { params: { slug: entry } };
       return memo.concat(locales.map(locale => ({ ...e, locale })));
     }
+    return memo;
   }, []);
 }

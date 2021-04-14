@@ -5,7 +5,7 @@ export default function CurrencyListItems({ activeClassName }) {
   const currency = useCurrency();
   const { setCurrency } = useSettings();
 
-  activeClassName = activeClassName ?? 'uk-active';
+  const className = activeClassName ?? 'uk-active';
 
   const onClick = useCallback(
     e => {
@@ -18,7 +18,7 @@ export default function CurrencyListItems({ activeClassName }) {
   return (
     <>
       {currency.currencies.map(({ code, active, name }) => (
-        <li key={code} className={active ? activeClassName : ''}>
+        <li key={code} className={active ? className : ''}>
           <a href="#" data-code={code} onClick={onClick}>
             {name}
           </a>

@@ -22,6 +22,7 @@ export function useLocale() {
   const locales = useMemo(() => {
     return [].concat(router.locales || []).map(code => {
       const isDefault = code === router.defaultLocale;
+      // eslint-disable-next-line no-shadow
       const lang = simplifyLocale(code);
       const name = t(
         `common:languages.${code}`,
