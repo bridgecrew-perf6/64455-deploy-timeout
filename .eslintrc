@@ -1,0 +1,13 @@
+{
+  "extends": "@ijsto",
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "import/no-unresolved": ["error", { "ignore": ["^@"] }]
+  }
+}

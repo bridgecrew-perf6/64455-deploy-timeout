@@ -4,6 +4,8 @@
   "description": "Next Development mono-repo",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.jsx .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +22,19 @@
     "./packages/apps/*",
     "./packages/modules/*",
     "./packages/projects/*"
-  ]
+  ],
+  "devDependencies": {
+    "@ijsto/eslint-config": "^3.0.1",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "prettier": "^1.19.1"
+  }
 }
