@@ -41,7 +41,7 @@ export function useSeo() {
     }, []);
 
     return seo;
-  }, [router.asPath, router.locale]);
+  }, [router, site]);
 }
 
 export function PageSeo({ openGraph, ...props }) {

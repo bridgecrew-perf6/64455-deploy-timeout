@@ -39,7 +39,7 @@ export function useCookieConsent(type, options = {}) {
         options.accept(type, settings, e);
       }
     },
-    [settings, options]
+    [settings, type, options]
   );
 
   const reject = useCallback(
@@ -50,7 +50,7 @@ export function useCookieConsent(type, options = {}) {
         options.reject(type, settings, e);
       }
     },
-    [settings, options]
+    [settings, type, options]
   );
 
   return { settings, enabled, prompt, accept, reject };
@@ -84,7 +84,7 @@ export function useGoogleAnalytics(options = {}) {
       Router.events.on('routeChangeComplete', logPageView);
       return () => Router.events.off('routeChangeComplete', logPageView);
     }
-  }, [initialize, consent.enabled, consent.prompt]);
+  }, [initialize, consent.enabled, consent.prompt, isProduction, analyticsId]);
 
   const log = useMemo(() => {
     const isEnabled = isProduction && consent.enabled;
@@ -110,7 +110,7 @@ export function useGoogleAnalytics(options = {}) {
         }
       },
     };
-  }, [consent.enabled]);
+  }, [consent.enabled, isProduction]);
 
   return { ...consent, ga: ReactGA, log, enabled, tracking };
 }

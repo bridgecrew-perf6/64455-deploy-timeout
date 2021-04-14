@@ -4,7 +4,7 @@ const a11yOff = Object.keys(require('eslint-plugin-jsx-a11y').rules)
 const strict = process.env.STRICT === 'true';
 
 module.exports = {
-  "extends": ["@ijsto"],
+  "extends": ["@ijsto", "airbnb/hooks"],
   "globals": {
     "UIkit": "readonly"
   },

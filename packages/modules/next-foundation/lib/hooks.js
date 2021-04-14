@@ -35,7 +35,10 @@ export function usePrevious(value) {
 
 export function useMappedState(initialState, ...mapFns) {
   const [state, setState] = useState(initialState || (() => {}));
-  const memo = useMemo(() => mapFns.map(mapFn => mapFn(state)), [state]);
+  const memo = useMemo(() => mapFns.map(mapFn => mapFn(state)), [
+    mapFns,
+    state,
+  ]);
   return [state, setState, memo];
 }
 

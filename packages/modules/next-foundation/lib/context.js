@@ -25,7 +25,7 @@ export function createContextProvider(Context, value) {
         );
       };
     });
-  }, [value]);
+  }, [Context.Provider, value]);
 
   return state;
 }

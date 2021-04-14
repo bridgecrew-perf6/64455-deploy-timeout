@@ -7,7 +7,7 @@ export function withPortal(Component, containerId = '__next') {
 
     useEffect(() => {
       setContainer(document.getElementById(containerId));
-    }, [containerId]);
+    }, []);
 
     return container ? createPortal(<Component {...props} />, container) : null;
   };

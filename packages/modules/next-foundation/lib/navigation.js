@@ -35,7 +35,7 @@ export function useLocationHash(fn) {
     onHashChange(); // initial
     window.addEventListener('hashchange', onHashChange, false);
     return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
+  }, [onHashChange]);
 
   const _setHash = useCallback(
     newHash => {
@@ -43,7 +43,7 @@ export function useLocationHash(fn) {
         window.location.hash = newHash;
       }
     },
-    [hash]
+    [hash, isBrowser]
   );
 
   return [hash, _setHash];
@@ -100,7 +100,7 @@ export function Link({
     );
     classNames = classNames.concat((match ? matchClass : []) || []);
     return classNames.length > 0 ? classNames.join(' ') : null;
-  }, [props, active, match, childClassName, activeClassName, matchClassName]);
+  }, [activeClassName, matchClassName, childClassName, active, match, partial]);
 
   if (isElement || typeof as === 'string') {
     const Element = as;

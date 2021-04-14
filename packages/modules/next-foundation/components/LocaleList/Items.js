@@ -5,8 +5,6 @@ export default function LocaleListItems({ activeClassName }) {
   const { locales } = useLocale();
   const { setLocale } = useSettings();
 
-  if (locales.length === 0) return null; // skip
-
   const className = activeClassName ?? 'uk-active';
 
   const onClick = useCallback(
@@ -16,6 +14,8 @@ export default function LocaleListItems({ activeClassName }) {
     },
     [setLocale]
   );
+
+  if (locales.length === 0) return null; // skip
 
   return (
     <>

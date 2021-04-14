@@ -16,7 +16,7 @@ export function useTree(fn) {
   return tree;
 }
 
-export function treeContext() {
+export function useBaobab() {
   return useRoot(tree);
 }
 
@@ -35,13 +35,13 @@ export function useCursor(path, fn) {
     return fn(currentData, currentData, cursor, initial);
   });
 
-  async function handler(e) {
-    const { currentData, previousData } = e.data;
-    const initial = typeof previousData === 'undefined';
-    setState(await fn(currentData, previousData, e.target, initial));
-  }
-
   useEffect(() => {
+    const handler = async e => {
+      const { currentData, previousData } = e.data;
+      const initial = typeof previousData === 'undefined';
+      setState(await fn(currentData, previousData, e.target, initial));
+    };
+
     const cursor = tree.select(path);
     cursor.on('update', handler);
     return () => cursor.off('update', handler);

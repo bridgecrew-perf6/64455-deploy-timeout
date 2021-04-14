@@ -9,7 +9,7 @@ export function useSite() {
 }
 
 export function useLocale() {
-  const { t, lang } = useTranslation();
+  const { t } = useTranslation();
   const router = useRouter();
   const locale = router.locale || 'en';
   const lc = simplifyLocale(locale);
@@ -32,7 +32,7 @@ export function useLocale() {
       const href = isDefault ? router.asPath : `/${code}${router.asPath}`;
       return { code, lang, name, active: code === locale, href };
     });
-  }, [locale, lang, router.asPath]);
+  }, [router.locales, router.defaultLocale, router.asPath, t, locale]);
 
   return { locale, lang: lc, language, locales };
 }
