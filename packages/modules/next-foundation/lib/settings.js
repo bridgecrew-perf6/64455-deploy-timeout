@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useContext } from 'react';
 import { useCookie, NextCookieProvider } from 'next-universal-cookie';
-import { createContextProvider } from './context';
+import { useContextProvider } from './context';
 import { usePrevious } from './hooks';
 import { useRouter } from './navigation';
 import Currency from './util/currency';
@@ -57,7 +57,7 @@ function wrapObject(object, setValue, isValid) {
   };
 }
 
-export function settingsContext(options = {}) {
+export function useSettingsContext(options = {}) {
   const defaults = { ...options.defaults };
   const router = useRouter();
 
@@ -121,7 +121,7 @@ export function settingsContext(options = {}) {
     setSettings,
   });
 
-  const Context = createContextProvider(SettingsContext, Settings);
+  const Context = useContextProvider(SettingsContext, Settings);
 
   return useMemo(() => {
     return ({ cookie, children }) => {

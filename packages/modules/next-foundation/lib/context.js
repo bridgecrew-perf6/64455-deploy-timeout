@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export function createContextProvider(Context, value) {
+export function useContextProvider(Context, value) {
   const [state, setState] = useState(() => {
     return ({ children }) => {
       return React.createElement(
