@@ -1,1 +1,1 @@
-export { default } from '@atelierfabien/mono-next/translations/en';
+export { default } from '@atelierfabien/next-foundation/translations/en';

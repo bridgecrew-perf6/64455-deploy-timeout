@@ -1,5 +1,5 @@
-import { Link } from '@mono/next';
-import { useTranslation } from '@mono/next';
+import { Link } from '@foundation/next';
+import { useTranslation } from '@foundation/next';
 
 export default function Links() {
   const { t } = useTranslation();

@@ -1,4 +1,4 @@
-import { useTranslation } from '@mono/next';
+import { useTranslation } from '@foundation/next';
 
 export default function BlogLayout({ children, ...props }) {
   const { t } = useTranslation();

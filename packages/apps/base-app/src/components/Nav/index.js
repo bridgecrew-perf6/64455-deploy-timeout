@@ -1,8 +1,8 @@
-import { Link } from '@mono/next';
+import { Link } from '@foundation/next';
 
 import Logo from '@app/components/Logo';
-import LocaleListItems from '@mono/components/LocaleList/Items';
-import CurrencyListItems from '@mono/components/CurrencyList/Items';
+import LocaleListItems from '@foundation/components/LocaleList/Items';
+import CurrencyListItems from '@foundation/components/CurrencyList/Items';
 
 import Links from './Links';
 

@@ -1,7 +1,7 @@
-import { useTranslation, useCurrency, PageSeo } from '@mono/next';
+import { useTranslation, useCurrency, PageSeo } from '@foundation/next';
 
-import LocaleList from '@mono/components/LocaleList';
-import CurrencyList from '@mono/components/CurrencyList';
+import LocaleList from '@foundation/components/LocaleList';
+import CurrencyList from '@foundation/components/CurrencyList';
 
 export default function About() {
   const { t, lang } = useTranslation();

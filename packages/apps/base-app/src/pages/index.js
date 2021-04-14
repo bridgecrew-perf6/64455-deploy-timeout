@@ -1,4 +1,4 @@
-import { useTranslation, useSettings, useGoogleAnalytics, PageSeo } from '@mono/next';
+import { useTranslation, useSettings, useGoogleAnalytics, PageSeo } from '@foundation/next';
 
 export default function Home() {
   const { t, lang } = useTranslation();

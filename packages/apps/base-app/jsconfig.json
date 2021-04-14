@@ -7,9 +7,9 @@
         "./config/*", "./config/*.preval", 
         "./src/config/*", "./src/config/*.preval"
       ],
-      "@mono/*": [
-        "./node_modules/@atelierfabien/mono-next/*",
-        "../../../node_modules/@atelierfabien/mono-next/*"
+      "@foundation/*": [
+        "./node_modules/@atelierfabien/next-foundation/*",
+        "../../../node_modules/@atelierfabien/next-foundation/*"
       ],
       "@slices/*": ["./slices/*"]
     }

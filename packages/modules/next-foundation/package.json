@@ -1,5 +1,5 @@
 {
-  "name": "@atelierfabien/mono-next",
+  "name": "@atelierfabien/next-foundation",
   "version": "0.0.0",
   "description": "Shared code for NextJS projects",
   "module": "index.js",

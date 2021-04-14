@@ -1,4 +1,4 @@
-import { getDataHooksProps } from '@mono/next';
+import { getDataHooksProps } from '@foundation/next';
 import BlogPostIndex from '@slices/blog';
 
 export const getStaticProps = async (context) => {

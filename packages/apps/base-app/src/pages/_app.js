@@ -1,4 +1,4 @@
-import App from '@mono/components/App';
+import App from '@foundation/components/App';
 
 // Global scss
 import '@app/styles/uikit.scss';

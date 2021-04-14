@@ -1,4 +1,4 @@
-import { useTranslation, createDataHook, Link, PageSeo } from '@mono/next';
+import { useTranslation, createDataHook, Link, PageSeo } from '@foundation/next';
 import getBlogPosts from './lib/get-blog-posts';
 
 const useBlogPostIndex = createDataHook('BlogPostIndex', async () => {
