@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useState, useEffect, useMemo, useContext } from 'react';
 import { useCookie, NextCookieProvider } from 'next-universal-cookie';
 import { createContextProvider } from './context';
@@ -8,6 +10,15 @@ import Currency from './util/currency';
 const Settings = {}; // singleton by ref
 
 const SettingsContext = React.createContext(Settings);
+
+const methods = {
+  default: useSetting,
+  cookie: useCookieSetting,
+};
+
+function setting(key, options = {}) {
+  return methods[options.disabled ? 'default' : 'cookie'](key, options);
+}
 
 function wrapObject(object, setValue, isValid) {
   object = typeof object === 'object' ? object : {};
@@ -55,28 +66,22 @@ export function settingsContext(options = {}) {
 
   // Specific settings
 
-  const [locale, setLocale, isValidLocale, previousLocale] = useCookieSetting(
-    'locale',
-    {
-      value: router.locale,
-      valid: router.locales,
-      default: defaultLocale,
-      ...options.locale,
-    }
-  );
+  const [locale, setLocale, isValidLocale, previousLocale] = setting('locale', {
+    value: router.locale,
+    valid: router.locales,
+    default: defaultLocale,
+    ...options.locale,
+  });
 
-  const [currency, setCurrency, isValidCurrency] = useCookieSetting(
-    'currency',
-    {
-      valid: Currency.isCurrency,
-      default: Currency.getDefaultCode ?? defaults.currency,
-      ...options.currency,
-    }
-  );
+  const [currency, setCurrency, isValidCurrency] = setting('currency', {
+    valid: Currency.isCurrency,
+    default: Currency.getDefaultCode ?? defaults.currency,
+    ...options.currency,
+  });
 
   // Generic settings
 
-  const [settings, setSettings] = useCookieSetting('settings', {
+  const [settings, setSettings] = setting('settings', {
     ...options.settings,
     transform: wrapObject,
     default: {},
@@ -102,6 +107,7 @@ export function settingsContext(options = {}) {
         { locale, scroll: false }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 
   Object.assign(Settings, {
@@ -206,9 +212,6 @@ export function useSetting(key, options = {}) {
 }
 
 export function useCookieSetting(key, options = {}) {
-  if (options.disabled) {
-    return useSetting(key, options);
-  }
   const maxAge = 86400 * 365; // a year from now
   const cookieName = options.cookieName || `NEXT_${key.toUpperCase()}`;
   const cookieOpts = { path: '/', maxAge, ...options.cookieOptions };
@@ -266,7 +269,7 @@ export function useCookieSetting(key, options = {}) {
   return [value, setValue, isValid, previousValue];
 }
 
-export function useSettingEffect(key, fn, deps = []) {
+export function useSettingEffect(key, fn) {
   const { settings } = useSettings();
 
   useEffect(() => {
@@ -278,7 +281,7 @@ export function useSettingEffect(key, fn, deps = []) {
     } else {
       settings.set(key, null);
     }
-  }, [key, settings.get(key)].concat(deps));
+  }, [fn, key, settings]);
 
   return settings;
 }
