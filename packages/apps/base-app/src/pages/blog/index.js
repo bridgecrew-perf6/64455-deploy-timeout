@@ -1,7 +1,7 @@
 import { getDataHooksProps } from '@foundation/next';
 import BlogPostIndex from '@slices/blog';
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async context => {
   const dataHooksProps = await getDataHooksProps({
     context,
     dataHooks: BlogPostIndex.dataHooks,
@@ -17,7 +17,7 @@ export default function Blog(props) {
     <div className="uk-container uk-margin-top">
       <BlogPostIndex {...props} />
     </div>
-  )
-};
+  );
+}
 
 Blog.pageLayout = ['main', 'blog']; // explicit hierarchy

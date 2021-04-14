@@ -1,6 +1,13 @@
 import { useRouter } from 'next/router';
 import { default as NextLink } from 'next/link';
-import React, { Children, useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, {
+  Children,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 import { isExternalUrl } from './util';
 
 export { useRouter };
@@ -30,11 +37,14 @@ export function useLocationHash(fn) {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  const _setHash = useCallback((newHash) => {
-    if (isBrowser && newHash !== hash) {
-      window.location.hash = newHash;
-    }
-  }, [hash]);
+  const _setHash = useCallback(
+    newHash => {
+      if (isBrowser && newHash !== hash) {
+        window.location.hash = newHash;
+      }
+    },
+    [hash]
+  );
 
   return [hash, _setHash];
 }
@@ -42,51 +52,76 @@ export function useLocationHash(fn) {
 export function useCurrentRoute(options = {}) {
   const { route, pathname } = useRouter();
   if (typeof options !== 'object') return [false, false];
-  const active = pathname === options.href || pathname === options.as || route === options.route;
-  const match = startsWith(pathname, options.href) || startsWith(pathname, options.as);
+  const active =
+    pathname === options.href ||
+    pathname === options.as ||
+    route === options.route;
+  const match =
+    startsWith(pathname, options.href) || startsWith(pathname, options.as);
   return [active, match];
 }
 
-export function Link({ children, activeClassName, matchClassName, as, partial, ...props }) {
+export function Link({
+  children,
+  activeClassName,
+  matchClassName,
+  as,
+  partial,
+  ...props
+}) {
   let child = React.isValidElement(children) ? Children.only(children) : null;
   if (!(React.isValidElement(child) && child.type === 'a')) {
     child = <a {...props}>{children}</a>;
   }
 
   let Wrapper = NextLink;
-  if (typeof props.href === 'string' && (props.href.startsWith('#') || isExternalUrl(props.href))) {
-    Wrapper = ({ children }) => <>{ children }</>;
+  if (
+    typeof props.href === 'string' &&
+    (props.href.startsWith('#') || isExternalUrl(props.href))
+  ) {
+    Wrapper = ({ children }) => <>{children}</>;
   }
 
   const isElement = React.isValidElement(as);
 
-  const childClassName = (isElement ? as.props.className : (child ? child.props.className : '')) ?? '';
+  const childClassName =
+    (isElement ? as.props.className : child ? child.props.className : '') ?? '';
 
   const [active, match] = useCurrentRoute(props);
 
   const className = useMemo(() => {
-    const activeClass = activeClassName ?? Link.defaults.activeClassName ?? 'active';
-    const matchClass = matchClassName ?? Link.defaults.matchClassName ?? 'match';
+    const activeClass =
+      activeClassName ?? Link.defaults.activeClassName ?? 'active';
+    const matchClass =
+      matchClassName ?? Link.defaults.matchClassName ?? 'match';
     let classNames = [].concat(childClassName || []);
-    classNames = classNames.concat(((active || (match && partial)) ? activeClass : []) || []);
+    classNames = classNames.concat(
+      (active || (match && partial) ? activeClass : []) || []
+    );
     classNames = classNames.concat((match ? matchClass : []) || []);
     return classNames.length > 0 ? classNames.join(' ') : null;
   }, [props, active, match, childClassName, activeClassName, matchClassName]);
 
   if (isElement || typeof as === 'string') {
     const Element = as;
-    return <Element className={className}><Wrapper {...props}>{child}</Wrapper></Element>;
-  } else if (typeof as === 'function') {
-    return as(className, <Wrapper {...props}>{child}</Wrapper>);
-  } else {
-    return <Wrapper {...props}>{React.cloneElement(child, { className })}</Wrapper>;
+    return (
+      <Element className={className}>
+        <Wrapper {...props}>{child}</Wrapper>
+      </Element>
+    );
   }
+  if (typeof as === 'function') {
+    return as(className, <Wrapper {...props}>{child}</Wrapper>);
+  }
+  return (
+    <Wrapper {...props}>{React.cloneElement(child, { className })}</Wrapper>
+  );
 }
 
 Link.defaults = {
   // activeClassName: 'active', // not set here
   // matchClassName: 'match',
-}
+};
 
 function startsWith(a, b) {
   return typeof a === 'string' && typeof b === 'string' && a.startsWith(b);

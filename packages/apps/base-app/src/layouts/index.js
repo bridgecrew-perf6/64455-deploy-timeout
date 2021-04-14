@@ -5,6 +5,6 @@ export default {
   appLayout: 'main',
   pageLayouts: {
     main: MainLayout,
-    blog: BlogLayout
-  }
+    blog: BlogLayout,
+  },
 };

@@ -3,12 +3,12 @@ async function getData() {
     pages: {
       home: 'Home',
       about: 'About Us',
-      blog: 'Blog'
+      blog: 'Blog',
     },
     blog: {
-      overview: 'Overview'
-    }
-  }
+      overview: 'Overview',
+    },
+  };
 }
 
 export default getData();

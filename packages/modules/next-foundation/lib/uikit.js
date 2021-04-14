@@ -9,8 +9,10 @@ export function useUIkit(fn) {
 
   useEffect(() => {
     // Setup Link classes to use UIkit
-    Link.defaults.activeClassName = Link.defaults.activeClassName ?? 'uk-active';
-    Link.defaults.matchClassName = Link.defaults.matchClassName ?? 'uk-active-match';
+    Link.defaults.activeClassName =
+      Link.defaults.activeClassName ?? 'uk-active';
+    Link.defaults.matchClassName =
+      Link.defaults.matchClassName ?? 'uk-active-match';
 
     const isBrowser = typeof window !== 'undefined';
     if (isBrowser && !window.UIkit) {
@@ -32,5 +34,9 @@ export function useUIkit(fn) {
 export function UIkit({ fadeIn, children, ...props }) {
   const ready = useUIkit();
   const className = ready ? (fadeIn ? 'uk-animation-fade' : null) : 'uk-hidden';
-  return (<div className={className} {...props}>{children}</div>);
+  return (
+    <div className={className} {...props}>
+      {children}
+    </div>
+  );
 }

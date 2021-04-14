@@ -11,11 +11,9 @@ const DEFAULTS = {
     type: 'website',
     url: baseUrl,
     site_name: name,
-    images: [
-      { url: `${baseUrl}/og-image.png` }
-    ]
+    images: [{ url: `${baseUrl}/og-image.png` }],
   },
-  ...config
+  ...config,
 };
 
 async function getData() {

@@ -7,7 +7,7 @@ module.exports = {
     './public/**/*.html',
     './src/**/*.{js,jsx,ts,tsx}',
     './slices/**/*.{js,jsx,ts,tsx}',
-    `${foundation}/**/*.{js,jsx,ts,tsx}`
+    `${foundation}/**/*.{js,jsx,ts,tsx}`,
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -17,4 +17,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};

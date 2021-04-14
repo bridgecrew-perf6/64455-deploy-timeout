@@ -14,14 +14,24 @@ export function isUrl(url) {
 
 export function isExternalUrl(url, strict = false) {
   const match = String(url || '').match(URL_REGEXP) || [];
-  if (strict && typeof window !== 'undefined' && typeof location !== 'undefined') {
-    const replace = new RegExp(':(' + PORT_MAPPING[location.protocol] + ')?$');
-    if (typeof match[1] === 'string' && match[1].length > 0 && 
-      match[1].toLowerCase() !== location.protocol) {
+  if (
+    strict &&
+    typeof window !== 'undefined' &&
+    typeof location !== 'undefined'
+  ) {
+    const replace = new RegExp(`:(${PORT_MAPPING[location.protocol]})?$`);
+    if (
+      typeof match[1] === 'string' &&
+      match[1].length > 0 &&
+      match[1].toLowerCase() !== location.protocol
+    ) {
       return true;
     }
-    if (typeof match[2] === 'string' && match[2].length > 0 &&
-      match[2].replace(replace, '') !== location.host) {
+    if (
+      typeof match[2] === 'string' &&
+      match[2].length > 0 &&
+      match[2].replace(replace, '') !== location.host
+    ) {
       return true;
     }
   } else if (typeof match[1] === 'string' && match[1].length > 0) {
@@ -29,4 +39,3 @@ export function isExternalUrl(url, strict = false) {
   }
   return false;
 }
-

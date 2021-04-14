@@ -10,7 +10,7 @@ const blogPosts = [
     slug: '2',
     content:
       'Dignissim convallis aenean et tortor at risus viverra. Nibh cras pulvinar mattis nunc sed. Varius morbi enim nunc faucibus a pellentesque sit amet. Porta non pulvinar neque laoreet. Pretium viverra suspendisse potenti nullam ac. Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Morbi tincidunt ornare massa eget egestas purus. A diam sollicitudin tempor id eu nisl nunc mi. Sit amet commodo nulla facilisi. Vitae sapien pellentesque habitant morbi tristique senectus et netus. Morbi enim nunc faucibus a pellentesque sit.',
-    special: true
+    special: true,
   },
   {
     title: 'Semper viverra nam',
@@ -23,7 +23,7 @@ const blogPosts = [
     slug: '4',
     content:
       'Semper feugiat nibh sed pulvinar proin gravida hendrerit. Amet tellus cras adipiscing enim eu turpis egestas pretium aenean. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Eu non diam phasellus vestibulum lorem sed risus ultricies. Morbi tincidunt augue interdum velit euismod in pellentesque massa. Amet aliquam id diam maecenas ultricies mi. Amet luctus venenatis lectus magna fringilla urna. Ipsum dolor sit amet consectetur adipiscing elit duis. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Eget nunc lobortis mattis aliquam.',
-    special: true
+    special: true,
   },
   {
     title: 'Quis imperdiet massa',
@@ -34,7 +34,7 @@ const blogPosts = [
 ];
 
 async function getBlogPosts() {
-  await new Promise((resolve) => setTimeout(resolve, 0));
+  await new Promise(resolve => setTimeout(resolve, 0));
   return blogPosts;
 }
 

@@ -1,4 +1,3 @@
-
 // Setup @app/lib/with-app-props.js:
 //
 // export default withCommonProps({
@@ -20,30 +19,30 @@
 // });
 
 export function withCommonProps(commonProps, defaults = {}) {
-  return async (pageProps) => {
-    return async (ctx) => {
-        let commonData = {};
-        if (typeof commonProps === 'function') {
-          commonData = (await commonProps(ctx)) ?? { props: {} };
-        } else if (typeof commonProps === 'object') {
-          commonData = { props: {}, ...commonProps };
-        }
-        let pageData = {};
-        if (typeof pageProps === 'function') {
-          pageData = (await pageProps(ctx)) ?? { props: {} };
-        } else if (typeof pageProps === 'object') {
-          pageData = { props: {}, ...pageProps };
-        }
-        return {
-          ...defaults,
-          ...commonData,
-          ...pageData,
-          props: {
-            ...defaults.props,
-            ...commonData.props,
-            ...pageData.props
-          }
-        };
+  return async pageProps => {
+    return async ctx => {
+      let commonData = {};
+      if (typeof commonProps === 'function') {
+        commonData = (await commonProps(ctx)) ?? { props: {} };
+      } else if (typeof commonProps === 'object') {
+        commonData = { props: {}, ...commonProps };
+      }
+      let pageData = {};
+      if (typeof pageProps === 'function') {
+        pageData = (await pageProps(ctx)) ?? { props: {} };
+      } else if (typeof pageProps === 'object') {
+        pageData = { props: {}, ...pageProps };
+      }
+      return {
+        ...defaults,
+        ...commonData,
+        ...pageData,
+        props: {
+          ...defaults.props,
+          ...commonData.props,
+          ...pageData.props,
+        },
+      };
     };
   };
 }

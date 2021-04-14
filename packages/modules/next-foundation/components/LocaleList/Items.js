@@ -9,16 +9,23 @@ export default function LocaleListItems({ activeClassName }) {
 
   activeClassName = activeClassName ?? 'uk-active';
 
-  const onClick = useCallback((e) => {
-    e.preventDefault();
-    setLocale(e.target.dataset.code);
-  }, [setLocale]);
+  const onClick = useCallback(
+    e => {
+      e.preventDefault();
+      setLocale(e.target.dataset.code);
+    },
+    [setLocale]
+  );
 
-  return (<>
-    { locales.map(({ code, active, name, href }) => (
-      <li key={code} className={ active ? activeClassName : '' }>
-        <a href={href} data-code={code} hrefLang={code} onClick={onClick}>{name}</a>
-      </li>
-    )) }
-  </>);
+  return (
+    <>
+      {locales.map(({ code, active, name, href }) => (
+        <li key={code} className={active ? activeClassName : ''}>
+          <a href={href} data-code={code} hrefLang={code} onClick={onClick}>
+            {name}
+          </a>
+        </li>
+      ))}
+    </>
+  );
 }

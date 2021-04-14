@@ -5,9 +5,11 @@ import { useCookie } from 'next-universal-cookie';
 import { useSettingEffect } from './settings';
 import { isErrorPage } from './util';
 
-const doNotTrack = typeof window !== 'undefined' && 
+const doNotTrack =
+  typeof window !== 'undefined' &&
   typeof window.navigator !== 'undefined' &&
-  (window.navigator.doNotTrack === '1' || window.navigator.doNotTrack === 'yes');
+  (window.navigator.doNotTrack === '1' ||
+    window.navigator.doNotTrack === 'yes');
 
 export function useCookieConsent(type, options = {}) {
   const [enabled, setEnabled] = useState(false);
@@ -28,21 +30,27 @@ export function useCookieConsent(type, options = {}) {
     }
   });
 
-  const accept = useCallback((e) => {
-    e && e.preventDefault();
-    settings && settings.set(type, true);
-    if (settings && typeof options.accept === 'function') {
-      options.accept(type, settings, e);
-    }
-  }, [settings, options]);
+  const accept = useCallback(
+    e => {
+      e && e.preventDefault();
+      settings && settings.set(type, true);
+      if (settings && typeof options.accept === 'function') {
+        options.accept(type, settings, e);
+      }
+    },
+    [settings, options]
+  );
 
-  const reject = useCallback((e) => {
-    e && e.preventDefault();
-    settings && settings.set(type, false);
-    if (settings && typeof options.reject === 'function') {
-      options.reject(type, settings, e);
-    }
-  }, [settings, options]);
+  const reject = useCallback(
+    e => {
+      e && e.preventDefault();
+      settings && settings.set(type, false);
+      if (settings && typeof options.reject === 'function') {
+        options.reject(type, settings, e);
+      }
+    },
+    [settings, options]
+  );
 
   return { settings, enabled, prompt, accept, reject };
 }
@@ -54,7 +62,7 @@ export function useGoogleAnalytics(options = {}) {
   const isProduction = force || process.env.NODE_ENV === 'production';
   const tracking = ignoreDoNotTrack ? true : !doNotTrack;
   const enabled = analyticsId && (tracking || force || isDevelopment);
-  
+
   const [cookies, setCookie, removeCookie] = useCookie(['_ga', '_gat', '_gid']);
 
   const consent = useCookieConsent('analytics', {
@@ -63,7 +71,7 @@ export function useGoogleAnalytics(options = {}) {
       removeCookie('_ga');
       removeCookie('_gat');
       removeCookie('_gid');
-    }
+    },
   });
 
   useEffect(() => {
@@ -98,10 +106,10 @@ export function useGoogleAnalytics(options = {}) {
         if (isEnabled && description) {
           ReactGA.exception({ description, fatal });
         }
-      }
+      },
     };
   }, [consent.enabled]);
-  
+
   return { ...consent, ga: ReactGA, log, enabled, tracking };
 }
 

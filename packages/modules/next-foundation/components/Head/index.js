@@ -11,7 +11,9 @@ export default function AppHead({ children }) {
       </Head>
       <DefaultSeo {...seo} />
       <Head>
-        {seo.openGraph.alternateLocales.map((lc) => <meta key={lc} property="og:locale:alternate" content={lc} />)}
+        {seo.openGraph.alternateLocales.map(lc => (
+          <meta key={lc} property="og:locale:alternate" content={lc} />
+        ))}
         {children}
       </Head>
     </>

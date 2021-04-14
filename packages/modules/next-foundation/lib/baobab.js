@@ -8,7 +8,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 export * from 'baobab-react/hooks';
 
 export const tree = new Baobab(defaults, {
-  immutable: isDevelopment // perf. improvement
+  immutable: isDevelopment, // perf. improvement
 });
 
 export function useTree(fn) {
@@ -19,16 +19,16 @@ export function useTree(fn) {
 export function treeContext() {
   return useRoot(tree);
 }
-    
+
 export function useCursor(path, fn) {
   if (typeof fn !== 'function') {
     if (arguments.length === 2 && !tree.exists(path)) {
       tree.set(path, fn);
     }
-    fn = (tree, value) => [value, (v) => tree.set(path, v)];
+    fn = (tree, value) => [value, v => tree.set(path, v)];
   }
 
-  const [state, setState] = useState((previousData) => {
+  const [state, setState] = useState(previousData => {
     const cursor = tree.select(path);
     const currentData = cursor.get();
     const initial = typeof previousData === 'undefined';
@@ -39,7 +39,7 @@ export function useCursor(path, fn) {
     const { currentData, previousData } = e.data;
     const initial = typeof previousData === 'undefined';
     setState(await fn(currentData, previousData, e.target, initial));
-  };
+  }
 
   useEffect(() => {
     const cursor = tree.select(path);

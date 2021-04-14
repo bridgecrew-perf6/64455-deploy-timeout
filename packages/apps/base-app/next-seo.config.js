@@ -6,7 +6,7 @@ export default {
     nl: {
       title: 'Voorbeeld',
       titleTemplate: 'Voorbeeld | %s',
-      description: 'Voorbeeld Site Omschrijving'
-    }
-  }
+      description: 'Voorbeeld Site Omschrijving',
+    },
+  },
 };
