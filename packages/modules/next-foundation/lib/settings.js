@@ -1,6 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
-import React, { useState, useEffect, useMemo, useContext } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useContext,
+  useCallback,
+} from 'react';
 import { useCookie, NextCookieProvider } from 'next-universal-cookie';
 import { useContextProvider } from './context';
 import { usePrevious } from './hooks';
@@ -107,8 +112,7 @@ export function useSettingsContext(options = {}) {
         { locale, scroll: false }
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale]);
+  }, [locale, previousLocale, router]);
 
   Object.assign(Settings, {
     locale: router.locale ?? locale,
@@ -139,6 +143,17 @@ export function useSettings() {
 }
 
 export function useSetting(key, options = {}) {
+  const getDefault = useCallback(() => {
+    if (typeof options.default === 'function') {
+      return options.default(key);
+    }
+    if (typeof options.default !== 'undefined') {
+      return options.default;
+    }
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
   const [current, _setValue] = useState(() => {
     if (typeof options.initial === 'function') {
       return options.initial(key) ?? getDefault();
@@ -148,59 +163,56 @@ export function useSetting(key, options = {}) {
 
   let previous = usePrevious(current);
 
-  function getDefault() {
-    if (typeof options.default === 'function') {
-      return options.default(key);
-    }
-    if (typeof options.default !== 'undefined') {
-      return options.default;
-    }
-    return undefined;
-  }
+  const isValid = useCallback(
+    value => {
+      if (typeof options.valid === 'function') {
+        return options.valid(value);
+      }
+      if (Array.isArray(options.valid) && options.valid.length > 0) {
+        return options.valid.includes(value);
+      }
+      return true;
+    },
+    [options]
+  );
 
-  function setValue(value) {
-    if (isValid(value)) {
-      _setValue(value);
-    } else if (isValid(previous)) {
-      _setValue(previous);
-    } else {
-      _setValue(getDefault());
-    }
-  }
-
-  function isValid(value) {
-    if (typeof options.valid === 'function') {
-      return options.valid(value);
-    }
-    if (Array.isArray(options.valid) && options.valid.length > 0) {
-      return options.valid.includes(value);
-    }
-    return true;
-  }
+  const setValue = useCallback(
+    value => {
+      if (isValid(value)) {
+        _setValue(value);
+      } else if (isValid(previous)) {
+        _setValue(previous);
+      } else {
+        _setValue(getDefault());
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [getDefault, isValid]
+  );
 
   return useMemo(() => {
     const defaultValue = getDefault();
     const previousValue = previous;
-    previous = previous ?? defaultValue;
+    const prev = previous ?? defaultValue;
 
-    const initial = typeof previous === 'undefined';
+    const initial = typeof prev === 'undefined';
     let curr = current;
     let reset = false;
 
     if (typeof options.get === 'function') {
-      curr = options.get(curr, previous, initial);
+      curr = options.get(curr, prev, initial);
     } else if (typeof options.check === 'function') {
-      reset = !initial && options.check(curr, previous, defaultValue);
+      reset = !initial && options.check(curr, prev, defaultValue);
     } else if (options.resetDefault && curr === defaultValue) {
       reset = !initial;
     }
 
     if (isValid(curr) && !reset) {
-      if (curr !== previous && typeof options.set === 'function') {
-        curr = options.set(curr, previous, initial) ?? curr;
+      if (curr !== prev && typeof options.set === 'function') {
+        curr = options.set(curr, prev, initial) ?? curr;
       }
     } else if (typeof options.unset === 'function') {
-      curr = options.unset(curr, previous, initial) ?? curr;
+      curr = options.unset(curr, prev, initial) ?? curr;
     }
 
     if (typeof options.transform === 'function') {
@@ -208,7 +220,7 @@ export function useSetting(key, options = {}) {
     }
 
     return [curr, setValue, isValid, previousValue];
-  }, [current]);
+  }, [current, getDefault, isValid, options, previous, setValue]);
 }
 
 export function useCookieSetting(key, options = {}) {
@@ -217,7 +229,7 @@ export function useCookieSetting(key, options = {}) {
   const cookieOpts = { path: '/', maxAge, ...options.cookieOptions };
   const [cookies, setCookie, removeCookie] = useCookie([cookieName]);
 
-  function readValue() {
+  const readValue = useCallback(() => {
     const value = cookies[cookieName];
     if (typeof options.read === 'function') {
       return options.read(value);
@@ -235,36 +247,49 @@ export function useCookieSetting(key, options = {}) {
       }
     }
     return value;
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cookieName]);
 
-  function coerceValue(value) {
-    if (typeof options.coerce === 'function') {
-      return options.coerce(value);
-    }
-    if (options.json && typeof value !== 'undefined') {
-      return JSON.stringify(value);
-    }
-    return value;
-  }
-
-  const [value, setValue, isValid, previousValue] = useSetting(key, {
-    initial: options.initial ?? (options.initialRead ? readValue : () => {}),
-    set: (current, previous, initial) => {
-      if (!initial && typeof current === 'undefined') {
-        removeCookie(cookieName);
-      } else if (!initial) {
-        setCookie(cookieName, coerceValue(current), cookieOpts);
+  const coerceValue = useCallback(
+    value => {
+      if (typeof options.coerce === 'function') {
+        return options.coerce(value);
       }
+      if (options.json && typeof value !== 'undefined') {
+        return JSON.stringify(value);
+      }
+      return value;
     },
-    unset: (current, previous, initial) => {
-      if (!initial) removeCookie(cookieName);
-    },
-    ...options,
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  const settingsOptions = useMemo(() => {
+    return {
+      initial: options.initial ?? (options.initialRead ? readValue : () => {}),
+      set: (current, previous, initial) => {
+        if (!initial && typeof current === 'undefined') {
+          removeCookie(cookieName);
+        } else if (!initial) {
+          setCookie(cookieName, coerceValue(current), cookieOpts);
+        }
+      },
+      unset: (current, previous, initial) => {
+        if (!initial) removeCookie(cookieName);
+      },
+      ...options,
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coerceValue, cookieName, readValue, removeCookie, setCookie]);
+
+  const [value, setValue, isValid, previousValue] = useSetting(
+    key,
+    settingsOptions
+  );
 
   useEffect(() => {
     setValue(options.value ?? readValue(), true);
-  }, [key, cookieName]);
+  }, [key, cookieName, setValue, options.value, readValue]);
 
   return [value, setValue, isValid, previousValue];
 }
