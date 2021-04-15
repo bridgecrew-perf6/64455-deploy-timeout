@@ -1,17 +1,19 @@
-// 1. Your custom variables and variable overwrites.
+// 1. Custom variables and variable overwrites.
 $breakpoint-small: 640px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 1024px;
 $breakpoint-xlarge: 1280px;
 
 // 2. Import default variables and available mixins.
-@import "@atelierfabien/uikit/src/scss/variables-theme.scss";
-@import "@atelierfabien/uikit/src/scss/mixins-theme.scss";
+@import "@atelierfabien/uikit/src/scss/variables-theme";
+@import "@atelierfabien/uikit/src/scss/mixins-theme";
 
-// 3. Your custom mixin overwrites.
+// 3. Import custom mixin overwrites.
 
 // 4. Import UIkit.
-@import "@atelierfabien/uikit/src/scss/uikit-theme.scss";
+@import "@atelierfabien/uikit/src/scss/uikit-theme";
+
+// 5. Custom styles.
 
 .uk-navbar-container.uk-navbar-container-centered {
   display: block;

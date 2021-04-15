@@ -1,5 +1,5 @@
 const a11yOff = Object.keys(require('eslint-plugin-jsx-a11y').rules)
-	.reduce((acc, rule) => { acc[`jsx-a11y/${rule}`] = 'off'; return acc }, {})
+  .reduce((acc, rule) => { acc[`jsx-a11y/${rule}`] = 'off'; return acc }, {})
 
 const strict = process.env.STRICT === 'true';
 
@@ -8,6 +8,7 @@ module.exports = {
   "globals": {
     "UIkit": "readonly"
   },
+  "plugins": ["unused-imports"],
   "rules": {
     ...a11yOff, // disable for now
     "import/extensions": "off",
@@ -29,6 +30,13 @@ module.exports = {
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "sort-keys": "off"
+    "sort-keys": "off",
+    // unused-imports related:
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+    ]
   }
 }
