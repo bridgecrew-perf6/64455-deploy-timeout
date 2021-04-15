@@ -1,0 +1,13 @@
+// 1. Import UIkit.
+@import "@atelierfabien/next-foundation/styles/uikit";
+
+// 2. Custom styles.
+
+.uk-navbar-container.uk-navbar-container-centered {
+  display: block;
+}
+
+.uk-navbar-sticky {
+  background: $global-background;
+  box-shadow: $global-medium-box-shadow;
+}

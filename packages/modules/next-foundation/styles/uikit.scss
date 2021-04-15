@@ -1,0 +1,9 @@
+// 1. Custom variables and variable overwrites.
+@import "variables";
+
+// 2. Import default variables and available mixins.
+@import "@atelierfabien/uikit/src/scss/variables-theme";
+@import "@atelierfabien/uikit/src/scss/mixins-theme";
+
+// 3. Import UIkit.
+@import "@atelierfabien/uikit/src/scss/uikit-theme";
