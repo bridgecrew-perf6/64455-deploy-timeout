@@ -2,6 +2,8 @@ const foundation = require('@atelierfabien/next-foundation/config/tailwind');
 
 module.exports = {
   presets: [foundation()],
-  preflight: false,
+  corePlugins: {
+    preflight: false,
+  },
   important: true,
 };
