@@ -13,6 +13,17 @@ export * from '@moxy/next-layout';
 //
 // - pageLayout: ['foo', 'bar'] (can be any of the above, even mixed types)
 //
+// Configuration:
+//
+// const config = {
+//   appLayout: 'main',
+//   pageLayouts: {
+//     main: MainLayout,
+//     blog: BlogLayout,
+//     special: [OtherLayout, SpecialLayout] // explicit, mixed types
+//   },
+// };
+//
 // Static - set as page component property:
 //
 // MyPage.pageLayout = <spec>
@@ -47,8 +58,12 @@ export function lookupLayout(Component, props = {}) {
 }
 
 function wrapInLayout(Component, { appLayout, pageLayout, pageLayouts }) {
-  const _normalize = normalize.bind(null, pageLayouts || {});
-  const layout = isLayout(pageLayout) ? pageLayout : Component.pageLayout;
+  pageLayouts = pageLayouts || {};
+  const _normalize = normalize.bind(null, pageLayouts);
+  let layout = isLayout(pageLayout) ? pageLayout : Component.pageLayout;
+  if (typeof layout === 'string' && Array.isArray(pageLayouts[layout])) {
+    layout = pageLayouts[layout];
+  }
   if (Array.isArray(layout)) {
     // explicit hierarchy
     return wrapComponents(layout.map(_normalize));
@@ -67,24 +82,30 @@ function isLayout(layout, objType = false) {
   );
 }
 
-function normalize(layouts, layout) {
+function normalize(layouts, layout, _recursion = 0) {
   if (typeof layout === 'string') {
-    return { Layout: layouts?.[layout] };
-  }
-  if (typeof layout === 'function') {
+    const preset = layouts?.[layout];
+    if (Array.isArray(preset) && _recursion <= 5) {
+      return preset.map(l => normalize(layouts, l, _recursion + 1));
+    } else if (preset) {
+      return { Layout: preset };
+    } else {
+      return {};
+    }
+  } else if (typeof layout === 'function') {
     return { Layout: layout };
-  }
-  if (typeof layout === 'object' && isLayout(layout.layout, true)) {
+  } else if (typeof layout === 'object' && isLayout(layout.layout, true)) {
     const { layout: _, ...props } = layout;
     const normalized = normalize(layouts, layout.layout);
     return { ...normalized, props };
+  } else {
+    return {};
   }
-  return {};
 }
 
 function wrapComponents(components) {
   return components
-    .concat([])
+    .flat()
     .reverse()
     .reduce((component, { Layout, props = {} }) => {
       if (typeof Layout !== 'function') return null;
