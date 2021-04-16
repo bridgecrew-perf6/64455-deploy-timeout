@@ -1,0 +1,23 @@
+{
+  "name": "@atelierfabien/next-shop",
+  "version": "0.0.0",
+  "description": "E-commerce integration for NextJS projects",
+  "module": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabien/next-development.git"
+  },
+  "author": "Fabien Franzen <info@atelierfabien.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabien/next-development/issues"
+  },
+  "homepage": "https://github.com/fabien/next-development#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "@atelierfabien/next-foundation": "^0.0.0"
+  }
+}
