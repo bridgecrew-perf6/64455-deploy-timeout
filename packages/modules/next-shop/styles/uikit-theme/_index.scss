@@ -1,9 +1,9 @@
+@import "@atelierfabien/uikit/src/scss/variables-theme";
+@import "@atelierfabien/uikit/src/scss/mixins-theme";
+
 //
 // Custom variables
 //
-
-// Breakpoints
-$breakpoint-tablet: 768px;
 
 // Product card
 $product-card-title-max-lines: 3;
@@ -177,7 +177,7 @@ $ratio-16-9: 56.25%;
 .tm-change-view {
   display: none;
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpoint-medium) {
     display: flex;
   }
 }
@@ -199,11 +199,11 @@ $ratio-16-9: 56.25%;
     border-left: none;
   }
 
-  @media (max-width: $breakpoint-tablet - 1) {
+  @media (max-width: $breakpoint-medium - 1) {
     width: 100%;
   }
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpoint-medium) {
     flex-direction: column;
 
     &:hover {
@@ -234,7 +234,7 @@ $ratio-16-9: 56.25%;
     }
   }
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpoint-medium) {
     width: 100%;
   }
 }
@@ -250,7 +250,7 @@ $ratio-16-9: 56.25%;
     padding: 20px 20px 20px 0;
   }
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: $breakpoint-medium) {
     padding: 0 20px 20px 20px;
   }
 }
@@ -382,7 +382,7 @@ $ratio-16-9: 56.25%;
   }
 }
 
-@media (min-width: $breakpoint-tablet) {
+@media (min-width: $breakpoint-medium) {
   .tm-products-list .tm-product-card {
     flex-direction: row;
   }

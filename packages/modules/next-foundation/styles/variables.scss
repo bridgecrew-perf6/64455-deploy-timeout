@@ -1,4 +1,5 @@
+// Apply these breakpoints at config/tailwind.js:
 $breakpoint-small: 640px !default; // Phone landscape
-$breakpoint-medium: 768px !default; // Tablet Landscape
+$breakpoint-medium: 960px; // Tablet Landscape
 $breakpoint-large: 1200px !default; // Desktop
 $breakpoint-xlarge: 1600px !default; // Large Screens
