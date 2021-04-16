@@ -4,6 +4,7 @@ export * from './context';
 export * from './currency';
 export * from './hocs';
 export * from './hooks';
+export * from './googlemaps';
 export * from './layout';
 export * from './navigation';
 export * from './props';

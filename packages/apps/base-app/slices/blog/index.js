@@ -22,7 +22,7 @@ function BlogPostIndex() {
         <a className="hover:no-underline">← {t('app:pages.home')}</a>
       </Link>
       <div className="uk-margin-top">
-        <ul className="text-4xl space-y-4 uk-nav-default">
+        <ul className="text-4xl space-y-4 uk-nav uk-nav-default">
           {blogPostIndex.map(({ title, slug }) => (
             <li key={slug}>
               <Link href={`/blog/${slug}`}>

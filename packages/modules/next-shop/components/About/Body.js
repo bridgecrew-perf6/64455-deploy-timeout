@@ -58,7 +58,7 @@ const AboutBody = () => (
     </p>
     <CommonAddress></CommonAddress>
     <div className="tm-wrapper">
-      <CommonMap />
+      <CommonMap className="tm-ratio tm-ratio-16-9" />
     </div>
   </div>
 );

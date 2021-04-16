@@ -1,5 +1,5 @@
 import { Link } from '@foundation/next';
-import CommonToolbarMap from '@shop/components/Common/Toolbar/Map';
+import CommonMap from '@shop/components/Common/Map';
 
 const CommonToolbarMenuAddress = () => (
   <li>
@@ -16,7 +16,7 @@ const CommonToolbarMenuAddress = () => (
       uk-drop="mode: click; pos: bottom-center;"
     >
       <div className="uk-card uk-card-default uk-card-small uk-box-shadow-xlarge uk-overflow-hidden uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom">
-        <CommonToolbarMap />
+        <CommonMap className="uk-card-media-top uk-height-small" />
         <div className="uk-card-body">
           <div className="uk-text-small">
             <div className="uk-text-bolder">Store Name</div>

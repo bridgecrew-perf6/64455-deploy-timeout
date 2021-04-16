@@ -1,10 +1,18 @@
-const CommonMap = () => (
-  <figure
-    className="tm-ratio tm-ratio-16-9 js-map"
-    data-latitude="59.9356728"
-    data-longitude="30.3258604"
-    data-zoom={14}
-  />
-);
+import { useGoogleMaps } from '@foundation/next';
+
+const CommonMap = ({ position, zoom, className, ...options }) => {
+  position = position ?? { lat: 50.8364634, lng: 4.3556113 };
+
+  const { ref } = useGoogleMaps(process.env.NEXT_PUBLIC_GOOGLEMAPS, {
+    marker: { position },
+    center: position,
+    zoom: zoom ?? 14,
+    ...options,
+  });
+
+  className = ['tm-googlemap'].concat(className || '').join(' ');
+
+  return <figure ref={ref} className={className} />;
+};
 
 export default CommonMap;

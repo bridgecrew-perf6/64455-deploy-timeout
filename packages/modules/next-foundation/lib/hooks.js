@@ -44,6 +44,9 @@ export function useMappedState(initialState, ...mapFns) {
 
 export function useMounted() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []); // browser only
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []); // browser only
   return mounted;
 }

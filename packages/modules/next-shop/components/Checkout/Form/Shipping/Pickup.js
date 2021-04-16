@@ -7,7 +7,7 @@ const CheckoutFormShippingPickup = () => (
       uk-grid="true"
     >
       <div>
-        <CommonMap />
+        <CommonMap className="tm-ratio tm-ratio-16-9" />
       </div>
       <div className="uk-text-small">
         <div className="uk-text-bolder">Store Name</div>

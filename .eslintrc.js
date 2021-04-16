@@ -11,10 +11,12 @@ module.exports = {
   "plugins": ["unused-imports"],
   "rules": {
     ...a11yOff, // disable for now
+    "consistent-return": "off",
     "import/extensions": "off",
     "import/no-cycle": [0, { ignoreExternal: true }],
     "import/no-unresolved": ["error", { "ignore": ["^@"] }],
     "jsx-a11y/anchor-is-valid": "off",
+    "no-else-return": "off",
     "no-param-reassign": strict ? "warn" : "off",
     "no-shadow": strict ? "warn" : "off",
     "no-use-before-define": [1, "nofunc"],

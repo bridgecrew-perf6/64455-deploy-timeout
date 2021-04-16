@@ -12,7 +12,7 @@ const DeliveryPage = () => (
     </p>
     <CommonAddress />
     <div className="tm-wrapper">
-      <CommonMap />
+      <CommonMap className="tm-ratio tm-ratio-16-9" />
     </div>
     <h2>Delivery in Brussels</h2>
     <p>
