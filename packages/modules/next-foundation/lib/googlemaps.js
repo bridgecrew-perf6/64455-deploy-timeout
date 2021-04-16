@@ -17,8 +17,14 @@ export function useGoogleMaps(apiKey, options = {}) {
 
       gmap = new google.maps.Map(ref.current, mapOptions);
 
-      if (typeof mapMarker === 'object') {
-        gmarker = new google.maps.Marker({ ...mapMarker, map: gmap });
+      if (typeof mapMarker === 'function') {
+        gmarker = mapMarker(gmap, google.maps.Marker);
+      } else if (typeof mapMarker === 'object') {
+        gmarker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
+          ...mapMarker,
+          map: gmap,
+        });
         setMarker(gmarker);
       }
 

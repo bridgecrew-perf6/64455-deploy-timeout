@@ -1,6 +1,6 @@
 const path = require('path');
 
-const foundation = path.resolve(path.join(__dirname, '..'));
+const local = path.resolve(path.join(__dirname, '..'));
 
 module.exports = (config = {}) => {
   return {
@@ -8,7 +8,7 @@ module.exports = (config = {}) => {
       './public/**/*.html',
       './src/**/*.{js,jsx,ts,tsx}',
       './slices/**/*.{js,jsx,ts,tsx}',
-      `${foundation}/**/*.{js,jsx,ts,tsx}`,
+      `${local}/**/*.{js,jsx,ts,tsx}`,
       ...(config.purge || []),
     ],
     darkMode: false, // or 'media' or 'class'
@@ -19,5 +19,6 @@ module.exports = (config = {}) => {
       extend: {},
     },
     plugins: [],
+    ...config,
   };
 };

@@ -7,6 +7,7 @@ const CommonMap = ({ position, zoom, className, ...options }) => {
     marker: { position },
     center: position,
     zoom: zoom ?? 14,
+    disableDefaultUI: true,
     ...options,
   });
 
