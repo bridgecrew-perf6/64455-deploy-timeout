@@ -1,9 +1,9 @@
 import { Link } from '@foundation/next';
 
 const CommonNavbarMenuContactsItem = () => (
-  <li>
-    <Link href="/contacts">Contacts</Link>
-  </li>
+  <Link as="li" href="/contacts">
+    Contacts
+  </Link>
 );
 
 export default CommonNavbarMenuContactsItem;

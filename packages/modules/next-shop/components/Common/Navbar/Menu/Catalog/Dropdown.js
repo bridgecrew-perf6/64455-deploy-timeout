@@ -20,21 +20,21 @@ const CommonNavbarMenuCatalogDropdown = () => (
               <div className="uk-text-bolder">Laptops & Tablets</div>
             </Link>
             <ul className="uk-nav uk-nav-default">
-              <li>
-                <Link href="/subcategory">Laptops</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Tablets</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Peripherals</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Keyboards</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Accessories</Link>
-              </li>
+              <Link href="/subcategory" as="li">
+                Laptops
+              </Link>
+              <Link href="/subcategory" as="li">
+                Tablets
+              </Link>
+              <Link href="/subcategory" as="li">
+                Peripherals
+              </Link>
+              <Link href="/subcategory" as="li">
+                Keyboards
+              </Link>
+              <Link href="/subcategory" as="li">
+                Accessories
+              </Link>
             </ul>
           </div>
         </li>
@@ -51,21 +51,21 @@ const CommonNavbarMenuCatalogDropdown = () => (
               <div className="uk-text-bolder">Phones & Gadgets</div>
             </Link>
             <ul className="uk-nav uk-nav-default">
-              <li>
-                <Link href="/subcategory">Smartphones</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Mobile Phones</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Smart watches</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Charging and batteries</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Accessories</Link>
-              </li>
+              <Link href="/subcategory" as="li">
+                Smartphones
+              </Link>
+              <Link href="/subcategory" as="li">
+                Mobile Phones
+              </Link>
+              <Link href="/subcategory" as="li">
+                Smart watches
+              </Link>
+              <Link href="/subcategory" as="li">
+                Charging and batteries
+              </Link>
+              <Link href="/subcategory" as="li">
+                Accessories
+              </Link>
             </ul>
           </div>
         </li>
@@ -82,24 +82,24 @@ const CommonNavbarMenuCatalogDropdown = () => (
               <div className="uk-text-bolder">TV & Video</div>
             </Link>
             <ul className="uk-nav uk-nav-default">
-              <li>
-                <Link href="/subcategory">TV</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Home Cinema</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Satellite & Cable TV</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Projectors</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">DVD & Blu-ray</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Accessories</Link>
-              </li>
+              <Link href="/subcategory" as="li">
+                TV
+              </Link>
+              <Link href="/subcategory" as="li">
+                Home Cinema
+              </Link>
+              <Link href="/subcategory" as="li">
+                Satellite & Cable TV
+              </Link>
+              <Link href="/subcategory" as="li">
+                Projectors
+              </Link>
+              <Link href="/subcategory" as="li">
+                DVD & Blu-ray
+              </Link>
+              <Link href="/subcategory" as="li">
+                Accessories
+              </Link>
             </ul>
           </div>
         </li>
@@ -116,21 +116,21 @@ const CommonNavbarMenuCatalogDropdown = () => (
               <div className="uk-text-bolder">Games & Entertainment</div>
             </Link>
             <ul className="uk-nav uk-nav-default">
-              <li>
-                <Link href="/subcategory">Gaming consoles</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Games</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Software</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Joysticks & gamepads</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Accessories</Link>
-              </li>
+              <Link href="/subcategory" as="li">
+                Gaming consoles
+              </Link>
+              <Link href="/subcategory" as="li">
+                Games
+              </Link>
+              <Link href="/subcategory" as="li">
+                Software
+              </Link>
+              <Link href="/subcategory" as="li">
+                Joysticks & gamepads
+              </Link>
+              <Link href="/subcategory" as="li">
+                Accessories
+              </Link>
             </ul>
           </div>
         </li>
@@ -147,15 +147,15 @@ const CommonNavbarMenuCatalogDropdown = () => (
               <div className="uk-text-bolder">Photo</div>
             </Link>
             <ul className="uk-nav uk-nav-default">
-              <li>
-                <Link href="/subcategory">Cameras</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Lenses</Link>
-              </li>
-              <li>
-                <Link href="/subcategory">Accessories</Link>
-              </li>
+              <Link href="/subcategory" as="li">
+                Cameras
+              </Link>
+              <Link href="/subcategory" as="li">
+                Lenses
+              </Link>
+              <Link href="/subcategory" as="li">
+                Accessories
+              </Link>
             </ul>
           </div>
         </li>

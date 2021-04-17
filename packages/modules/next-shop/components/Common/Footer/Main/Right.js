@@ -3,18 +3,18 @@ import { Link } from '@foundation/next';
 const CommonFooterMainRight = () => (
   <div>
     <ul className="uk-nav uk-nav-default">
-      <li>
-        <Link href="/about">About</Link>
-      </li>
-      <li>
-        <Link href="/contacts">Contacts</Link>
-      </li>
-      <li>
-        <Link href="/blog">Blog</Link>
-      </li>
-      <li>
-        <Link href="/news">News</Link>
-      </li>
+      <Link href="/about" as="li">
+        About
+      </Link>
+      <Link href="/contacts" as="li">
+        Contacts
+      </Link>
+      <Link href="/blog" as="li">
+        Blog
+      </Link>
+      <Link href="/news" as="li">
+        News
+      </Link>
     </ul>
   </div>
 );

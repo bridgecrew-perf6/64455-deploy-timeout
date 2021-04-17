@@ -9,21 +9,21 @@ const OffcanvasNavMenu = () => (
       <li className="uk-parent">
         <Link href="/catalog">Catalog</Link>
         <ul className="uk-nav-sub uk-list-divider">
-          <li>
-            <Link href="/subcategory">Laptops & Tablets</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Phones & Gadgets</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">TV & Video</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Games & Entertainment</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Photo</Link>
-          </li>
+          <Link href="/subcategory" as="li">
+            Laptops & Tablets
+          </Link>
+          <Link href="/subcategory" as="li">
+            Phones & Gadgets
+          </Link>
+          <Link href="/subcategory" as="li">
+            TV & Video
+          </Link>
+          <Link href="/subcategory" as="li">
+            Games & Entertainment
+          </Link>
+          <Link href="/subcategory" as="li">
+            Photo
+          </Link>
           <li className="uk-text-center">
             <Link
               className="uk-link-muted uk-text-uppercase tm-link-to-all"
@@ -38,42 +38,42 @@ const OffcanvasNavMenu = () => (
       <li className="uk-parent">
         <Link href="/brands">Brands</Link>
         <ul className="uk-nav-sub uk-list-divider">
-          <li>
-            <Link href="/subcategory">Apple</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Samsung</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Sony</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Microsoft</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Intel</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">HP</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">LG</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Lenovo</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">ASUS</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Acer</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Dell</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Canon</Link>
-          </li>
+          <Link href="/subcategory" as="li">
+            Apple
+          </Link>
+          <Link href="/subcategory" as="li">
+            Samsung
+          </Link>
+          <Link href="/subcategory" as="li">
+            Sony
+          </Link>
+          <Link href="/subcategory" as="li">
+            Microsoft
+          </Link>
+          <Link href="/subcategory" as="li">
+            Intel
+          </Link>
+          <Link href="/subcategory" as="li">
+            HP
+          </Link>
+          <Link href="/subcategory" as="li">
+            LG
+          </Link>
+          <Link href="/subcategory" as="li">
+            Lenovo
+          </Link>
+          <Link href="/subcategory" as="li">
+            ASUS
+          </Link>
+          <Link href="/subcategory" as="li">
+            Acer
+          </Link>
+          <Link href="/subcategory" as="li">
+            Dell
+          </Link>
+          <Link href="/subcategory" as="li">
+            Canon
+          </Link>
           <li className="uk-text-center">
             <Link
               className="uk-link-muted uk-text-uppercase tm-link-to-all"
@@ -88,80 +88,77 @@ const OffcanvasNavMenu = () => (
       <li className="uk-parent">
         <a href="#">Pages</a>
         <ul className="uk-nav-sub uk-list-divider">
-          <li>
-            <Link href="/subcategory">Catalog</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Category</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Subcategory</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Product</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Cart</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Checkout</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Compare</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Brands</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Compare</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Account</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Favorites</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Personal</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Settings</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">About</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Contacts</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Blog</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">News</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Article</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">FAQ</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">Delivery</Link>
-          </li>
-          <li>
-            <Link href="/subcategory">404</Link>
-          </li>
+          <Link href="/catalog" as="li">
+            Catalog
+          </Link>
+          <Link href="/category" as="li">
+            Category
+          </Link>
+          <Link href="/subcategory" as="li">
+            Subcategory
+          </Link>
+          <Link href="/product" as="li">
+            Product
+          </Link>
+          <Link href="/cart" as="li">
+            Cart
+          </Link>
+          <Link href="/checkout" as="li">
+            Checkout
+          </Link>
+          <Link href="/brands" as="li">
+            Brands
+          </Link>
+          <Link href="/compare" as="li">
+            Compare
+          </Link>
+          <Link href="/account" as="li">
+            Account
+          </Link>
+          <Link href="/account/favorites" as="li">
+            Favorites
+          </Link>
+          <Link href="/account/profile" as="li">
+            Personal
+          </Link>
+          <Link href="/account/settings" as="li">
+            Settings
+          </Link>
+          <Link href="/about" as="li">
+            About
+          </Link>
+          <Link href="/contacts" as="li">
+            Contacts
+          </Link>
+          <Link href="/blog" as="li">
+            Blog
+          </Link>
+          <Link href="/news" as="li">
+            News
+          </Link>
+          <Link href="/article" as="li">
+            Article
+          </Link>
+          <Link href="/faq" as="li">
+            FAQ
+          </Link>
+          <Link href="/delivery" as="li">
+            Delivery
+          </Link>
+          <Link href="/404" as="li">
+            404
+          </Link>
         </ul>
       </li>
-      <li>
-        <Link href="/blog">Blog</Link>
-      </li>
-      <li>
-        <Link href="/about">About</Link>
-      </li>
-      <li>
-        <Link href="/contacts">Contacts</Link>
-      </li>
+      <Link href="/blog" as="li">
+        Blog
+      </Link>
+      <Link href="/about" as="li">
+        About
+      </Link>
+      <Link href="/contacts" as="li">
+        Contacts
+      </Link>
       <li>
         <Link href="/compare">
           Compare<span className="uk-badge uk-margin-xsmall-left">3</span>

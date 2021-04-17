@@ -9,24 +9,20 @@ const CommonNavbarMenuUserDropdown = () => (
     }}
   >
     <ul className="uk-nav uk-dropdown-nav">
-      <li>
-        <Link href="/account">
-          Orders
-          <span>(2)</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/favorites">
-          Favorites
-          <span>(3)</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/account/profile">Personal</Link>
-      </li>
-      <li>
-        <Link href="/account/settings">Settings</Link>
-      </li>
+      <Link href="/account" as="li">
+        Orders
+        <span>(2)</span>
+      </Link>
+      <Link href="/favorites" as="li">
+        Favorites
+        <span>(3)</span>
+      </Link>
+      <Link href="/account/profile" as="li">
+        Personal
+      </Link>
+      <Link href="/account/settings" as="li">
+        Settings
+      </Link>
       <li className="uk-nav-divider" />
       <li>
         <a href="#">Log out</a>

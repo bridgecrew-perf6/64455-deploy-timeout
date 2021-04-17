@@ -8,24 +8,24 @@ const CommonSidebar = () => (
     >
       <nav>
         <ul className="uk-nav uk-nav-default tm-nav">
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-          <li>
-            <Link href="/contacts">Contacts</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li className="uk-active">
-            <Link href="/news">News</Link>
-          </li>
-          <li>
-            <Link href="/faq">FAQ</Link>
-          </li>
-          <li>
-            <Link href="/delivery">Delivery</Link>
-          </li>
+          <Link href="/about" as="li">
+            About
+          </Link>
+          <Link href="/contacts" as="li">
+            Contacts
+          </Link>
+          <Link href="/blog" as="li">
+            Blog
+          </Link>
+          <Link href="/news" as="li">
+            News
+          </Link>
+          <Link href="/faq" as="li">
+            FAQ
+          </Link>
+          <Link href="/delivery" as="li">
+            Delivery
+          </Link>
         </ul>
       </nav>
     </section>

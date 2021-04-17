@@ -3,15 +3,15 @@ import { Link } from '@foundation/next';
 const CommonHeading = () => (
   <div className="uk-text-center">
     <ul className="uk-breadcrumb uk-flex-center uk-margin-remove">
-      <li>
-        <Link href="/">Home</Link>
-      </li>
-      <li>
-        <Link href="/catalog">Catalog</Link>
-      </li>
-      <li>
-        <Link href="/category">Laptops & Tablets</Link>
-      </li>
+      <Link href="/" as="li">
+        Home
+      </Link>
+      <Link href="/catalog" as="li">
+        Catalog
+      </Link>
+      <Link href="/category" as="li">
+        Laptops & Tablets
+      </Link>
       <li>
         <span>Laptops</span>
       </li>

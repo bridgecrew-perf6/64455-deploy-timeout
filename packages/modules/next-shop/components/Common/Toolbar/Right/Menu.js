@@ -2,15 +2,15 @@ import { Link } from '@foundation/next';
 
 const CommonToolbarRightMenu = () => (
   <ul className="uk-navbar-nav">
-    <li>
-      <Link href="/news">News</Link>
-    </li>
-    <li>
-      <Link href="/faq">FAQ</Link>
-    </li>
-    <li>
-      <a href="#">Payment</a>
-    </li>
+    <Link href="/news" as="li">
+      News
+    </Link>
+    <Link href="/faq" as="li">
+      FAQ
+    </Link>
+    <Link href="#" as="li">
+      Payment
+    </Link>
   </ul>
 );
 

@@ -2,8 +2,8 @@ import { Link } from '@foundation/next';
 import CommonNavbarMenuCatalogDropdown from '@shop/components/Common/Navbar/Menu/Catalog/Dropdown';
 
 const CommonNavbarMenuCatalogItem = () => (
-  <li>
-    <Link href="/catalog">
+  <>
+    <Link as="li" href="/catalog" partial>
       Catalog
       <span
         className="uk-margin-xsmall-left"
@@ -11,7 +11,7 @@ const CommonNavbarMenuCatalogItem = () => (
       />
     </Link>
     <CommonNavbarMenuCatalogDropdown></CommonNavbarMenuCatalogDropdown>
-  </li>
+  </>
 );
 
 export default CommonNavbarMenuCatalogItem;

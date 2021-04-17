@@ -3,21 +3,21 @@ import { Link } from '@foundation/next';
 const CommonFooterMainLeft = () => (
   <div>
     <ul className="uk-nav uk-nav-default">
-      <li>
-        <Link href="/catalog">Catalog</Link>
-      </li>
-      <li>
-        <Link href="/brands">Brands</Link>
-      </li>
-      <li>
-        <Link href="/delivery">Delivery</Link>
-      </li>
-      <li>
-        <Link href="/faq">FAQ</Link>
-      </li>
-      <li>
-        <a href="#">Payment</a>
-      </li>
+      <Link href="/catalog" as="li">
+        Catalog
+      </Link>
+      <Link href="/brands" as="li">
+        Brands
+      </Link>
+      <Link href="/delivery" as="li">
+        Delivery
+      </Link>
+      <Link href="/faq" as="li">
+        FAQ
+      </Link>
+      <Link href="#" as="li">
+        Payment
+      </Link>
     </ul>
   </div>
 );

@@ -7,69 +7,69 @@ const CommonNavbarMenuPagesDropdown = () => (
   >
     <div className="uk-container uk-container-small uk-margin-top uk-margin-bottom">
       <ul className="uk-nav uk-nav-default uk-column-1-3">
-        <li>
-          <Link href="/catalog">Catalog</Link>
-        </li>
-        <li>
-          <Link href="/category">Category</Link>
-        </li>
-        <li>
-          <Link href="/subcategory">Subcategory</Link>
-        </li>
-        <li>
-          <Link href="/product">Product</Link>
-        </li>
-        <li>
-          <Link href="/cart">Cart</Link>
-        </li>
-        <li>
-          <Link href="/checkout">Checkout</Link>
-        </li>
-        <li>
-          <Link href="/compare">Compare</Link>
-        </li>
-        <li>
-          <Link href="/brands">Brands</Link>
-        </li>
-        <li>
-          <Link href="/compare">Compare</Link>
-        </li>
-        <li>
-          <Link href="/account">Account</Link>
-        </li>
-        <li>
-          <Link href="/favorites">Favorites</Link>
-        </li>
-        <li>
-          <Link href="/account/profile">Personal</Link>
-        </li>
-        <li>
-          <Link href="/account/settings">Settings</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-        <li>
-          <Link href="/contacts">Contacts</Link>
-        </li>
-        <li>
-          <Link href="/blog">Blog</Link>
-        </li>
-        <li>
-          <Link href="/news">News</Link>
-        </li>
-        <li>
-          <Link href="/article">Article</Link>
-        </li>
-        <li>
-          <Link href="/faq">FAQ</Link>
-        </li>
-        <li>
-          <Link href="/delivery">Delivery</Link>
-        </li>
-        <li>
-          <Link href="/404">404</Link>
-        </li>
+        <Link href="/catalog" as="li">
+          Catalog
+        </Link>
+        <Link href="/category" as="li">
+          Category
+        </Link>
+        <Link href="/subcategory" as="li">
+          Subcategory
+        </Link>
+        <Link href="/product" as="li">
+          Product
+        </Link>
+        <Link href="/cart" as="li">
+          Cart
+        </Link>
+        <Link href="/checkout" as="li">
+          Checkout
+        </Link>
+        <Link href="/compare" as="li">
+          Compare
+        </Link>
+        <Link href="/brands" as="li">
+          Brands
+        </Link>
+        <Link href="/compare" as="li">
+          Compare
+        </Link>
+        <Link href="/account" as="li">
+          Account
+        </Link>
+        <Link href="/favorites" as="li">
+          Favorites
+        </Link>
+        <Link href="/account/profile" as="li">
+          Personal
+        </Link>
+        <Link href="/account/settings" as="li">
+          Settings
+        </Link>
+        <Link href="/about" as="li">
+          About
+        </Link>
+        <Link href="/contacts" as="li">
+          Contacts
+        </Link>
+        <Link href="/blog" as="li">
+          Blog
+        </Link>
+        <Link href="/news" as="li">
+          News
+        </Link>
+        <Link href="/article" as="li">
+          Article
+        </Link>
+        <Link href="/faq" as="li">
+          FAQ
+        </Link>
+        <Link href="/delivery" as="li">
+          Delivery
+        </Link>
+        <Link href="/404" as="li">
+          404
+        </Link>
       </ul>
     </div>
   </div>

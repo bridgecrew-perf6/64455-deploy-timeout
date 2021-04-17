@@ -1,9 +1,9 @@
 import { Link } from '@foundation/next';
 
 const CommonNavbarMenuBlogItem = () => (
-  <li>
-    <Link href="/blog">Blog</Link>
-  </li>
+  <Link as="li" href="/blog">
+    Blog
+  </Link>
 );
 
 export default CommonNavbarMenuBlogItem;
