@@ -3,13 +3,14 @@ const path = require('path');
 const local = path.resolve(path.join(__dirname, '..'));
 
 module.exports = (config = {}) => {
+  const { purge, ...overrides } = config;
   return {
     purge: [
       './public/**/*.html',
       './src/**/*.{js,jsx,ts,tsx}',
       './slices/**/*.{js,jsx,ts,tsx}',
       `${local}/**/*.{js,jsx,ts,tsx}`,
-      ...(config.purge || []),
+      ...(purge || []),
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
@@ -23,6 +24,6 @@ module.exports = (config = {}) => {
         },
       },
     },
-    ...config,
+    ...overrides,
   };
 };
