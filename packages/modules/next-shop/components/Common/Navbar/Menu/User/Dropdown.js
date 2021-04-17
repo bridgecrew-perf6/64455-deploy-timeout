@@ -11,11 +11,11 @@ const CommonNavbarMenuUserDropdown = () => (
     <ul className="uk-nav uk-dropdown-nav">
       <Link href="/account" as="li">
         Orders
-        <span>(2)</span>
+        <span className="uk-spaced">(2)</span>
       </Link>
       <Link href="/favorites" as="li">
         Favorites
-        <span>(3)</span>
+        <span className="uk-spaced">(3)</span>
       </Link>
       <Link href="/account/profile" as="li">
         Personal

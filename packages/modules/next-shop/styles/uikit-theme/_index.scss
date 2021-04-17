@@ -42,7 +42,13 @@ $ratio-16-9: 56.25%;
 
 a.uk-navbar-item.uk-active {
   color: $navbar-nav-item-active-color;
-} 
+}
+
+.uk-spaced,
+a > .uk-text-meta.uk-text-xsmall,
+span > .uk-text-meta.uk-text-xsmall {
+  margin-left: 0.8ex;
+}
 
 //
 // Custom mixins
