@@ -9,9 +9,9 @@ import Head from '../Head';
 
 const withLayout = withAppLayout(layoutConfig);
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, settings }) {
   const { _children, cookie, ...props } = pageProps;
-  const Settings = useSettingsContext();
+  const Settings = useSettingsContext(settings);
 
   return (
     <>

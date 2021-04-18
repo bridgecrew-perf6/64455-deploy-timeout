@@ -3,18 +3,18 @@
 //
 
 // Product card
-$product-card-title-max-lines: 3;
-$product-card-title-font-size: 16px;
-$product-card-title-line-height: 22px;
+$product-card-title-max-lines: 3 !default;
+$product-card-title-font-size: 16px !default;
+$product-card-title-line-height: 22px !default;
 $product-card-title-max-height: $product-card-title-max-lines *
   $product-card-title-line-height;
-$product-card-title-font-size-s: 18px;
-$product-card-title-line-height-s: 24px;
+$product-card-title-font-size-s: 18px !default;
+$product-card-title-line-height-s: 24px !default;
 $product-card-title-max-height-s: $product-card-title-max-lines *
   $product-card-title-line-height-s;
-$product-card-price-font-size: 20px;
-$product-card-add-button-width: 36px;
-$product-card-add-button-height: 36px;
+$product-card-price-font-size: 20px !default;
+$product-card-add-button-width: 36px !default;
+$product-card-add-button-height: 36px !default;
 
 // List view product card
 $list-view-product-card-media-width: 33.3%;
@@ -22,13 +22,13 @@ $list-view-product-card-media-min-width: 170px;
 $list-view-product-card-price-font-size: 24px;
 
 // Scrollbox
-$scrollbox-max-height: 300px;
+$scrollbox-max-height: 300px !default;
 
 // Checkbox, radio
-$control-checkbox-image: $internal-form-checkbox-image;
-$control-radio-image: $internal-form-radio-image;
-$control-inputs-size: 16px;
-$control-inputs-hover: #f8f8f8;
+$control-checkbox-image: $internal-form-checkbox-image !default;
+$control-radio-image: $internal-form-radio-image !default;
+$control-inputs-size: 16px !default;
+$control-inputs-hover: #f8f8f8 !default;
 
 // Ratio
 $ratio-1-1: 100%;

@@ -71,7 +71,7 @@ export function useSettingsContext(options = {}) {
   // Specific settings
 
   const [locale, setLocale, isValidLocale, previousLocale] = setting('locale', {
-    value: router.locale,
+    value: options.useCookieLocale ? null : router.locale,
     valid: router.locales,
     default: defaultLocale,
     ...options.locale,
