@@ -20,9 +20,10 @@ const ProductInfoProperties = () => (
     </ul>
     <div className="uk-margin-small-top">
       <a
-        className="uk-link-heading js-scroll-to-description"
+        className="uk-link-heading"
         href="#description"
-        tmp-next-on-click="UIkit.switcher('.js-product-switcher').show(1);"
+        uk-scroll="duration: 300; offset: 58"
+        onClick={() => UIkit.switcher('.js-product-switcher').show(1)}
       >
         <span className="tm-pseudo">Detailed specifications</span>
         <span

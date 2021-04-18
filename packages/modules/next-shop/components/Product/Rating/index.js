@@ -19,9 +19,10 @@ const ProductRating = () => (
     </ul>
     <div className="uk-margin-xsmall-left">
       <a
-        className="uk-text-meta js-scroll-to-description"
+        className="uk-text-meta"
         href="#description"
-        tmp-next-on-click="UIkit.switcher('.js-product-switcher').show(3);"
+        uk-scroll="duration: 300; offset: 58"
+        onClick={() => UIkit.switcher('.js-product-switcher').show(3)}
       >
         (2)
       </a>

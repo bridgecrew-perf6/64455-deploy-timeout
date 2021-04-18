@@ -1,4 +1,12 @@
-import { useState, useEffect, useRef, useMemo, useContext } from 'react';
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useMemo,
+  useContext,
+} from 'react';
+
 import { NextDataHooksContext } from 'next-data-hooks';
 
 export * from 'next-data-hooks';
@@ -27,6 +35,8 @@ export function usePrevious(value) {
   return ref.current;
 }
 
+// Example:
+//
 // const [state, setState, [value1, value2]] = useMappedState(
 //   0,
 //   value => value + 1,
@@ -49,4 +59,51 @@ export function useMounted() {
     return () => setMounted(false);
   }, []); // browser only
   return mounted;
+}
+
+export function useEventListener(eventName, selector, handler, options = {}) {
+  const fn = useCallback(
+    e => {
+      const delegateTarget = closest(e.target, selector);
+      if (delegateTarget) handler(e, delegateTarget);
+    },
+    [selector, handler]
+  );
+
+  useEffect(() => {
+    window.addEventListener(eventName, fn, options);
+    return () => window.removeEventListener(eventName, fn, options);
+  }, [eventName, selector, fn, options]);
+}
+
+// Utils
+
+/**
+ * A polyfill for Element.matches()
+ */
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
+  const proto = Element.prototype;
+
+  proto.matches =
+    proto.matchesSelector ||
+    proto.mozMatchesSelector ||
+    proto.msMatchesSelector ||
+    proto.oMatchesSelector ||
+    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest(element, selector) {
+  while (element && element.nodeType !== 9) {
+    if (typeof element.matches === 'function' && element.matches(selector)) {
+      return element;
+    }
+    element = element.parentNode;
+  }
 }

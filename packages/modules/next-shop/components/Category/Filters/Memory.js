@@ -5,7 +5,7 @@ const CategoryFiltersMemory = () => (
       <span
         className="tm-help-icon"
         uk-icon="icon: question; ratio: .75;"
-        tmp-next-on-click="event.stopPropagation();"
+        onClick={e => e.stopPropagation()}
       />
       <div
         className="uk-margin-remove"

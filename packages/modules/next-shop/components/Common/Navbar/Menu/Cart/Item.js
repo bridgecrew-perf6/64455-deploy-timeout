@@ -5,7 +5,7 @@ const CommonNavbarMenuCartItem = () => (
     className="uk-navbar-item uk-link-muted tm-navbar-button"
     href="/cart"
     uk-toggle="target: #cart-offcanvas"
-    tmp-next-on-click="return false"
+    onClick={e => e.preventDefault()}
   >
     <span uk-icon="cart" />
     <span className="uk-badge">2</span>

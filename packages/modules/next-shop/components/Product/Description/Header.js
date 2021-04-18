@@ -9,29 +9,29 @@ const ProductDescriptionHeader = () => (
         uk-switcher="connect: .js-tabs"
       >
         <li>
-          <a className="js-scroll-to-description" href="#description">
+          <a href="#description" uk-scroll="duration: 300; offset: 58">
             Overview
           </a>
         </li>
         <li>
-          <a className="js-scroll-to-description" href="#description">
+          <a href="#description" uk-scroll="duration: 300; offset: 58">
             Specifications
           </a>
         </li>
         <li>
-          <a className="js-scroll-to-description" href="#description">
+          <a href="#description" uk-scroll="duration: 300; offset: 58">
             Accessories
             <span>(9)</span>
           </a>
         </li>
         <li>
-          <a className="js-scroll-to-description" href="#description">
+          <a href="#description" uk-scroll="duration: 300; offset: 58">
             Reviews
             <span>(2)</span>
           </a>
         </li>
         <li>
-          <a className="js-scroll-to-description" href="#description">
+          <a href="#description" uk-scroll="duration: 300; offset: 58">
             Q&A
           </a>
         </li>

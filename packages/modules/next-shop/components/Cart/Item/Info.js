@@ -1,3 +1,5 @@
+import CommonQuantity from '@shop/components/Common/Quantity';
+
 const CartItemInfo = () => (
   <div>
     <div
@@ -5,35 +7,19 @@ const CartItemInfo = () => (
       uk-grid="true"
     >
       {/* Price */}
-      <div>
+      <div className="uk-flex uk-flex-center uk-flex-middle">
         <div className="uk-text-muted uk-hidden@m">Price</div>
         <div>$1599.00</div>
       </div>
       {/* Quantity */}
-      <div className="tm-cart-quantity-column">
-        <a
-          tmp-next-on-click="increment(-1, 'product-1')"
-          uk-icon="icon: minus; ratio: .75"
-        />
-        <input
-          className="uk-input tm-quantity-input"
-          id="product-1"
-          type="text"
-          maxLength={3}
-          defaultValue={1}
-        />
-        <a
-          tmp-next-on-click="increment(+1, 'product-1')"
-          uk-icon="icon: plus; ratio: .75"
-        />
-      </div>
+      <CommonQuantity target="product-1" value={1} />
       {/* Sum */}
-      <div>
+      <div className="uk-flex uk-flex-center uk-flex-middle">
         <div className="uk-text-muted uk-hidden@m">Sum</div>
         <div>$1599.00</div>
       </div>
       {/* Actions */}
-      <div className="uk-width-auto@s">
+      <div className="uk-flex uk-flex-center uk-flex-middle uk-width-auto@s">
         <a className="uk-text-danger" uk-tooltip="Remove">
           <span uk-icon="close" />
         </a>

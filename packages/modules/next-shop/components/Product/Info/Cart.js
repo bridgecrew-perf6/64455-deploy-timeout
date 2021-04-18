@@ -1,24 +1,10 @@
+import CommonQuantity from '@shop/components/Common/Quantity';
+
 const ProductInfoCart = () => (
   <div>
     <div className="uk-grid-small" uk-grid="true">
       {/* Quantity */}
-      <div>
-        <a
-          tmp-next-on-click="increment(-1, 'product-1')"
-          uk-icon="icon: minus; ratio: .75"
-        />
-        <input
-          className="uk-input tm-quantity-input"
-          id="product-1"
-          type="text"
-          maxLength={3}
-          defaultValue={1}
-        />
-        <a
-          tmp-next-on-click="increment(+1, 'product-1')"
-          uk-icon="icon: plus; ratio: .75"
-        />
-      </div>
+      <CommonQuantity target="product-1" value={1} />
       {/* Add to cart button */}
       <div>
         <button
