@@ -109,13 +109,13 @@ export function Link({
         <Wrapper {...props}>{child}</Wrapper>
       </Element>
     );
-  }
-  if (typeof as === 'function') {
+  } else if (typeof as === 'function') {
     return as(className, <Wrapper {...props}>{child}</Wrapper>);
+  } else {
+    return (
+      <Wrapper {...props}>{React.cloneElement(child, { className })}</Wrapper>
+    );
   }
-  return (
-    <Wrapper {...props}>{React.cloneElement(child, { className })}</Wrapper>
-  );
 }
 
 Link.defaults = {

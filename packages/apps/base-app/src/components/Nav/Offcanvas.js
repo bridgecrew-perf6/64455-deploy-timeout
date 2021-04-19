@@ -10,8 +10,8 @@ const OffCanvas = withPortal(() => {
   const ref = useRef();
   const { t } = useTranslation();
 
-  function onClick() {
-    if (ref.current) {
+  function onClick(e) {
+    if (ref.current && !e.target.matches('.uk-parent > a')) {
       setTimeout(() => UIkit.offcanvas(ref.current).hide(), 300);
     }
   }

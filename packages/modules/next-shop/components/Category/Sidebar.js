@@ -4,7 +4,7 @@ const CategorySidebar = () => (
   <aside
     className="uk-width-1-4 tm-aside-column tm-filters"
     id="filters"
-    uk-offcanvas="overlay: true; container: false;"
+    uk-offcanvas="overlay: true; container: #__next"
   >
     <CategoryFilters />
   </aside>

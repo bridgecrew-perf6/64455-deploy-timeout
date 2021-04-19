@@ -1,19 +1,17 @@
 import MainLayout from '@shop/layouts/main';
 
 import AccountLayout from '@shop/layouts/account';
-import ArticleLayout from '@shop/layouts/article';
-import CheckoutLayout from '@shop/layouts/checkout';
+import CommonLayout from '@shop/layouts/common';
 import DefaultLayout from '@shop/layouts/default';
-import InfoLayout from '@shop/layouts/info';
+import PagesLayout from '@shop/layouts/pages';
 
 export default {
-  appLayout: 'main',
+  appLayout: 'default',
   pageLayouts: {
-    main: MainLayout,
-    account: AccountLayout,
-    article: ArticleLayout,
-    checkout: CheckoutLayout,
-    default: DefaultLayout,
-    info: InfoLayout,
+    root: [MainLayout],
+    main: [MainLayout, CommonLayout],
+    default: ['main', DefaultLayout],
+    account: ['main', AccountLayout],
+    pages: ['default', PagesLayout],
   },
 };

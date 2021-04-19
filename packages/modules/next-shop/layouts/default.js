@@ -1,20 +1,17 @@
-import CommonHeader from '@shop/components/Common/Header';
-import Advantages from '@shop/components/Advantages';
-import CommonFooter from '@shop/components/Common/Footer';
-import OffcanvasNav from '@shop/components/Offcanvas/Nav';
-import OffcanvasCart from '@shop/components/Offcanvas/Cart';
+import CommonHeading from '@shop/components/Common/Heading';
 
-const DefaultLayout = ({ children }) => (
-  <div className="tm-page">
-    <CommonHeader></CommonHeader>
-    <main className="tm-page-main">
-      {children}
-      <Advantages></Advantages>
-    </main>
-    <CommonFooter></CommonFooter>
-    <OffcanvasNav></OffcanvasNav>
-    <OffcanvasCart></OffcanvasCart>
-  </div>
-);
+const DefaultLayout = ({ children, heading }) => {
+  const Heading = heading === null ? null : heading ?? CommonHeading;
+  return (
+    <section className="uk-section uk-section-small">
+      <div className="uk-container">
+        <div className="uk-grid-medium uk-child-width-1-1" uk-grid="true">
+          <Heading />
+          <section className="tm-page-container">{children}</section>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default DefaultLayout;

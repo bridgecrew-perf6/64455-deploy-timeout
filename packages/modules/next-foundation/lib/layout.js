@@ -97,7 +97,13 @@ function normalize(layouts, layout, _recursion = 0) {
   } else if (typeof layout === 'object' && isLayout(layout.layout, true)) {
     const { layout: _, ...props } = layout;
     const normalized = normalize(layouts, layout.layout);
-    return { ...normalized, props };
+    if (Array.isArray(normalized)) {
+      return normalized
+        .flat(10)
+        .map(n => ({ ...n, props: { ...n.props, ...props } }));
+    } else {
+      return { ...normalized, props };
+    }
   } else {
     return {};
   }
@@ -105,7 +111,7 @@ function normalize(layouts, layout, _recursion = 0) {
 
 function wrapComponents(components) {
   return components
-    .flat()
+    .flat(10)
     .reverse()
     .reduce((component, { Layout, props = {} }) => {
       if (typeof Layout !== 'function') return null;

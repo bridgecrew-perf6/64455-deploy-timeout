@@ -45,8 +45,10 @@ a.uk-navbar-item.uk-active {
 }
 
 .uk-spaced,
-a > .uk-text-meta.uk-text-xsmall,
-span > .uk-text-meta.uk-text-xsmall {
+a > .uk-text-meta,
+a > .uk-text-muted,
+span > .uk-text-muted,
+span > .uk-text-meta {
   margin-left: 0.8ex;
 }
 
