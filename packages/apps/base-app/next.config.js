@@ -1,34 +1,8 @@
-const withPlugins = require('next-compose-plugins');
+const config = require('@atelierfabien/next-foundation/config/next');
 
-const withTM = require('next-transpile-modules')(
-  ['@atelierfabien/next-foundation'],
-  {
-    resolveSymlinks: true,
-  }
-);
-
-const withPreval = require('next-plugin-preval/config')();
-const withTranslations = require('next-translate');
-
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+module.exports = config({
+  redirects: async () => [fbLocaleRedirect('/nl/:path*', 'nl')],
 });
-
-const redirects = async () => [fbLocaleRedirect('/nl/:path*', 'nl')];
-
-const nextConfig = {
-  redirects,
-};
-
-module.exports = withPlugins(
-  [
-    withPreval(), // first
-    withTM, // second
-    withTranslations,
-    withBundleAnalyzer,
-  ],
-  nextConfig
-);
 
 function fbLocaleRedirect(destination, ...values) {
   const match = `^(${values.join('|')}).*?`;

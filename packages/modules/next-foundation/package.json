@@ -19,10 +19,15 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.3",
     "@moxy/next-layout": "^2.2.3",
+    "@next/bundle-analyzer": "^10.0.9",
     "baobab": "^2.6.1",
     "baobab-react": "^4.0.2",
     "dinero.js": "^1.8.1",
     "next-seo": "^4.23.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-plugin-preval": "^1.0.0",
+    "next-translate": "1.0.6-canary.2",
+    "next-transpile-modules": "^6.4.0",
     "next-universal-cookie": "^2.0.0",
     "react-ga": "^3.3.0"
   },
@@ -30,7 +35,6 @@
     "@atelierfabien/uikit": "^3.6.19",
     "next": "^10.1.1",
     "next-data-hooks": "^0.5.0",
-    "next-translate": "1.0.6-canary.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./src/*"],
+      "@app/config/*": [
+        "./config/*", "./config/*.preval", 
+        "./src/config/*", "./src/config/*.preval"
+      ],
+      "@foundation/*": [
+        "./node_modules/@atelierfabien/next-foundation/*",
+        "../../../node_modules/@atelierfabien/next-foundation/*"
+      ],
+      "@slices/*": ["./slices/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
