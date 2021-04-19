@@ -4,7 +4,7 @@ import CommonFooter from '@shop/components/Common/Footer';
 import OffcanvasNav from '@shop/components/Offcanvas/Nav';
 import OffcanvasCart from '@shop/components/Offcanvas/Cart';
 
-const PagesLayout = ({ children }) => (
+const DefaultLayout = ({ children }) => (
   <div className="tm-page">
     <CommonHeader></CommonHeader>
     <main className="tm-page-main">
@@ -17,4 +17,4 @@ const PagesLayout = ({ children }) => (
   </div>
 );
 
-export default PagesLayout;
+export default DefaultLayout;
