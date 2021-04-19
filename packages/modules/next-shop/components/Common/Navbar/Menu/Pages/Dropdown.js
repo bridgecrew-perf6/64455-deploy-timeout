@@ -37,7 +37,7 @@ const CommonNavbarMenuPagesDropdown = () => (
         <Link href="/account" as="li">
           Account
         </Link>
-        <Link href="/favorites" as="li">
+        <Link href="/account/favorites" as="li">
           Favorites
         </Link>
         <Link href="/account/profile" as="li">

@@ -5,7 +5,7 @@ import CommonFooter from '@shop/components/Common/Footer';
 import OffcanvasNav from '@shop/components/Offcanvas/Nav';
 import OffcanvasCart from '@shop/components/Offcanvas/Cart';
 
-const LayoutsInfo = () => (
+const InfoLayout = ({ children }) => (
   <div className="tm-page">
     <CommonHeader></CommonHeader>
     <main className="tm-page-main">
@@ -13,13 +13,10 @@ const LayoutsInfo = () => (
         <div className="uk-container">
           <div className="uk-grid-medium uk-child-width-1-1" uk-grid="true">
             <CommonHeading></CommonHeading>
-            <div className="tm-page-container">
-              <div data-block="pages" />
-            </div>
+            <div className="tm-page-container">{children}</div>
           </div>
         </div>
       </section>
-      {/* Advantages */}
       <Advantages></Advantages>
     </main>
     <CommonFooter></CommonFooter>
@@ -28,4 +25,4 @@ const LayoutsInfo = () => (
   </div>
 );
 
-export default LayoutsInfo;
+export default InfoLayout;

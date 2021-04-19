@@ -1,7 +1,5 @@
-const LayoutsCheckout = () => (
-  <div className="tm-page">
-    <div data-block="index" />
-  </div>
+const CheckoutLayout = ({ children }) => (
+  <div className="tm-page">{children}</div>
 );
 
-export default LayoutsCheckout;
+export default CheckoutLayout;

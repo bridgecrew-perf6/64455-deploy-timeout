@@ -4,12 +4,11 @@ import CommonFooter from '@shop/components/Common/Footer';
 import OffcanvasNav from '@shop/components/Offcanvas/Nav';
 import OffcanvasCart from '@shop/components/Offcanvas/Cart';
 
-const LayoutsArticle = () => (
+const ArticleLayout = ({ children }) => (
   <div className="tm-page">
     <CommonHeader></CommonHeader>
     <main className="tm-page-main">
-      <div data-block="default" />
-      {/* Advantages */}
+      {children}
       <Advantages></Advantages>
     </main>
     <CommonFooter></CommonFooter>
@@ -18,4 +17,4 @@ const LayoutsArticle = () => (
   </div>
 );
 
-export default LayoutsArticle;
+export default ArticleLayout;

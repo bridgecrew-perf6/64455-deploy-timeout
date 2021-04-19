@@ -4,7 +4,7 @@ const message =
   '<span class="uk-margin-small-right" uk-icon=\'check\'></span>Added to ';
 
 const links = {
-  favorites: '<a href="/favorites">favorites</a>',
+  favorites: '<a href="/account/favorites">favorites</a>',
   compare: '<a href="/compare">compare</a>',
 };
 

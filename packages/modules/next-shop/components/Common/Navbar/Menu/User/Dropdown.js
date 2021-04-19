@@ -13,7 +13,7 @@ const CommonNavbarMenuUserDropdown = () => (
         Orders
         <span className="uk-spaced">(2)</span>
       </Link>
-      <Link href="/favorites" as="li">
+      <Link href="/account/favorites" as="li">
         Favorites
         <span className="uk-spaced">(3)</span>
       </Link>
