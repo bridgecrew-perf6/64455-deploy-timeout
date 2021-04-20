@@ -17,9 +17,9 @@ $product-card-add-button-width: 36px !default;
 $product-card-add-button-height: 36px !default;
 
 // List view product card
-$list-view-product-card-media-width: 33.3%;
-$list-view-product-card-media-min-width: 170px;
-$list-view-product-card-price-font-size: 24px;
+$list-view-product-card-media-width: 33.3% !default;
+$list-view-product-card-media-min-width: 170px !default;
+$list-view-product-card-price-font-size: 24px !default;
 
 // Scrollbox
 $scrollbox-max-height: 300px !default;

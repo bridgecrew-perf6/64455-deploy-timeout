@@ -1,7 +1,10 @@
 import { Link } from '@foundation/next';
 
 const ErrorNotfound = () => (
-  <section className="uk-section uk-section-small">
+  <section
+    className="uk-section uk-section-small"
+    uk-height-viewport="expand: true"
+  >
     <div className="uk-container">
       <div className="uk-text-center">
         <h1 className="uk-heading-large">404</h1>

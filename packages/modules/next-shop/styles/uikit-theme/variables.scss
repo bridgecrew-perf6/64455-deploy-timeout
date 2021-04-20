@@ -5,108 +5,112 @@
 // (check "~node_modules/uikit/src/scss/variables.scss" for list of all available variables)
 //
 
-$global-background: #FFF;
-$global-border-width: 1px;
-$global-border-width: 1px;
-$global-border: #E5E5E5;
-$global-control-height: 40px;
-$global-control-large-height: 55px;
-$global-font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
-$global-large-font-size: 1.5rem;
-$global-large-font-size: 1.5rem;
-$global-margin: 20px;
-$global-margin: 20px;
-$global-medium-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-$global-medium-margin: 40px;
-$global-medium-margin: 40px;
-$global-muted-background: #F8F8F8;
-$global-muted-color: #999;
-$global-primary-background: #1e87f0;
-$global-small-font-size: 0.875rem;
-$global-xlarge-font-size: 2rem;
-$global-xsmall-font-size: 0.6875rem; // 11px
-$global-xsmall-gutter: 10px;
-$global-xsmall-margin: 5px;
-$global-xxlarge-font-size: 2.625rem;
+$global-background: #fff !default;
+$global-border-width: 1px !default;
+$global-border-width: 1px !default;
+$global-border: #e5e5e5 !default;
+$global-control-height: 40px !default;
+$global-control-large-height: 55px !default;
+$global-font-family: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$global-large-font-size: 1.5rem !default;
+$global-large-font-size: 1.5rem !default;
+$global-margin: 20px !default;
+$global-margin: 20px !default;
+$global-medium-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !default;
+$global-medium-margin: 40px !default;
+$global-medium-margin: 40px !default;
+$global-muted-background: #f8f8f8 !default;
+$global-muted-color: #999 !default;
+$global-primary-background: #1e87f0 !default;
+$global-small-font-size: 0.875rem !default;
+$global-xlarge-font-size: 2rem !default;
+$global-xsmall-font-size: 0.6875rem !default; // 11px
+$global-xsmall-gutter: 10px !default;
+$global-xsmall-margin: 5px !default;
+$global-xxlarge-font-size: 2.625rem !default;
 
 //
 // UIkit default variable overrides
 //
 
-$border-rounded-border-radius: 4px;
+$border-rounded-border-radius: 4px !default;
 
 //
 // Theme overrides
 //
 
 // Base
-$base-body-background: $global-muted-background;
-$base-h1-font-size-m: $global-xxlarge-font-size;
-$base-h1-font-size: $base-h1-font-size-m * 0.6;
-$base-h2-font-size-m: $global-xlarge-font-size;
-$base-h2-font-size: $base-h2-font-size-m * 0.7;
-$base-h3-font-size-m: $global-large-font-size;
-$base-h3-font-size: $base-h3-font-size-m * 0.8;
-$base-link-hover-text-decoration: none;
+$base-body-background: $global-muted-background !default;
+$base-h1-font-size-m: $global-xxlarge-font-size !default;
+$base-h1-font-size: $base-h1-font-size-m * 0.6 !default;
+$base-h2-font-size-m: $global-xlarge-font-size !default;
+$base-h2-font-size: $base-h2-font-size-m * 0.7 !default;
+$base-h3-font-size-m: $global-large-font-size !default;
+$base-h3-font-size: $base-h3-font-size-m * 0.8 !default;
+$base-link-hover-text-decoration: none !default;
 
 // Section
-$section-primary-color-mode: none;
-$section-secondary-color-mode: none;
-$section-small-padding-vertical: $global-margin;
+$section-primary-color-mode: none !default;
+$section-secondary-color-mode: none !default;
+$section-small-padding-vertical: $global-margin !default;
 
 // Card
-$card-default-background: $global-background;
-$card-primary-color-mode: none;
-$card-secondary-color-mode: none;
+$card-default-background: $global-background !default;
+$card-primary-color-mode: none !default;
+$card-secondary-color-mode: none !default;
 
 // Article
-$article-title-font-size-m: $global-xxlarge-font-size;
-$article-title-font-size: $global-xxlarge-font-size * 0.6;
+$article-title-font-size-m: $global-xxlarge-font-size !default;
+$article-title-font-size: $global-xxlarge-font-size * 0.6 !default;
 
 // Button
-$button-border-width: $global-border-width;
-$button-default-background: transparent;
-$button-font-size: $global-small-font-size;
-$button-large-font-size: $global-small-font-size;
-$button-large-line-height: $global-control-large-height - ($button-border-width * 2) !default;
-$button-line-height: $global-control-height - ($button-border-width * 2);
+$button-border-width: $global-border-width !default;
+$button-default-background: transparent !default;
+$button-font-size: $global-small-font-size !default;
+$button-large-font-size: $global-small-font-size !default;
+$button-large-line-height: $global-control-large-height -
+  ($button-border-width * 2) !default;
+$button-line-height: $global-control-height - ($button-border-width * 2) !default;
 
 // Form
-$form-background: $global-background;
-$form-focus-background: $global-background;
-$form-stacked-margin-bottom: 5px;
+$form-background: $global-background !default;
+$form-focus-background: $global-background !default;
+$form-stacked-margin-bottom: 5px !default;
 
 // Table
-$table-header-cell-font-weight: normal;
-$table-header-cell-color: $global-muted-color;
+$table-header-cell-font-weight: normal !default;
+$table-header-cell-color: $global-muted-color !default;
 
 // Lightbox
-$lightbox-background: #FFF;
-$lightbox-button-background: none;
-$lightbox-button-color: rgba(0, 0, 0, 0.7);
-$lightbox-button-hover-color: #000;
-$lightbox-item-color: rgba(0, 0, 0, 0.7);
-$lightbox-toolbar-background: transparent;
-$lightbox-toolbar-color: rgba(0, 0, 0, 0.7);
-$lightbox-toolbar-icon-color: rgba(0, 0, 0, 0.7);
-$lightbox-toolbar-icon-hover-color: #000;
+$lightbox-background: #fff !default;
+$lightbox-button-background: none !default;
+$lightbox-button-color: rgba(0, 0, 0, 0.7) !default;
+$lightbox-button-hover-color: #000 !default;
+$lightbox-item-color: rgba(0, 0, 0, 0.7) !default;
+$lightbox-toolbar-background: transparent !default;
+$lightbox-toolbar-color: rgba(0, 0, 0, 0.7) !default;
+$lightbox-toolbar-icon-color: rgba(0, 0, 0, 0.7) !default;
+$lightbox-toolbar-icon-hover-color: #000 !default;
 
 // Offcanvas
-$offcanvas-bar-background: $global-background;
-$offcanvas-bar-color-mode: none;
+$offcanvas-bar-background: $global-background !default;
+$offcanvas-bar-color-mode: none !default;
 
 // Notification
-$notification-message-background: $global-background;
+$notification-message-background: $global-background !default;
 
 // Background
-$background-primary-background-lighten: lighten($global-primary-background, 40%);
+$background-primary-background-lighten: lighten(
+  $global-primary-background,
+  40%
+) !default;
 
 // Margin
-$margin-xsmall-margin: $global-xsmall-margin;
+$margin-xsmall-margin: $global-xsmall-margin !default;
 
 // Navbar
 $navbar-nav-item-font-size: $global-small-font-size !default;
-$navbar-nav-item-height: 40px;
+$navbar-nav-item-height: 40px !default;
 
 // Overlay
-$overlay-primary-color-mode: none;
+$overlay-primary-color-mode: none !default;

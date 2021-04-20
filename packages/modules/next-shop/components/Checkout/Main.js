@@ -4,7 +4,10 @@ import CheckoutSummary from '@shop/components/Checkout/Summary';
 
 const CheckoutMain = () => (
   <main>
-    <section className="uk-section uk-section-small">
+    <section
+      className="uk-section uk-section-small"
+      uk-height-viewport="expand: true"
+    >
       <div className="uk-container">
         <div className="uk-grid-medium uk-child-width-1-1" uk-grid="true">
           <section className="uk-text-center">
