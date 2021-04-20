@@ -11,7 +11,7 @@ import Head from '../Head';
 const withLayout = withAppLayout(layoutConfig);
 
 export default function App({ Component, pageProps, settings }) {
-  const { _children, cookie, ...props } = pageProps;
+  const { cookie, ...props } = pageProps;
   const Settings = useSettingsProvider(settings);
 
   return (

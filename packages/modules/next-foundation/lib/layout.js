@@ -57,21 +57,34 @@ export function lookupLayout(Component, props = {}) {
   return typeof wrap === 'function' ? wrap : Component => Component;
 }
 
-function wrapInLayout(Component, { appLayout, pageLayout, pageLayouts }) {
+function wrapInLayout(
+  Component,
+  { appLayout, pageLayout, pageLayouts, ...props }
+) {
   pageLayouts = pageLayouts || {};
   const _normalize = normalize.bind(null, pageLayouts);
+
+  let pageProps = { ...props };
+  if (typeof Component.pageProps === 'function') {
+    pageProps = { ...props, ...Component.pageProps(pageProps) };
+  } else if (typeof Component.pageProps === 'object') {
+    pageProps = { ...props, ...Component.pageProps };
+  }
+
   let layout = isLayout(pageLayout) ? pageLayout : Component.pageLayout;
   if (typeof layout === 'string' && Array.isArray(pageLayouts[layout])) {
     layout = pageLayouts[layout];
   }
+
   if (Array.isArray(layout)) {
     // explicit hierarchy
-    return wrapComponents(layout.map(_normalize));
+    return wrapComponents(layout.map(_normalize), pageProps);
   }
+
   const nesting = []
     .concat(appLayout ?? [])
     .concat(isLayout(layout) ? layout : []);
-  return wrapComponents(nesting.map(_normalize));
+  return wrapComponents(nesting.map(_normalize), pageProps);
 }
 
 function isLayout(layout, objType = false) {
@@ -109,12 +122,13 @@ function normalize(layouts, layout, _recursion = 0) {
   }
 }
 
-function wrapComponents(components) {
+function wrapComponents(components, pageProps = {}) {
   return components
     .flat(10)
     .reverse()
     .reduce((component, { Layout, props = {} }) => {
       if (typeof Layout !== 'function') return null;
+      props = { ...pageProps, ...props };
       return <Layout {...props}>{component}</Layout>;
     }, null);
 }
