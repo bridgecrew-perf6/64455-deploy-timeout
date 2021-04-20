@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { canonicalizeLocale } from './util';
 import { useSite } from './site';
+import { usePage } from './page';
 
 export * from 'next-seo';
 
@@ -45,6 +46,7 @@ export function useSeo() {
 }
 
 export function PageSeo({ openGraph, ...props }) {
-  // workaround for next-seo#544
-  return <NextSeo {...props} openGraph={{ ...openGraph }} />;
+  const { title, description, openGraph: og } = usePage();
+  const seo = { title, description, ...props };
+  return <NextSeo {...seo} openGraph={{ ...openGraph, ...og }} />;
 }

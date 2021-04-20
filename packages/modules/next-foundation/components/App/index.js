@@ -4,6 +4,7 @@ import {
   withAppLayout,
   LayoutTree,
   NextDataHooksProvider,
+  PageProvider,
 } from '../../lib';
 import Head from '../Head';
 
@@ -14,7 +15,7 @@ export default function App({ Component, pageProps, settings }) {
   const Settings = useSettingsContext(settings);
 
   return (
-    <>
+    <PageProvider>
       <Head />
       <Settings cookie={cookie}>
         <NextDataHooksProvider {...props}>
@@ -24,6 +25,6 @@ export default function App({ Component, pageProps, settings }) {
           />
         </NextDataHooksProvider>
       </Settings>
-    </>
+    </PageProvider>
   );
 }

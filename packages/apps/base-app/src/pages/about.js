@@ -1,4 +1,4 @@
-import { useTranslation, useCurrency, PageSeo } from '@foundation/next';
+import { usePage, useTranslation, useCurrency, Page } from '@foundation/next';
 
 import LocaleList from '@foundation/components/LocaleList';
 import CurrencyList from '@foundation/components/CurrencyList';
@@ -7,12 +7,15 @@ export default function About() {
   const { t, lang } = useTranslation();
   const c = useCurrency();
 
+  const { title } = usePage({
+    title: t('app:pages.about'),
+  });
+
   return (
-    <>
-      <PageSeo title={t(`app:pages.about`)} />
+    <Page>
       <div className="uk-container">
         <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
-          <span>{t('app:pages.about')}</span>
+          <span>{title}</span>
           <span className="uk-text-muted uk-text-light">{c.format(16.45)}</span>
         </h1>
         <div className="uk-column-1-2@m space-y-4 uk-margin-bottom">
@@ -54,7 +57,7 @@ export default function About() {
           </div>
         </div>
       </div>
-    </>
+    </Page>
   );
 }
 

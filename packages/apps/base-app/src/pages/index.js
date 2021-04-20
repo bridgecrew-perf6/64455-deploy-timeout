@@ -1,8 +1,9 @@
 import {
+  usePage,
   useTranslation,
   useSettings,
   useGoogleAnalytics,
-  PageSeo,
+  Page,
 } from '@foundation/next';
 
 export default function Home() {
@@ -10,16 +11,19 @@ export default function Home() {
   const { enabled: gaEnabled } = useGoogleAnalytics();
   const { settings } = useSettings();
 
+  const { title } = usePage({
+    title: t(`common:languages.${lang}`),
+  });
+
   function onClick() {
     settings.toggle('analytics', { on: true, off: null });
   }
 
   return (
-    <>
-      <PageSeo title={t(`common:languages.${lang}`)} />
+    <Page>
       <div className="uk-container uk-margin-medium-top">
         <h1 className="uk-flex uk-flex-between uk-flex-middle uk-heading-medium uk-margin-large-bottom">
-          <span>{t(`common:languages.${lang}`)}</span>
+          <span>{title}</span>
           {gaEnabled && (
             <button
               className="uk-button uk-button-default"
@@ -71,6 +75,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </>
+    </Page>
   );
 }

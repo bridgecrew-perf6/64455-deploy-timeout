@@ -1,9 +1,11 @@
 import {
+  usePage,
   createDataHook,
   useTranslation,
+  Page,
   Link,
-  PageSeo,
 } from '@foundation/next';
+
 import getBlogPosts from './lib/get-blog-posts';
 
 const useBlogPost = createDataHook('BlogPost', async context => {
@@ -17,9 +19,12 @@ function BlogPost() {
   const { t } = useTranslation();
   const { title, content } = useBlogPost();
 
+  const page = usePage({
+    title: t('app:pages.blog'),
+  });
+
   return (
-    <>
-      <PageSeo title={`${t('app:pages.blog')} | ${title}`} />
+    <Page title={`${page.title} | ${title}`}>
       <Link href="/blog">
         <a className="hover:no-underline">← {t('app:blog.overview')}</a>
       </Link>
@@ -27,7 +32,7 @@ function BlogPost() {
         <h2 className="text-4xl">{title}</h2>
         <p>{content}</p>
       </div>
-    </>
+    </Page>
   );
 }
 

@@ -1,9 +1,11 @@
 import {
+  usePage,
   useTranslation,
   createDataHook,
+  Page,
   Link,
-  PageSeo,
 } from '@foundation/next';
+
 import getBlogPosts from './lib/get-blog-posts';
 
 const useBlogPostIndex = createDataHook('BlogPostIndex', async () => {
@@ -15,9 +17,12 @@ function BlogPostIndex() {
   const { t } = useTranslation();
   const blogPostIndex = useBlogPostIndex();
 
+  const page = usePage({
+    title: t('app:pages.blog'),
+  });
+
   return (
-    <>
-      <PageSeo title={`${t('app:pages.blog')} | ${t('app:blog.overview')}`} />
+    <Page title={`${page.title} | ${t('app:blog.overview')}`}>
       <Link href="/">
         <a className="hover:no-underline">← {t('app:pages.home')}</a>
       </Link>
@@ -32,7 +37,7 @@ function BlogPostIndex() {
           ))}
         </ul>
       </div>
-    </>
+    </Page>
   );
 }
 
