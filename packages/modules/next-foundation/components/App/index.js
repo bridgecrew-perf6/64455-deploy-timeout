@@ -1,6 +1,6 @@
 import layoutConfig from '@app/layouts';
 import {
-  useSettingsContext,
+  useSettingsProvider,
   withAppLayout,
   LayoutTree,
   NextDataHooksProvider,
@@ -12,7 +12,7 @@ const withLayout = withAppLayout(layoutConfig);
 
 export default function App({ Component, pageProps, settings }) {
   const { _children, cookie, ...props } = pageProps;
-  const Settings = useSettingsContext(settings);
+  const Settings = useSettingsProvider(settings);
 
   return (
     <PageProvider>

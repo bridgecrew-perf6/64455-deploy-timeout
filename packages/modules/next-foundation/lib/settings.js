@@ -61,7 +61,7 @@ function wrapObject(object, setValue, isValid) {
   };
 }
 
-export function useSettingsContext(options = {}) {
+export function useSettingsProvider(options = {}) {
   const defaults = { ...options.defaults };
   const router = useRouter();
 
@@ -111,7 +111,7 @@ export function useSettingsContext(options = {}) {
         { locale, scroll: false }
       );
     }
-  }, [locale, previousLocale, router]);
+  }, [router, locale, previousLocale]);
 
   Object.assign(Settings, {
     locale: router.locale ?? locale,
