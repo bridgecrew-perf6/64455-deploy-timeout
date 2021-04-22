@@ -1,6 +1,7 @@
 import {
+  getTranslation,
   localePaths,
-  getDataHooksProps,
+  getPageProps,
   dataHookProps,
 } from '@foundation/next';
 
@@ -18,16 +19,21 @@ export const getStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps = async context => {
-  const dataHooksProps = await getDataHooksProps({
+  const t = await getTranslation(context.locale, 'app');
+
+  const props = await getPageProps({
     context,
     dataHooks: BlogPost.dataHooks,
+    page: ({ blogPost }) => ({
+      title: `${t('pages.blog')} | ${blogPost.title}`,
+    }),
   });
 
-  const special = !!dataHookProps('BlogPost', dataHooksProps)?.special;
+  const special = !!dataHookProps('blogPost', props)?.special;
 
   return {
     props: {
-      ...dataHooksProps,
+      ...props,
       pageLayout: { layout: 'blog', special }, // dynamic layout
     },
   };

@@ -3,24 +3,21 @@ import { useRouter } from 'next/router';
 
 export { default as Page } from '../components/Page';
 
-let pageData = {}; // singleton
-
 export const PageContext = React.createContext();
 
-function setPageData(data) {
-  if (typeof data === 'function') {
-    pageData = { ...data(pageData) };
-  } else if (typeof data === 'object') {
-    pageData = { ...data };
-  }
-}
-
-export const PageProvider = ({ children, defaults = {} }) => {
+export const PageProvider = ({ children, data: defaults = {} }) => {
   const router = useRouter();
 
   const data = useMemo(() => {
-    // reset on router change (per-page)
-    setPageData({ ...defaults });
+    let pageData = { ...defaults }; // reset on router change (per-page)
+
+    function setPageData(data) {
+      if (typeof data === 'function') {
+        pageData = { ...data(pageData) };
+      } else if (typeof data === 'object') {
+        pageData = { ...data };
+      }
+    }
 
     return {
       get(key) {
@@ -52,7 +49,7 @@ export const PageProvider = ({ children, defaults = {} }) => {
 export function usePage(data) {
   const context = useContext(PageContext);
 
-  if (typeof context !== 'object') return pageData;
+  if (typeof context !== 'object') return {};
 
   if (typeof data === 'function') {
     data(context);

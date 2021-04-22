@@ -1,23 +1,35 @@
 import {
+  getPageProps,
+  getTranslation,
   usePage,
-  useTranslation,
   useSettings,
   useGoogleAnalytics,
   Page,
 } from '@foundation/next';
 
+export const getStaticProps = async context => {
+  const t = await getTranslation(context.locale, 'common');
+
+  return {
+    props: await getPageProps({
+      page: {
+        title: t(`languages.${context.locale}`),
+      },
+    }),
+  };
+};
+
 export default function Home() {
-  const { t, lang } = useTranslation();
   const { enabled: gaEnabled } = useGoogleAnalytics();
   const { settings } = useSettings();
 
-  const { title } = usePage({
-    title: t(`common:languages.${lang}`),
-  });
+  const { title, main } = usePage();
 
   function onClick() {
     settings.toggle('analytics', { on: true, off: null });
   }
+
+  if (!main) return null; // check if defaultPageProps('main') works
 
   return (
     <Page>

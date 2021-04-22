@@ -1,15 +1,32 @@
-import { usePage, useTranslation, useCurrency, Page } from '@foundation/next';
+import {
+  getPageProps,
+  getTranslation,
+  usePage,
+  useTranslation,
+  useCurrency,
+  Page,
+} from '@foundation/next';
 
 import LocaleList from '@foundation/components/LocaleList';
 import CurrencyList from '@foundation/components/CurrencyList';
+
+export const getStaticProps = async context => {
+  const t = await getTranslation(context.locale, 'app');
+
+  return {
+    props: await getPageProps({
+      page: {
+        title: t('pages.about'),
+      },
+    }),
+  };
+};
 
 export default function About() {
   const { t, lang } = useTranslation();
   const c = useCurrency();
 
-  const { title } = usePage({
-    title: t('app:pages.about'),
-  });
+  const { title } = usePage();
 
   return (
     <Page>

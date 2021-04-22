@@ -13,4 +13,5 @@ export * from './seo';
 export * from './site';
 export * from './uikit';
 
+export { default as getTranslation } from 'next-translate/getT';
 export { default as useTranslation } from 'next-translate/useTranslation';

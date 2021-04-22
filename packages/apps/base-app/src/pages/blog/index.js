@@ -1,14 +1,19 @@
-import { getDataHooksProps } from '@foundation/next';
+import { getPageProps, getTranslation } from '@foundation/next';
 import BlogPostIndex from '@slices/blog';
 
 export const getStaticProps = async context => {
-  const dataHooksProps = await getDataHooksProps({
+  const t = await getTranslation(context.locale, 'app');
+
+  const props = await getPageProps({
     context,
     dataHooks: BlogPostIndex.dataHooks,
+    page: {
+      title: `${t('pages.blog')} | ${t('app:blog.overview')}`,
+    },
   });
 
   return {
-    props: { ...dataHooksProps },
+    props,
   };
 };
 

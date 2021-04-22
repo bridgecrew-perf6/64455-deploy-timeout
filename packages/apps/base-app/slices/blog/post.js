@@ -1,14 +1,8 @@
-import {
-  usePage,
-  createDataHook,
-  useTranslation,
-  Page,
-  Link,
-} from '@foundation/next';
+import { defineDataHook, useTranslation, Page, Link } from '@foundation/next';
 
 import getBlogPosts from './lib/get-blog-posts';
 
-const useBlogPost = createDataHook('BlogPost', async context => {
+export const useBlogPost = defineDataHook('blogPost', async context => {
   const slug = context.params?.slug;
   const blogPosts = await getBlogPosts();
   const blogPost = blogPosts.find(post => post.slug === slug);
@@ -19,12 +13,8 @@ function BlogPost() {
   const { t } = useTranslation();
   const { title, content } = useBlogPost();
 
-  const page = usePage({
-    title: t('app:pages.blog'),
-  });
-
   return (
-    <Page title={`${page.title} | ${title}`}>
+    <Page>
       <Link href="/blog">
         <a className="hover:no-underline">← {t('app:blog.overview')}</a>
       </Link>

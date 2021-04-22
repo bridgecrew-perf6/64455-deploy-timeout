@@ -1,5 +1,5 @@
 import React from 'react';
-import { withLayout } from '@moxy/next-layout';
+import { withLayout, LayoutTree } from '@moxy/next-layout';
 
 export * from '@moxy/next-layout';
 
@@ -57,19 +57,16 @@ export function lookupLayout(Component, props = {}) {
   return typeof wrap === 'function' ? wrap : Component => Component;
 }
 
+export function LayoutProvider(props) {
+  return <LayoutTree {...props} />;
+}
+
 function wrapInLayout(
   Component,
   { appLayout, pageLayout, pageLayouts, ...props }
 ) {
   pageLayouts = pageLayouts || {};
   const _normalize = normalize.bind(null, pageLayouts);
-
-  let pageProps = { ...props };
-  if (typeof Component.pageProps === 'function') {
-    pageProps = { ...props, ...Component.pageProps(pageProps) };
-  } else if (typeof Component.pageProps === 'object') {
-    pageProps = { ...props, ...Component.pageProps };
-  }
 
   let layout = isLayout(pageLayout) ? pageLayout : Component.pageLayout;
   if (typeof layout === 'string' && Array.isArray(pageLayouts[layout])) {
@@ -78,13 +75,13 @@ function wrapInLayout(
 
   if (Array.isArray(layout)) {
     // explicit hierarchy
-    return wrapComponents(layout.map(_normalize), pageProps);
+    return wrapComponents(layout.map(_normalize), props);
   }
 
   const nesting = []
     .concat(appLayout ?? [])
     .concat(isLayout(layout) ? layout : []);
-  return wrapComponents(nesting.map(_normalize), pageProps);
+  return wrapComponents(nesting.map(_normalize), props);
 }
 
 function isLayout(layout, objType = false) {
