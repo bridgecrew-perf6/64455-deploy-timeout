@@ -6,14 +6,13 @@ import React, {
   useCallback,
 } from 'react';
 import { useCookie, NextCookieProvider } from 'next-universal-cookie';
-import { useContextProvider } from './context';
 import { usePrevious } from './hooks';
 import { useRouter } from './navigation';
 import Currency from './util/currency';
 
-const Settings = {}; // singleton by ref
+const SettingsContext = React.createContext({});
 
-const SettingsContext = React.createContext(Settings);
+const SettingsProvider = SettingsContext.Provider;
 
 const methods = {
   default: useSetting,
@@ -113,7 +112,11 @@ export function useSettingsProvider(options = {}) {
     }
   }, [router, locale, previousLocale]);
 
-  Object.assign(Settings, {
+  const state = useMemo(() => {
+    return {};
+  }, []);
+
+  Object.assign(state, {
     locale: router.locale ?? locale,
     setLocale,
     isValidLocale,
@@ -124,21 +127,36 @@ export function useSettingsProvider(options = {}) {
     setSettings,
   });
 
-  const Context = useContextProvider(SettingsContext, Settings);
-
   return useMemo(() => {
     return ({ cookie, children }) => {
       return (
         <NextCookieProvider cookie={cookie}>
-          <Context>{children}</Context>
+          <SettingsProvider value={state}>{children}</SettingsProvider>
         </NextCookieProvider>
       );
     };
-  }, []);
+  }, [state]);
 }
 
 export function useSettings() {
   return useContext(SettingsContext);
+}
+
+export function useSettingEffect(key, fn) {
+  const { settings } = useSettings();
+
+  useEffect(() => {
+    const enabled = settings?.get(key) ?? null;
+    if (typeof enabled === 'boolean') {
+      fn(enabled, false, settings);
+    } else if (enabled === null) {
+      fn(Boolean(enabled), true, settings);
+    } else {
+      settings.set(key, null);
+    }
+  }, [fn, key, settings]);
+
+  return settings;
 }
 
 export function useSetting(key, options = {}) {
@@ -291,21 +309,4 @@ export function useCookieSetting(key, options = {}) {
   }, [key, cookieName, setValue, options.value, readValue]);
 
   return [value, setValue, isValid, previousValue];
-}
-
-export function useSettingEffect(key, fn) {
-  const { settings } = useSettings();
-
-  useEffect(() => {
-    const enabled = settings.get(key);
-    if (typeof enabled === 'boolean') {
-      fn(enabled, false, settings);
-    } else if (enabled === null) {
-      fn(Boolean(enabled), true, settings);
-    } else {
-      settings.set(key, null);
-    }
-  }, [fn, key, settings]);
-
-  return settings;
 }
