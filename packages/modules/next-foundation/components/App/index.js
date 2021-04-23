@@ -8,6 +8,8 @@ import {
 } from '../../lib';
 import Head from '../Head';
 
+import '../../config/module';
+
 const withLayout = withAppLayout(layoutConfig);
 
 export default function App({ Component, pageProps, settings }) {

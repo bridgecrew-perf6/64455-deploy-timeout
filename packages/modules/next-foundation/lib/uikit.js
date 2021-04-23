@@ -16,12 +16,18 @@ export function useUIkit(fn) {
   useEffect(() => {
     const isBrowser = typeof window !== "undefined";
     if (isBrowser && !window.UIkit) {
-      const UIkit = require("@atelierfabien/uikit");
-      const icons = require("@atelierfabien/uikit/dist/js/uikit-icons.min");
-      window.UIkit = UIkit;
-      UIkit.use(icons);
-      setReady(true);
-      if (typeof ref.current === "function") ref.current(window.UIkit);
+      async function load() {
+        const UIkit = await import("@atelierfabien/uikit");
+        const icons = await import(
+          "@atelierfabien/uikit/dist/js/uikit-icons.min"
+        ).then((m) => m.default);
+        window.UIkit = UIkit;
+        UIkit.use(icons);
+        setReady(true);
+        if (typeof ref.current === "function") ref.current(window.UIkit);
+      }
+
+      load();
     } else if (isBrowser && window.UIkit) {
       setReady(true);
       if (typeof ref.current === "function") ref.current(window.UIkit);
