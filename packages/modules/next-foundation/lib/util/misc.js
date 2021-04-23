@@ -6,3 +6,10 @@ export function pick(object, keys) {
     return obj;
   }, {});
 }
+
+export function titleizeString(camelCase) {
+  return camelCase
+    .replace(/([A-Z])/g, match => ` ${match}`)
+    .replace(/^./, match => match.toUpperCase())
+    .trim();
+}

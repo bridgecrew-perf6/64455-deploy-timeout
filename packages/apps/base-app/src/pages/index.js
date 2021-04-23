@@ -11,7 +11,7 @@ export const getStaticProps = async context => {
   const t = await getTranslation(context.locale, 'common');
 
   return {
-    props: await getPageProps({
+    props: await getPageProps(context, {
       page: {
         title: t(`languages.${context.locale}`),
       },
@@ -29,7 +29,7 @@ export default function Home() {
     settings.toggle('analytics', { on: true, off: null });
   }
 
-  if (!main) return null; // check if defaultPageProps('main') works
+  if (!main) return null; // check if beforePageHooks('main') works
 
   return (
     <Page>

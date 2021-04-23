@@ -17,7 +17,7 @@ export default function App({ Component, pageProps, settings }) {
   const Settings = useSettingsProvider(settings);
 
   return (
-    <PageProvider data={currentPageProps}>
+    <PageProvider Component={Component} props={props} data={currentPageProps}>
       <Head />
       <Settings cookie={cookie}>
         <NextDataHooksProvider {...props}>

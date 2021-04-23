@@ -11,15 +11,7 @@ const GoogleFont = React.memo(({ href }) => {
         crossOrigin="true"
       />
       <link rel="preload" as="style" href={href} />
-      <link
-        rel="stylesheet"
-        href={href}
-        media="print"
-        onLoad="this.media='all'"
-      />
-      <noscript>
-        <link rel="stylesheet" href={href} />
-      </noscript>
+      <link rel="stylesheet" href={href} />
     </Head>
   );
 });

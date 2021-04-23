@@ -21,8 +21,7 @@ export const getStaticPaths = async ({ locales }) => {
 export const getStaticProps = async context => {
   const t = await getTranslation(context.locale, 'app');
 
-  const props = await getPageProps({
-    context,
+  const props = await getPageProps(context, {
     dataHooks: BlogPost.dataHooks,
     page: ({ blogPost }) => ({
       title: `${t('pages.blog')} | ${blogPost.title}`,

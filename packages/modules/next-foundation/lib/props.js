@@ -1,7 +1,9 @@
 import { createDataHook, getDataHooksProps } from 'next-data-hooks';
 
 const definedHooks = {};
-const defaultPageHooks = [];
+
+const beforeHooks = [];
+const afterHooks = [];
 
 // Setup @app/lib/with-app-props.js:
 //
@@ -65,31 +67,56 @@ export function dataHookProps(key, dataHooksProps = {}) {
   return dataHooksProps?.nextDataHooks?.[key];
 }
 
-export function defaultPageProps(key, data) {
+export function beforePageHooks(key, data) {
   if (typeof data === 'function') {
-    defaultPageHooks.push(createDataHook(`__page__${key}`, data));
-  } else if (typeof data === 'object') {
-    defaultPageHooks.push(
-      createDataHook(`__page__${key}`, () => ({ ...data }))
+    beforeHooks.push(
+      createDataHook(`__before__${key}`, async context => {
+        return { ...(await data(context)) };
+      })
     );
+  } else if (typeof data === 'object') {
+    beforeHooks.push(createDataHook(`__before__${key}`, () => ({ ...data })));
   }
 }
 
-export async function getPageProps({ page, context, dataHooks }) {
-  dataHooks = defaultPageHooks.concat(dataHooks || []).reduce((hooks, hook) => {
-    if (typeof hook === 'function') return hooks.concat(hook);
-    if (typeof hook === 'string' && typeof definedHooks[hook] === 'function') {
-      return hooks.concat(definedHooks[hook]);
-    } else {
-      return hooks;
-    }
-  }, []);
+export function afterPageHooks(key, data) {
+  if (typeof data === 'function') {
+    afterHooks.push(
+      createDataHook(`__after__${key}`, async context => {
+        return { ...(await data(context)) };
+      })
+    );
+  } else if (typeof data === 'object') {
+    afterHooks.push(createDataHook(`__after__${key}`, () => ({ ...data })));
+  }
+}
+
+export async function getPageProps(context, { page, dataHooks, ...options }) {
+  dataHooks = beforeHooks
+    .concat(dataHooks || [])
+    .concat(afterHooks)
+    .reduce((hooks, hook) => {
+      if (typeof hook === 'function') return hooks.concat(hook);
+      if (
+        typeof hook === 'string' &&
+        typeof definedHooks[hook] === 'function'
+      ) {
+        return hooks.concat(definedHooks[hook]);
+      } else {
+        return hooks;
+      }
+    }, []);
+
+  context.page = page;
+  context.options = options ?? {};
 
   const props = await getDataHooksProps({ dataHooks, context });
 
-  props.currentPageProps = defaultPageHooks.reduce((memo, { key }) => {
-    return { ...memo, ...dataHookProps(key, props) };
-  }, {});
+  props.currentPageProps = beforeHooks
+    .concat(afterHooks)
+    .reduce((memo, { key }) => {
+      return { ...memo, ...dataHookProps(key, props) };
+    }, {});
 
   if (typeof page === 'function') {
     const pageProps = await page({ context, ...props.nextDataHooks });

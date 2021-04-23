@@ -5,38 +5,57 @@ export { default as Page } from '../components/Page';
 
 export const PageContext = React.createContext();
 
-export const PageProvider = ({ children, data: defaults = {} }) => {
+const handlers = [];
+
+export function beforeRender(handler) {
+  if (typeof handler === 'function') handlers.push(handler);
+}
+
+export const PageProvider = ({
+  children,
+  Component,
+  props,
+  data: defaults = {},
+}) => {
   const router = useRouter();
 
   const data = useMemo(() => {
-    let pageData = { ...defaults }; // reset on router change (per-page)
+    // reset on router change (per-page)
 
-    function setPageData(data) {
+    let pageProps = { ...defaults };
+
+    function setPageProps(data) {
       if (typeof data === 'function') {
-        pageData = { ...data(pageData) };
+        pageProps = { ...data(pageProps) };
       } else if (typeof data === 'object') {
-        pageData = { ...data };
+        pageProps = { ...data };
       }
     }
 
+    setPageProps(Component.pageProps);
+
+    pageProps = handlers.reduce((memo, handler) => {
+      return { ...memo, ...handler(memo, { Component, props, router }) };
+    }, pageProps);
+
     return {
       get(key) {
-        return arguments.length ? pageData[key] : pageData;
+        return arguments.length ? pageProps[key] : pageProps;
       },
       set(key, value) {
-        setPageData(state => ({ ...state, [key]: value }));
+        setPageProps(state => ({ ...state, [key]: value }));
       },
       unset(key) {
-        delete pageData[key];
+        delete pageProps[key];
       },
       reset() {
-        setPageData({ ...defaults });
+        setPageProps({ ...defaults });
       },
       merge(data) {
         if (typeof data === 'function') {
-          setPageData(data);
+          setPageProps(data);
         } else if (typeof data === 'object') {
-          setPageData(state => ({ ...state, ...data }));
+          setPageProps(state => ({ ...state, ...data }));
         }
       },
     };

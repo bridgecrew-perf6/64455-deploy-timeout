@@ -14,7 +14,7 @@ export const getStaticProps = async context => {
   const t = await getTranslation(context.locale, 'app');
 
   return {
-    props: await getPageProps({
+    props: await getPageProps(context, {
       page: {
         title: t('pages.about'),
       },

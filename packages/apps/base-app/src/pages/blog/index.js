@@ -4,8 +4,7 @@ import BlogPostIndex from '@slices/blog';
 export const getStaticProps = async context => {
   const t = await getTranslation(context.locale, 'app');
 
-  const props = await getPageProps({
-    context,
+  const props = await getPageProps(context, {
     dataHooks: BlogPostIndex.dataHooks,
     page: {
       title: `${t('pages.blog')} | ${t('app:blog.overview')}`,
