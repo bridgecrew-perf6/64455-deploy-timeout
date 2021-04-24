@@ -25,10 +25,17 @@ export function useSeo() {
 
     seo.canonical = getUrl(defaultLocale);
 
-    seo.languageAlternates = locales.map(lc => ({
-      hrefLang: lc,
-      href: getUrl(lc),
-    }));
+    seo.languageAlternates = [
+      {
+        hrefLang: 'x-default',
+        href: getUrl(defaultLocale),
+      },
+    ].concat(
+      locales.map(lc => ({
+        hrefLang: lc,
+        href: getUrl(lc),
+      }))
+    );
 
     seo.openGraph = {
       ...seo.openGraph,
