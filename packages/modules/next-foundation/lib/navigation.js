@@ -65,7 +65,8 @@ export function Link({
   children,
   activeClassName,
   matchClassName,
-  as,
+  asPath, // Next Link 'as' property
+  as, // Render as element/component
   partial,
   ...props
 }) {
@@ -80,6 +81,8 @@ export function Link({
     (props.href.startsWith('#') || isExternalUrl(props.href))
   ) {
     Wrapper = ({ children }) => <>{children}</>;
+  } else if (typeof asPath === 'string') {
+    props.as = asPath;
   }
 
   const isElement = React.isValidElement(as);
