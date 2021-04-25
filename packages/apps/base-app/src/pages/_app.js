@@ -8,6 +8,7 @@ import App from '@foundation/components/App';
 
 // Global scss
 import '@app/styles/main.scss';
+import '@foundation/styles/reset.scss';
 import '@foundation/styles/tailwind.scss';
 
 // Called on server through getPageProps (in getStaticProps, getServerSideProps):

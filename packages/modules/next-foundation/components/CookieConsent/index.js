@@ -39,7 +39,7 @@ export default function CookieConsent(props) {
           onClick={() => onClose(reject)}
           uk-close=""
         ></button>
-        <p className="mr-4 mb-4">
+        <p className="mt-0 mr-4 mb-4">
           <Trans
             i18nKey="common:cookieConsent.text"
             components={[
