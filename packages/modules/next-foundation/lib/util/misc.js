@@ -9,7 +9,7 @@ export function pick(object, keys) {
 
 export function titleizeString(camelCase) {
   return camelCase
-    .replace(/([A-Z])/g, match => ` ${match}`)
+    .replace(/([A-Z0-9])/g, match => ` ${match}`)
     .replace(/^./, match => match.toUpperCase())
     .trim();
 }
