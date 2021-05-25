@@ -8,11 +8,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const coreModules = [
+  '@atelierfabien/next-foundation',
+  '@atelierfabien/next-shop',
+  '@atelierfabien/next-sanity',
+];
+
 module.exports = (config = {}) => {
   const { transpile = {}, plugins = [], ...nextConfig } = config;
 
   const withTM = transpileModules(
-    ['@atelierfabien/next-foundation', ...(transpile.modules || [])],
+    [...coreModules, ...(transpile.modules || [])],
     {
       resolveSymlinks: true,
       ...transpile.options,

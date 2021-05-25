@@ -1,9 +1,11 @@
 {
-  "name": "@atelierfabien/next-foundation",
+  "name": "@atelierfabien/next-sanity",
   "version": "0.0.0",
-  "description": "Shared code for NextJS projects",
+  "description": "Sanity integration for NextJS projects",
   "module": "index.js",
   "scripts": {
+    "build": "webpack",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,24 +19,15 @@
   },
   "homepage": "https://github.com/fabien/next-development#readme",
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.11.3",
-    "@moxy/next-layout": "^2.2.3",
-    "@next/bundle-analyzer": "^10.0.9",
-    "baobab": "^2.6.1",
-    "baobab-react": "^4.0.2",
-    "dinero.js": "^1.8.1",
-    "next-seo": "^4.23.0",
-    "next-compose-plugins": "^2.2.1",
-    "next-translate": "^1.0.7",
-    "next-transpile-modules": "^7.2.0",
-    "next-universal-cookie": "^2.0.0",
-    "react-ga": "^3.3.0"
+    "@sanity/client": "^2.10.5",
+    "@sanity/image-url": "^0.140.22",
+    "groq": "^2.2.6",
+    "lodash.defaults": "^4.2.0",
+    "next-sanity": "^0.2.0"
   },
   "peerDependencies": {
-    "@atelierfabien/uikit": "^3.6.22",
+    "@atelierfabien/next-foundation": "^0.0.0",
     "next": "^10.2.2",
-    "next-data-hooks": "^0.5.0",
-    "next-plugin-preval": "^1.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
