@@ -8,6 +8,7 @@ export * from './layout';
 export * from './navigation';
 export * from './page';
 export * from './props';
+export * from './query';
 export * from './settings';
 export * from './seo';
 export * from './site';

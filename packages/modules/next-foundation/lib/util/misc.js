@@ -1,11 +1,7 @@
-export function pick(object, keys) {
-  return keys.reduce((obj, key) => {
-    if (object && Object.prototype.hasOwnProperty.call(object, key)) {
-      obj[key] = object[key];
-    }
-    return obj;
-  }, {});
-}
+export { default as get } from 'lodash.get';
+export { default as set } from 'lodash.set';
+export { default as pick } from 'lodash.pick';
+export { default as omit } from 'lodash.omit';
 
 export function titleizeString(camelCase) {
   return camelCase

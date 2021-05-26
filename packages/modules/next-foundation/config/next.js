@@ -4,6 +4,8 @@ const withTranslations = require('next-translate');
 
 const withPreval = require('next-plugin-preval/config')();
 
+const withRpc = require('next-rpc')();
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -31,6 +33,7 @@ module.exports = (config = {}) => {
       withTM, // second
       withTranslations,
       withBundleAnalyzer,
+      withRpc,
       ...plugins,
     ],
     nextConfig

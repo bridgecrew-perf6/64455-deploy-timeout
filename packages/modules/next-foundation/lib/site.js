@@ -2,10 +2,21 @@ import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import site from '@app/config/site';
-import { simplifyLocale } from './util';
+import { get, simplifyLocale } from './util';
 
-export function useSite() {
-  return { ...site };
+export function useSite(getter = false) {
+  const data = { ...site };
+  if (getter) {
+    return (...args) => {
+      if (args.length === 0) {
+        return data;
+      } else {
+        return get(data, ...args);
+      }
+    };
+  } else {
+    return data;
+  }
 }
 
 export function useLocale() {

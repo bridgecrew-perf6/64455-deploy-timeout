@@ -14,7 +14,7 @@ export function useSeo() {
   return useMemo(() => {
     const { baseUrl, translations, ...defaults } = site;
     const { asPath, locale, defaultLocale, locales = [] } = router;
-    const i18n = translations?.[locale] || {};
+    const i18n = site?.i18n?.[locale] ?? translations?.[locale] ?? {};
     const seo = { ...defaults, ...i18n };
 
     function getUrl(lc) {
@@ -22,6 +22,8 @@ export function useSeo() {
         ? `${baseUrl}${asPath}`
         : `${baseUrl}/${lc}${asPath}`;
     }
+
+    seo.site_name = seo.site_name ?? seo.name;
 
     seo.canonical = getUrl(defaultLocale);
 

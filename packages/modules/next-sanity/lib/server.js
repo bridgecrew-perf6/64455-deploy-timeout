@@ -4,9 +4,10 @@ import sanityConfig from './config';
 
 export { default as groq } from 'groq';
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const { token, ...config } = sanityConfig;
 
-export { createClient, config, token };
+export { createClient, config };
 
 export const sanityClient = createClient({
   ...sanityConfig,
