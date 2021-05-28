@@ -68,6 +68,8 @@ export function Link({
   asPath, // Next Link 'as' property
   as, // Render as element/component
   partial,
+  before,
+  after,
   ...props
 }) {
   let child = React.isValidElement(children) ? Children.only(children) : null;
@@ -84,6 +86,8 @@ export function Link({
   } else if (typeof asPath === 'string') {
     props.as = asPath;
   }
+
+  if (!props.href && typeof props.as !== 'string') props.href = '';
 
   const isElement = React.isValidElement(as);
 
@@ -107,9 +111,13 @@ export function Link({
 
   if (isElement || typeof as === 'string') {
     const Element = as;
+    const Before = typeof before === 'function' ? before : () => null;
+    const After = typeof after === 'function' ? after : () => null;
     return (
       <Element className={className}>
+        <Before />
         <Wrapper {...props}>{child}</Wrapper>
+        <After />
       </Element>
     );
   } else if (typeof as === 'function') {
