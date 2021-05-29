@@ -159,11 +159,9 @@ const OffcanvasNavMenu = () => (
       <Link href="/contacts" as="li">
         Contacts
       </Link>
-      <li>
-        <Link href="/compare">
-          Compare<span className="uk-badge uk-margin-xsmall-left">3</span>
-        </Link>
-      </li>
+      <Link href="/compare" as="li">
+        Compare<span className="uk-badge uk-margin-xsmall-left">3</span>
+      </Link>
     </ul>
   </nav>
 );

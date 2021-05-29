@@ -115,9 +115,9 @@ export function Link({
     const After = typeof after === 'function' ? after : () => null;
     return (
       <Element className={className}>
-        <Before />
+        <Before active={active} match={match} link={props} />
         <Wrapper {...props}>{child}</Wrapper>
-        <After />
+        <After active={active} match={match} link={props} />
       </Element>
     );
   } else if (typeof as === 'function') {

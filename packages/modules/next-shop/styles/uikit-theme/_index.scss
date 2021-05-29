@@ -509,6 +509,27 @@ span > .uk-text-meta {
 }
 
 // Offcanvas
+
+.uk-nav.tm-nav-level-1 > .uk-parent.uk-open > a {
+  color: $global-emphasis-color;
+}
+
+.uk-nav.tm-nav-level-1 > .uk-parent > a {
+  margin-bottom: $list-divider-margin-top;
+  padding-right: $card-small-body-padding-horizontal;
+}
+
+.uk-nav.tm-nav-level-1.uk-nav-sub,
+.uk-nav.tm-nav-level-2.uk-nav-sub {
+  padding-top: 10px;
+}
+
+.uk-nav.tm-nav-level-2.uk-nav-sub {
+  padding-left: 0;
+  padding-bottom: $subnav-divider-border-height;
+  border-top: $subnav-divider-border-width solid $subnav-divider-border;
+}
+
 .tm-filters.uk-offcanvas.uk-open {
   margin: 0;
   padding: 0;
@@ -579,7 +600,7 @@ span > .uk-text-meta {
 
   & + label::before,
   & + label::after {
-    content: "";
+    content: '';
     display: block;
     width: $control-inputs-size;
     height: $control-inputs-size;
@@ -624,11 +645,11 @@ span > .uk-text-meta {
 }
 
 .tm-checkbox:checked + label::after {
-  @include svg-fill($control-checkbox-image, "#000", $global-inverse-color);
+  @include svg-fill($control-checkbox-image, '#000', $global-inverse-color);
 }
 
 .tm-radio:checked + label::after {
-  @include svg-fill($control-radio-image, "#000", $global-inverse-color);
+  @include svg-fill($control-radio-image, '#000', $global-inverse-color);
 }
 
 //
@@ -796,7 +817,7 @@ span > .uk-text-meta {
 }
 
 .tm-checkout-title::before {
-  content: counter(list) ". ";
+  content: counter(list) '. ';
   counter-increment: list;
   color: $global-muted-color;
 }
@@ -824,7 +845,7 @@ span > .uk-text-meta {
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 12px;
     left: 50%;
@@ -859,7 +880,7 @@ span > .uk-text-meta {
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    @include svg-fill($control-radio-image, "#000", $global-inverse-color);
+    @include svg-fill($control-radio-image, '#000', $global-inverse-color);
   }
 
   .tm-choose-title {
@@ -1029,7 +1050,7 @@ span > .uk-text-meta {
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
   }
@@ -1130,7 +1151,7 @@ span > .uk-text-meta {
   overflow: hidden;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: -30px;
