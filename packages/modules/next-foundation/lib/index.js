@@ -12,6 +12,7 @@ export * from './query';
 export * from './settings';
 export * from './seo';
 export * from './site';
+export * from './translation';
 export * from './uikit';
 
 export { default as getTranslation } from 'next-translate/getT';

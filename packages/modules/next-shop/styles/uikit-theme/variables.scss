@@ -11,7 +11,7 @@ $global-border-width: 1px !default;
 $global-border: #e5e5e5 !default;
 $global-control-height: 40px !default;
 $global-control-large-height: 55px !default;
-$global-font-family: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$global-font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 $global-large-font-size: 1.5rem !default;
 $global-large-font-size: 1.5rem !default;
 $global-margin: 20px !default;
@@ -95,6 +95,7 @@ $lightbox-toolbar-icon-hover-color: #000 !default;
 // Offcanvas
 $offcanvas-bar-background: $global-background !default;
 $offcanvas-bar-color-mode: none !default;
+$offcanvas-z-index: 1200;
 
 // Notification
 $notification-message-background: $global-background !default;
