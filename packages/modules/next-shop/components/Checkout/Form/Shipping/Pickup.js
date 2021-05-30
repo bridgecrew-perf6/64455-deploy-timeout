@@ -1,3 +1,4 @@
+import CommonAddress from '@shop/components/Common/Address';
 import CommonMap from '@shop/components/Common/Map';
 
 const CheckoutFormShippingPickup = () => (
@@ -9,11 +10,7 @@ const CheckoutFormShippingPickup = () => (
       <div>
         <CommonMap className="tm-ratio tm-ratio-16-9" />
       </div>
-      <div className="uk-text-small">
-        <div className="uk-text-bolder">Store Name</div>
-        <div>Blvd. de Waterloo 59, Brussels, Belgium</div>
-        <div>Daily 10:00–22:00</div>
-      </div>
+      <CommonAddress className="uk-text-small" />
     </div>
   </section>
 );

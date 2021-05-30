@@ -10,7 +10,7 @@ const DeliveryPage = () => (
       ullamcorper turpis. Maecenas sed libero quis orci egestas vehicula
       fermentum id diam.
     </p>
-    <CommonAddress />
+    <CommonAddress className="uk-margin-bottom" />
     <div className="tm-wrapper">
       <CommonMap className="tm-ratio tm-ratio-16-9" />
     </div>

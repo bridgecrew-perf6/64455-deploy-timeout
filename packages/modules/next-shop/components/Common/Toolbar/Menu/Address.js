@@ -1,4 +1,6 @@
 import { Link } from '@foundation/next';
+
+import CommonAddress from '@shop/components/Common/Address';
 import CommonMap from '@shop/components/Common/Map';
 
 const CommonToolbarMenuAddress = () => (
@@ -9,7 +11,10 @@ const CommonToolbarMenuAddress = () => (
         uk-icon="icon: location; ratio: .75;"
       />
       <span className="tm-pseudo">Store in Brussels</span>
-      <span uk-icon="icon: triangle-down; ratio: .75;" />
+      <span
+        className="uk-margin-xsmall-left"
+        uk-icon="icon: chevron-down; ratio: .75;"
+      />
     </Link>
     <div
       className="uk-margin-remove"
@@ -18,11 +23,7 @@ const CommonToolbarMenuAddress = () => (
       <div className="uk-card uk-card-default uk-card-small uk-box-shadow-xlarge uk-overflow-hidden uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom">
         <CommonMap className="uk-card-media-top uk-height-small" />
         <div className="uk-card-body">
-          <div className="uk-text-small">
-            <div className="uk-text-bolder">Store Name</div>
-            <div>Blvd. de Waterloo 59, Brussels, Belgium</div>
-            <div>Daily 10:00–22:00</div>
-          </div>
+          <CommonAddress className="uk-text-small" />
           <div className="uk-margin-small">
             <Link
               className="uk-link-muted uk-text-uppercase tm-link-to-all uk-link-reset"

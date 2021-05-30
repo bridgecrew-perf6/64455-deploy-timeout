@@ -22,11 +22,13 @@ const OffcanvasNav = withPortal(() => {
       onClick={onClick}
       uk-offcanvas="overlay: true; container: #__next"
     >
-      <aside className="uk-offcanvas-bar uk-padding-remove">
-        <div className="uk-card uk-card-default uk-card-small tm-shadow-remove">
-          <OffcanvasNavHeader></OffcanvasNavHeader>
-          <OffcanvasNavMenu></OffcanvasNavMenu>
-          <OffcanvasNavToolbar></OffcanvasNavToolbar>
+      <aside className="uk-offcanvas-bar uk-padding-remove tm-offcanvas-bar">
+        <div className="uk-card uk-card-default uk-card-small tm-shadow-remove uk-flex uk-flex-column uk-height-1-1">
+          <div className="uk-flex-1">
+            <OffcanvasNavHeader></OffcanvasNavHeader>
+            <OffcanvasNavMenu></OffcanvasNavMenu>
+            <OffcanvasNavToolbar></OffcanvasNavToolbar>
+          </div>
           <OffcanvasNavSocial></OffcanvasNavSocial>
         </div>
       </aside>

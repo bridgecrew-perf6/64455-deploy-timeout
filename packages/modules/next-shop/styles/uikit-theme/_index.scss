@@ -510,6 +510,11 @@ span > .uk-text-meta {
 
 // Offcanvas
 
+.tm-offcanvas-bar .uk-card-small {
+  padding-top: $global-small-gutter;
+  padding-bottom: $global-small-gutter;
+}
+
 .uk-nav.tm-nav-level-1 > .uk-parent.uk-open > a {
   color: $global-emphasis-color;
 }
@@ -521,7 +526,7 @@ span > .uk-text-meta {
 
 .uk-nav.tm-nav-level-1.uk-nav-sub,
 .uk-nav.tm-nav-level-2.uk-nav-sub {
-  padding-top: 10px;
+  padding-top: $global-small-margin;
 }
 
 .uk-nav.tm-nav-level-2.uk-nav-sub {
