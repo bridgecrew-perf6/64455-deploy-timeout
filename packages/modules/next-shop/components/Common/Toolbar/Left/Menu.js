@@ -1,6 +1,6 @@
 import CommonToolbarMenuPhone from '@shop/components/Common/Toolbar/Menu/Phone';
 import CommonToolbarMenuAddress from '@shop/components/Common/Toolbar/Menu/Address';
-import CommonToolbarMenuOpeninghours from '@shop/components/Common/Toolbar/Menu/Openinghours';
+import CommonToolbarMenuAddon from '@shop/components/Common/Toolbar/Menu/Addon';
 
 const CommonToolbarLeftMenu = () => (
   <ul className="uk-navbar-nav">
@@ -9,7 +9,7 @@ const CommonToolbarLeftMenu = () => (
     {/* Address */}
     <CommonToolbarMenuAddress />
     {/* Opening hours */}
-    <CommonToolbarMenuOpeninghours />
+    <CommonToolbarMenuAddon />
   </ul>
 );
 

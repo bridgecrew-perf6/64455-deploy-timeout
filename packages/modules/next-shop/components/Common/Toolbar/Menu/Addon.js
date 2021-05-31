@@ -1,4 +1,4 @@
-const CommonToolbarMenuOpeninghours = () => (
+const CommonToolbarMenuAddon = () => (
   <li>
     <div className="uk-navbar-item">
       <span
@@ -10,4 +10,4 @@ const CommonToolbarMenuOpeninghours = () => (
   </li>
 );
 
-export default CommonToolbarMenuOpeninghours;
+export default CommonToolbarMenuAddon;

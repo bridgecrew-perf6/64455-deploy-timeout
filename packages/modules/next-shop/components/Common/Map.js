@@ -1,7 +1,9 @@
-import { useGoogleMaps } from '@foundation/next';
+import { useGoogleMaps, useConfig } from '@foundation/next';
 
 const CommonMap = ({ position, zoom, className, ...options }) => {
-  position = position ?? { lat: 50.8364634, lng: 4.3556113 };
+  const config = useConfig('shop');
+  position = position ??
+    config('location') ?? { lat: 50.8364634, lng: 4.3556113 };
 
   const { ref } = useGoogleMaps(process.env.NEXT_PUBLIC_GOOGLEMAPS, {
     marker: { position },

@@ -46,3 +46,11 @@ export function localePaths(entries, locales = []) {
     return memo;
   }, []);
 }
+
+export function daysForLocale(lc = 'en', weekday = 'long') {
+  const localeName = canonicalizeLocale(lc, true);
+  const { format } = new Intl.DateTimeFormat(localeName, { weekday });
+  return [...Array(7).keys()].map(day =>
+    format(new Date(Date.UTC(2021, 4, 2 + day)))
+  );
+}
