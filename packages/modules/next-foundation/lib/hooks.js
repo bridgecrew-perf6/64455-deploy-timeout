@@ -7,6 +7,8 @@ import {
   useContext,
 } from 'react';
 
+import get from 'lodash.get';
+
 import { NextDataHooksContext } from 'next-data-hooks';
 
 export * from 'next-data-hooks';
@@ -74,6 +76,18 @@ export function useEventListener(eventName, selector, handler, options = {}) {
     window.addEventListener(eventName, fn, options);
     return () => window.removeEventListener(eventName, fn, options);
   }, [eventName, selector, fn, options]);
+}
+
+export function useObject(data = {}) {
+  return useCallback(
+    (...path) => {
+      const key = path
+        .map(p => (Array.isArray(p) ? p : String(p).split('.')))
+        .flat();
+      return get(data, key);
+    },
+    [data]
+  );
 }
 
 // Utils

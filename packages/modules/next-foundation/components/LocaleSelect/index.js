@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useLocale, useSettings } from '../../lib';
 
 export default function LocaleSelect({ className, withCode }) {
-  const { locale, locales, lang, language } = useLocale();
+  const { locale, locales, lang } = useLocale();
   const { setLocale } = useSettings();
 
   const onChange = useCallback(

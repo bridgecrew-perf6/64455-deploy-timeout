@@ -70,6 +70,7 @@ export function Link({
   partial,
   before,
   after,
+  newWindow,
   ...props
 }) {
   let child = React.isValidElement(children) ? Children.only(children) : null;
@@ -88,6 +89,8 @@ export function Link({
   }
 
   if (!props.href && typeof props.as !== 'string') props.href = '';
+
+  if (newWindow) props.target = '_blank';
 
   const isElement = React.isValidElement(as);
 
