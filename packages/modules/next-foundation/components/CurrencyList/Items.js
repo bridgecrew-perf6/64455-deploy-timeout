@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useCurrency, useSettings } from '../../lib';
 
-export default function CurrencyListItems({ activeClassName }) {
+export default function CurrencyListItems({ activeClassName, withCode }) {
   const currency = useCurrency();
   const { setCurrency } = useSettings();
 
@@ -20,7 +20,7 @@ export default function CurrencyListItems({ activeClassName }) {
       {currency.currencies.map(({ code, active, name }) => (
         <li key={code} className={active ? className : ''}>
           <a href="#" data-code={code} onClick={onClick}>
-            {name}
+            {withCode && `${code} - `} {name}
           </a>
         </li>
       ))}

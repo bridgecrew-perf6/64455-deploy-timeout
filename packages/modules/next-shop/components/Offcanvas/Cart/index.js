@@ -9,7 +9,11 @@ const OffcanvasCart = withPortal(() => {
   const ref = useRef();
 
   function onClick(e) {
-    if (ref.current && !e.target.matches('.uk-parent > a')) {
+    if (
+      ref.current &&
+      e.target.matches('a') &&
+      !e.target.matches('.uk-parent > a')
+    ) {
       setTimeout(() => UIkit.offcanvas(ref.current).hide(), 300);
     }
   }
