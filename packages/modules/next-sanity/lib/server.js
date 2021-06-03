@@ -4,6 +4,8 @@ import sanityConfig from './config';
 
 export { default as groq } from 'groq';
 
+export * from './tree';
+
 // eslint-disable-next-line unused-imports/no-unused-vars
 const { token, ...config } = sanityConfig;
 

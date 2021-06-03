@@ -3,7 +3,7 @@ const path = require('path');
 const local = path.resolve(path.join(__dirname, '..'));
 
 module.exports = (config = {}) => {
-  const { purge, ...overrides } = config;
+  const { purge, extend, ...overrides } = config;
   return {
     purge: [
       './public/**/*.html',
@@ -22,6 +22,14 @@ module.exports = (config = {}) => {
           lg: '1200px',
           xl: '1600px',
         },
+        colors: {
+          primary: '#1e87f0',
+          secondary: '#222',
+          success: '#32d296',
+          warning: '#faa05a',
+          danger: '#f0506e',
+        },
+        ...extend,
       },
     },
     ...overrides,

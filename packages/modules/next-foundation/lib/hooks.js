@@ -81,6 +81,7 @@ export function useEventListener(eventName, selector, handler, options = {}) {
 export function useObject(data = {}) {
   return useCallback(
     (...path) => {
+      if (path.length === 0) return data;
       const key = path
         .map(p => (Array.isArray(p) ? p : String(p).split('.')))
         .flat();

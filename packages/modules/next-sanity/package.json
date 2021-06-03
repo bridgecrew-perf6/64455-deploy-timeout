@@ -24,7 +24,8 @@
     "@sanity/image-url": "^0.140.22",
     "groq": "^2.2.6",
     "lodash.defaults": "^4.2.0",
-    "next-sanity": "^0.2.0"
+    "next-sanity": "^0.2.0",
+    "tree-walk-util": "^3.0.0"
   },
   "peerDependencies": {
     "@atelierfabien/next-foundation": "^0.0.0",

@@ -1,5 +1,6 @@
 import React, { useMemo, useContext } from 'react';
 import { useRouter } from 'next/router';
+import { useObject } from './hooks';
 
 export { default as Page } from '../components/Page';
 
@@ -77,4 +78,9 @@ export function usePage(data) {
   }
 
   return context.get();
+}
+
+export function usePageData(data) {
+  const page = usePage(data);
+  return useObject(page);
 }
