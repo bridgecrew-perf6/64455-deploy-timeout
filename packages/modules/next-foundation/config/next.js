@@ -20,7 +20,7 @@ module.exports = (config = {}) => {
   const { transpile = {}, plugins = [], ...nextConfig } = config;
 
   const withTM = transpileModules(
-    [...coreModules, ...(transpile.modules || [])],
+    ['lodash-es', ...coreModules, ...(transpile.modules || [])],
     {
       resolveSymlinks: true,
       ...transpile.options,

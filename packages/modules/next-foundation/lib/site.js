@@ -1,4 +1,4 @@
-import config from '@app/config/config';
+import config from '@app/config/app';
 import site from '@app/config/site';
 
 import { useTranslated } from './translation';

@@ -7,7 +7,7 @@ import {
   useContext,
 } from 'react';
 
-import get from 'lodash.get';
+import { get } from 'lodash-es';
 
 import { NextDataHooksContext } from 'next-data-hooks';
 

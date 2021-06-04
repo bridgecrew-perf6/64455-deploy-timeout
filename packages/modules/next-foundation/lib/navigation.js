@@ -50,14 +50,12 @@ export function useLocationHash(fn) {
 }
 
 export function useCurrentRoute(options = {}) {
-  const { route, pathname } = useRouter();
+  const { route, asPath } = useRouter();
   if (typeof options !== 'object') return [false, false];
   const active =
-    pathname === options.href ||
-    pathname === options.as ||
-    route === options.route;
+    asPath === options.href || asPath === options.as || route === options.route;
   const match =
-    startsWith(pathname, options.href) || startsWith(pathname, options.as);
+    startsWith(asPath, options.href) || startsWith(asPath, options.as);
   return [active, match];
 }
 

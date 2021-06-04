@@ -1,14 +1,19 @@
-export { default as defaults } from 'lodash.defaults';
-export { default as get } from 'lodash.get';
-export { default as set } from 'lodash.set';
-export { default as pick } from 'lodash.pick';
-export { default as pickBy } from 'lodash.pickby';
-export { default as omit } from 'lodash.omit';
-export { default as omitBy } from 'lodash.omitby';
+import { isEmpty, isNumber, isNaN, omitBy } from 'lodash-es';
+
+export function isBlank(value) {
+  return (isEmpty(value) && !isNumber(value)) || isNaN(value);
+}
 
 export function titleizeString(camelCase) {
   return camelCase
     .replace(/([A-Z0-9])/g, match => ` ${match}`)
     .replace(/^./, match => match.toUpperCase())
     .trim();
+}
+
+export function mergeObjects(...objects) {
+  return objects.reduce((memo, obj) => {
+    const data = omitBy(obj, value => isBlank(value));
+    return { ...memo, ...data };
+  }, {});
 }
