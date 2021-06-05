@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import { useLocale, useSettings } from '../../lib';
+import { useLocale, useSettings, Link } from '../../lib';
 
 export default function LocaleListItems({ activeClassName, withCode }) {
-  const { locales } = useLocale();
+  const { locale, defaultLocale, locales } = useLocale();
   const { setLocale } = useSettings();
 
   const className = activeClassName ?? 'uk-active';
@@ -21,9 +21,11 @@ export default function LocaleListItems({ activeClassName, withCode }) {
     <>
       {locales.map(({ code, active, name, href }) => (
         <li key={code} className={active ? className : ''}>
-          <a href={href} data-code={code} hrefLang={code} onClick={onClick}>
-            {withCode && `${String(code).toUpperCase()} - `} {name}
-          </a>
+          <Link href={href} locale={code}>
+            <a data-code={code} hrefLang={code} onClick={onClick}>
+              {withCode && `${String(code).toUpperCase()} - `} {name}
+            </a>
+          </Link>
         </li>
       ))}
     </>

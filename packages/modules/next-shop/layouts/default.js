@@ -4,7 +4,7 @@ const DefaultLayout = ({ children, heading }) => {
   const Heading = heading === null ? null : heading ?? CommonHeading;
   return (
     <section
-      className="uk-section uk-section-small"
+      className="uk-section uk-section-small tm-ignore-padding"
       uk-height-viewport="expand: true"
     >
       <div className="uk-container">

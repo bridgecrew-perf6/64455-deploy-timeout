@@ -2,7 +2,7 @@ import AccountSidebar from '@shop/components/Account/Sidebar';
 
 const AccountLayout = ({ children }) => (
   <section
-    className="uk-section uk-section-small"
+    className="uk-section uk-section-small tm-ignore-padding"
     uk-height-viewport="expand: true"
   >
     <div className="uk-container">

@@ -128,11 +128,11 @@ const ArticleSection = () => (
         <blockquote className="twitter-tweet" data-lang="en">
           <p lang="en" dir="ltr">
             Mophie's latest battery pack is powerful enough to charge your
-            15-inch MacBook Pro
-            <a href="https://t.co/jN4RzcxOyG">https://t.co/jN4RzcxOyG</a>
+            15-inch MacBook Pro{' '}
+            <a href="https://t.co/jN4RzcxOyG">https://t.co/jN4RzcxOyG</a>{' '}
             <a href="https://t.co/5oJBKZRVBx">pic.twitter.com/5oJBKZRVBx</a>
           </p>
-          — The Verge (@verge)
+          — The Verge (@verge){' '}
           <a href="https://twitter.com/verge/status/948539601265872896?ref_src=twsrc%5Etfw">
             January 3, 2018
           </a>

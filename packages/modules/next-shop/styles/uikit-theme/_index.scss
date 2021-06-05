@@ -1081,8 +1081,16 @@ span > .uk-text-meta {
 // Nav
 //
 
-.tm-nav > li > a {
+.tm-nav {
   padding: 10px 0;
+}
+
+.tm-nav > li {
+  margin: 5px 0;
+}
+
+.tm-nav > li > a {
+  padding: 5px 0;
 }
 
 .tm-nav > li.uk-active > a,
@@ -1183,6 +1191,24 @@ span > .uk-text-meta {
     margin-right: -$container-padding-horizontal;
     margin-left: -$container-padding-horizontal;
     border-radius: 0;
+
+    &.uk-sticky-fixed {
+      left: 0;
+      right: 0;
+      width: 100% !important;
+    }
+  }
+}
+
+.tm-ignore-margin {
+  @media (max-width: $breakpoint-small) {
+    margin-bottom: 0 !important;
+  }
+}
+
+.tm-ignore-padding {
+  @media (max-width: $breakpoint-small) {
+    padding-bottom: 0 !important;
   }
 }
 

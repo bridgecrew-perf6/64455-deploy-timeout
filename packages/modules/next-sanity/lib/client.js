@@ -9,6 +9,8 @@ import serializers from './serializers';
 
 import sanityConfig from './config';
 
+export * from './query';
+
 // eslint-disable-next-line unused-imports/no-unused-vars
 const { token, ...config } = sanityConfig;
 

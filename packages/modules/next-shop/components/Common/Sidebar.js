@@ -1,9 +1,9 @@
 import { Link } from '@foundation/next';
 
 const CommonSidebar = () => (
-  <aside className="uk-width-1-4 uk-visible@m tm-aside-column">
+  <aside className="uk-width-1-1 uk-width-1-4@m tm-aside-column tm-ignore-margin">
     <section
-      className="uk-card uk-card-default uk-card-small"
+      className="uk-card uk-card-default uk-card-small tm-ignore-container"
       uk-sticky="offset: 90; bottom: true;"
     >
       <nav>
