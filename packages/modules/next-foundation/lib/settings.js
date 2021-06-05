@@ -8,6 +8,7 @@ import React, {
 import { useCookie, NextCookieProvider } from 'next-universal-cookie';
 import { usePrevious } from './hooks';
 import { useRouter } from './navigation';
+import { get } from './util';
 import Currency from './util/currency';
 
 const SettingsContext = React.createContext({});
@@ -106,7 +107,7 @@ export function useSettingsProvider(options = {}) {
           pathname: router.pathname,
           query: router.query,
         },
-        router.asPath,
+        get(router, ['page', 'locales', locale], router.asPath),
         { locale, scroll: false }
       );
     }

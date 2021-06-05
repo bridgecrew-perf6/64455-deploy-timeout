@@ -1,5 +1,5 @@
 import React, { useMemo, useContext } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from './navigation';
 import { useObject } from './hooks';
 
 export { default as Page } from '../components/Page';

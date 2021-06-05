@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { Router, useRouter as useNextRouter } from 'next/router';
 import NextLink from 'next/link';
 import React, {
   Children,
@@ -9,8 +9,16 @@ import React, {
   useMemo,
 } from 'react';
 import { isExternalUrl } from './util';
+import { usePage } from './page';
 
-export { useRouter };
+export { Router };
+
+export function useRouter() {
+  const { router: page = {} } = usePage();
+  const router = useNextRouter();
+  router.page = page;
+  return router;
+}
 
 export function useLocationHash(fn) {
   const isBrowser = typeof window !== 'undefined';
@@ -117,12 +125,19 @@ export function Link({
     return (
       <Element className={className}>
         <Before active={active} match={match} link={props} />
-        <Wrapper {...props}>{child}</Wrapper>
+        <Wrapper {...props} passHref>
+          {child}
+        </Wrapper>
         <After active={active} match={match} link={props} />
       </Element>
     );
   } else if (typeof as === 'function') {
-    return as(className, <Wrapper {...props}>{child}</Wrapper>);
+    return as(
+      className,
+      <Wrapper {...props} passHref>
+        {child}
+      </Wrapper>
+    );
   } else {
     return (
       <Wrapper {...props}>{React.cloneElement(child, { className })}</Wrapper>
