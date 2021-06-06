@@ -86,6 +86,9 @@ const types = {
   },
   // Fetch one by path
   path: (options = {}) => {
+    const basePredicate = options.i18n
+      ? groq`$path in [i18n[$locale].path.current, i18n[$defaultLocale].path.current]`
+      : groq`$path == path.current`;
     return function(path, params = {}) {
       const {
         query,
@@ -97,8 +100,7 @@ const types = {
       } = getParams(params, options);
       return this.client.fetch(
         groq`
-          *[${andPredicate(predicate, query)} &&
-            $path in [i18n[$locale].path.current, i18n[$defaultLocale].path.current]][0]{
+          *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
           }${filterPredicate(filter)}`,
         { ...params, path, locale, defaultLocale }
@@ -107,6 +109,9 @@ const types = {
   },
   // Fetch one by alias
   alias: (options = {}) => {
+    const basePredicate = options.i18n
+      ? groq`$alias in [i18n[$locale].alias.current, i18n[$defaultLocale].alias.current]`
+      : groq`$alias == alias.current`;
     return function(alias, params = {}) {
       const {
         query,
@@ -118,8 +123,7 @@ const types = {
       } = getParams(params, options);
       return this.client.fetch(
         groq`
-          *[${andPredicate(predicate, query)} &&
-            $alias in [i18n[$locale].alias.current, i18n[$defaultLocale].alias.current]][0]{
+          *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
           }${filterPredicate(filter)}`,
         { ...params, alias, locale, defaultLocale }
@@ -172,7 +176,7 @@ const types = {
       return documents.reduce((memo, node) => {
         locales.forEach(locale => {
           const i18n = node?.i18n ?? {};
-          const merged = mergeObjects(i18n[defaultLocale], i18n[locale]);
+          const merged = mergeObjects(node, i18n[defaultLocale], i18n[locale]);
           const path = trim(get(merged, property, ''), '/');
           if (!isBlank(path)) {
             memo.push({ params: { path: path.split('/') }, locale });

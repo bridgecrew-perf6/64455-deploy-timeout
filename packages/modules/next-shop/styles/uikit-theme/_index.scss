@@ -94,6 +94,15 @@ span > .uk-text-meta {
   border-right: $global-border-width solid $inverse-global-border;
 }
 
+.tm-table-sidebar {
+  font-size: $table-header-cell-font-size;
+  font-weight: $table-header-cell-font-weight;
+  color: $table-header-cell-color;
+  @if (mixin-exists(hook-table-header-cell)) {
+    @include hook-table-header-cell();
+  }
+}
+
 //
 // Custom mixins
 //
