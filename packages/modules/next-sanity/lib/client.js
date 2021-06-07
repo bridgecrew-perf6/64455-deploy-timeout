@@ -24,10 +24,20 @@ export const urlFor = source => createImageUrlBuilder(config).image(source);
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 
 // Set up Portable Text serialization
-export const PortableText = createPortableTextComponent({
+const PortableTextComponent = createPortableTextComponent({
   ...config,
   serializers,
 });
+
+export const PortableText = ({ blocks, ...props }) => {
+  blocks = [].concat(blocks || []).map(block => {
+    if (block._type === 'block.content') {
+      return { ...block, _type: 'block' };
+    }
+    return block;
+  });
+  return <PortableTextComponent blocks={blocks} {...props} />
+}
 
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config);

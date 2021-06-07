@@ -36,6 +36,9 @@ $ratio-3-2: 66.66%;
 $ratio-4-3: 75%;
 $ratio-16-9: 56.25%;
 
+// Other
+$max-content-width: $breakpoint-small !default;
+
 //
 // Custom styles
 //
@@ -100,6 +103,79 @@ span > .uk-text-meta {
   color: $table-header-cell-color;
   @if (mixin-exists(hook-table-header-cell)) {
     @include hook-table-header-cell();
+  }
+}
+
+.tm-list .uk-accordion-title::before {
+  display: none;
+}
+
+.tm-header h2 {
+  @extend .uk-article-title;
+}
+
+.tm-header {
+  @extend .uk-margin-medium-top; 
+}
+
+.tm-header-main {
+  @extend .uk-margin-large-top; 
+  @extend .uk-margin-large-bottom;
+}
+
+.tm-section-meta {
+  @extend .uk-article-meta;
+}
+
+.tm-section-intro {
+  @extend .uk-margin-medium-top; 
+}
+
+.tm-sections > .tm-section {
+  @extend .uk-margin-medium;
+}
+
+.tm-section.tm-wrapper > .tm-section-title {
+  @extend .uk-padding;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.tm-section.tm-wrapper[data-section='section.group'] > .tm-section-title {
+  padding: 0;
+}
+
+[data-section='section.image'] .tm-section-body {
+  @extend .uk-padding;
+}
+
+[data-section='section.list'] {
+  @extend .uk-margin-large-bottom;
+
+  .tm-section-title {
+    padding-bottom: $margin-small-margin;
+    border-bottom: $global-border-width solid $global-border;
+  }
+}
+
+@media (min-width: $breakpoint-small) {
+  .tm-section-width,
+  [data-section='section.list'],
+  [data-section='section.table'],
+  [data-section='section.divider'] {
+    width: 100%;
+    max-width: $max-content-width;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  [data-section='section.text'],
+  [data-section='section.image'],
+  [data-section='section.gallery'] {
+    .tm-section-title,
+    .tm-section-body {
+      @extend .tm-section-width;
+    }
   }
 }
 
