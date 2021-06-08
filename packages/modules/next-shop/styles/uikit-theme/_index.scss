@@ -115,11 +115,11 @@ span > .uk-text-meta {
 }
 
 .tm-header {
-  @extend .uk-margin-medium-top; 
+  @extend .uk-margin-medium-top;
 }
 
 .tm-header-main {
-  @extend .uk-margin-large-top; 
+  @extend .uk-margin-large-top;
   @extend .uk-margin-large-bottom;
 }
 
@@ -128,20 +128,24 @@ span > .uk-text-meta {
 }
 
 .tm-section-intro {
-  @extend .uk-margin-medium-top; 
+  @extend .uk-margin-medium-top;
+}
+
+.tm-sections {
+  overflow: hidden;
 }
 
 .tm-sections > .tm-section {
   @extend .uk-margin-medium;
 }
 
-.tm-section.tm-wrapper > .tm-section-title {
+.tm-section.tm-expand > .tm-section-title {
   @extend .uk-padding;
   padding-bottom: 0;
   padding-top: 0;
 }
 
-.tm-section.tm-wrapper[data-section='section.group'] > .tm-section-title {
+.tm-section.tm-expand[data-section='section.group'] > .tm-section-title {
   padding: 0;
 }
 
@@ -176,6 +180,32 @@ span > .uk-text-meta {
     .tm-section-body {
       @extend .tm-section-width;
     }
+  }
+}
+
+.tm-sidebar .tm-ignore-container:nth-child(1) {
+  z-index: 20;
+}
+
+.tm-sidebar .tm-ignore-container:nth-child(2) {
+  z-index: 15;
+}
+
+.tm-sidebar .tm-ignore-container:nth-child(3) {
+  z-index: 10;
+}
+
+.tm-sidebar .tm-ignore-container:nth-child(4) {
+  z-index: 5;
+}
+
+.tm-sidebar > .tm-ignore-container + .tm-ignore-container {
+  margin-top: $margin-margin;
+}
+
+@media (max-width: $breakpoint-small) {
+  .tm-sidebar > .tm-ignore-container + .tm-ignore-container {
+    margin-top: 0;
   }
 }
 
@@ -1044,43 +1074,43 @@ span > .uk-text-meta {
 //
 
 // Small card
-.uk-card-body.uk-card-small .tm-wrapper,
-.uk-card-small .uk-card-body .tm-wrapper {
+.uk-card-body.uk-card-small .tm-expand,
+.uk-card-small .uk-card-body .tm-expand {
   margin-right: -$card-small-body-padding-horizontal;
   margin-left: -$card-small-body-padding-horizontal;
 }
 
-.uk-card-body.uk-card-small .tm-wrapper:first-child,
-.uk-card-small .uk-card-body .tm-wrapper:first-child {
+.uk-card-body.uk-card-small .tm-expand:first-child,
+.uk-card-small .uk-card-body .tm-expand:first-child {
   margin-top: -$card-small-body-padding-vertical;
 }
 
-.uk-card-body.uk-card-small .tm-wrapper:last-child,
-.uk-card-small .uk-card-body .tm-wrapper:last-child {
+.uk-card-body.uk-card-small .tm-expand:last-child,
+.uk-card-small .uk-card-body .tm-expand:last-child {
   margin-bottom: -$card-small-body-padding-vertical;
 }
 
-.uk-card-body.uk-card-small .tm-wrapper figcaption,
-.uk-card-small .uk-card-body .tm-wrapper figcaption {
+.uk-card-body.uk-card-small .tm-expand figcaption,
+.uk-card-small .uk-card-body .tm-expand figcaption {
   margin-right: $card-small-body-padding-horizontal;
   margin-left: $card-small-body-padding-horizontal;
 }
 
 // Normal card
-.uk-card-body .tm-wrapper {
+.uk-card-body .tm-expand {
   margin-right: -$card-body-padding-horizontal;
   margin-left: -$card-body-padding-horizontal;
 }
 
-.uk-card-body .tm-wrapper:first-child {
+.uk-card-body .tm-expand:first-child {
   margin-top: -$card-body-padding-vertical;
 }
 
-.uk-card-body .tm-wrapper:last-child {
+.uk-card-body .tm-expand:last-child {
   margin-bottom: -$card-body-padding-vertical;
 }
 
-.uk-card-body .tm-wrapper figcaption {
+.uk-card-body .tm-expand figcaption {
   margin-top: $global-xsmall-margin;
   margin-right: $card-body-padding-horizontal;
   margin-left: $card-body-padding-horizontal;
@@ -1089,16 +1119,16 @@ span > .uk-text-meta {
 }
 
 @media (min-width: $breakpoint-large) {
-  .uk-card-body .tm-wrapper {
+  .uk-card-body .tm-expand {
     margin-right: -$card-body-padding-horizontal-l;
     margin-left: -$card-body-padding-horizontal-l;
   }
 
-  .uk-card-body .tm-wrapper:first-child {
+  .uk-card-body .tm-expand:first-child {
     margin-top: -$card-body-padding-vertical-l;
   }
 
-  .uk-card-body .tm-wrapper:last-child {
+  .uk-card-body .tm-expand:last-child {
     margin-bottom: -$card-body-padding-vertical-l;
   }
 }
@@ -1185,6 +1215,22 @@ span > .uk-text-meta {
 
 .tm-nav > li.uk-active > a {
   font-weight: 500;
+}
+
+.tm-sidebar h4 {
+  font-size: $nav-header-font-size;
+  text-transform: $nav-header-text-transform;
+  padding: $card-small-body-padding-vertical $card-small-body-padding-horizontal;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.tm-sidebar li.uk-nav-divider {
+  margin: 10px 0;
+}
+
+.tm-sidebar-section-divider:not(:first-child) {
+  border-top: $nav-dividers-border-width solid $nav-dividers-border;
 }
 
 //

@@ -60,6 +60,9 @@ $card-default-background: $global-background !default;
 $card-primary-color-mode: none !default;
 $card-secondary-color-mode: none !default;
 
+// Badge
+$badge-border-radius: $border-rounded-border-radius !default;
+
 // Article
 $article-title-font-size-m: $global-xxlarge-font-size !default;
 $article-title-font-size: $global-xxlarge-font-size * 0.6 !default;

@@ -8,6 +8,7 @@ import React, {
   useCallback,
   useMemo,
 } from 'react';
+
 import { isExternalUrl } from './util';
 import { usePage } from './page';
 
@@ -67,6 +68,8 @@ export function useCurrentRoute(options = {}) {
   return [active, match];
 }
 
+const NullRender = () => null;
+
 export function Link({
   children,
   activeClassName,
@@ -120,8 +123,8 @@ export function Link({
 
   if (isElement || typeof as === 'string') {
     const Element = as;
-    const Before = typeof before === 'function' ? before : () => null;
-    const After = typeof after === 'function' ? after : () => null;
+    const Before = typeof before === 'function' ? before : NullRender;
+    const After = typeof after === 'function' ? after : NullRender;
     return (
       <Element className={className}>
         <Before active={active} match={match} link={props} />

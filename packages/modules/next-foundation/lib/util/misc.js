@@ -1,4 +1,4 @@
-import { isEmpty, isNumber, isNaN, omitBy } from 'lodash-es';
+import { get, isEmpty, isNumber, isNaN, omitBy } from 'lodash-es';
 
 export function isBlank(value) {
   return (isEmpty(value) && !isNumber(value)) || isNaN(value);
@@ -16,4 +16,15 @@ export function mergeObjects(...objects) {
     const data = omitBy(obj, value => isBlank(value));
     return { ...memo, ...data };
   }, {});
+}
+
+export function lookup(obj, ...keys) {
+  let value;
+  keys.find(key => {
+    const v = get(obj, key);
+    const valid = !isBlank(v);
+    if (valid) value = v;
+    return valid;
+  });
+  return value;
 }
