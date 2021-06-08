@@ -131,6 +131,10 @@ span > .uk-text-meta {
   @extend .uk-margin-medium-top;
 }
 
+.tm-section-image {
+  margin: 0;
+}
+
 .tm-sections {
   overflow: hidden;
 }
@@ -145,8 +149,19 @@ span > .uk-text-meta {
   padding-top: 0;
 }
 
-.tm-section.tm-expand[data-section='section.group'] > .tm-section-title {
-  padding: 0;
+.tm-section.tm-expand[data-section='section.group'] {
+  .tm-header {
+    margin-top: 0 !important;
+  }
+
+  .tm-section-title,
+  [data-section]:not([data-section='section.image']) {
+    @extend .uk-padding;
+  }
+
+  .tm-section-title {
+    padding-bottom: 0;
+  }
 }
 
 [data-section='section.image'] .tm-section-body {
