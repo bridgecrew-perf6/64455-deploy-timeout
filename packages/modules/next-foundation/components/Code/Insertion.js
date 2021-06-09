@@ -3,12 +3,15 @@
 import Head from 'next/head';
 import { isBlank } from '../../lib/util';
 
-const CodeInsertion = ({ id, source }) => {
+const CodeInsertion = ({ id, source, className }) => {
   const { language, code } = source;
   const hasSource = !isBlank(code);
   if (language === 'html' && hasSource) {
     return (
-      <div className="tm-expand" dangerouslySetInnerHTML={{ __html: code }} />
+      <div
+        className={className ?? 'tm-expand'}
+        dangerouslySetInnerHTML={{ __html: code }}
+      />
     );
   } else if (language === 'css' && hasSource) {
     return (

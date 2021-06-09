@@ -119,10 +119,6 @@ span > .uk-text-meta {
   @extend .uk-margin-bottom;
 }
 
-.tm-header h3:last-child {
-  margin-bottom: 0;
-}
-
 .tm-header-main {
   @extend .uk-margin-large-top;
   @extend .uk-margin-large-bottom;
@@ -148,8 +144,9 @@ span > .uk-text-meta {
   @extend .uk-margin-medium;
 }
 
-.tm-section:last-child {
-  margin-bottom: 0;
+.tm-section.tm-frame:last-child,
+.tm-section:last-child > .uk-margin-bottom {
+  margin-bottom: 0 !important;
 }
 
 .tm-section.tm-expand > .tm-section-title {
@@ -169,6 +166,7 @@ span > .uk-text-meta {
 
   .tm-section-title {
     padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
