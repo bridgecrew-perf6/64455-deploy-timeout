@@ -116,6 +116,11 @@ span > .uk-text-meta {
 
 .tm-header {
   @extend .uk-margin-medium-top;
+  @extend .uk-margin-bottom;
+}
+
+.tm-header h3:last-child {
+  margin-bottom: 0;
 }
 
 .tm-header-main {
@@ -143,13 +148,16 @@ span > .uk-text-meta {
   @extend .uk-margin-medium;
 }
 
+.tm-section:last-child {
+  margin-bottom: 0;
+}
+
 .tm-section.tm-expand > .tm-section-title {
   @extend .uk-padding;
   padding-bottom: 0;
-  padding-top: 0;
 }
 
-.tm-section.tm-expand[data-section='section.group'] {
+.tm-section[data-section='section.group'] {
   .tm-header {
     margin-top: 0 !important;
   }
@@ -177,6 +185,12 @@ span > .uk-text-meta {
   }
 }
 
+@media (max-width: $breakpoint-small) {
+  [data-section='image.single'] > .uk-padding {
+    padding: 0;
+  }
+}
+
 @media (min-width: $breakpoint-small) {
   .tm-section-width,
   [data-section='section.list'],
@@ -196,6 +210,34 @@ span > .uk-text-meta {
       @extend .tm-section-width;
     }
   }
+}
+
+.tm-sidebar .uk-card {
+  overflow: hidden;
+}
+
+.tm-sidebar h4 {
+  font-size: $nav-header-font-size;
+  text-transform: $nav-header-text-transform;
+  padding: $card-small-body-padding-vertical $card-small-body-padding-horizontal;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.tm-sidebar li.uk-nav-divider {
+  margin: 10px 0;
+}
+
+.tm-sidebar-section-divider:not(:first-child) {
+  border-top: $nav-dividers-border-width solid $nav-dividers-border;
+}
+
+.tm-sidebar-section [data-section='section.text'] {
+  padding: $card-small-body-padding-vertical $card-small-body-padding-horizontal;
+}
+
+[data-section='fragment'] .tm-header {
+  margin-top: 0 !important;
 }
 
 .tm-sidebar .tm-ignore-container:nth-child(1) {
@@ -1230,22 +1272,6 @@ span > .uk-text-meta {
 
 .tm-nav > li.uk-active > a {
   font-weight: 500;
-}
-
-.tm-sidebar h4 {
-  font-size: $nav-header-font-size;
-  text-transform: $nav-header-text-transform;
-  padding: $card-small-body-padding-vertical $card-small-body-padding-horizontal;
-  padding-bottom: 0;
-  margin: 0;
-}
-
-.tm-sidebar li.uk-nav-divider {
-  margin: 10px 0;
-}
-
-.tm-sidebar-section-divider:not(:first-child) {
-  border-top: $nav-dividers-border-width solid $nav-dividers-border;
 }
 
 //

@@ -3,14 +3,24 @@
   box-shadow: $card-default-box-shadow;
 }
 
+@mixin hook-card-primary() {
+  border-radius: $border-rounded-border-radius;
+  box-shadow: $card-default-box-shadow;
+}
+
+@mixin hook-card-secondary() {
+  border-radius: $border-rounded-border-radius;
+  box-shadow: $card-default-box-shadow;
+}
+
 @mixin hook-card-media() {
   margin: 0;
 }
 
 @mixin hook-card-misc() {
-  .uk-card-body + .uk-card-body {
-    border-top: $global-border-width solid $global-border;
-  }
+  // .uk-card-body + .uk-card-body { // disabled
+  //   border-top: $global-border-width solid $global-border;
+  // }
 
   //
   // Default
