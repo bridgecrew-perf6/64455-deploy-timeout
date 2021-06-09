@@ -127,5 +127,7 @@ export async function getPageProps(context, { page, dataHooks, ...options }) {
     props.currentPageProps = { ...props.currentPageProps, ...page };
   }
 
+  props.currentPageOptions = context.options;
+
   return props;
 }

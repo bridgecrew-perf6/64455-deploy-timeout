@@ -17,6 +17,7 @@ export const PageProvider = ({
   Component,
   props,
   data: defaults = {},
+  options = {},
 }) => {
   const router = useRouter();
 
@@ -59,6 +60,7 @@ export const PageProvider = ({
           setPageProps(state => ({ ...state, ...data }));
         }
       },
+      options,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
@@ -78,6 +80,12 @@ export function usePage(data) {
   }
 
   return context.get();
+}
+
+export function usePageOptions() {
+  const context = useContext(PageContext);
+  if (typeof context?.options !== 'object') return {};
+  return context.options;
 }
 
 export function usePageData(data) {

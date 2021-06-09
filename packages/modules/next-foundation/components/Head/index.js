@@ -1,9 +1,11 @@
 import Head from 'next/head';
-import { useSeo, DefaultSeo } from '../../lib';
+import { usePageOptions, useSeo, DefaultSeo } from '../../lib';
+
+import HeadAssets from './Assets';
 
 export default function AppHead({ children }) {
+  const options = usePageOptions();
   const seo = useSeo();
-
   return (
     <>
       <Head>
@@ -16,6 +18,7 @@ export default function AppHead({ children }) {
         ))}
         {children}
       </Head>
+      <HeadAssets assets={options.assets} />
     </>
   );
 }

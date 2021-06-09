@@ -1,7 +1,5 @@
-import { usePage, PageSeo } from '../../lib';
+import { PageSeo } from '../../lib';
 import { pick } from '../../lib/util';
-
-const PAGE_PROPS = ['title', 'description'];
 
 const SEO_PROPS = [
   'title',
@@ -21,7 +19,6 @@ const SEO_PROPS = [
 ];
 
 const Page = ({ children, ...props }) => {
-  usePage(pick(props, PAGE_PROPS));
   const seo = pick(props, SEO_PROPS);
   return (
     <>

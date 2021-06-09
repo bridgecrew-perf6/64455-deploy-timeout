@@ -11,6 +11,7 @@ import {
   QueryClientProvider,
   QueryClient,
 } from '../../lib';
+
 import Head from '../Head';
 
 import '../../config/module';
@@ -18,7 +19,7 @@ import '../../config/module';
 const withLayout = withAppLayout(layoutConfig);
 
 export default function App({ Component, pageProps, settings }) {
-  const { cookie, currentPageProps, ...props } = pageProps;
+  const { cookie, currentPageProps, currentPageOptions, ...props } = pageProps;
   const Settings = useSettingsProvider(settings);
 
   const queryClientRef = useRef();
@@ -33,6 +34,7 @@ export default function App({ Component, pageProps, settings }) {
           Component={Component}
           props={props}
           data={currentPageProps}
+          options={currentPageOptions}
         >
           <Head />
           <Settings cookie={cookie}>
