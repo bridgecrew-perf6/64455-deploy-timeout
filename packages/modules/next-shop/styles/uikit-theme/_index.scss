@@ -144,7 +144,7 @@ span > .uk-text-meta {
   @extend .uk-margin-medium;
 }
 
-.tm-section + .tm-section {
+.tm-section + .tm-section:not(:last-child) {
   @extend .uk-margin-bottom;
 }
 

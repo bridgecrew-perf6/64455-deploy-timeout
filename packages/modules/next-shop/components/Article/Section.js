@@ -19,7 +19,7 @@ const ArticleSection = () => (
           euismod nisl nunc, a dictum magna laoreet eget. Vestibulum ante ipsum
           primis in faucibus orci luctus et ultrices posuere cubilia Curae.
         </p>
-        <div className="tm-wrapper uk-text-center">
+        <div className="tm-expand uk-text-center">
           <figure>
             <Link href="/images/articles/macbook-photo.jpg">
               <img src="/images/articles/macbook-photo.jpg" alt="MacBook Pro" />
@@ -63,7 +63,7 @@ const ArticleSection = () => (
           augue, et lobortis justo. Suspendisse velit dui, sollicitudin quis
           velit nec, tincidunt consequat arcu.
         </p>
-        <div className="tm-wrapper">
+        <div className="tm-expand">
           <figure className="tm-ratio tm-ratio-16-9">
             <iframe
               src="https://www.youtube.com/embed/ysRigNyavF4"
@@ -219,7 +219,7 @@ const ArticleSection = () => (
           consequat id. Pellentesque elit diam, dignissim a lorem eu, tincidunt
           mollis erat.
         </p>
-        <div className="tm-wrapper">
+        <div className="tm-expand">
           <figure className="uk-text-center">
             <Link href="/images/articles/macbook-promo-3.jpg">
               <img

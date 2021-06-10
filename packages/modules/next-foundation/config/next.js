@@ -16,6 +16,12 @@ const coreModules = [
   '@atelierfabien/next-sanity',
 ];
 
+const defaults = {
+  future: {
+    webpack5: true,
+  },
+};
+
 module.exports = (config = {}) => {
   const { transpile = {}, plugins = [], ...nextConfig } = config;
 
@@ -36,6 +42,6 @@ module.exports = (config = {}) => {
       withRpc,
       ...plugins,
     ],
-    nextConfig
+    { ...defaults, ...nextConfig }
   );
 };

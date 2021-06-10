@@ -57,7 +57,7 @@ const AboutBody = () => (
       fermentum id diam.
     </p>
     <CommonAddress></CommonAddress>
-    <div className="tm-wrapper">
+    <div className="tm-expand">
       <CommonMap className="tm-ratio tm-ratio-16-9" />
     </div>
   </div>

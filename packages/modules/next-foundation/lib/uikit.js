@@ -18,10 +18,14 @@ export function useUIkit(fn) {
     const isBrowser = typeof window !== 'undefined';
     if (isBrowser && !window.UIkit) {
       async function load() {
-        const UIkit = await import('@atelierfabien/uikit');
+        const UIkit = await import('@atelierfabien/uikit').then(
+          (m) => m.default
+        );
+
         const icons = await import(
           '@atelierfabien/uikit/dist/js/uikit-icons.min'
         ).then((m) => m.default);
+
         window.UIkit = UIkit;
         UIkit.use(icons);
         setReady(true);

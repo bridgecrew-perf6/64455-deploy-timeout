@@ -11,7 +11,7 @@ const DeliveryPage = () => (
       fermentum id diam.
     </p>
     <CommonAddress className="uk-margin-bottom" />
-    <div className="tm-wrapper">
+    <div className="tm-expand">
       <CommonMap className="tm-ratio tm-ratio-16-9" />
     </div>
     <h2>Delivery in Brussels</h2>
