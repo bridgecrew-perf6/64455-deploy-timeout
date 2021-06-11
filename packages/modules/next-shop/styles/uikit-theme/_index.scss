@@ -259,10 +259,6 @@ span > .uk-text-meta {
   }
 }
 
-.tm-sidebar .uk-card {
-  overflow: hidden;
-}
-
 .tm-sidebar h4 {
   font-size: $nav-header-font-size;
   text-transform: $nav-header-text-transform;
@@ -1177,6 +1173,10 @@ span > .uk-text-meta {
 // Wrapper
 //
 
+.uk-card {
+  overflow: hidden;
+}
+
 // Small card
 .uk-card-body.uk-card-small .tm-expand,
 .uk-card-small .uk-card-body .tm-expand {
@@ -1485,3 +1485,23 @@ span > .uk-text-meta {
     filter: none;
   }
 }
+
+// Inverse
+
+// .uk-navbar-container,
+// .uk-card-default,
+// .uk-card-muted,
+// .uk-card-primary,
+// .uk-card-secondary,
+// .uk-tile-default,
+// .uk-tile-muted,
+// .uk-tile-primary,
+// .uk-tile-secondary,
+// .uk-section-default,
+// .uk-section-muted,
+// .uk-section-primary,
+// .uk-section-secondary,
+// .uk-overlay-default,
+// .uk-overlay-primary {
+
+// }
