@@ -264,6 +264,10 @@ span > .uk-text-meta {
     padding: 0;
     margin-top: -$navbar-item-height;
   }
+
+  [data-section='banner'] .tm-height-screen {
+    height: 100vh !important;
+  }
 }
 
 @media (min-width: $breakpoint-small) {
@@ -278,6 +282,7 @@ span > .uk-text-meta {
   [data-section='section.fragment'].tm-narrow,
   [data-section='section.collection'].tm-narrow,
   [data-section='section.cta'].tm-narrow,
+  [data-section='section.block'].tm-narrow,
   [data-section='image.grid'].tm-narrow,
   [data-section='image.slider'].tm-narrow,
   [data-section='image.slideshow'].tm-narrow {
