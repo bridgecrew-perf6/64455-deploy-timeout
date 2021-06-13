@@ -5,7 +5,7 @@ import { useTranslated } from './translation';
 import { get } from './util';
 
 export function useSite(getter = false) {
-  const data = { ...site };
+  const data = site;
   if (getter) {
     return (...args) => {
       if (args.length === 0) {

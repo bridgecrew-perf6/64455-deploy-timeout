@@ -1,6 +1,8 @@
 import React, { useMemo, useContext } from 'react';
 import { useRouter } from './navigation';
 import { useObject } from './hooks';
+import { useConfig } from './site';
+import { mergeObjects } from './util';
 
 export { default as Page } from '../components/Page';
 
@@ -80,6 +82,14 @@ export function usePage(data) {
   }
 
   return context.get();
+}
+
+export function usePageFragments(page) {
+  const { layout, fragments } = page ?? usePage();
+  const baseFragments = useConfig('fragments')();
+  return useMemo(() => {
+    return mergeObjects(baseFragments, layout?.fragments, fragments);
+  }, [baseFragments, fragments, layout]);
 }
 
 export function usePageOptions() {

@@ -225,7 +225,8 @@ span > .uk-text-meta {
 }
 
 [data-section='section.text'] {
-  &.tm-background .tm-header {
+  &.tm-background .tm-header,
+  .tm-header:last-child h3 {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }

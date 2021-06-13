@@ -86,6 +86,8 @@ export function useSeo(pageSeo = {}) {
       return acc.concat(canonicalizeLocale(lc, true));
     }, []);
 
+    console.log('OPENGRAPH', seo.openGraph);
+
     return seo;
   }, [pageSeo, router, site]);
 }
