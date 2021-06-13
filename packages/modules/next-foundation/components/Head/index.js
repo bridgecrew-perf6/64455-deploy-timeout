@@ -5,7 +5,7 @@ import HeadAssets from './Assets';
 
 export default function AppHead({ children }) {
   const options = usePageOptions();
-  const seo = useSeo();
+  const seo = useSeo(options.seo);
   return (
     <>
       <Head>

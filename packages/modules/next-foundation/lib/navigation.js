@@ -10,12 +10,12 @@ import React, {
 } from 'react';
 
 import { isExternalUrl } from './util';
-import { usePage } from './page';
+import { usePageOptions } from './page';
 
 export { Router };
 
 export function useRouter() {
-  const { router: page = {} } = usePage();
+  const { router: page = {} } = usePageOptions();
   const router = useNextRouter();
   router.page = page;
   return router;

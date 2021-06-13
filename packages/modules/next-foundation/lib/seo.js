@@ -15,13 +15,16 @@ export * from 'next-seo';
 //     const props = await getPageProps(context, {
 //       page: {
 //         title: document.title,
-//         router: {
-//           path: `/pages/${document.slug}`,
-//           canonical: `/pages/${document.slug}`,
-//           locales: {
-//             en: `/pages/${document.slug}/en`,
-//             nl: `/pages/${document.slug}/nl`,
-//           },
+//       },
+//       seo: {
+//         title: 'SEO Title ...', // optional
+//       },
+//       router: {
+//         path: `/pages/${document.slug}`,
+//         canonical: `/pages/${document.slug}`,
+//         locales: {
+//           en: `/pages/${document.slug}/en`,
+//           nl: `/pages/${document.slug}/nl`,
 //         },
 //       },
 //     });
@@ -33,7 +36,7 @@ export * from 'next-seo';
 //   }
 // };
 
-export function useSeo() {
+export function useSeo(pageSeo = {}) {
   const router = useRouter();
   const site = useSite();
 
@@ -41,7 +44,8 @@ export function useSeo() {
     const { baseUrl, translations, ...defaults } = site;
     const { asPath, locale, defaultLocale, locales = [] } = router;
     const i18n = site?.i18n?.[locale] ?? translations?.[locale] ?? {};
-    const seo = { ...defaults, ...i18n };
+    const page = { ...pageSeo };
+    const seo = { ...defaults, ...i18n, ...page };
 
     const pathname = get(router, ['page', 'path'], asPath);
     const canonical = get(router, ['page', 'canonical']);
@@ -72,6 +76,7 @@ export function useSeo() {
 
     seo.openGraph = {
       ...seo.openGraph,
+      ...page.openGraph,
       locale: canonicalizeLocale(locale, true),
     };
 
@@ -82,7 +87,7 @@ export function useSeo() {
     }, []);
 
     return seo;
-  }, [router, site]);
+  }, [pageSeo, router, site]);
 }
 
 export function PageSeo({ openGraph, ...props }) {
