@@ -1,7 +1,9 @@
-import { get, isEmpty, isNumber, isNaN, omitBy } from 'lodash-es';
+import { get, isEmpty, isNumber, isNaN, omitBy, isBoolean } from 'lodash-es';
 
 export function isBlank(value) {
-  return (isEmpty(value) && !isNumber(value)) || isNaN(value);
+  return (
+    (isEmpty(value) && !isNumber(value) && !isBoolean(value)) || isNaN(value)
+  );
 }
 
 export function titleizeString(camelCase) {
