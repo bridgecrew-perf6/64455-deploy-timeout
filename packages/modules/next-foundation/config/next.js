@@ -18,7 +18,7 @@ const coreModules = [
 
 const defaults = {
   future: {
-    webpack5: true,
+    webpack5: false,
   },
 };
 
