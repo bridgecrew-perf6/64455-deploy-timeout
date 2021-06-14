@@ -25,10 +25,5 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    alias: {
-      '@app/config/sanity': false,
-    },
-  },
   plugins: [new CleanWebpackPlugin()],
 };
