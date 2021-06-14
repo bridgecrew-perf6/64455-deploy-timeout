@@ -52,8 +52,6 @@ export function useSeo(pageSeo = {}) {
       ...page,
     };
 
-    console.log(defaults);
-
     const pathname = get(router, ['page', 'path'], asPath);
     const canonical = get(router, ['page', 'canonical']);
 
