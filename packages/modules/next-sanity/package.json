@@ -25,6 +25,7 @@
     "groq": "^2.2.6",
     "lodash.defaults": "^4.2.0",
     "next-sanity": "^0.2.0",
+    "traverse": "^0.6.6",
     "tree-walk-util": "^3.0.0"
   },
   "peerDependencies": {

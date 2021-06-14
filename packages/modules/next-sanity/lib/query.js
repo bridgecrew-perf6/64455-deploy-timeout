@@ -150,6 +150,26 @@ const types = {
       );
     };
   },
+  // Fetch one as singleton
+  singleton: (options = {}) => {
+    return function(params = {}) {
+      const {
+        query,
+        predicate,
+        projection,
+        filter,
+        locale,
+        defaultLocale,
+      } = getParams(params, options);
+      return this.client.fetch(
+        groq`
+          *[${andPredicate(predicate, query)}][0]{
+            ${projection}
+          }${filterPredicate(filter)}`,
+        { ...params, locale, defaultLocale }
+      );
+    };
+  },
   // Get all static paths
   staticPaths: (options = {}) => {
     const property = options.property ?? ['path', 'current'];
