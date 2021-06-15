@@ -84,12 +84,19 @@ export function usePage(data) {
   return context.get();
 }
 
-export function usePageFragments(page) {
-  const { layout, fragments } = page ?? usePage();
+export function usePageFragments(page, inherit = 'all') {
+  const { layout = {}, fragments = {} } = page ?? usePage();
+  const layoutFragments = layout?.fragments;
   const baseFragments = useConfig('fragments')();
   return useMemo(() => {
-    return mergeObjects(baseFragments, layout?.fragments, fragments);
-  }, [baseFragments, fragments, layout]);
+    if (inherit === 'all') {
+      return mergeObjects(baseFragments, layoutFragments, fragments);
+    } else if (inherit === 'layout') {
+      return mergeObjects(layoutFragments, fragments);
+    } else {
+      return mergeObjects({}, fragments);
+    }
+  }, [baseFragments, fragments, inherit, layoutFragments]);
 }
 
 export function usePageOptions() {
