@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { Link } from './navigation';
+import { usePage } from './page';
+import { get } from './util';
 
 // Setup Link classes to use UIkit
 Link.defaults.activeClassName = Link.defaults.activeClassName ?? 'uk-active';
@@ -43,10 +45,12 @@ export function useUIkit(fn) {
 }
 
 export function UIkit({ fadeIn, children, ...props }) {
+  const page = usePage();
   const ready = useUIkit();
   const className = ready ? (fadeIn ? 'uk-animation-fade' : null) : 'uk-hidden';
+  const layout = get(page, ['layout', 'identifier']);
   return (
-    <div className={className} {...props}>
+    <div className={className} {...props} data-page-layout={layout}>
       {children}
     </div>
   );
