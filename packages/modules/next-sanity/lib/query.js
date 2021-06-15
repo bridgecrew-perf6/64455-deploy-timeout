@@ -24,6 +24,8 @@ const getParams = (params, options = {}) => {
   return { locale: defaultLocale, ...merged };
 };
 
+const passThrough = () => true;
+
 const types = {
   // Fetch multiple
   all: (options = {}) => {
@@ -174,7 +176,7 @@ const types = {
   // Get all static paths
   staticPaths: (options = {}) => {
     const property = options.property ?? ['path', 'current'];
-    return async function(params = {}) {
+    return async function(params = {}, filterFn = passThrough) {
       const {
         query,
         predicate,
@@ -195,6 +197,7 @@ const types = {
       );
 
       return documents.reduce((memo, node) => {
+        if (!filterFn(node)) return memo; // skip
         locales.forEach(locale => {
           const i18n = node?.i18n ?? {};
           const merged = mergeObjects(node, i18n[defaultLocale], i18n[locale]);
