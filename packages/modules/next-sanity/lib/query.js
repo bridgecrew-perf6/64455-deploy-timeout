@@ -2,6 +2,7 @@
 
 import { get, isBlank, mergeObjects, trim } from '@foundation/next';
 import groq from 'groq';
+import { cleanupData } from './tree';
 
 export const andPredicate = (...predicates) => {
   const valid = predicates.filter(p => !isBlank(p));
@@ -35,7 +36,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)}]{
             ${projection}
@@ -55,7 +56,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && _id in $ids][0]{
             ${projection}
@@ -75,7 +76,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && _id == $id][0]{
             ${projection}
@@ -98,7 +99,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
@@ -121,7 +122,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
@@ -141,7 +142,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && ${property} == $value]{
             ${projection}
@@ -161,7 +162,7 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
-      return this.client.fetch(
+      return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)}][0]{
             ${projection}
@@ -185,7 +186,7 @@ const types = {
 
       if (!locales.includes(defaultLocale)) locales.unshift(defaultLocale);
 
-      const documents = await this.client.fetch(
+      const documents = await this.fetchData(
         groq`
           *[${andPredicate(predicate, query)}]{
             ${projection}
@@ -215,3 +216,18 @@ export const defineQuery = (type, options = {}) => {
     throw new Error(`Invalid query type: ${type}`);
   }
 };
+
+export const define = (methods = {}) => {
+  return client => {
+    return {
+      ...methods,
+      client,
+      fetchData,
+    };
+  };
+};
+
+async function fetchData(...args) {
+  const data = await this.client.fetch(...args);
+  return cleanupData(data);
+}

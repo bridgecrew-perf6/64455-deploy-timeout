@@ -83,8 +83,15 @@ function wrapInLayout(
   const _normalize = normalize.bind(null, pageLayouts);
 
   let layout = isLayout(pageLayout) ? pageLayout : Component.pageLayout;
+
   if (typeof layout === 'string' && Array.isArray(pageLayouts[layout])) {
     layout = pageLayouts[layout];
+  } else if (typeof layout === 'object') {
+    const { layout: layoutName, ...layoutProps } = layout;
+    if (Array.isArray(pageLayouts[layoutName])) {
+      layout = pageLayouts[layoutName];
+      Object.assign(props, layoutProps);
+    }
   }
 
   if (Array.isArray(layout)) {
