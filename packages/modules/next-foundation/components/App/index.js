@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { Hydrate } from 'react-query/hydration';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import layoutConfig from '@app/layouts';
 import {
   useSettingsProvider,
@@ -40,14 +39,13 @@ export default function App({ Component, pageProps, settings }) {
           <Settings cookie={cookie}>
             <NextDataHooksProvider {...props}>
               <LayoutProvider
-                Component={withLayout(Component, props)}
+                Component={withLayout(Component, props, currentPageOptions)}
                 pageProps={pageProps}
               />
             </NextDataHooksProvider>
           </Settings>
         </PageProvider>
       </Hydrate>
-      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

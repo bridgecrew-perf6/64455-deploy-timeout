@@ -37,13 +37,27 @@ export * from '@moxy/next-layout';
 //   },
 // };
 //
+// Dynamic - getPageProps:
+//
+// return getPageProps(context, {
+//   page: {
+//     title: item.content?.title,
+//     subtitle: item.content?.subtitle,
+//     content: item.content,
+//   },
+//   pageLayout: item.layout ?? 'pages',
+// });
+//
+//
 // Note: you can redefine appLayout and pageLayouts dynamically, too.
 
 export function withAppLayout(config = {}) {
-  return (Component, props = {}) => {
+  return (Component, props = {}, options = {}) => {
+    const pageLayout = props.pageLayout ?? options.pageLayout;
     return lookupLayout(Component, {
       ...config,
       ...props,
+      pageLayout,
       pageLayouts: {
         ...config.pageLayouts,
         ...props.pageLayouts,
