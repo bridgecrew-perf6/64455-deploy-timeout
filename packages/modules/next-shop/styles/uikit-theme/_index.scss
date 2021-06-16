@@ -73,6 +73,10 @@ a.uk-navbar-item.uk-active {
   color: $navbar-nav-item-active-color;
 }
 
+img.tm-image[uk-cover] {
+  width: 100%;
+}
+
 .uk-spaced,
 a > .uk-text-meta,
 a > .uk-text-muted,
