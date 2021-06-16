@@ -32,8 +32,12 @@ $control-inputs-hover: #f8f8f8 !default;
 
 // Ratio
 $ratio-1-1: 100%;
+$ratio-2-3: 150%;
 $ratio-3-2: 66.66%;
+$ratio-3-4: 133.33%;
 $ratio-4-3: 75%;
+$ratio-4-5: 125%;
+$ratio-5-4: 80%;
 $ratio-16-9: 56.25%;
 
 // Other
@@ -245,6 +249,10 @@ span > .uk-text-meta {
 @media (max-width: $breakpoint-small) {
   .uk-container.tm-container-expand {
     padding: 0;
+
+    .uk-card-default {
+      border-radius: 0;
+    }
   }
 
   [data-section='image.single'] > .uk-padding {
@@ -496,7 +504,7 @@ span > .uk-text-meta {
   background-color: $global-background;
   border-left: $global-border-width solid $global-border;
   border-bottom: $global-border-width solid $global-border;
-  //box-shadow: 0 0 0 $global-border-width $global-border;
+  // box-shadow: 0 0 0 $global-border-width $global-border;
 
   &.uk-first-column {
     border-left: none;
@@ -504,6 +512,20 @@ span > .uk-text-meta {
 
   @media (max-width: $breakpoint-medium - 1) {
     width: 100%;
+
+    &.tm-visible {
+      border-left: 0;
+      border-bottom: 0;
+    }
+  }
+
+  .tm-products-grid-large & {
+    flex-direction: column;
+
+    &:hover {
+      z-index: 2;
+      box-shadow: $global-xlarge-box-shadow;
+    }
   }
 
   @media (min-width: $breakpoint-medium) {
@@ -537,6 +559,10 @@ span > .uk-text-meta {
     }
   }
 
+  .tm-products-grid-large & {
+    width: 100%;
+  }
+
   @media (min-width: $breakpoint-medium) {
     width: 100%;
   }
@@ -551,6 +577,10 @@ span > .uk-text-meta {
 
   @media (min-width: $breakpoint-small) {
     padding: 20px 20px 20px 0;
+  }
+
+  .tm-products-grid-large & {
+    padding: 0 20px 20px 20px;
   }
 
   @media (min-width: $breakpoint-medium) {
@@ -1385,12 +1415,28 @@ span > .uk-text-meta {
   padding-top: $ratio-1-1;
 }
 
+.tm-ratio-2-3::before {
+  padding-top: $ratio-2-3;
+}
+
 .tm-ratio-3-2::before {
   padding-top: $ratio-3-2;
 }
 
+.tm-ratio-3-4::before {
+  padding-top: $ratio-3-4;
+}
+
 .tm-ratio-4-3::before {
   padding-top: $ratio-4-3;
+}
+
+.tm-ratio-4-5::before {
+  padding-top: $ratio-4-5;
+}
+
+.tm-ratio-5-4::before {
+  padding-top: $ratio-5-4;
 }
 
 .tm-ratio-16-9::before {

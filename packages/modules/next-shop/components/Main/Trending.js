@@ -7,7 +7,7 @@ const MainTrending = () => (
       <h2 className="uk-text-center">Trending Items</h2>
       <div className="uk-card uk-card-default tm-ignore-container">
         <div
-          className="uk-grid-collapse uk-child-width-1-3 uk-child-width-1-4@m tm-products-grid"
+          className="uk-grid-collapse uk-child-width-1-3 uk-child-width-1-4@m tm-products-grid tm-products-grid-large"
           uk-grid="true"
         >
           <ProductCard />
