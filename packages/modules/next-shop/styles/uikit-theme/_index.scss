@@ -103,6 +103,10 @@ span > .uk-text-meta {
   border-right: $global-border-width solid $inverse-global-border;
 }
 
+.tm-margin-remove [data-part='sections'] > .tm-section {
+  margin: 0 im !important;
+}
+
 .tm-page-main {
   overflow: hidden;
 }
@@ -262,19 +266,7 @@ span > .uk-text-meta {
 @media (min-width: $breakpoint-small) {
   .tm-section-content-width,
   .tm-section-width.tm-narrow,
-  [data-section='section.list'],
-  [data-section='section.divider'].tm-narrow,
-  [data-section='section.text'].tm-narrow,
-  [data-section='section.table'].tm-narrow,
-  [data-section='section.image'].tm-narrow,
-  [data-section='section.gallery'].tm-narrow,
-  [data-section='section.fragment'].tm-narrow,
-  [data-section='section.collection'].tm-narrow,
-  [data-section='section.cta'].tm-narrow,
-  [data-section='section.block'].tm-narrow,
-  [data-section='image.grid'].tm-narrow,
-  [data-section='image.slider'].tm-narrow,
-  [data-section='image.slideshow'].tm-narrow {
+  [data-section].tm-narrow {
     width: 100%;
     max-width: $max-content-width;
     margin-right: auto;
@@ -282,9 +274,7 @@ span > .uk-text-meta {
     box-sizing: border-box;
   }
 
-  [data-section='section.text'].tm-narrow,
-  [data-section='section.image'].tm-narrow,
-  [data-section='section.gallery'].tm-narrow {
+  [data-section].tm-narrow {
     .tm-section-title,
     .tm-section-body {
       @extend .tm-section-content-width;

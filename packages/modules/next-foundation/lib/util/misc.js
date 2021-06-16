@@ -30,3 +30,17 @@ export function lookup(obj, ...keys) {
   });
   return value;
 }
+
+export function detect(items, fn) {
+  let value;
+  items.find((item, index) => {
+    const match = fn(item, index);
+    if (typeof match === 'boolean' && value) {
+      value = item;
+    } else if (match !== undefined) {
+      value = match;
+    }
+    return match;
+  });
+  return value;
+}
