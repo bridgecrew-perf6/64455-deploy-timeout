@@ -103,8 +103,10 @@ span > .uk-text-meta {
   border-right: $global-border-width solid $inverse-global-border;
 }
 
-.tm-margin-remove [data-part='sections'] > .tm-section {
-  margin: 0 im !important;
+.tm-margin-remove [data-part='sections'] {
+  & > .tm-section {
+    margin: 0 !important;
+  }
 }
 
 .tm-page-main {
@@ -241,12 +243,15 @@ span > .uk-text-meta {
 }
 
 @media (max-width: $breakpoint-small) {
+  .uk-container.tm-container-expand {
+    padding: 0;
+  }
+
   [data-section='image.single'] > .uk-padding {
     padding: 0;
   }
 
   [data-section='banner'] > .uk-container {
-    padding: 0;
     margin-top: -$navbar-item-height;
   }
 

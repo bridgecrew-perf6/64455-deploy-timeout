@@ -1,6 +1,7 @@
 export * from './analytics';
 export * from './baobab';
 export * from './currency';
+export * from './constants';
 export * from './hocs';
 export * from './hooks';
 export * from './googlemaps';
