@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 import { useEventListener } from '@foundation/next';
 
 const message =
@@ -30,11 +32,11 @@ function addTo(el) {
 
 export default function Scripts() {
   useEventListener('show', '.js-product-switcher', (e, target) => {
-    UIkit.update(target);
+    window?.UIkit?.update(target);
   });
 
   useEventListener('click', '.js-add-to-cart', () => {
-    UIkit.offcanvas('#cart-offcanvas').show();
+    window?.UIkit?.offcanvas('#cart-offcanvas').show();
   });
 
   useEventListener('click', '.js-add-to', (e, el) => {

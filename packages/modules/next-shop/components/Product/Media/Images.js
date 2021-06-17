@@ -2,7 +2,10 @@ const ProductMediaImages = () => (
   <div>
     <div className="uk-card-body uk-flex uk-flex-center">
       <div className="uk-width-1-2 uk-visible@s">
-        <div uk-slider="finite: true; clsVisible: tm-visible">
+        <div
+          className="tm-thumbnail-slider"
+          uk-slider="finite: true; clsVisible: tm-visible"
+        >
           <div className="uk-position-relative">
             <div className="uk-slider-container">
               <ul className="tm-slider-items uk-slider-items uk-child-width-1-4 uk-grid uk-grid-small">

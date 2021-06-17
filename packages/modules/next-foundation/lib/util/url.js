@@ -1,3 +1,6 @@
+import { flatten } from 'lodash-es';
+import { isBlank } from './misc';
+
 const URL_REGEXP = /^([^:/?#]+:)?(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
 
 const ERROR_PAGE_REGEXP = /^\/(404|500|_error)/;
@@ -10,6 +13,16 @@ export function isErrorPage(pathname) {
 
 export function isUrl(url) {
   return URL_REGEXP.test(String(url || ''));
+}
+
+export function joinUrl(...parts) {
+  return `/${flatten(
+    parts.map(part => {
+      return part.split('/');
+    })
+  )
+    .filter(part => !isBlank(part))
+    .join('/')}`;
 }
 
 export function isExternalUrl(url, strict = false) {

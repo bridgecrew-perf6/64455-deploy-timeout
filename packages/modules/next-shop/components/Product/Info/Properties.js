@@ -23,7 +23,7 @@ const ProductInfoProperties = () => (
         className="uk-link-heading"
         href="#description"
         uk-scroll="duration: 300; offset: 58"
-        onClick={() => UIkit.switcher('.js-product-switcher').show(1)}
+        onClick={() => UIkit.switcher('.js-product-switcher')?.show(1)}
       >
         <span className="tm-pseudo">Detailed specifications</span>
         <span

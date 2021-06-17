@@ -22,7 +22,7 @@ const ProductRating = () => (
         className="uk-text-meta"
         href="#description"
         uk-scroll="duration: 300; offset: 58"
-        onClick={() => UIkit.switcher('.js-product-switcher').show(3)}
+        onClick={() => UIkit.switcher('.js-product-switcher')?.show(3)}
       >
         (2)
       </a>
