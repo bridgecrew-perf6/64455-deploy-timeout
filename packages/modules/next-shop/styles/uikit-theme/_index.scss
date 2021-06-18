@@ -1156,10 +1156,15 @@ span > .uk-text-meta {
 //
 
 .tm-quantity-input {
-  width: $global-control-height;
-  margin: 0 $global-xsmall-margin;
-  padding: 0;
-  text-align: center;
+  .uk-input {
+    width: $global-control-height;
+    padding: 0;
+    text-align: center;
+  }
+
+  &.tm-quantity-input-buttons .uk-input {
+    margin: 0 $global-small-margin;
+  }
 }
 
 //

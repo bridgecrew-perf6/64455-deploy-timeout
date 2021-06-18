@@ -42,10 +42,14 @@ const Quantity = ({
   }, [target, count, onChange]);
 
   return (
-    <div>
+    <div
+      className={`tm-quantity-input tm-quantity-input-${
+        buttons ? 'buttons' : 'default'
+      }`}
+    >
       {buttons && <a uk-icon="icon: minus; ratio: .75" onClick={decrement} />}
       <input
-        className="uk-input tm-quantity-input"
+        className="uk-input"
         id={target}
         type="number"
         min="0"
