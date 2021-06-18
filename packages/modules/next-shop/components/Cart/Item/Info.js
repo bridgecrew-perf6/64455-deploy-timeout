@@ -12,7 +12,7 @@ const CartItemInfo = () => (
         <div>$1599.00</div>
       </div>
       {/* Quantity */}
-      <CommonQuantity target="product-1" value={1} />
+      <CommonQuantity target="product-1" value={1} buttons />
       {/* Sum */}
       <div className="uk-flex uk-flex-center uk-flex-middle">
         <div className="uk-text-muted uk-hidden@m">Sum</div>

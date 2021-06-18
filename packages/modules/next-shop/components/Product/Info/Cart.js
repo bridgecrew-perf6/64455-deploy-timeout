@@ -4,7 +4,7 @@ const ProductInfoCart = () => (
   <div>
     <div className="uk-grid-small" uk-grid="true">
       {/* Quantity */}
-      <CommonQuantity target="product-1" value={1} />
+      <CommonQuantity target="product-1" value={1} buttons />
       {/* Add to cart button */}
       <div>
         <button
