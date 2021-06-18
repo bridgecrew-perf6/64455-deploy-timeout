@@ -232,5 +232,5 @@ export const define = (methods = {}) => {
 
 async function fetchData(...args) {
   const data = await this.client.fetch(...args);
-  return cleanupData(data);
+  return typeof data === 'object' && data !== null ? cleanupData(data) : data;
 }

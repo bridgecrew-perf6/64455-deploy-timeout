@@ -1,6 +1,6 @@
-const ProductVariant = () => (
+const ProductVariantColor = ({ title }) => (
   <div>
-    <div className="uk-text-small uk-margin-xsmall-bottom">Color</div>
+    <div className="uk-text-small uk-margin-xsmall-bottom">{title}</div>
     <ul className="uk-subnav uk-subnav-pill tm-variations" uk-switcher="true">
       <li>
         <a className="tm-variation-color" uk-tooltip="Space Grey">
@@ -24,4 +24,4 @@ const ProductVariant = () => (
   </div>
 );
 
-export default ProductVariant;
+export default ProductVariantColor;

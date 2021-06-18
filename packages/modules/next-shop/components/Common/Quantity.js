@@ -4,6 +4,7 @@ const Quantity = ({ target, value, onChange }) => {
   const [count, setCount] = useState(typeof value === 'number' ? value : 1);
 
   const increment = useCallback(() => setCount(count => count + 1), []);
+
   const decrement = useCallback(
     () => setCount(count => Math.max(0, count - 1)),
     []
@@ -22,7 +23,7 @@ const Quantity = ({ target, value, onChange }) => {
         type="text"
         maxLength={3}
         value={count}
-        onChange={e => setCount(e.value)}
+        readOnly
       />
       <a uk-icon="icon: plus; ratio: .75" onClick={increment} />
     </div>

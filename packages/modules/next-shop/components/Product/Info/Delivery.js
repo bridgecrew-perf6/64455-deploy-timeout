@@ -8,7 +8,10 @@ const ProductInfoDelivery = () => (
         {/* Delivery */}
         <div>
           <div className="uk-grid-collapse" uk-grid="true">
-            <span className="uk-margin-xsmall-right" uk-icon="cart" />
+            <span
+              className="uk-margin-small-right uk-flex uk-flex-middle"
+              uk-icon="cart"
+            />
             <div>
               <div className="uk-text-bolder">Delivery</div>
               <div className="uk-text-xsmall uk-text-muted">
@@ -20,7 +23,10 @@ const ProductInfoDelivery = () => (
         {/* Pick up */}
         <div>
           <div className="uk-grid-collapse" uk-grid="true">
-            <span className="uk-margin-xsmall-right" uk-icon="location" />
+            <span
+              className="uk-margin-small-right uk-flex uk-flex-middle"
+              uk-icon="location"
+            />
             <div>
               <div className="uk-text-bolder">Pick up from store</div>
               <div className="uk-text-xsmall uk-text-muted">

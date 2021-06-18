@@ -49,6 +49,11 @@ $navbar-item-height: 60px !default;
 // Custom styles
 //
 
+.uk-label-muted {
+  background-color: $global-muted-background;
+  color: $global-color;
+}
+
 .uk-background-success {
   background-color: $global-success-background;
 }
@@ -111,6 +116,22 @@ span > .uk-text-meta {
   & > .tm-section {
     margin: 0 !important;
   }
+}
+
+.tm-border-left {
+  border-left: $global-border-width solid $global-border;
+}
+
+.tm-border-right {
+  border-right: $global-border-width solid $global-border;
+}
+
+.tm-border-top {
+  border-top: $global-border-width solid $global-border;
+}
+
+.tm-border-bottom {
+  border-bottom: $global-border-width solid $global-border;
 }
 
 .tm-page-main {
@@ -376,6 +397,15 @@ span > .uk-text-meta {
 /* Portable Text */
 
 .tm-portable-text {
+}
+
+/* Label */
+@at-root .tm-label-large {
+  font-size: $global-font-size;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: $global-large-font-size;
+  }
 }
 
 /* Tablet landscape and bigger */
@@ -1126,8 +1156,9 @@ span > .uk-text-meta {
 //
 
 .tm-quantity-input {
-  width: 60px;
+  width: $global-control-height;
   margin: 0 $global-xsmall-margin;
+  padding: 0;
   text-align: center;
 }
 
@@ -1245,7 +1276,7 @@ span > .uk-text-meta {
 
 // Small card
 .uk-card-body.uk-card-small .tm-expand,
-.uk-card-small .uk-card-body.tm-expand {
+.uk-card-small .uk-card-body .tm-expand {
   margin-right: -$card-small-body-padding-horizontal;
   margin-left: -$card-small-body-padding-horizontal;
 }
@@ -1505,14 +1536,26 @@ span > .uk-text-meta {
   }
 }
 
-.tm-ignore-margin {
-  @media (max-width: $breakpoint-small) {
+@media (max-width: $breakpoint-small) {
+  .tm-ignore-margin {
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
-}
+  .tm-ignore-margin-top {
+    margin-top: 0 !important;
+  }
+  .tm-ignore-margin-bottom {
+    margin-bottom: 0 !important;
+  }
 
-.tm-ignore-padding {
-  @media (max-width: $breakpoint-small) {
+  .tm-ignore-padding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .tm-ignore-padding-top {
+    padding-top: 0 !important;
+  }
+  .tm-ignore-padding-bottom {
     padding-bottom: 0 !important;
   }
 }
