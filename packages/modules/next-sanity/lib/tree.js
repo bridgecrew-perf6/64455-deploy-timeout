@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable array-callback-return */
 /* eslint-disable func-names */
 
@@ -7,7 +8,7 @@ export * as tree from 'tree-walk-util';
 
 export { default as traverse } from 'traverse';
 
-export const cleanupData = data => {
+export const processResults = data => {
   return traverse(data).map(function(x) {
     if (this.circular || x === null) {
       this.remove();

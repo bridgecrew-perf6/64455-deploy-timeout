@@ -1,8 +1,9 @@
 import React, { useMemo, useContext } from 'react';
 import { useRouter } from './navigation';
+
 import { useObject } from './hooks';
 import { useConfig } from './site';
-import { mergeObjects } from './util';
+import { mergeObjects, isEqual, omit } from './util';
 
 export { default as Page } from '../components/Page';
 
@@ -14,7 +15,7 @@ export function beforeRender(handler) {
   if (typeof handler === 'function') handlers.push(handler);
 }
 
-export const PageProvider = ({
+export const PageContextProvider = ({
   children,
   Component,
   props,
@@ -69,6 +70,25 @@ export const PageProvider = ({
 
   return <PageContext.Provider value={data}>{children}</PageContext.Provider>;
 };
+
+// Examples:
+//
+// Product.memoizeComponent = true;
+//
+// Product.memoizeComponent = (previous, next) => false;
+
+export const PageProvider = React.memo(
+  PageContextProvider,
+  (previous, next) => {
+    if (previous?.Component?.memoizeComponent === true) {
+      return isEqual(omit(previous, 'children'), omit(next, 'children'));
+    } else if (typeof previous?.Component?.memoizeComponent === 'function') {
+      return previous?.Component?.memoizeComponent(previous, next);
+    } else {
+      return false;
+    }
+  }
+);
 
 export function usePage(data) {
   const context = useContext(PageContext);

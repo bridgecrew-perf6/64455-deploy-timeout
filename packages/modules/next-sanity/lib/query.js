@@ -2,7 +2,7 @@
 
 import { get, isBlank, mergeObjects, trim } from '@foundation/next';
 import groq from 'groq';
-import { cleanupData } from './tree';
+import { processResults } from './tree';
 
 export const andPredicate = (...predicates) => {
   const valid = predicates.filter(p => !isBlank(p));
@@ -175,7 +175,7 @@ const types = {
   },
   // Get all static paths
   staticPaths: (options = {}) => {
-    const property = options.property ?? ['path', 'current'];
+    const property = options.property ?? ['path'];
     return async function(params = {}, filterFn = passThrough) {
       const {
         query,
@@ -232,5 +232,7 @@ export const define = (methods = {}) => {
 
 async function fetchData(...args) {
   const data = await this.client.fetch(...args);
-  return typeof data === 'object' && data !== null ? cleanupData(data) : data;
+  return typeof data === 'object' && data !== null
+    ? processResults(data)
+    : data;
 }
