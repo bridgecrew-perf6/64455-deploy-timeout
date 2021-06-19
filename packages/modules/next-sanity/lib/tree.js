@@ -9,6 +9,15 @@ export { default as traverse } from 'traverse';
 
 export const cleanupData = data => {
   return traverse(data).map(function(x) {
-    if (this.circular || x === null) this.remove();
+    if (this.circular || x === null) {
+      this.remove();
+    } else if (
+      x &&
+      typeof x === 'object' &&
+      x._type === 'slug' &&
+      typeof x.current === 'string'
+    ) {
+      this.update(x.current);
+    }
   });
 };
