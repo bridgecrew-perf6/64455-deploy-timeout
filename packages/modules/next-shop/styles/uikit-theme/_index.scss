@@ -82,6 +82,42 @@ a.uk-navbar-item.uk-active {
   color: $navbar-nav-item-active-color;
 }
 
+.uk-label-small {
+  font-size: $global-xsmall-font-size;
+  line-height: $label-line-height * 2;
+}
+
+.uk-label-transparent {
+  background: transparent;
+  border: 1px solid $global-primary-background;
+  color: $global-primary-background;
+
+  &.uk-label-secondary {
+    border: 1px solid $global-secondary-background;
+    color: $global-secondary-background;
+  }
+  
+  &.uk-label-success {
+    border: 1px solid $global-success-background;
+    color: $global-success-background;
+  }
+
+  &.uk-label-warning {
+    border: 1px solid $global-warning-background;
+    color: $global-warning-background;
+  }
+
+  &.uk-label-danger {
+    border: 1px solid $global-danger-background;
+    color: $global-danger-background;
+  }
+
+  .uk-active > & {
+    border: 1px solid $global-primary-background;
+    color: $global-primary-background;
+  }
+}
+
 img.tm-image[uk-cover] {
   width: 100%;
 }
