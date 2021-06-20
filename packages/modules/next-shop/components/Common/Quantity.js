@@ -7,6 +7,7 @@ const Quantity = ({
   onChange,
   max = 99,
   buttons = false,
+  disabled = false,
   readOnly = false,
   target = 'quantity',
   inputProps = {},
@@ -38,8 +39,13 @@ const Quantity = ({
   );
 
   useEffect(() => {
-    if (typeof onChange === 'function') onChange(target, count);
+    if (typeof onChange === 'function')
+      onChange(target, typeof count === 'number' ? count : 0);
   }, [target, count, onChange]);
+
+  useEffect(() => {
+    if (typeof value === 'number') setCount(value);
+  }, [value]);
 
   return (
     <div
@@ -58,6 +64,7 @@ const Quantity = ({
         value={count}
         onChange={update}
         onBlur={update}
+        disabled={disabled}
         readOnly={readOnly}
         {...inputProps}
       />

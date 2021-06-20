@@ -1116,6 +1116,13 @@ span > .uk-text-meta {
   @media (min-width: 420px) {
     padding: 0 25px;
   }
+
+  transition: color, background-color 300ms ease-out;
+
+  &[disabled] {
+    border-color: $button-primary-background;
+    color: $button-primary-background;
+  }
 }
 
 // Description
@@ -1605,6 +1612,10 @@ span > .uk-text-meta {
   &:hover::after {
     left: 100%;
     transition: 0.6s ease-out;
+  }
+
+  &[disabled]::after {
+    display: none;
   }
 }
 
