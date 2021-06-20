@@ -40,6 +40,14 @@ $ratio-4-5: 125%;
 $ratio-5-4: 80%;
 $ratio-16-9: 56.25%;
 
+// Label
+$label-active-background: $global-primary-background !default;
+$label-active-color: $global-primary-background !default;
+$label-hover-background: $label-active-background !default;
+$label-hover-color: $label-active-color !default;
+$label-secondary-background: $global-secondary-background !default;
+$label-secondary-color: $global-secondary-background !default;
+
 // Other
 $max-content-width: $breakpoint-small !default;
 
@@ -92,9 +100,14 @@ a.uk-navbar-item.uk-active {
   border: 1px solid $global-primary-background;
   color: $global-primary-background;
 
+  &:hover {
+    border: 1px solid $label-hover-background !important;
+    color: $label-hover-color !important;
+  }
+
   &.uk-label-secondary {
-    border: 1px solid $global-secondary-background;
-    color: $global-secondary-background;
+    border: 1px solid $label-secondary-background;
+    color: $label-secondary-background;
   }
   
   &.uk-label-success {
@@ -113,8 +126,8 @@ a.uk-navbar-item.uk-active {
   }
 
   .uk-active > & {
-    border: 1px solid $global-primary-background;
-    color: $global-primary-background;
+    border: 1px solid $label-active-background;
+    color: $label-active-color;
   }
 }
 
