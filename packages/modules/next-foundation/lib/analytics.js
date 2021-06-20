@@ -115,7 +115,7 @@ export function useGoogleAnalytics(options = {}) {
   return { ...consent, ga: ReactGA, log, enabled, tracking };
 }
 
-function logPageView() {
+function logPageView(url, options = {}) {
   if (typeof window !== 'undefined') {
     if (process.env.NODE_ENV === 'production') {
       ReactGA.set({ page: window.location.pathname });

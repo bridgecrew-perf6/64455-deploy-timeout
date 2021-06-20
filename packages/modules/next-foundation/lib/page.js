@@ -3,7 +3,7 @@ import { useRouter } from './navigation';
 
 import { useObject } from './hooks';
 import { useConfig } from './site';
-import { mergeObjects, isEqual, omit } from './util';
+import { mergeObjects, isEqual } from './util';
 
 export { default as Page } from '../components/Page';
 
@@ -81,7 +81,7 @@ export const PageProvider = React.memo(
   PageContextProvider,
   (previous, next) => {
     if (previous?.Component?.memoizeComponent === true) {
-      return isEqual(omit(previous, 'children'), omit(next, 'children'));
+      return isEqual(previous, next);
     } else if (typeof previous?.Component?.memoizeComponent === 'function') {
       return previous?.Component?.memoizeComponent(previous, next);
     } else {

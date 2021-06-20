@@ -1,9 +1,9 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { Hydrate } from 'react-query/hydration';
 import layoutConfig from '@app/layouts';
 import {
   useSettingsProvider,
-  withAppLayout,
+  buildLayout,
   LayoutProvider,
   NextDataHooksProvider,
   PageProvider,
@@ -15,9 +15,14 @@ import Head from '../Head';
 
 import '../../config/module';
 
-const withLayout = withAppLayout(layoutConfig);
+const useAppLayout = buildLayout(layoutConfig);
 
-export default function App({ Component, pageProps, settings }) {
+function AppLayout({ Component, pageProps }) {
+  const LayoutComponent = useAppLayout(Component, pageProps);
+  return <LayoutProvider Component={LayoutComponent} pageProps={pageProps} />;
+}
+
+function App({ Component, pageProps, settings }) {
   const { cookie, currentPageProps, currentPageOptions, ...props } = pageProps;
   const Settings = useSettingsProvider(settings);
 
@@ -29,23 +34,22 @@ export default function App({ Component, pageProps, settings }) {
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <Hydrate state={pageProps.dehydratedState}>
-        <PageProvider
-          Component={Component}
-          props={props}
-          data={currentPageProps}
-          options={currentPageOptions}
-        >
-          <Head />
+        <NextDataHooksProvider {...props}>
           <Settings cookie={cookie}>
-            <NextDataHooksProvider {...props}>
-              <LayoutProvider
-                Component={withLayout(Component, props, currentPageOptions)}
-                pageProps={pageProps}
-              />
-            </NextDataHooksProvider>
+            <PageProvider
+              Component={Component}
+              props={props}
+              data={currentPageProps}
+              options={currentPageOptions}
+            >
+              <Head />
+              <AppLayout Component={Component} pageProps={pageProps} />
+            </PageProvider>
           </Settings>
-        </PageProvider>
+        </NextDataHooksProvider>
       </Hydrate>
     </QueryClientProvider>
   );
 }
+
+export default App;

@@ -33,7 +33,8 @@
     "next-transpile-modules": "^7.2.0",
     "next-universal-cookie": "^2.0.0",
     "react-ga": "^3.3.0",
-    "react-query": "^3.16.0"
+    "react-query": "^3.16.0",
+    "use-deep-compare": "^1.1.0"
   },
   "peerDependencies": {
     "@atelierfabien/uikit": "^3.6.22",

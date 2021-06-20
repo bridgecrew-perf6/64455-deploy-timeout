@@ -1,5 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { withLayout, LayoutTree } from '@moxy/next-layout';
+import { useDeepCompareMemo } from './util';
+
+import { useSettings } from '.';
 
 export * from '@moxy/next-layout';
 
@@ -66,14 +70,25 @@ export function withAppLayout(config = {}) {
   };
 }
 
+export function buildLayout(config = {}) {
+  const withLayout = withAppLayout(config);
+  return function useAppLayout(Component, pageProps) {
+    const { currentPageOptions, ...props } = pageProps;
+    const { locale, currency, settings } = useSettings();
+    const currentSettings = settings.get();
+    return useDeepCompareMemo(
+      () => withLayout(Component, props, currentPageOptions),
+      [Component, currentPageOptions, props, locale, currency, currentSettings]
+    );
+  };
+}
+
 export function lookupLayout(Component, props = {}) {
   const wrap = withLayout(options => wrapInLayout(Component, options), props);
   return typeof wrap === 'function' ? wrap : Component => Component;
 }
 
-export function LayoutProvider(props) {
-  return <LayoutTree {...props} />;
-}
+export const LayoutProvider = props => <LayoutTree {...props} />;
 
 function wrapInLayout(
   Component,
