@@ -1161,11 +1161,11 @@ span > .uk-text-meta {
 //
 
 .tm-product-info {
-  border-top: $global-border-width solid $global-border;
+  // border-top: $global-border-width solid $global-border;
 
   @media (min-width: $breakpoint-medium) {
-    min-width: 390px;
-    border-top: none;
+    // min-width: 390px;
+    // border-top: none;
     border-left: $global-border-width solid $global-border;
   }
 }
