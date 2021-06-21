@@ -15,7 +15,7 @@ export const orPredicate = (...predicates) => {
 };
 
 export const filterPredicate = filter => {
-  return isBlank(filter) ? '' : filter;
+  return isBlank(filter) ? '' : `|${filter}`;
 };
 
 const getParams = (params, options = {}) => {
@@ -43,6 +43,46 @@ const types = {
           *[${andPredicate(predicate, query)}]{
             ${projection}
           }${filterPredicate(filter)}`,
+        { ...params, locale, defaultLocale }
+      );
+    };
+  },
+  // Fetch one based on one param
+  one: (options = {}) => {
+    return function(value, params = {}) {
+      const {
+        query,
+        predicate,
+        projection,
+        filter,
+        locale,
+        defaultLocale,
+      } = getParams(params, options);
+      return this.fetchData(
+        groq`
+            *[${andPredicate(predicate, query)}][0]{
+              ${projection}
+            }${filterPredicate(filter)}`,
+        { ...params, value, locale, defaultLocale }
+      );
+    };
+  },
+  // Fetch one as singleton
+  singleton: (options = {}) => {
+    return function(params = {}) {
+      const {
+        query,
+        predicate,
+        projection,
+        filter,
+        locale,
+        defaultLocale,
+      } = getParams(params, options);
+      return this.fetchData(
+        groq`
+            *[${andPredicate(predicate, query)}][0]{
+              ${projection}
+            }${filterPredicate(filter)}`,
         { ...params, locale, defaultLocale }
       );
     };
@@ -150,26 +190,6 @@ const types = {
             ${projection}
           }${filterPredicate(filter)}`,
         { ...params, value, locale, defaultLocale }
-      );
-    };
-  },
-  // Fetch one as singleton
-  singleton: (options = {}) => {
-    return function(params = {}) {
-      const {
-        query,
-        predicate,
-        projection,
-        filter,
-        locale,
-        defaultLocale,
-      } = getParams(params, options);
-      return this.fetchData(
-        groq`
-          *[${andPredicate(predicate, query)}][0]{
-            ${projection}
-          }${filterPredicate(filter)}`,
-        { ...params, locale, defaultLocale }
       );
     };
   },
