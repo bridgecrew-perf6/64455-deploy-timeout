@@ -1,18 +1,14 @@
 import CommonQuantity from '@shop/components/Common/Quantity';
+import ProductPurchaseButton from '@shop/components/Product/Purchase/Button';
 
-const ProductInfoCart = () => (
+const ProductPurchaseCart = () => (
   <div>
     <div className="uk-grid-small" uk-grid="true">
       {/* Quantity */}
       <CommonQuantity target="product-1" value={1} buttons />
       {/* Add to cart button */}
       <div>
-        <button
-          className="uk-button uk-button-primary tm-product-add-button tm-shine js-add-to-cart"
-          type="button"
-        >
-          add to cart
-        </button>
+        <ProductPurchaseButton />
       </div>
       {/* Actions buttons */}
       <div className="uk-width-auto uk-width-expand@s uk-flex uk-flex-middle uk-text-meta">
@@ -33,4 +29,4 @@ const ProductInfoCart = () => (
   </div>
 );
 
-export default ProductInfoCart;
+export default ProductPurchaseCart;

@@ -1,7 +1,7 @@
 import ProductInfoBrand from '@shop/components/Product/Info/Brand';
 import ProductInfoDetails from '@shop/components/Product/Info/Details';
 import ProductVariants from '@shop/components/Product/Variants';
-import ProductInfoPurchase from '@shop/components/Product/Info/Purchase';
+import ProductPurchase from '@shop/components/Product/Purchase';
 import ProductInfoDelivery from '@shop/components/Product/Info/Delivery';
 import ProductInfoProperties from '@shop/components/Product/Info/Properties';
 
@@ -15,7 +15,7 @@ const ProductInfo = () => (
       {/* Variations */}
       <ProductVariants></ProductVariants>
       {/* Shop */}
-      <ProductInfoPurchase></ProductInfoPurchase>
+      <ProductPurchase></ProductPurchase>
       {/* Delivery info */}
       <ProductInfoDelivery></ProductInfoDelivery>
       {/* Properties */}

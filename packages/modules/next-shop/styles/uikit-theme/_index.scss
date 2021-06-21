@@ -90,6 +90,14 @@ a.uk-navbar-item.uk-active {
   color: $navbar-nav-item-active-color;
 }
 
+.uk-icon.uk-icon-left {
+  margin-right: -20px;
+}
+
+.uk-icon.uk-icon-right {
+  margin-left: -20px;
+}
+
 .uk-label-small {
   font-size: $global-xsmall-font-size;
   line-height: $label-line-height * 2;
@@ -109,7 +117,7 @@ a.uk-navbar-item.uk-active {
     border: 1px solid $label-secondary-background;
     color: $label-secondary-background;
   }
-  
+
   &.uk-label-success {
     border: 1px solid $global-success-background;
     color: $global-success-background;
@@ -181,6 +189,17 @@ span > .uk-text-meta {
 
 .tm-border-bottom {
   border-bottom: $global-border-width solid $global-border;
+}
+
+.tm-value-listing > :nth-child(n + 2)::before {
+  content: $breadcrumb-divider;
+  display: inline-block;
+  margin: 0 $breadcrumb-divider-margin-horizontal;
+  font-size: $breadcrumb-divider-font-size;
+  color: $breadcrumb-divider-color;
+  @if (mixin-exists(hook-breadcrumb-divider)) {
+    @include hook-breadcrumb-divider();
+  }
 }
 
 .tm-page-main {
@@ -1171,6 +1190,10 @@ span > .uk-text-meta {
   &[disabled] {
     border-color: $button-primary-background;
     color: $button-primary-background;
+  }
+
+  &.uk-flex {
+    padding: 0 $global-small-gutter;
   }
 }
 

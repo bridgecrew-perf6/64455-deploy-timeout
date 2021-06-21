@@ -44,3 +44,7 @@ export function detect(items, fn) {
   });
   return value;
 }
+
+export function sliceEnd(array, count = 1) {
+  return array.slice(Math.max(array.length - count, 0));
+}
