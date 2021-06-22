@@ -5,7 +5,9 @@ import { isBlank } from '@foundation/lib/util';
 const Quantity = ({
   value,
   onChange,
-  max = 99,
+  min = 1,
+  max = -1,
+  resetTo = 0,
   buttons = false,
   disabled = false,
   readOnly = false,
@@ -14,9 +16,14 @@ const Quantity = ({
 }) => {
   const [count, setCount] = useState(typeof value === 'number' ? value : 1);
 
-  const clamp = useCallback(value => Math.max(0, value > max ? 1 : value), [
-    max,
-  ]);
+  const clamp = useCallback(
+    value =>
+      Math.max(
+        Math.max(0, min),
+        max > 0 && value > max ? (resetTo > 0 ? resetTo : max) : value
+      ),
+    [max, min, resetTo]
+  );
 
   const increment = useCallback(() => setCount(count => clamp(count + 1)), [
     clamp,
@@ -30,12 +37,12 @@ const Quantity = ({
     e => {
       if (isBlank(e.target.value) && e.type !== 'blur') {
         setCount('');
-      } else if (!(String(e.target.value).length > String(max).length)) {
+      } else if (!(String(e.target.value).length > 2)) {
         const int = parseInt(e.target.value, 10);
         setCount(clamp(int > 0 ? int : 1));
       }
     },
-    [clamp, max]
+    [clamp]
   );
 
   useEffect(() => {
@@ -58,8 +65,6 @@ const Quantity = ({
         className="uk-input"
         id={target}
         type="number"
-        min="0"
-        max={max}
         step="1"
         value={count}
         onChange={update}

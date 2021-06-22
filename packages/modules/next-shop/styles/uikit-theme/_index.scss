@@ -1202,6 +1202,28 @@ span > .uk-text-meta {
   border-top: $global-border solid $global-border-width;
 }
 
+// Availability
+
+[data-availability] [data-part='icon'] svg {
+  transition: all 300ms ease-out;
+}
+
+[data-status='loading'] [data-part='icon'] {
+  color: $global-color !important;
+}
+
+[data-availability='in-stock'] [data-part='icon'] {
+  color: $global-success-background;
+}
+
+[data-availability='out-of-stock'] [data-part='icon'] {
+  color: $global-danger-background;
+}
+
+[data-availability^='ships-in-'] [data-part='icon'] {
+  color: $global-warning-background;
+}
+
 // Nav
 .tm-product-nav {
   display: flex;
