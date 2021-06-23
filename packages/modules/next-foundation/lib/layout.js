@@ -3,7 +3,7 @@ import React from 'react';
 import { withLayout, LayoutTree } from '@moxy/next-layout';
 import { useDeepCompareMemo } from './util';
 
-import { useSettings } from '.';
+import { useSettings } from './settings';
 
 export * from '@moxy/next-layout';
 

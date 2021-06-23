@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import ReactGA from 'react-ga';
 import { useCookie } from 'next-universal-cookie';
-import { Router, useRouter } from './navigation';
+import { Router, useRouter } from './router';
 import { useSettingEffect } from './settings';
 import { isErrorPage } from './util';
 

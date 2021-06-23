@@ -1,11 +1,9 @@
 import React, { useMemo, useContext } from 'react';
-import { useRouter } from './navigation';
+import { useRouter } from 'next/router'; // use standard
 
 import { useObject } from './hooks';
 import { useConfig } from './site';
 import { mergeObjects, isEqual } from './util';
-
-export { default as Page } from '../components/Page';
 
 export const PageContext = React.createContext();
 
@@ -29,6 +27,8 @@ export const PageContextProvider = ({
 
     let pageProps = { ...defaults };
 
+    const pageOptions = { ...options };
+
     function setPageProps(data) {
       if (typeof data === 'function') {
         pageProps = { ...data(pageProps) };
@@ -40,7 +40,10 @@ export const PageContextProvider = ({
     setPageProps(Component.pageProps);
 
     pageProps = handlers.reduce((memo, handler) => {
-      return { ...memo, ...handler(memo, { Component, props, router }) };
+      return {
+        ...memo,
+        ...handler(memo, { Component, props, router, options: pageOptions }),
+      };
     }, pageProps);
 
     return {
@@ -63,7 +66,7 @@ export const PageContextProvider = ({
           setPageProps(state => ({ ...state, ...data }));
         }
       },
-      options,
+      options: pageOptions,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);

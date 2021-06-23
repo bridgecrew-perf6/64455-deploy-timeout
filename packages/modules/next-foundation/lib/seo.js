@@ -1,9 +1,20 @@
 import { useMemo } from 'react';
 import { NextSeo } from 'next-seo';
 import { resolveSeoImage } from '@app/config/runtime';
-import { useRouter } from './navigation';
-import { get, pick, canonicalizeLocale, isBlank } from './util';
+import { useRouter } from './router';
+
+import {
+  get,
+  pick,
+  canonicalizeLocale,
+  isBlank,
+  lookup,
+  mergeObjects,
+  blocksToText,
+} from './util';
+
 import { useSite } from './site';
+
 import { usePage } from './page';
 
 export * from 'next-seo';
@@ -129,6 +140,45 @@ export function useSeo(pageSeo = {}) {
   }, [pageSeo, router, site]);
 }
 
+export const usePageSeo = (options = {}) => {
+  const { openGraph, ...opts } = options;
+  const page = usePage();
+  const pageSeo = typeof page.seo === 'object' ? page.seo : {};
+
+  const title = blocksToText(
+    lookup(
+      page,
+      ['seo', 'title'],
+      ['title'],
+      ['content', 'title'],
+      ['name'],
+      ['label']
+    ),
+    { newlines: false }
+  );
+
+  const description = blocksToText(
+    lookup(page, ['seo', 'description'], ['description'], ['content', 'intro']),
+    { newlines: false }
+  );
+
+  const keywords = lookup(page, ['seo', 'keywords'], ['keywords'], ['tags']);
+
+  const og = lookup(page, ['seo', 'openGraph'], ['openGraph']);
+
+  const image =
+    pageSeo.image ?? lookup(page, ['social', 'image'], ['images', 0]);
+
+  const seo = mergeObjects(pageSeo, {
+    title,
+    description,
+    keywords,
+    image,
+    ...opts,
+  });
+  return useSeo({ ...seo, openGraph: { ...openGraph, ...og } });
+};
+
 export function resolveImage(image, _resursive) {
   if (typeof image === 'string') {
     return { url: image };
@@ -144,8 +194,6 @@ export function resolveImage(image, _resursive) {
   }
 }
 
-export function PageSeo({ openGraph, ...props }) {
-  const { title, description, openGraph: og } = usePage();
-  const seo = { title, description, ...props };
-  return <NextSeo {...seo} openGraph={{ ...openGraph, ...og }} />;
+export function PageSeo(props) {
+  return <NextSeo {...props} />;
 }

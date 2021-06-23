@@ -1,9 +1,9 @@
 import CookieConsent from '@foundation/components/CookieConsent';
-import { UIkit } from '@foundation/next';
+import { UIkit } from '@foundation/lib/uikit'; // direct
 
 import CommonScripts from '@shop/components/Common/Scripts';
 
-export default function MainLayout({ children }) {
+const MainLayout = ({ children }) => {
   return (
     <>
       <CommonScripts />
@@ -13,4 +13,6 @@ export default function MainLayout({ children }) {
       </UIkit>
     </>
   );
-}
+};
+
+export default MainLayout;

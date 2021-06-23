@@ -1,4 +1,13 @@
-import { get, isEmpty, isNumber, isNaN, omitBy, isBoolean } from 'lodash-es';
+import {
+  get,
+  isEmpty,
+  isNumber,
+  isNaN,
+  omitBy,
+  isBoolean,
+  pickBy,
+  identity,
+} from 'lodash-es';
 
 export function isBlank(value) {
   return (
@@ -18,6 +27,10 @@ export function mergeObjects(...objects) {
     const data = omitBy(obj, value => isBlank(value));
     return { ...memo, ...data };
   }, {});
+}
+
+export function compactObject(obj) {
+  return pickBy(obj, identity);
 }
 
 export function lookup(obj, ...keys) {
@@ -47,4 +60,27 @@ export function detect(items, fn) {
 
 export function sliceEnd(array, count = 1) {
   return array.slice(Math.max(array.length - count, 0));
+}
+
+export function blocksToText(blocks, opts = {}) {
+  const options = { nonTextBehavior: 'remove', newlines: true, ...opts };
+  if (typeof blocks === 'string') {
+    return blocks;
+  } else if (Array.isArray(blocks)) {
+    return blocks
+      .map(block => {
+        if (
+          !(block._type === 'block' || block?._type.indexOf('block.') === 0) ||
+          !block.children
+        ) {
+          return options.nonTextBehavior === 'remove'
+            ? ''
+            : `[${block._type} block]`;
+        }
+        return block.children.map(child => child.text).join('');
+      })
+      .join(options.newlines ? '\n\n' : ' ');
+  } else {
+    return '';
+  }
 }

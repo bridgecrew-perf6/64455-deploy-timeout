@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { useState, useEffect, useRef } from 'react';
-import Head from 'next/head';
 import { Link } from './navigation';
 import { usePage } from './page';
 import { get } from './util';

@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import Head from 'next/head';
-import { useConfig, usePageOptions, useSeo, DefaultSeo } from '../../lib';
+import { useConfig, usePageOptions, usePageSeo, DefaultSeo } from '../../lib';
 
 import HeadAssets from './Assets';
 
 export default function AppHead({ children }) {
   const options = usePageOptions();
-  const seo = useSeo(options.seo);
+  const seo = usePageSeo(options.seo);
 
   const siteAssets = useConfig('site')('assets');
 

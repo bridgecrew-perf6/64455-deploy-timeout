@@ -1,4 +1,4 @@
-import { PageSeo } from '../../lib';
+import { PageSeo } from '../../lib/seo';
 import { pick } from '../../lib/util';
 
 const SEO_PROPS = [

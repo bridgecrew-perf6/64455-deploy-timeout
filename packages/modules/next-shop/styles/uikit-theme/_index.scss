@@ -1592,6 +1592,7 @@ span > .uk-text-meta {
   display: block;
   box-sizing: border-box;
   height: 100%;
+  cursor: default;
 }
 
 .tm-media-box-frame {
@@ -1599,7 +1600,7 @@ span > .uk-text-meta {
   border-radius: $border-rounded-border-radius;
 }
 
-.tm-media-box-zoom {
+[uk-lightbox] .tm-media-box-zoom {
   cursor: zoom-in;
 }
 

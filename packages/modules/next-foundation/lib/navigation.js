@@ -1,5 +1,6 @@
-import { Router, useRouter as useNextRouter } from 'next/router';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router'; // use standard
+
 import React, {
   Children,
   useState,
@@ -10,16 +11,6 @@ import React, {
 } from 'react';
 
 import { isExternalUrl } from './util';
-import { usePageOptions } from './page';
-
-export { Router };
-
-export function useRouter() {
-  const { router: page = {} } = usePageOptions();
-  const router = useNextRouter();
-  router.page = page;
-  return router;
-}
 
 export function useLocationHash(fn) {
   const isBrowser = typeof window !== 'undefined';

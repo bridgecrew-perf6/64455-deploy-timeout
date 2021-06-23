@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from './navigation';
+import { useRouter } from 'next/router'; // use standard
 
 import { get, simplifyLocale } from './util';
 

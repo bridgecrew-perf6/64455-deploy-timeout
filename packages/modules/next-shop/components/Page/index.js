@@ -1,3 +1,3 @@
-import { Page } from '@foundation/next';
+import Page from '@foundation/components/Page';
 
 export default Page;

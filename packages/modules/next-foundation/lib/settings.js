@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { useCookie, NextCookieProvider } from 'next-universal-cookie';
 import { usePrevious } from './hooks';
-import { useRouter } from './navigation';
+import { useRouter } from './router';
 import { get } from './util';
 import Currency from './util/currency';
 

@@ -25,5 +25,13 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    fallback: {
+      fs: false,
+      tls: false,
+      path: false,
+      os: false,
+    },
+  },
   plugins: [new CleanWebpackPlugin()],
 };

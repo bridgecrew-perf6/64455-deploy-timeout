@@ -1,4 +1,5 @@
 import {
+  initializeApp,
   beforeRender,
   beforePageHooks,
   afterPageHooks,
@@ -10,6 +11,10 @@ import App from '@foundation/components/App';
 import '@app/styles/main.scss';
 import '@foundation/styles/reset.scss';
 import '@foundation/styles/tailwind.scss';
+
+// Initialize app
+
+initializeApp();
 
 // Called on server through getPageProps (in getStaticProps, getServerSideProps):
 

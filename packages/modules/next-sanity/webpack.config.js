@@ -29,6 +29,12 @@ module.exports = {
     alias: {
       '@app/config/sanity': false,
     },
+    fallback: {
+      fs: false,
+      tls: false,
+      path: false,
+      os: false,
+    },
   },
   plugins: [new CleanWebpackPlugin()],
 };
