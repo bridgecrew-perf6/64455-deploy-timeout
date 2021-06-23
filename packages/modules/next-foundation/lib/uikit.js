@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useState, useEffect, useRef } from 'react';
 import { Link } from './navigation';
-import { usePage } from './page';
+import { usePage, usePageOptions } from './page';
 import { get } from './util';
 
 // Setup Link classes to use UIkit
@@ -45,9 +45,14 @@ export function useUIkit(fn) {
 
 export function UIkit({ fadeIn, children, ...props }) {
   const page = usePage();
+  const pageOptions = usePageOptions();
   const ready = useUIkit();
   const className = ready ? (fadeIn ? 'uk-animation-fade' : null) : 'uk-hidden';
-  const layout = get(page, ['layout', 'identifier']);
+  const pageLayout = get(pageOptions, ['pageLayout', 'layout']);
+  const layout =
+    typeof pageLayout === 'string'
+      ? pageLayout
+      : get(page, ['layout', 'identifier']);
   return (
     <div className={className} {...props} data-page-layout={layout}>
       {children}
