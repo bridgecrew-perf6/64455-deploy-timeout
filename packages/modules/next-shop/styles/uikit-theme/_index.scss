@@ -139,6 +139,10 @@ a.uk-navbar-item.uk-active {
   }
 }
 
+.uk-breadcrumb > :nth-child(n + 2):not(.uk-first-column)::before {
+  margin: 0 $breadcrumb-divider-margin-horizontal;
+}
+
 img.tm-image[uk-cover] {
   width: 100%;
 }

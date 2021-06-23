@@ -4,8 +4,9 @@ import {
   usePage,
   useSettings,
   useGoogleAnalytics,
-  Page,
 } from '@foundation/next';
+
+import Page from '@foundation/components/Page';
 
 export const getStaticProps = async context => {
   const t = await getTranslation(context.locale, 'common');

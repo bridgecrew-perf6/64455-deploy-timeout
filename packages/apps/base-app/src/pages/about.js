@@ -4,8 +4,9 @@ import {
   usePage,
   useTranslation,
   useCurrency,
-  Page,
 } from '@foundation/next';
+
+import Page from '@foundation/components/Page';
 
 import LocaleList from '@foundation/components/LocaleList';
 import CurrencyList from '@foundation/components/CurrencyList';

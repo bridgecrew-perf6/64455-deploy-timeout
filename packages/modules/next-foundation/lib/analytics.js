@@ -118,8 +118,8 @@ export function useGoogleAnalytics(options = {}) {
 function logPageView(url, options = {}) {
   if (typeof window !== 'undefined') {
     if (process.env.NODE_ENV === 'production') {
-      ReactGA.set({ page: window.location.pathname });
-      ReactGA.pageview(window.location.pathname);
+      ReactGA.set({ page: url ?? window.location.pathname, ...options });
+      ReactGA.pageview(url ?? window.location.pathname);
     } else {
       // eslint-disable-next-line no-console
       console.log('[react-ga] %s (dev)', window.location.pathname);

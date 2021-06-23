@@ -1,4 +1,5 @@
-import { defineDataHook, useTranslation, Page, Link } from '@foundation/next';
+import { defineDataHook, useTranslation, Link } from '@foundation/next';
+import Page from '@foundation/components/Page';
 
 import getBlogPosts from './lib/get-blog-posts';
 

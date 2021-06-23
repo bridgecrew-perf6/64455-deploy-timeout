@@ -29,12 +29,22 @@ export function useDataHook(key, strict = true) {
   return dataHooksValue;
 }
 
-export function usePrevious(value) {
+export function usePrevious(value, options = {}) {
+  const { fallback, shouldChange = () => true } = options;
+
   const ref = useRef();
+
   useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
+    if (shouldChange(ref.current, value)) {
+      ref.current = value;
+    }
+  }, [shouldChange, value]);
+
+  if (typeof ref.current === 'undefined') {
+    return fallback;
+  } else {
+    return ref.current;
+  }
 }
 
 // Hook
