@@ -54,6 +54,32 @@ $max-content-width: $breakpoint-small !default;
 $navbar-item-height: 60px !default;
 
 //
+// Extra small grid
+//
+
+$grid-xsmall-gutter-horizontal: 8px !default;
+$grid-xsmall-gutter-vertical: $grid-xsmall-gutter-horizontal !default;
+
+/* Horizontal */
+.uk-grid-xsmall,
+.uk-grid-column-xsmall {
+  margin-left: (-$grid-xsmall-gutter-horizontal);
+}
+.uk-grid-xsmall > *,
+.uk-grid-column-xsmall > * {
+  padding-left: $grid-xsmall-gutter-horizontal;
+}
+
+/* Vertical */
+.uk-grid + .uk-grid-xsmall,
+.uk-grid + .uk-grid-row-xsmall,
+.uk-grid-xsmall > .uk-grid-margin,
+.uk-grid-row-xsmall > .uk-grid-margin,
+* + .uk-grid-margin-xsmall {
+  margin-top: $grid-xsmall-gutter-vertical;
+}
+
+//
 // Custom styles
 //
 
@@ -1130,34 +1156,64 @@ span > .uk-text-meta {
 // Variations
 //
 
-.tm-variations {
-  margin: 0 0 0 -10px;
+.tm-pill {
+  display: block;
 
-  & > * {
-    padding-left: 10px;
+  border-radius: $border-rounded-border-radius;
+  font-size: $subnav-item-font-size;
+  text-transform: $subnav-item-text-transform;
+  transition: 0.1s ease-in-out;
+  transition-property: color, background-color;
+
+  color: $global-color;
+  border: $global-border-width solid $global-border;
+  padding: $subnav-pill-item-padding-vertical
+    $subnav-pill-item-padding-horizontal;
+
+  @if (mixin-exists(hook-subnav-pill-item)) {
+    @include hook-subnav-pill-item();
   }
 
-  & > * > :first-child {
-    color: $global-color;
-    border: $global-border-width solid $global-border;
+  &:hover {
+    background-color: $subnav-pill-item-hover-background;
+    color: $subnav-pill-item-hover-color;
+
+    @if (mixin-exists(hook-subnav-pill-item-hover)) {
+      @include hook-subnav-pill-item-hover();
+    }
   }
 
-  & > .uk-active > a {
+  &:active {
+    background-color: $subnav-pill-item-onclick-background;
+    color: $subnav-pill-item-onclick-color;
+
+    @if (mixin-exists(hook-subnav-pill-item-onclick)) {
+      @include hook-subnav-pill-item-onclick();
+    }
+  }
+
+  .uk-active &,
+  &.uk-active {
     color: $global-color;
     border-color: $global-primary-background;
     background-color: transparent;
+
+    @if (mixin-exists(hook-subnav-pill-item-active)) {
+      @include hook-subnav-pill-item-active();
+    }
   }
 
-  & > * > .tm-variation-color {
-    padding: 5px;
+  &.tm-variation-color {
+    padding: $subnav-pill-item-padding-horizontal / 2;
     border-radius: 50%;
-  }
-}
+    display: block;
 
-.tm-variation-color > div {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+    > div {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+  }
 }
 
 //
@@ -1184,10 +1240,6 @@ span > .uk-text-meta {
 // Add to card button
 .tm-product-add-button {
   padding: 0 15px;
-
-  @media (min-width: 420px) {
-    padding: 0 25px;
-  }
 
   transition: color, background-color 300ms ease-out;
 
@@ -1730,7 +1782,9 @@ span > .uk-text-meta {
   }
 }
 
+//
 // Inverse
+//
 
 // .uk-navbar-container,
 // .uk-card-default,
