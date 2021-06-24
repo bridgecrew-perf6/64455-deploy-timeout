@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useMemo, useContext, useRef } from 'react';
 import { useRouter } from 'next/router'; // use standard
 
 import { useObject } from './hooks';
@@ -18,16 +18,16 @@ export const PageContextProvider = ({
   Component,
   props,
   data: defaults = {},
+  shared: initial = {},
   options = {},
 }) => {
   const router = useRouter();
+  const shared = useRef(initial);
 
   const data = useMemo(() => {
     // reset on router change (per-page)
 
     let pageProps = { ...defaults };
-
-    const pageOptions = { ...options };
 
     function setPageProps(data) {
       if (typeof data === 'function') {
@@ -42,7 +42,13 @@ export const PageContextProvider = ({
     pageProps = handlers.reduce((memo, handler) => {
       return {
         ...memo,
-        ...handler(memo, { Component, props, router, options: pageOptions }),
+        ...handler(memo, {
+          Component,
+          props,
+          router,
+          shared: shared.current,
+          options,
+        }),
       };
     }, pageProps);
 
@@ -66,7 +72,8 @@ export const PageContextProvider = ({
           setPageProps(state => ({ ...state, ...data }));
         }
       },
-      options: pageOptions,
+      shared: shared.current,
+      options,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
@@ -107,6 +114,27 @@ export function usePage(data) {
   return context.get();
 }
 
+export function usePageData(data) {
+  const page = usePage(data);
+  return useObject(page);
+}
+
+export function usePageOptions(passThrough) {
+  const context = useContext(PageContext);
+  if (typeof passThrough === 'object' && !isBlank(passThrough)) {
+    return passThrough;
+  } else if (typeof context?.options !== 'object') {
+    return {};
+  }
+  return context.options;
+}
+
+export function useSharedState() {
+  const context = useContext(PageContext);
+  if (typeof context?.shared !== 'object') return {};
+  return context.shared;
+}
+
 export function usePageFragments(page, inherit = 'all') {
   const { layout = {}, fragments = {} } = page ?? usePage();
   const layoutFragments = layout?.fragments;
@@ -120,21 +148,6 @@ export function usePageFragments(page, inherit = 'all') {
       return mergeObjects({}, fragments);
     }
   }, [baseFragments, fragments, inherit, layoutFragments]);
-}
-
-export function usePageOptions(passThrough) {
-  const context = useContext(PageContext);
-  if (typeof passThrough === 'object' && !isBlank(passThrough)) {
-    return passThrough;
-  } else if (typeof context?.options !== 'object') {
-    return {};
-  }
-  return context.options;
-}
-
-export function usePageData(data) {
-  const page = usePage(data);
-  return useObject(page);
 }
 
 export function usePagePart(partName, props) {
