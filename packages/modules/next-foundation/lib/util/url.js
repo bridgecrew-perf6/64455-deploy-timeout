@@ -2,6 +2,7 @@ import { flatten } from 'lodash-es';
 import { isBlank } from './misc';
 
 const URL_REGEXP = /^([^:/?#]+:)?(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
+const FULL_URL_REGEXP = /^([^:/?#]+:)(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
 
 const ERROR_PAGE_REGEXP = /^\/(404|500|_error)/;
 
@@ -15,14 +16,20 @@ export function isUrl(url) {
   return URL_REGEXP.test(String(url || ''));
 }
 
+export function isFullyQualifiedUrl(url) {
+  return FULL_URL_REGEXP.test(String(url || ''));
+}
+
 export function joinUrl(...parts) {
-  return `/${flatten(
+  const isFullyQualified = isFullyQualifiedUrl(parts[0]);
+  const url = flatten(
     parts.map(part => {
-      return part.split('/');
+      return typeof part === 'string' ? part.split('/') : '';
     })
   )
     .filter(part => !isBlank(part))
-    .join('/')}`;
+    .join('/');
+  return isFullyQualified ? url : `/${url}`;
 }
 
 export function isExternalUrl(url, strict = false) {
