@@ -134,7 +134,9 @@ export function Link({
     );
   } else {
     return (
-      <Wrapper {...props}>{React.cloneElement(child, { className })}</Wrapper>
+      <Wrapper {...props} passHref>
+        {React.cloneElement(child, { className })}
+      </Wrapper>
     );
   }
 }
