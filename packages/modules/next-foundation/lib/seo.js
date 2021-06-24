@@ -1,5 +1,9 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable func-names */
+/* eslint-disable react/no-this-in-sfc */
+
 import { useMemo } from 'react';
-import { NextSeo } from 'next-seo';
+import * as ns from 'next-seo';
 import { resolveSeoImage } from '@app/config/runtime';
 import { useRouter } from './router';
 
@@ -11,13 +15,14 @@ import {
   lookup,
   mergeObjects,
   blocksToText,
+  traverse,
 } from './util';
 
 import { useSite } from './site';
 
 import { usePage } from './page';
 
-export * from 'next-seo';
+const { NextSeo, DefaultSeo } = ns;
 
 // Example
 //
@@ -197,3 +202,78 @@ export function resolveImage(image, _resursive) {
 export function PageSeo(props) {
   return <NextSeo {...props} />;
 }
+
+export const escapeJsonLdString = string =>
+  JSON.stringify(string).replace(/(^"|"$)/g, '');
+
+export const withJsonLdEscaping = Component => {
+  return props => {
+    const clean = useMemo(() => {
+      return traverse(props).map(function(value) {
+        if (isBlank(value)) {
+          this.remove();
+        } else if (typeof value === 'string') {
+          this.update(escapeJsonLdString(value));
+        }
+      });
+    }, [props]);
+    return <Component {...clean} />;
+  };
+};
+
+const {
+  ArticleJsonLd,
+  BlogJsonLd,
+  BreadcrumbJsonLd,
+  CarouselJsonLd,
+  CollectionPageJsonLd,
+  CorporateContactJsonLd,
+  CourseJsonLd,
+  DatasetJsonLd,
+  EventJsonLd,
+  FAQPageJsonLd,
+  JobPostingJsonLd,
+  LocalBusinessJsonLd,
+  LogoJsonLd,
+  NewsArticleJsonLd,
+  ProductJsonLd,
+  ProfilePageJsonLd,
+  RecipeJsonLd,
+  SiteLinksSearchBoxJsonLd,
+  SocialProfileJsonLd,
+  SoftwareAppJsonLd,
+  VideoGameJsonLd,
+  VideoJsonLd,
+} = Object.entries(ns).reduce((memo, [name, Component]) => {
+  if (name.endsWith('JsonLd')) {
+    memo[name] = withJsonLdEscaping(Component);
+  }
+  return memo;
+}, {});
+
+export {
+  NextSeo,
+  DefaultSeo,
+  ArticleJsonLd,
+  BlogJsonLd,
+  BreadcrumbJsonLd,
+  CarouselJsonLd,
+  CollectionPageJsonLd,
+  CorporateContactJsonLd,
+  CourseJsonLd,
+  DatasetJsonLd,
+  EventJsonLd,
+  FAQPageJsonLd,
+  JobPostingJsonLd,
+  LocalBusinessJsonLd,
+  LogoJsonLd,
+  NewsArticleJsonLd,
+  ProductJsonLd,
+  ProfilePageJsonLd,
+  RecipeJsonLd,
+  SiteLinksSearchBoxJsonLd,
+  SocialProfileJsonLd,
+  SoftwareAppJsonLd,
+  VideoGameJsonLd,
+  VideoJsonLd,
+};
