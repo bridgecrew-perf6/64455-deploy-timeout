@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'; // use standard
 
 import { useObject } from './hooks';
 import { useConfig } from './site';
-import { mergeObjects, isEqual, isBlank } from './util';
+import { omit, mergeObjects, isEqual, isBlank } from './util';
 
 export const PageContext = React.createContext();
 
@@ -135,4 +135,15 @@ export function usePageOptions(passThrough) {
 export function usePageData(data) {
   const page = usePage(data);
   return useObject(page);
+}
+
+export function usePagePart(partName, props) {
+  const options = usePageOptions(props);
+  return useMemo(() => {
+    const part = mergeObjects({}, options[partName]);
+    const hasHeading = !isBlank(omit(part, 'breadcrumbs'));
+    const hasBreadcrumbs =
+      Array.isArray(part.breadcrumbs) && part.breadcrumbs.length > 0;
+    return hasHeading || hasBreadcrumbs ? part : null;
+  }, [options, partName]);
 }

@@ -20,7 +20,7 @@ const DefaultLayout = ({ children, heading }) => {
 
   return (
     <section
-      className="uk-section uk-section-small tm-ignore-padding"
+      className="uk-section uk-section-small tm-ignore-padding tm-page-viewport"
       uk-height-viewport="expand: true"
     >
       <div className="uk-container">
