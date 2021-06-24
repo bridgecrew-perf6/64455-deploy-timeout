@@ -2,7 +2,6 @@ import { usePage, Link } from '@foundation/next';
 
 const CommonHeading = () => {
   const { title } = usePage();
-
   return (
     <div className="uk-text-center">
       <ul className="uk-breadcrumb uk-flex-center uk-margin-remove">

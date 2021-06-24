@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'; // use standard
 
 import { useObject } from './hooks';
 import { useConfig } from './site';
-import { mergeObjects, isEqual } from './util';
+import { mergeObjects, isEqual, isBlank } from './util';
 
 export const PageContext = React.createContext();
 
@@ -122,9 +122,13 @@ export function usePageFragments(page, inherit = 'all') {
   }, [baseFragments, fragments, inherit, layoutFragments]);
 }
 
-export function usePageOptions() {
+export function usePageOptions(passThrough) {
   const context = useContext(PageContext);
-  if (typeof context?.options !== 'object') return {};
+  if (typeof passThrough === 'object' && !isBlank(passThrough)) {
+    return passThrough;
+  } else if (typeof context?.options !== 'object') {
+    return {};
+  }
   return context.options;
 }
 
