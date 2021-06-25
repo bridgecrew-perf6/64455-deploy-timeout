@@ -20,7 +20,3 @@ export * from './uikit';
 
 export { default as getTranslation } from 'next-translate/getT';
 export { default as useTranslation } from 'next-translate/useTranslation';
-
-export const initializeApp = () => {
-  // currently does nothing ...
-};

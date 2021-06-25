@@ -1,4 +1,4 @@
-import React, { useMemo, useContext, useRef } from 'react';
+import React, { useMemo, useContext } from 'react';
 import { useRouter } from 'next/router'; // use standard
 
 import { useObject } from './hooks';
@@ -8,7 +8,11 @@ import { omit, mergeObjects, isEqual, isBlank, wrapStateObject } from './util';
 
 export const PageContext = React.createContext();
 
-const handlers = [];
+let handlers = [];
+
+export const initializeApp = () => {
+  handlers = []; // reset handlers
+};
 
 export function beforeRender(handler) {
   if (typeof handler === 'function') handlers.push(handler);
@@ -19,11 +23,10 @@ export const PageContextProvider = ({
   Component,
   props,
   data: defaults = {},
-  shared: initial = {},
   options = {},
 }) => {
   const globalData = useGlobalContext();
-  const shared = useRef(initial);
+
   const router = useRouter();
 
   const data = useMemo(() => {
@@ -58,7 +61,6 @@ export const PageContextProvider = ({
     });
 
     Object.assign(wrapped, {
-      shared: shared.current,
       global,
       options,
     });
@@ -71,7 +73,7 @@ export const PageContextProvider = ({
           Component,
           props,
           router,
-          shared: shared.current,
+
           global,
           options,
         }),
@@ -133,12 +135,6 @@ export function usePageOptions(passThrough) {
     return {};
   }
   return context.options;
-}
-
-export function useSharedState() {
-  const context = useContext(PageContext);
-  if (typeof context?.shared !== 'object') return {};
-  return context.shared;
 }
 
 export function usePageFragments(page, inherit = 'all') {
