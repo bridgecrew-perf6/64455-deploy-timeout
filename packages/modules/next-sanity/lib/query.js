@@ -252,6 +252,7 @@ export const define = (methods = {}) => {
 };
 
 async function fetchData(...args) {
+  // eslint-disable-next-line no-console
   if (this.debug === true) console.log(args[0]);
   const data = await this.client.fetch(...args);
   return typeof data === 'object' && data !== null
