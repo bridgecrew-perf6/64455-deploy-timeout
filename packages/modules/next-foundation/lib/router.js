@@ -23,15 +23,17 @@ const ROUTER_KEYS = [
 export function useRouter() {
   const { router: page = {} } = usePageOptions();
   const router = useNextRouter();
+  router.page = page;
+  return router;
+}
 
+export function usePreviousRoute() {
+  const router = useRouter();
   const previous = usePrevious(pick(router, ROUTER_KEYS), {
     shouldChange: (prev, next) => {
       return !isEqual(pick(prev, ROUTER_KEYS), pick(next, ROUTER_KEYS));
     },
     fallback: router,
   });
-
-  router.previousState = previous;
-  router.page = page;
-  return router;
+  return previous;
 }

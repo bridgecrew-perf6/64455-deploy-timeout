@@ -141,12 +141,13 @@ const types = {
         locale,
         defaultLocale,
       } = getParams(params, options);
+      const pathname = Array.isArray(path) ? `/${path.join('/')}` : path;
       return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, path, locale, defaultLocale }
+        { ...params, path: pathname, locale, defaultLocale }
       );
     };
   },
@@ -251,6 +252,7 @@ export const define = (methods = {}) => {
 };
 
 async function fetchData(...args) {
+  if (this.debug === true) console.log(args[0]);
   const data = await this.client.fetch(...args);
   return typeof data === 'object' && data !== null
     ? processResults(data)

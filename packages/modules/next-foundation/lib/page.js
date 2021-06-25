@@ -8,6 +8,16 @@ import { omit, mergeObjects, isEqual, isBlank, wrapStateObject } from './util';
 
 export const PageContext = React.createContext();
 
+// Example:
+//
+// beforeRender((page, { global, router, options }) => {
+//   global.merge(state => ({ ...state, count: (state.count ?? 0) + 1 }));
+//   console.log('PATH', router.asPath);
+//   console.log('COUNT', global.get('count'));
+//   console.log('OPTIONS', options);
+//   return { somePageOverride: true };
+// });
+
 let handlers = [];
 
 export const initializeApp = () => {
@@ -72,18 +82,17 @@ export const PageContextProvider = ({
       options,
     });
 
+    const opts = {
+      page: pageWrapper,
+      global: globalWrapper,
+      options: optionsWrapper,
+      Component,
+      props,
+      router,
+    };
+
     pageProps = handlers.reduce((memo, handler) => {
-      return {
-        ...memo,
-        ...handler(memo, {
-          page: pageWrapper,
-          global: globalWrapper,
-          options: optionsWrapper,
-          Component,
-          props,
-          router,
-        }),
-      };
+      return { ...memo, ...handler(memo, opts) };
     }, pageProps);
 
     return pageWrapper;
