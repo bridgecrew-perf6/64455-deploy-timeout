@@ -25,8 +25,7 @@ export const PageContextProvider = ({
   data: defaults = {},
   options = {},
 }) => {
-  const globalData = useGlobalContext();
-
+  const global = useGlobalContext();
   const router = useRouter();
 
   const data = useMemo(() => {
@@ -50,17 +49,25 @@ export const PageContextProvider = ({
       setPageProps(Component.pageProps);
     }
 
-    const wrapped = wrapStateObject(pageProps, setPageProps, defaults);
+    const pageWrapper = wrapStateObject(pageProps, setPageProps, defaults);
 
-    const global = wrapStateObject(globalData, data => {
+    const globalWrapper = wrapStateObject(global, data => {
       if (typeof data === 'function') {
-        Object.assign(globalData, data(globalData));
+        Object.assign(global, data(global));
       } else if (typeof data === 'object') {
-        Object.assign(globalData, data); // merge instead of overwrite
+        Object.assign(global, data); // merge instead of overwrite
       }
     });
 
-    Object.assign(wrapped, {
+    const optionsWrapper = wrapStateObject(options, data => {
+      if (typeof data === 'function') {
+        Object.assign(options, data(options));
+      } else if (typeof data === 'object') {
+        Object.assign(options, data); // merge instead of overwrite
+      }
+    });
+
+    Object.assign(pageWrapper, {
       global,
       options,
     });
@@ -69,18 +76,17 @@ export const PageContextProvider = ({
       return {
         ...memo,
         ...handler(memo, {
-          page: wrapped,
+          page: pageWrapper,
+          global: globalWrapper,
+          options: optionsWrapper,
           Component,
           props,
           router,
-
-          global,
-          options,
         }),
       };
     }, pageProps);
 
-    return wrapped;
+    return pageWrapper;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 

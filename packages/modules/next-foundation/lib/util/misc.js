@@ -1,6 +1,7 @@
 import {
   get,
   set,
+  has,
   unset,
   isEmpty,
   isNumber,
@@ -95,6 +96,7 @@ export function wrapStateObject(data, setData, defaults = {}) {
       return typeof key === 'undefined' ? data : get(data, key, defaultValue);
     },
     set: (key, value) => setData(state => ({ ...set(state, key, value) })),
+    has: key => has(data, key),
     unset: key => setData(state => (unset(state, key) ? { ...state } : state)),
     reset: (obj = defaults) => setData(obj),
     merge: obj => {

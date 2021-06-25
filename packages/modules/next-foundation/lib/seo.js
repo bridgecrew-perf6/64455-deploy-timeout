@@ -58,7 +58,8 @@ export function useSeo(pageSeo = {}) {
   const site = useSite();
 
   return useMemo(() => {
-    const { baseUrl, translations, additionalMetaTags, ...defaults } = site;
+    const { baseUrl, translations, ...defaults } = site;
+
     const { asPath, locale, defaultLocale, locales = [] } = router;
     const i18n = site?.i18n?.[locale] ?? translations?.[locale] ?? {};
     const { _type, ...page } = { ...pageSeo };
@@ -67,6 +68,8 @@ export function useSeo(pageSeo = {}) {
       ...i18n,
       ...page,
     };
+
+    const { additionalMetaTags, additionalLinkTags } = seo;
 
     const pathname = get(router, ['page', 'path'], asPath);
     const canonical = get(router, ['page', 'canonical']);
@@ -83,8 +86,12 @@ export function useSeo(pageSeo = {}) {
     }
 
     seo.additionalMetaTags = Array.isArray(additionalMetaTags)
-      ? [].concat(defaults.additionalMetaTags || []).concat(additionalMetaTags)
-      : [].concat(defaults.additionalMetaTags || []);
+      ? [].concat(defaults.additionalMetaTags ?? []).concat(additionalMetaTags)
+      : [].concat(defaults.additionalMetaTags ?? []);
+
+    seo.additionalLinkTags = Array.isArray(additionalLinkTags)
+      ? [].concat(defaults.additionalLinkTags ?? []).concat(additionalLinkTags)
+      : [].concat(defaults.additionalLinkTags ?? []);
 
     seo.site_name = seo.site_name ?? seo.name;
 
@@ -181,6 +188,7 @@ export const usePageSeo = (options = {}) => {
     image,
     ...opts,
   });
+
   return useSeo({ ...seo, openGraph: { ...openGraph, ...og } });
 };
 
