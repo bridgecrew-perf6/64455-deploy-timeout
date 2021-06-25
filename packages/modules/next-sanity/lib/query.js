@@ -37,13 +37,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)}]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, locale, defaultLocale }
+        { ...queryParams, locale, defaultLocale }
       );
     };
   },
@@ -57,13 +58,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
             *[${andPredicate(predicate, query)}][0]{
               ${projection}
             }${filterPredicate(filter)}`,
-        { ...params, value, locale, defaultLocale }
+        { ...queryParams, value, locale, defaultLocale }
       );
     };
   },
@@ -77,13 +79,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
             *[${andPredicate(predicate, query)}][0]{
               ${projection}
             }${filterPredicate(filter)}`,
-        { ...params, locale, defaultLocale }
+        { ...queryParams, locale, defaultLocale }
       );
     };
   },
@@ -97,13 +100,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && _id in $ids][0]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, ids, locale, defaultLocale }
+        { ...queryParams, ids, locale, defaultLocale }
       );
     };
   },
@@ -117,13 +121,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && _id == $id][0]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, id, locale, defaultLocale }
+        { ...queryParams, id, locale, defaultLocale }
       );
     };
   },
@@ -140,6 +145,7 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       const pathname = Array.isArray(path) ? `/${path.join('/')}` : path;
       return this.fetchData(
@@ -147,7 +153,7 @@ const types = {
           *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, path: pathname, locale, defaultLocale }
+        { ...queryParams, path: pathname, locale, defaultLocale }
       );
     };
   },
@@ -164,13 +170,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, alias, locale, defaultLocale }
+        { ...queryParams, alias, locale, defaultLocale }
       );
     };
   },
@@ -184,13 +191,14 @@ const types = {
         filter,
         locale,
         defaultLocale,
+        ...queryParams
       } = getParams(params, options);
       return this.fetchData(
         groq`
           *[${andPredicate(predicate, query)} && ${property} == $value]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...params, value, locale, defaultLocale }
+        { ...queryParams, value, locale, defaultLocale }
       );
     };
   },
@@ -203,18 +211,19 @@ const types = {
         predicate,
         projection,
         filter,
+        locale,
         defaultLocale,
         locales,
+        ...queryParams
       } = getParams(params, options);
 
       if (!locales.includes(defaultLocale)) locales.unshift(defaultLocale);
 
       const documents = await this.fetchData(
-        groq`
-          *[${andPredicate(predicate, query)}]{
+        groq`*[${andPredicate(predicate, query)}]{
             ${projection}
-          }${filterPredicate(filter)}`,
-        params
+        }${filterPredicate(filter)}`,
+        { ...queryParams, locale, defaultLocale }
       );
 
       return documents.reduce((memo, node) => {
