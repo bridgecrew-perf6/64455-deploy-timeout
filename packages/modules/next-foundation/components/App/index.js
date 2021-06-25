@@ -6,6 +6,7 @@ import {
   buildLayout,
   LayoutProvider,
   NextDataHooksProvider,
+  GlobalContextProvider,
   PageProvider,
   QueryClientProvider,
   QueryClient,
@@ -32,23 +33,25 @@ function App({ Component, pageProps, settings }) {
   }
 
   return (
-    <QueryClientProvider client={queryClientRef.current}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <NextDataHooksProvider {...props}>
-          <Settings cookie={cookie}>
-            <PageProvider
-              Component={Component}
-              props={props}
-              data={currentPageProps}
-              options={currentPageOptions}
-            >
-              <Head />
-              <AppLayout Component={Component} pageProps={pageProps} />
-            </PageProvider>
-          </Settings>
-        </NextDataHooksProvider>
-      </Hydrate>
-    </QueryClientProvider>
+    <GlobalContextProvider>
+      <QueryClientProvider client={queryClientRef.current}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <NextDataHooksProvider {...props}>
+            <Settings cookie={cookie}>
+              <PageProvider
+                Component={Component}
+                props={props}
+                data={currentPageProps}
+                options={currentPageOptions}
+              >
+                <Head />
+                <AppLayout Component={Component} pageProps={pageProps} />
+              </PageProvider>
+            </Settings>
+          </NextDataHooksProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </GlobalContextProvider>
   );
 }
 

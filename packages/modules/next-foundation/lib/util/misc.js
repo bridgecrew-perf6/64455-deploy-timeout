@@ -1,5 +1,7 @@
 import {
   get,
+  set,
+  unset,
   isEmpty,
   isNumber,
   isNaN,
@@ -83,4 +85,24 @@ export function blocksToText(blocks, opts = {}) {
   } else {
     return '';
   }
+}
+
+export function wrapStateObject(data, setData, defaults = {}) {
+  return {
+    data,
+    setData,
+    get: (key, defaultValue) => {
+      return typeof key === 'undefined' ? data : get(data, key, defaultValue);
+    },
+    set: (key, value) => setData(state => ({ ...set(state, key, value) })),
+    unset: key => setData(state => (unset(state, key) ? { ...state } : state)),
+    reset: (obj = defaults) => setData(obj),
+    merge: obj => {
+      if (typeof obj === 'function') {
+        return setData(obj);
+      } else {
+        return setData(state => ({ ...state, ...obj }));
+      }
+    },
+  };
 }

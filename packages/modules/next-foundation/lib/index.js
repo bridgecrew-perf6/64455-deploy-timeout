@@ -1,5 +1,6 @@
 export * from './analytics';
 export * from './baobab';
+export * from './context';
 export * from './currency';
 export * from './constants';
 export * from './hocs';

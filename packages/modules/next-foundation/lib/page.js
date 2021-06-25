@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'; // use standard
 
 import { useObject } from './hooks';
 import { useConfig } from './site';
-import { omit, mergeObjects, isEqual, isBlank } from './util';
+import { useGlobalContext } from './context';
+import { omit, mergeObjects, isEqual, isBlank, wrapStateObject } from './util';
 
 export const PageContext = React.createContext();
 
@@ -21,11 +22,14 @@ export const PageContextProvider = ({
   shared: initial = {},
   options = {},
 }) => {
-  const router = useRouter();
+  const globalData = useGlobalContext();
   const shared = useRef(initial);
+  const router = useRouter();
 
   const data = useMemo(() => {
     // reset on router change (per-page)
+
+    const callbacks = [].concat(handlers);
 
     let pageProps = { ...defaults };
 
@@ -37,44 +41,44 @@ export const PageContextProvider = ({
       }
     }
 
-    setPageProps(Component.pageProps);
+    if (typeof Component.pageProps === 'function') {
+      callbacks.push(Component.pageProps);
+    } else if (typeof Component.pageProps === 'object') {
+      setPageProps(Component.pageProps);
+    }
+
+    const wrapped = wrapStateObject(pageProps, setPageProps, defaults);
+
+    const global = wrapStateObject(globalData, data => {
+      if (typeof data === 'function') {
+        Object.assign(globalData, data(globalData));
+      } else if (typeof data === 'object') {
+        Object.assign(globalData, data); // merge instead of overwrite
+      }
+    });
+
+    Object.assign(wrapped, {
+      shared: shared.current,
+      global,
+      options,
+    });
 
     pageProps = handlers.reduce((memo, handler) => {
       return {
         ...memo,
         ...handler(memo, {
+          page: wrapped,
           Component,
           props,
           router,
           shared: shared.current,
+          global,
           options,
         }),
       };
     }, pageProps);
 
-    return {
-      get(key) {
-        return arguments.length ? pageProps[key] : pageProps;
-      },
-      set(key, value) {
-        setPageProps(state => ({ ...state, [key]: value }));
-      },
-      unset(key) {
-        delete pageProps[key];
-      },
-      reset() {
-        setPageProps({ ...defaults });
-      },
-      merge(data) {
-        if (typeof data === 'function') {
-          setPageProps(data);
-        } else if (typeof data === 'object') {
-          setPageProps(state => ({ ...state, ...data }));
-        }
-      },
-      shared: shared.current,
-      options,
-    };
+    return wrapped;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
@@ -103,9 +107,11 @@ export const PageProvider = React.memo(
 export function usePage(data) {
   const context = useContext(PageContext);
 
-  if (typeof context !== 'object') return {};
+  if (data !== true && typeof context !== 'object') return {};
 
-  if (typeof data === 'function') {
+  if (data === true) {
+    return context;
+  } else if (typeof data === 'function') {
     data(context);
   } else if (typeof data === 'object') {
     context.merge(data);
