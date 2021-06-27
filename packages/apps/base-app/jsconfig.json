@@ -2,10 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@root/*": ["./*"],
       "@app/*": ["./src/*"],
       "@app/config/*": [
-        "./config/*", "./config/*.preval", 
-        "./src/config/*", "./src/config/*.preval"
+        "./config/*",
+        "./config/*.preval",
+        "./src/config/*",
+        "./src/config/*.preval"
       ],
       "@foundation/*": [
         "./node_modules/@atelierfabien/next-foundation/*",

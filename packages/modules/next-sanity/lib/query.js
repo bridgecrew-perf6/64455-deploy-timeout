@@ -5,16 +5,16 @@ import groq from 'groq';
 import { processResults } from './tree';
 
 export const andPredicate = (...predicates) => {
-  const valid = predicates.filter(p => !isBlank(p));
+  const valid = predicates.filter((p) => !isBlank(p));
   return valid.length > 0 ? `(${valid.join(' && ')})` : '';
 };
 
 export const orPredicate = (...predicates) => {
-  const valid = predicates.filter(p => !isBlank(p));
+  const valid = predicates.filter((p) => !isBlank(p));
   return valid.length > 0 ? `(${valid.join(' || ')})` : '';
 };
 
-export const filterPredicate = filter => {
+export const filterPredicate = (filter) => {
   return isBlank(filter) ? '' : `|${filter}`;
 };
 
@@ -29,7 +29,7 @@ const passThrough = () => true;
 const types = {
   // Fetch multiple
   all: (options = {}) => {
-    return function(params = {}) {
+    return function (params = {}) {
       const {
         query,
         predicate,
@@ -50,7 +50,7 @@ const types = {
   },
   // Fetch one based on one param
   one: (options = {}) => {
-    return function(value, params = {}) {
+    return function (value, params = {}) {
       const {
         query,
         predicate,
@@ -71,7 +71,7 @@ const types = {
   },
   // Fetch one as singleton
   singleton: (options = {}) => {
-    return function(params = {}) {
+    return function (params = {}) {
       const {
         query,
         predicate,
@@ -92,7 +92,7 @@ const types = {
   },
   // Fetch multiple by id
   ids: (options = {}) => {
-    return function(ids, params = {}) {
+    return function (ids, params = {}) {
       const {
         query,
         predicate,
@@ -113,7 +113,7 @@ const types = {
   },
   // Fetch one by id
   id: (options = {}) => {
-    return function(id, params = {}) {
+    return function (id, params = {}) {
       const {
         query,
         predicate,
@@ -137,7 +137,7 @@ const types = {
     const basePredicate = options.i18n
       ? groq`$path in [i18n[$locale].path.current, i18n[$defaultLocale].path.current]`
       : groq`$path == path.current`;
-    return function(path, params = {}) {
+    return function (path, params = {}) {
       const {
         query,
         predicate,
@@ -162,7 +162,7 @@ const types = {
     const basePredicate = options.i18n
       ? groq`$alias in [i18n[$locale].alias.current, i18n[$defaultLocale].alias.current]`
       : groq`$alias == alias.current`;
-    return function(alias, params = {}) {
+    return function (alias, params = {}) {
       const {
         query,
         predicate,
@@ -183,7 +183,7 @@ const types = {
   },
   // Fetch multiple by property
   property: (property, options = {}) => {
-    return function(value, params = {}) {
+    return function (value, params = {}) {
       const {
         query,
         predicate,
@@ -202,10 +202,37 @@ const types = {
       );
     };
   },
+  // Custom function
+  custom: (fn, options = {}) => {
+    return function (params = {}) {
+      const {
+        query,
+        predicate,
+        projection,
+        filter,
+        locale,
+        defaultLocale,
+        ...queryParams
+      } = getParams(fn(params, options), options);
+      return this.fetchData(
+        groq`
+          *[${andPredicate(predicate, query)}]{
+            ${projection}
+          }${filterPredicate(filter)}`,
+        { ...queryParams, value, locale, defaultLocale }
+      );
+    };
+  },
+  // Attach function - this needs to be a normal function, not an arrow fn
+  attach: (fn) => {
+    return function (...args) {
+      return fn.apply(this, args);
+    };
+  },
   // Get all static paths
   staticPaths: (options = {}) => {
     const property = options.property ?? ['path'];
-    return async function(params = {}, filterFn = passThrough) {
+    return async function (params = {}, filterFn = passThrough) {
       const {
         query,
         predicate,
@@ -228,7 +255,7 @@ const types = {
 
       return documents.reduce((memo, node) => {
         if (!filterFn(node)) return memo; // skip
-        locales.forEach(locale => {
+        locales.forEach((locale) => {
           const i18n = node?.i18n ?? {};
           const merged = mergeObjects(node, i18n[defaultLocale], i18n[locale]);
           const path = trim(get(merged, property, ''), '/');
@@ -243,20 +270,24 @@ const types = {
 };
 
 export const defineQuery = (type, options = {}) => {
-  if (typeof types[type] === 'function') {
+  if (typeof type === 'function') {
+    return types.attach(type, options);
+  } else if (typeof types[type] === 'function') {
     return types[type](options);
   } else {
     throw new Error(`Invalid query type: ${type}`);
   }
 };
 
-export const define = (methods = {}) => {
-  return client => {
-    return {
+export const define = (methods = {}, setupFn) => {
+  return (client) => {
+    const definition = {
       ...methods,
       client,
       fetchData,
     };
+    if (typeof setupFn === 'function') setupFn(definition);
+    return definition;
   };
 };
 

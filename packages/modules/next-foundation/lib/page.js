@@ -61,7 +61,7 @@ export const PageContextProvider = ({
 
     const pageWrapper = wrapStateObject(pageProps, setPageProps, defaults);
 
-    const globalWrapper = wrapStateObject(global, data => {
+    const globalWrapper = wrapStateObject(global, (data) => {
       if (typeof data === 'function') {
         Object.assign(global, data(global));
       } else if (typeof data === 'object') {
@@ -69,7 +69,7 @@ export const PageContextProvider = ({
       }
     });
 
-    const optionsWrapper = wrapStateObject(options, data => {
+    const optionsWrapper = wrapStateObject(options, (data) => {
       if (typeof data === 'function') {
         Object.assign(options, data(options));
       } else if (typeof data === 'object') {
@@ -135,6 +135,17 @@ export function usePage(data) {
   }
 
   return context.get();
+}
+
+export function usePropsOrPage(props) {
+  const context = useContext(PageContext);
+  if (typeof props === 'object' && props) {
+    return props;
+  } else if (typeof context === 'object') {
+    return context.get();
+  } else {
+    return {};
+  }
 }
 
 export function usePageData(data) {
