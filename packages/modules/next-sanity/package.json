@@ -40,5 +40,8 @@
     "*.scss",
     "*.less",
     "config/module.js"
-  ]
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }
