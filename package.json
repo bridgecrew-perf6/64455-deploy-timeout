@@ -7,7 +7,6 @@
     "lint": "eslint .",
     "lint:strict": "STRICT=true eslint .",
     "lint:fix": "eslint --fix .",
-    "lint:format": "prettier-eslint \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
