@@ -23,7 +23,7 @@ module.exports = {
   },
   rules: {
     ...a11yOff, // disable for now
-    'import/no-unresolved': ['warn', { ignore: ['^@'] }], // disabled for now
+    'import/no-unresolved': ['off', { ignore: ['^@'] }],
     'import/no-cycle': [0, { ignoreExternal: true }],
     'import/extensions': 'off',
     'arrow-body-style': ['off', 'never'],
