@@ -15,6 +15,12 @@ module.exports = {
     UIkit: 'readonly',
   },
   plugins: ['unused-imports'],
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+  },
   rules: {
     ...a11yOff, // disable for now
     'node/callback-return': 'off',
