@@ -73,6 +73,7 @@ export function Link({
   before,
   after,
   newWindow,
+  shallow,
   ...props
 }) {
   let child = React.isValidElement(children) ? Children.only(children) : null;
@@ -81,6 +82,7 @@ export function Link({
   }
 
   let Wrapper = NextLink;
+
   if (
     typeof props.href === 'string' &&
     (props.href.startsWith('#') || isExternalUrl(props.href))
@@ -93,6 +95,8 @@ export function Link({
   if (!props.href && typeof props.as !== 'string') props.href = '';
 
   if (newWindow) props.target = '_blank';
+
+  if (Wrapper === NextLink && shallow) props.shallow = shallow;
 
   const isElement = React.isValidElement(as);
 
