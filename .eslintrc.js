@@ -14,7 +14,7 @@ module.exports = {
   globals: {
     UIkit: 'readonly',
   },
-  plugins: ['unused-imports'],
+  plugins: ['unused-imports', 'react-hooks'],
   settings: {
     react: {
       pragma: 'React',
@@ -23,11 +23,12 @@ module.exports = {
   },
   rules: {
     ...a11yOff, // disable for now
+    'import/no-unresolved': ['warn', { ignore: ['^@'] }], // disabled for now
+    'import/no-cycle': [0, { ignoreExternal: true }],
+    'import/extensions': 'off',
+    'arrow-body-style': ['off', 'never'],
     'node/callback-return': 'off',
     'consistent-return': 'off',
-    'import/extensions': 'off',
-    'import/no-cycle': [0, { ignoreExternal: true }],
-    'import/no-unresolved': ['warn', { ignore: ['^@'] }], // disabled for now
     'jsx-a11y/anchor-is-valid': 'off',
     'no-else-return': 'off',
     'no-param-reassign': strict ? 'warn' : 'off',
