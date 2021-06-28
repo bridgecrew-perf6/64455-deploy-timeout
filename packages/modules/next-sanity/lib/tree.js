@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 /* eslint-disable array-callback-return */
 /* eslint-disable func-names */
 
@@ -8,8 +7,8 @@ export * as tree from 'tree-walk-util';
 
 export { default as traverse } from 'traverse';
 
-export const processResults = data => {
-  return traverse(data).map(function(x) {
+export const processResults = (data) => {
+  return traverse(data).map(function (x) {
     if (this.circular || x === null) {
       this.remove();
     } else if (

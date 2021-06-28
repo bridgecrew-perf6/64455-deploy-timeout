@@ -116,6 +116,13 @@ a.uk-navbar-item.uk-active {
   color: $navbar-nav-item-active-color;
 }
 
+.uk-offcanvas {
+  z-index: $global-z-index + 10;
+  @media (min-width: $breakpoint-medium) {
+    z-index: $global-z-index;
+  }
+}
+
 .uk-icon.uk-icon-left {
   margin-right: -20px;
 }

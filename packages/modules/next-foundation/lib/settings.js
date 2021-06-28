@@ -129,6 +129,7 @@ export function useSettingsProvider(options = {}) {
   });
 
   return useMemo(() => {
+    // eslint-disable-next-line react/display-name
     return ({ cookie, children }) => {
       return (
         <NextCookieProvider cookie={cookie}>
@@ -182,7 +183,7 @@ export function useSetting(key, options = {}) {
   let previous = usePrevious(current);
 
   const isValid = useCallback(
-    value => {
+    (value) => {
       if (typeof options.valid === 'function') {
         return options.valid(value);
       }
@@ -195,7 +196,7 @@ export function useSetting(key, options = {}) {
   );
 
   const setValue = useCallback(
-    value => {
+    (value) => {
       if (isValid(value)) {
         _setValue(value);
       } else if (isValid(previous)) {
@@ -269,7 +270,7 @@ export function useCookieSetting(key, options = {}) {
   }, [cookieName]);
 
   const coerceValue = useCallback(
-    value => {
+    (value) => {
       if (typeof options.coerce === 'function') {
         return options.coerce(value);
       }

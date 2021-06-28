@@ -164,7 +164,7 @@ export function usePageOptions(passThrough) {
 }
 
 export function usePageFragments(page, inherit = 'all') {
-  const { layout = {}, fragments = {} } = page ?? usePage();
+  const { layout = {}, fragments = {} } = usePropsOrPage(page);
   const layoutFragments = layout?.fragments;
   const baseFragments = useConfig('fragments')();
   return useMemo(() => {

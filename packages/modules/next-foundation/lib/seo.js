@@ -103,7 +103,7 @@ export function useSeo(pageSeo = {}) {
         href: getUrl(defaultLocale),
       },
     ].concat(
-      locales.map(lc => ({
+      locales.map((lc) => ({
         hrefLang: lc,
         href: getUrl(lc),
       }))
@@ -127,7 +127,7 @@ export function useSeo(pageSeo = {}) {
       openGraphImages = [resolveImage(image)];
     }
 
-    openGraphImages = openGraphImages.filter(image => image);
+    openGraphImages = openGraphImages.filter((image) => image);
 
     if (openGraphImages.length > 0) {
       seo.openGraph.images = openGraphImages;
@@ -139,7 +139,7 @@ export function useSeo(pageSeo = {}) {
       metaKeywords = keywords.split(/\s+,\s+/);
     }
 
-    metaKeywords = metaKeywords.filter(s => !isBlank(s));
+    metaKeywords = metaKeywords.filter((s) => !isBlank(s));
 
     if (metaKeywords.length > 0) {
       seo.additionalMetaTags.push({
@@ -211,13 +211,14 @@ export function PageSeo(props) {
   return <NextSeo {...props} />;
 }
 
-export const escapeJsonLdString = string =>
+export const escapeJsonLdString = (string) =>
   JSON.stringify(string).replace(/(^"|"$)/g, '');
 
-export const withJsonLdEscaping = Component => {
-  return props => {
+export const withJsonLdEscaping = (Component) => {
+  // eslint-disable-next-line react/display-name
+  return (props) => {
     const clean = useMemo(() => {
-      return traverse(props).map(function(value) {
+      return traverse(props).map(function (value) {
         if (isBlank(value)) {
           this.remove();
         } else if (typeof value === 'string') {

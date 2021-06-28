@@ -38,7 +38,7 @@ export function useLocationHash(fn) {
   }, [onHashChange]);
 
   const _setHash = useCallback(
-    newHash => {
+    (newHash) => {
       if (isBrowser && newHash !== hash) {
         window.location.hash = newHash;
       }
@@ -60,6 +60,8 @@ export function useCurrentRoute(options = {}) {
 }
 
 const NullRender = () => null;
+
+const DefaultWrapper = ({ children }) => <>{children}</>;
 
 export function Link({
   children,
@@ -83,7 +85,7 @@ export function Link({
     typeof props.href === 'string' &&
     (props.href.startsWith('#') || isExternalUrl(props.href))
   ) {
-    Wrapper = ({ children }) => <>{children}</>;
+    Wrapper = DefaultWrapper;
   } else if (typeof asPath === 'string') {
     props.as = asPath;
   }

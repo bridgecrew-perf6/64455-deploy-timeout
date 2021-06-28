@@ -13,7 +13,7 @@ export default function CookieConsent(props) {
   const ref = useRef();
 
   const onClose = useCallback(
-    consent => {
+    (consent) => {
       const { Transition, removeClass } = UIkit.util;
       if (ref.current) {
         removeClass(ref.current, 'uk-animation-slide-bottom');
@@ -43,8 +43,16 @@ export default function CookieConsent(props) {
           <Trans
             i18nKey="common:cookieConsent.text"
             components={[
-              <Link href={cookiePolicy} className="uk-text-bold" />,
-              <Link href={privacyPolicy} className="uk-text-bold" />,
+              <Link
+                key="cookie"
+                href={cookiePolicy}
+                className="uk-text-bold"
+              />,
+              <Link
+                key="privacy"
+                href={privacyPolicy}
+                className="uk-text-bold"
+              />,
             ]}
           />
         </p>

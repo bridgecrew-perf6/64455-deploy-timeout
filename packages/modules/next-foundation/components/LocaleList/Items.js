@@ -2,13 +2,13 @@ import { useCallback } from 'react';
 import { useLocale, useSettings, Link } from '../../lib';
 
 export default function LocaleListItems({ activeClassName, withCode }) {
-  const { locale, defaultLocale, locales } = useLocale();
+  const { locales } = useLocale();
   const { setLocale } = useSettings();
 
   const className = activeClassName ?? 'uk-active';
 
   const onClick = useCallback(
-    e => {
+    (e) => {
       e.preventDefault();
       setLocale(e.target.dataset.code);
     },

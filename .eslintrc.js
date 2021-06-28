@@ -21,7 +21,7 @@ module.exports = {
     'consistent-return': 'off',
     'import/extensions': 'off',
     'import/no-cycle': [0, { ignoreExternal: true }],
-    'import/no-unresolved': ['error', { ignore: ['^@'] }],
+    // 'import/no-unresolved': ['warn', { ignore: ['^@'] }], // disabled for now
     'jsx-a11y/anchor-is-valid': 'off',
     'no-else-return': 'off',
     'no-param-reassign': strict ? 'warn' : 'off',
@@ -52,6 +52,7 @@ module.exports = {
       },
     ],
   },
+  ignorePatterns: ['**/dist/*.js', '**/build/*.js'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
