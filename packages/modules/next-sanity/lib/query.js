@@ -50,7 +50,7 @@ const types = {
   },
   // Fetch one based on one param
   one: (options = {}) => {
-    return function (value, params = {}) {
+    return function (target, params = {}) {
       const {
         query,
         predicate,
@@ -65,7 +65,7 @@ const types = {
             *[${andPredicate(predicate, query)}][0]{
               ${projection}
             }${filterPredicate(filter)}`,
-        { ...queryParams, value, locale, defaultLocale }
+        { ...queryParams, target, locale, defaultLocale }
       );
     };
   },
@@ -183,7 +183,7 @@ const types = {
   },
   // Fetch multiple by property
   property: (property, options = {}) => {
-    return function (value, params = {}) {
+    return function (target, params = {}) {
       const {
         query,
         predicate,
@@ -195,10 +195,10 @@ const types = {
       } = getParams(params, options);
       return this.fetchData(
         groq`
-          *[${andPredicate(predicate, query)} && ${property} == $value]{
+          *[${andPredicate(predicate, query)} && ${property} == $target]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, value, locale, defaultLocale }
+        { ...queryParams, target, locale, defaultLocale }
       );
     };
   },
@@ -219,7 +219,7 @@ const types = {
           *[${andPredicate(predicate, query)}]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, value, locale, defaultLocale }
+        { ...queryParams, locale, defaultLocale }
       );
     };
   },
@@ -258,9 +258,11 @@ const types = {
         locales.forEach((locale) => {
           const i18n = node?.i18n ?? {};
           const merged = mergeObjects(node, i18n[defaultLocale], i18n[locale]);
-          const path = trim(get(merged, property, ''), '/');
-          if (!isBlank(path)) {
-            memo.push({ params: { path: path.split('/') }, locale });
+          const path = trim(get(merged, property, '') ?? '');
+          if (path === '/') {
+            memo.push({ params: { path: [] }, locale });
+          } else if (!isBlank(path)) {
+            memo.push({ params: { path: trim(path, '/').split('/') }, locale });
           }
         });
         return memo;

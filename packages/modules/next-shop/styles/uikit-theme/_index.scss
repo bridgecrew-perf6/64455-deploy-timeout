@@ -812,6 +812,16 @@ span > .uk-text-meta {
   }
 }
 
+.tm-product-card-labels.tm-product-card-labels-inline {
+  top: 12px;
+  right: 15px;
+
+  & > .uk-label {
+    display: inline-block;
+    margin: 0 3px 0 0;
+  }
+}
+
 // Actions
 .tm-product-card-actions {
   margin-right: 10px;
@@ -1288,6 +1298,12 @@ span > .uk-text-meta {
 }
 
 // Nav
+
+.tm-menu-column-header {
+  margin-bottom: $global-small-margin;
+  display: block;
+}
+
 .tm-product-nav {
   display: flex;
   overflow: auto;
