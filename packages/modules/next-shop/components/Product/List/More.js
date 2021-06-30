@@ -1,7 +1,7 @@
 const ProductListMore = () => (
   <div>
     <button
-      className="uk-button uk-button-default uk-button-large uk-width-1-1"
+      className="uk-button uk-button-default uk-button-large uk-width-1-1 tm-load-more-button"
       style={{
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,

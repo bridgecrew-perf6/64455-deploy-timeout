@@ -629,6 +629,17 @@ span > .uk-text-meta {
 }
 
 //
+// Product Grid
+//
+
+// .tm-products-grid {
+// }
+
+.tm-load-more-button {
+  border: 0;
+}
+
+//
 // Product card
 //
 
@@ -637,12 +648,21 @@ span > .uk-text-meta {
   flex-direction: row;
   transition: box-shadow $box-shadow-duration ease-in-out;
   background-color: $global-background;
-  border-left: $global-border-width solid $global-border;
-  border-bottom: $global-border-width solid $global-border;
-  // box-shadow: 0 0 0 $global-border-width $global-border;
+  box-shadow: 0 0 0 $global-border-width $global-border;
 
-  &.uk-first-column {
-    border-left: none;
+  &:last-child {
+    position: relative;
+  }
+
+  &:last-child::after {
+    box-shadow: 0 0 0 $global-border-width $global-border;
+    content: '';
+    width: 600%;
+    height: 100%;
+    background: $global-background;
+    position: absolute;
+    left: 100%;
+    top: 0;
   }
 
   @media (max-width: $breakpoint-medium - 1) {
