@@ -6,8 +6,15 @@ export default {
   language: 'Language',
   currency: 'Currency',
   cookieConsent: {
-    text:
-      'We use cookies to understand how you use our site and to improve your experience. By continuing to use our site, you accept our <0>use of cookies</0> and <1>privacy policy</1>.',
+    text: 'We use cookies to understand how you use our site and to improve your experience. By continuing to use our site, you accept our <0>use of cookies</0> and <1>privacy policy</1>.',
     accept: 'Got it!',
+  },
+  errors: {
+    pageNotFound: {
+      heading: '404',
+      title: 'Page not found',
+      description: "Looks like the page you're trying to visit doesn't exist.",
+      link: 'Go back to Homepage',
+    },
   },
 };
