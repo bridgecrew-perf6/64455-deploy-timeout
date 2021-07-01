@@ -8,7 +8,7 @@ $product-card-title-font-size: 16px !default;
 $product-card-title-line-height: 22px !default;
 $product-card-title-max-height: $product-card-title-max-lines *
   $product-card-title-line-height;
-$product-card-title-font-size-s: 18px !default;
+$product-card-title-font-size-s: 16px !default;
 $product-card-title-line-height-s: 24px !default;
 $product-card-title-max-height-s: $product-card-title-max-lines *
   $product-card-title-line-height-s;
@@ -17,8 +17,8 @@ $product-card-add-button-width: 36px !default;
 $product-card-add-button-height: 36px !default;
 
 // List view product card
-$list-view-product-card-media-width: 33.3% !default;
-$list-view-product-card-media-min-width: 170px !default;
+$list-view-product-card-media-width: 25% !default;
+$list-view-product-card-media-min-width: 160px !default;
 $list-view-product-card-price-font-size: 24px !default;
 
 // Scrollbox
@@ -693,6 +693,10 @@ span > .uk-text-meta {
   }
 }
 
+.tm-products-list {
+  border-bottom: $global-border-width solid $global-border;
+}
+
 // Media
 .tm-product-card-media {
   position: relative;
@@ -700,16 +704,12 @@ span > .uk-text-meta {
   width: 40%;
   flex-shrink: 0;
 
-  & > .tm-ratio {
-    height: 100%;
-  }
-
-  & > .tm-ratio > .tm-media-box {
+  & > .tm-media-box {
     padding: 15px;
   }
 
   @media (min-width: $breakpoint-small) {
-    & > .tm-ratio > .tm-media-box {
+    & > .tm-media-box {
       padding: 20px;
     }
   }
@@ -743,6 +743,13 @@ span > .uk-text-meta {
   }
 }
 
+.tm-product-card-header {
+  @media (max-width: $breakpoint-small) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 // Title
 .tm-product-card-title {
   font-size: $product-card-title-font-size;
@@ -771,6 +778,10 @@ span > .uk-text-meta {
   & > li:nth-child(n + 2) {
     margin-top: 5px;
   }
+
+  @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    display: block;
+  }
 }
 
 .tm-product-card-shop {
@@ -779,11 +790,8 @@ span > .uk-text-meta {
   align-items: flex-end;
 }
 
-.tm-product-card-prices {
-  flex-grow: 1;
-}
-
-.tm-product-card-price {
+.tm-product-card-price,
+.tm-product-price {
   font-size: $product-card-price-font-size;
   font-weight: 500;
   line-height: 1;
@@ -814,31 +822,14 @@ span > .uk-text-meta {
 
 // Labels
 .tm-product-card-labels {
-  position: absolute;
-  z-index: 1;
-  top: 20px;
-  right: 20px;
-
   & > .uk-label {
     font-size: 10px;
     display: table;
-    margin-bottom: 3px;
-    margin-left: auto;
     padding: 0 3px;
 
     &:last-child {
       margin-bottom: 0;
     }
-  }
-}
-
-.tm-product-card-labels.tm-product-card-labels-inline {
-  top: 12px;
-  right: 15px;
-
-  & > .uk-label {
-    display: inline-block;
-    margin: 0 3px 0 0;
   }
 }
 
@@ -915,8 +906,8 @@ span > .uk-text-meta {
     flex-shrink: 0;
   }
 
-  .tm-products-list .tm-product-card-price {
-    font-size: 24px;
+  .tm-products-list .tm-product-price {
+    font-size: $list-view-product-card-price-font-size;
   }
 
   .tm-products-list .tm-product-card-add {
@@ -969,6 +960,35 @@ span > .uk-text-meta {
     display: inline;
     margin-left: 5px;
   }
+
+  .tm-products-list .tm-product-card-shop {
+    position: relative;
+  }
+
+  .tm-products-list .tm-product-card-pricing {
+    .tm-product-card-price-info {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .tm-product-price {
+        margin-bottom: $global-margin;
+      }
+
+      .uk-grid-margin > :first-child {
+        margin-left: 0 !important;
+      }
+    }
+
+    .tm-product-card-link {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    > div {
+      padding-left: 0;
+    }
+  }
 }
 
 //
@@ -978,6 +998,16 @@ span > .uk-text-meta {
 .tm-action-button-active,
 .tm-action-button-active > * {
   color: $text-danger-color;
+}
+
+.tm-product-card-link {
+  margin-right: -35px;
+  padding: 0 20px;
+  display: block;
+
+  .tm-products-list & {
+    margin-right: -20px;
+  }
 }
 
 //
@@ -1268,7 +1298,7 @@ span > .uk-text-meta {
 }
 
 // Price
-.tm-product-price {
+.tm-product-purchase .tm-product-price {
   font-size: 32px;
   font-weight: 500;
   line-height: 1;
@@ -1692,6 +1722,10 @@ span > .uk-text-meta {
   box-sizing: border-box;
   height: 100%;
   cursor: default;
+}
+
+a.tm-media-box {
+  cursor: pointer;
 }
 
 .tm-media-box-frame {
