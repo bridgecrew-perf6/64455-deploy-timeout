@@ -115,3 +115,13 @@ export function wrapStateObject(data, setData, defaults = {}) {
     },
   };
 }
+
+export function toBoolean(value) {
+  if (typeof value === 'boolean') {
+    return value;
+  } else if (typeof value === 'number') {
+    return value === 1;
+  } else {
+    return ['1', 'true', 't', 'yes', 'y'].includes(String(value).toLowerCase());
+  }
+}
