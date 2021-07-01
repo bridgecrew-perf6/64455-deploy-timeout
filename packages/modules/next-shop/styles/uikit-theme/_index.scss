@@ -863,14 +863,9 @@ span > .uk-text-meta {
 .tm-products-list .tm-product-card {
   width: 100%;
   border-bottom: $global-border-width solid $global-border;
-  box-shadow: none;
 
   &:last-child {
     border-bottom: none;
-  }
-
-  &:hover {
-    box-shadow: none;
   }
 }
 
