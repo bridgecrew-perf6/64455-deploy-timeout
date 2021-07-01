@@ -7,7 +7,9 @@ import {
   useContext,
 } from 'react';
 
-import { get } from 'lodash-es';
+import { useRouter } from './router';
+
+import { get, isBlank } from './util';
 
 import { NextDataHooksContext } from 'next-data-hooks';
 
@@ -77,10 +79,10 @@ export function useMemoCompare(next, compare) {
 
 export function useMappedState(initialState, ...mapFns) {
   const [state, setState] = useState(initialState || (() => {}));
-  const memo = useMemo(() => mapFns.map(mapFn => mapFn(state)), [
-    mapFns,
-    state,
-  ]);
+  const memo = useMemo(
+    () => mapFns.map((mapFn) => mapFn(state)),
+    [mapFns, state]
+  );
   return [state, setState, memo];
 }
 
@@ -95,7 +97,7 @@ export function useMounted() {
 
 export function useEventListener(eventName, selector, handler, options = {}) {
   const fn = useCallback(
-    e => {
+    (e) => {
       const delegateTarget = closest(e.target, selector);
       if (delegateTarget) handler(e, delegateTarget);
     },
@@ -113,12 +115,22 @@ export function useObject(data = {}) {
     (...path) => {
       if (path.length === 0) return data;
       const key = path
-        .map(p => (Array.isArray(p) ? p : String(p).split('.')))
+        .map((p) => (Array.isArray(p) ? p : String(p).split('.')))
         .flat();
       return get(data, key);
     },
     [data]
   );
+}
+
+export function useDataTargetHref(eventName = 'click') {
+  const router = useRouter();
+  useEventListener(eventName, '[data-target-href]', (e, target) => {
+    if (!isBlank(target.dataset.targetHref)) {
+      e.preventDefault();
+      router.push(target.dataset.targetHref);
+    }
+  });
 }
 
 // Utils
