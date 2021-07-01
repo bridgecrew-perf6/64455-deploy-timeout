@@ -80,6 +80,14 @@ $grid-xsmall-gutter-vertical: $grid-xsmall-gutter-horizontal !default;
 }
 
 //
+// Pagination
+//
+
+.uk-pagination .uk-icon {
+  transform: translateY(-2px);
+}
+
+//
 // Custom styles
 //
 
@@ -658,6 +666,10 @@ span > .uk-text-meta {
     position: absolute;
     left: 100%;
     top: 0;
+  }
+
+  &:nth-child(3n + 3)::after {
+    box-shadow: none;
   }
 
   @media (max-width: $breakpoint-medium - 1) {
@@ -1271,7 +1283,7 @@ $color-dot-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
     }
   }
 
-  @media (max-width: $breakpoint-small) {
+  @media (max-width: $breakpoint-medium) {
     .tm-color-dots {
       display: none;
     }
@@ -1308,6 +1320,12 @@ $color-dot-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
 
     .tm-products-list & .tm-color-pills {
       display: none;
+    }
+  }
+
+  @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    .tm-color-pills {
+      display: flex;
     }
   }
 }
