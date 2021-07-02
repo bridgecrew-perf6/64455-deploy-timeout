@@ -17,4 +17,10 @@ export default {
       link: 'Go back to Homepage',
     },
   },
+  pagination: {
+    first: 'First',
+    previous: 'Previous',
+    next: 'Next',
+    last: 'Last',
+  },
 };

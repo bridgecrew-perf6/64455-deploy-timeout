@@ -18,4 +18,10 @@ export default {
       link: 'Terug naar homepage',
     },
   },
+  pagination: {
+    first: 'Eerste',
+    previous: 'Vorige',
+    next: 'Volgende',
+    last: 'Laatste',
+  },
 };

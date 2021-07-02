@@ -83,8 +83,30 @@ $grid-xsmall-gutter-vertical: $grid-xsmall-gutter-horizontal !default;
 // Pagination
 //
 
+$pagination-item-active-color: $global-emphasis-color !default;
+
+.uk-pagination a.uk-active {
+  color: $pagination-item-active-color;
+}
+
+.uk-pagination [data-pagination][data-group="back"] {
+  margin-right: auto;
+}
+
+.uk-pagination [data-pagination][data-group="forward"] {
+  margin-left: auto;
+}
+
+.uk-pagination [data-pagination="first"],
+.uk-pagination [data-pagination="last"],
+.uk-pagination [data-pagination="ellipsis"] {
+  @media (max-width: $breakpoint-small) {
+    display: none;
+  }
+}
+
 .uk-pagination .uk-icon {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 //
