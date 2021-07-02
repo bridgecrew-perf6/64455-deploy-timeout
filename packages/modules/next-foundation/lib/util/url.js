@@ -1,4 +1,4 @@
-import { flatten, trimStart } from 'lodash-es';
+import { flatten } from 'lodash-es';
 import { isBlank } from './misc';
 
 const URL_REGEXP = /^([^:/?#]+:)?(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
@@ -60,9 +60,6 @@ export function isExternalUrl(url, strict = false) {
 
 export function interpolateUrl(pathname, params = {}) {
   return String(pathname).replace(/\[([^[\]]*)\]/g, (_a, b) => {
-    return trimStart(
-      Array.isArray(params[b]) ? joinUrl(...params[b]) : params[b],
-      '/'
-    );
+    return Array.isArray(params[b]) ? joinUrl(...params[b]) : params[b];
   });
 }
