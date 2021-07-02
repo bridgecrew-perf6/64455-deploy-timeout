@@ -15,7 +15,10 @@ export default {
       title: 'Pagina niet gevonden',
       description:
         'De pagina die u probeert te bezoeken bestaat wellicht niet.',
-      link: 'Terug naar homepage',
+      action: 'Terug naar homepage',
+    },
+    noResults: {
+      title: 'Geen resultaten',
     },
   },
   pagination: {
@@ -23,6 +26,13 @@ export default {
     previous: 'Vorige',
     next: 'Volgende',
     last: 'Laatste',
+  },
+  ranges: {
+    all: 'Alle',
+    above: 'Vanaf {{value}}',
+    below: 'Lager dan {{value}}',
+    between: 'Tussen {{start}} en {{end}}',
+    fromTo: 'Van {{start}} tot {{end}}',
   },
   search: {
     placeholder: 'Zoeken ...',

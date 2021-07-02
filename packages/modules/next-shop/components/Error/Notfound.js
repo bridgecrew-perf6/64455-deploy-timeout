@@ -20,7 +20,7 @@ const ErrorNotfound = () => {
             {t('common:errors.pageNotFound.description')}
           </div>
           <div className="uk-margin-top">
-            <Link href="/">{t('common:errors.pageNotFound.link')}</Link>
+            <Link href="/">{t('common:errors.pageNotFound.action')}</Link>
           </div>
         </div>
       </div>

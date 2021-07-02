@@ -14,7 +14,10 @@ export default {
       heading: '404',
       title: 'Page not found',
       description: "Looks like the page you're trying to visit doesn't exist.",
-      link: 'Go back to Homepage',
+      action: 'Go back to Homepage',
+    },
+    noResults: {
+      title: 'No results',
     },
   },
   pagination: {
@@ -22,6 +25,13 @@ export default {
     previous: 'Previous',
     next: 'Next',
     last: 'Last',
+  },
+  ranges: {
+    all: 'All',
+    above: 'Above {{value}}',
+    below: 'Below {{value}}',
+    between: 'Between {{start}} and {{end}}',
+    fromTo: 'From {{start}} to {{end}}',
   },
   search: {
     placeholder: 'Search ...',
