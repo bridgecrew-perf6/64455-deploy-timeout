@@ -231,7 +231,8 @@ const types = {
   },
   // Get all static paths
   staticPaths: (options = {}) => {
-    const property = options.property ?? ['path'];
+    const { properties, property = ['path'] } = options;
+    const pathProperties = Array.isArray(properties) ? properties : [property];
     return async function (params = {}, filterFn = passThrough) {
       const {
         query,
@@ -241,6 +242,7 @@ const types = {
         locale,
         defaultLocale,
         locales,
+        raw,
         ...queryParams
       } = getParams(params, options);
 
@@ -258,11 +260,18 @@ const types = {
         locales.forEach((locale) => {
           const i18n = node?.i18n ?? {};
           const merged = mergeObjects(node, i18n[defaultLocale], i18n[locale]);
-          const path = trim(get(merged, property, '') ?? '');
+          const path = pathProperties
+            .map((p) => getProperty(merged, p))
+            .join('/');
+          const meta = raw ? node : {};
           if (path === '/') {
-            memo.push({ params: { path: [] }, locale });
+            memo.push({ ...meta, params: { path: [] }, locale });
           } else if (!isBlank(path)) {
-            memo.push({ params: { path: trim(path, '/').split('/') }, locale });
+            memo.push({
+              ...meta,
+              params: { path: trim(path, '/').split('/') },
+              locale,
+            });
           }
         });
         return memo;
@@ -300,4 +309,8 @@ async function fetchData(...args) {
   return typeof data === 'object' && data !== null
     ? processResults(data)
     : data;
+}
+
+function getProperty(obj, property) {
+  return trim(get(obj, property, '') ?? '');
 }

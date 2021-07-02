@@ -1,8 +1,9 @@
-import { flatten } from 'lodash-es';
+import { flatten, trimStart } from 'lodash-es';
 import { isBlank } from './misc';
 
 const URL_REGEXP = /^([^:/?#]+:)?(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
-const FULL_URL_REGEXP = /^([^:/?#]+:)(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
+const FULL_URL_REGEXP =
+  /^([^:/?#]+:)(?:\/\/([^/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/;
 
 const ERROR_PAGE_REGEXP = /^\/(404|500|_error)/;
 
@@ -23,11 +24,11 @@ export function isFullyQualifiedUrl(url) {
 export function joinUrl(...parts) {
   const isFullyQualified = isFullyQualifiedUrl(parts[0]);
   const url = flatten(
-    parts.map(part => {
+    parts.map((part) => {
       return typeof part === 'string' ? part.split('/') : '';
     })
   )
-    .filter(part => !isBlank(part))
+    .filter((part) => !isBlank(part))
     .join('/');
   return isFullyQualified ? url : `/${url}`;
 }
@@ -55,4 +56,13 @@ export function isExternalUrl(url, strict = false) {
     return true;
   }
   return false;
+}
+
+export function interpolateUrl(pathname, params = {}) {
+  return String(pathname).replace(/\[([^[\]]*)\]/g, (_a, b) => {
+    return trimStart(
+      Array.isArray(params[b]) ? joinUrl(...params[b]) : params[b],
+      '/'
+    );
+  });
 }
