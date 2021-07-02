@@ -23,4 +23,7 @@ export default {
     next: 'Next',
     last: 'Last',
   },
+  search: {
+    placeholder: 'Search ...',
+  },
 };

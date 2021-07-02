@@ -24,4 +24,7 @@ export default {
     next: 'Volgende',
     last: 'Laatste',
   },
+  search: {
+    placeholder: 'Zoeken ...',
+  },
 };

@@ -89,23 +89,25 @@ $pagination-item-active-color: $global-emphasis-color !default;
   color: $pagination-item-active-color;
 }
 
-.uk-pagination [data-pagination][data-group="back"] {
+.uk-pagination [data-pagination][data-group='back'] {
   margin-right: auto;
 }
 
-.uk-pagination [data-pagination][data-group="forward"] {
+.uk-pagination [data-pagination][data-group='forward'] {
   margin-left: auto;
 }
 
-.uk-pagination [data-pagination="first"],
-.uk-pagination [data-pagination="last"],
-.uk-pagination [data-pagination="ellipsis"] {
+.uk-pagination [data-pagination='first'],
+.uk-pagination [data-pagination='last'],
+.uk-pagination [data-pagination='ellipsis'] {
   @media (max-width: $breakpoint-small) {
     display: none;
   }
 }
 
-.uk-pagination .uk-icon {
+// Icons
+
+.uk-icon {
   transform: translateY(-1px);
 }
 
@@ -2031,6 +2033,12 @@ a.tm-media-box {
   @media (min-width: $breakpoint-small) {
     flex-basis: 50%;
   }
+}
+
+// Sidebar
+
+.tm-sidebar-search .uk-search-input {
+  border: none;
 }
 
 //
