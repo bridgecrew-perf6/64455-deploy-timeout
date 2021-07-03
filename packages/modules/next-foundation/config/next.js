@@ -20,6 +20,9 @@ const defaults = {
   future: {
     webpack5: false,
   },
+  experimental: {
+    scrollRestoration: true,
+  },
 };
 
 module.exports = (config = {}) => {

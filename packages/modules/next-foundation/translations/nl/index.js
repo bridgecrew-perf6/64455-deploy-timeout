@@ -26,6 +26,8 @@ export default {
     previous: 'Vorige',
     next: 'Volgende',
     last: 'Laatste',
+    perPage: 'Per pagina',
+    sortBy: 'Sorteer op',
   },
   ranges: {
     all: 'Alle',

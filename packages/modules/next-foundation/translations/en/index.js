@@ -25,6 +25,8 @@ export default {
     previous: 'Previous',
     next: 'Next',
     last: 'Last',
+    perPage: 'Per page',
+    sortBy: 'Sort by',
   },
   ranges: {
     all: 'All',
