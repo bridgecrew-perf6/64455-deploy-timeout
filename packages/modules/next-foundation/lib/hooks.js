@@ -9,11 +9,16 @@ import {
 
 import { useRouter } from './router';
 
-import { get, isBlank } from './util';
+import { useGlobalContext } from './context';
+
+import { get, detect, isBlank } from './util';
 
 import { NextDataHooksContext } from 'next-data-hooks';
 
 export * from 'next-data-hooks';
+
+const isBrowser =
+  typeof window !== 'undefined' && window.document?.createElement;
 
 export function useDataHook(key, strict = true) {
   const dataHooksContext = useContext(NextDataHooksContext);
@@ -123,6 +128,41 @@ export function useObject(data = {}) {
   );
 }
 
+export const useMutationObserver = (
+  target,
+  callback,
+  options = { attributes: true, childList: true }
+) => {
+  const isDisconnected = useRef(false);
+
+  const observer = useMemo(
+    () =>
+      isBrowser
+        ? new MutationObserver((mutationRecord, mutationObserver) => {
+            callback?.(mutationRecord, mutationObserver);
+          })
+        : null,
+    [callback]
+  );
+
+  useEffect(() => {
+    const element = getRefElement(target);
+    if (observer && element) {
+      observer.observe(element, options);
+      return () => observer.disconnect();
+    }
+  }, [target, observer, options]);
+
+  const disconnect = useCallback(() => {
+    if (observer && !isDisconnected.current) {
+      isDisconnected.current = true;
+      observer.disconnect();
+    }
+  }, [observer]);
+
+  return disconnect;
+};
+
 export function useDataTargetHref(eventName = 'click') {
   const router = useRouter();
   useEventListener(eventName, '[data-target-href]', (e, target) => {
@@ -131,6 +171,96 @@ export function useDataTargetHref(eventName = 'click') {
       router.push(target.dataset.targetHref);
     }
   });
+}
+
+export const useClickedItemTracking = (
+  itemSelector,
+  persistenceKey = 'clickedItem',
+  eventName = 'click',
+  resetOnUnmount = false
+) => {
+  const global = useGlobalContext(true);
+
+  useEventListener(eventName, itemSelector, (e, target) => {
+    if (!isBlank(target.dataset.id)) {
+      const scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      global.set(persistenceKey, { id: target.dataset.id, scrollTop });
+    }
+  });
+
+  useUnmount(() => {
+    if (resetOnUnmount) global.unset(persistenceKey);
+  });
+
+  return global.get(persistenceKey);
+};
+
+export const useClickedItem = (
+  containerRef,
+  persistenceKey = 'clickedItem',
+  callback
+) => {
+  const global = useGlobalContext(true);
+  const target = useRef(null);
+  const fn = useRef(callback);
+
+  const disconnect = useMutationObserver(
+    containerRef,
+    (mutations) => {
+      const { id, scrollTop } = global.get(persistenceKey, {});
+      if (isBlank(id)) {
+        global.unset(persistenceKey);
+        disconnect();
+      } else {
+        const element = detect(mutations, (mutation) => {
+          if (mutation.type !== 'childList') return false;
+          const addedNodes = Array.from(mutation?.addedNodes ?? []);
+          return detect(addedNodes, (el) =>
+            el.dataset.id === id ? el : false
+          );
+        });
+
+        if (element && !target.current) {
+          global.unset(persistenceKey);
+          disconnect();
+          if (typeof fn.current === 'function') fn.current(element, scrollTop);
+          target.current = element;
+        }
+      }
+    },
+    { childList: true }
+  );
+
+  return [target.current, disconnect];
+};
+
+export function useCachedData(
+  data,
+  defaultData,
+  cacheKey = 'cachedData',
+  resetOnUnmount = false
+) {
+  const global = useGlobalContext(true);
+  const [currentData, setCurrentData] = useState(defaultData);
+
+  useEffect(() => {
+    setCurrentData(data);
+    global.set(cacheKey, data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cacheKey, data]);
+
+  useUnmount(() => {
+    if (resetOnUnmount) global.unset(cacheKey);
+  });
+
+  return currentData;
+}
+
+export function useUnmount(fn) {
+  const fnRef = useRef(fn);
+  fnRef.current = fn;
+  useEffect(() => () => fnRef.current(), []);
 }
 
 // Utils
@@ -163,4 +293,11 @@ function closest(element, selector) {
     }
     element = element.parentNode;
   }
+}
+
+function getRefElement(element) {
+  if (element && 'current' in element) {
+    return element.current;
+  }
+  return element;
 }

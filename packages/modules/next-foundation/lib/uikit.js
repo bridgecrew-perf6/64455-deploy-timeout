@@ -9,6 +9,10 @@ Link.defaults.activeClassName = Link.defaults.activeClassName ?? 'uk-active';
 Link.defaults.matchClassName =
   Link.defaults.matchClassName ?? 'uk-active-match';
 
+// NOTE you can import the utils directly as follows - but it will add to the bundle size:
+//
+// import { util } from '@atelierfabien/uikit';
+
 export function useUIkit(fn) {
   const [ready, setReady] = useState(false);
 
