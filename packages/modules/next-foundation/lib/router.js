@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import { Router, useRouter as useNextRouter } from 'next/router';
 import { pick, isEqual } from 'lodash-es';
 
 import { usePrevious } from './hooks';
 import { usePageOptions } from './page';
 
-export { Router };
+import NProgress from 'nprogress';
+
+export { Router, NProgress };
 
 const ROUTER_KEYS = [
   'pathname',
@@ -36,4 +39,28 @@ export function usePreviousRoute() {
     fallback: router,
   });
   return previous;
+}
+
+export function useRouterProgress(handler = NProgress) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = () => {
+      if (typeof handler.start === 'function') handler.start();
+    };
+
+    const handleStop = () => {
+      if (typeof handler.done === 'function') handler.done();
+    };
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleStop);
+    router.events.on('routeChangeError', handleStop);
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleStop);
+      router.events.off('routeChangeError', handleStop);
+    };
+  }, [router, handler]);
 }
