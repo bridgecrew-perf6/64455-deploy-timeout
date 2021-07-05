@@ -53,7 +53,7 @@ const { NextSeo, DefaultSeo } = ns;
 //   }
 // };
 
-export function useSeo(pageSeo = {}) {
+export function useSeo(pageSeo = {}, useTitleTemplate = false) {
   const router = useRouter();
   const site = useSite();
 
@@ -115,6 +115,17 @@ export function useSeo(pageSeo = {}) {
       locale: canonicalizeLocale(locale, true),
     };
 
+    if (
+      useTitleTemplate &&
+      !isBlank(seo.titleTemplate) &&
+      !isBlank(seo.openGraph.title)
+    ) {
+      seo.openGraph.title = seo.titleTemplate.replace(
+        /%s/g,
+        seo.openGraph.title
+      );
+    }
+
     seo.openGraph.url = getUrl(locale);
     seo.openGraph.alternateLocales = locales.reduce((acc, lc) => {
       if (lc === locale) return acc;
@@ -149,7 +160,7 @@ export function useSeo(pageSeo = {}) {
     }
 
     return seo;
-  }, [pageSeo, router, site]);
+  }, [pageSeo, router, site, useTitleTemplate]);
 }
 
 export const usePageSeo = (options = {}) => {
