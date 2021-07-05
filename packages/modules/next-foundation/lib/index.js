@@ -3,6 +3,7 @@ export * from './baobab';
 export * from './context';
 export * from './currency';
 export * from './constants';
+export * from './forms';
 export * from './hocs';
 export * from './hooks';
 export * from './googlemaps';

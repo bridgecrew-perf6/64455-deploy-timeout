@@ -208,6 +208,14 @@ a.uk-navbar-item.uk-active {
   margin: 0 $breadcrumb-divider-margin-horizontal;
 }
 
+.uk-line-height {
+  min-height: $global-line-height + 0em;
+
+  &:empty:before {
+    content: '\00A0';
+  }
+}
+
 img.tm-image[uk-cover] {
   width: 100%;
 }
