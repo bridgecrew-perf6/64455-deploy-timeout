@@ -23,7 +23,7 @@ function AppLayout({ Component, pageProps }) {
   return <LayoutProvider Component={LayoutComponent} pageProps={pageProps} />;
 }
 
-function App({ Component, pageProps, settings }) {
+function App({ Component, pageProps, settings, children }) {
   const { cookie, currentPageProps, currentPageOptions, ...props } = pageProps;
   const Settings = useSettingsProvider(settings);
 
@@ -46,6 +46,7 @@ function App({ Component, pageProps, settings }) {
               >
                 <Head />
                 <AppLayout Component={Component} pageProps={pageProps} />
+                {children}
               </PageProvider>
             </Settings>
           </NextDataHooksProvider>

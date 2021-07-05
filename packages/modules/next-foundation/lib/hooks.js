@@ -115,6 +115,26 @@ export function useEventListener(eventName, selector, handler, options = {}) {
   }, [eventName, selector, fn, options]);
 }
 
+export function useDocumentEvent(eventName, handler, options = {}) {
+  const fn = useCallback((e) => handler(e), [handler]);
+  const once = useRef(false);
+
+  useEffect(() => {
+    if (once.current) return;
+
+    document.addEventListener(
+      eventName,
+      (...args) => {
+        if (options.once) once.current = true;
+        fn(...args);
+      },
+      options
+    );
+
+    return () => document.removeEventListener(eventName, fn, options);
+  }, [eventName, fn, options]);
+}
+
 export function useObject(data = {}) {
   return useCallback(
     (...path) => {

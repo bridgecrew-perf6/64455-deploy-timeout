@@ -697,7 +697,8 @@ span > .uk-text-meta {
     position: relative;
   }
 
-  &:last-child::after {
+  &:last-child::after,
+  .tm-products-slider &:last-child::after {
     box-shadow: 0 0 0 $global-border-width $global-border;
     content: '';
     width: 600%;
