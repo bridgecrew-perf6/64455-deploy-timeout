@@ -242,7 +242,7 @@ export function useCachedData(
   resetOnUnmount = false
 ) {
   const global = useGlobalContext(true);
-  const [currentData, setCurrentData] = useState(defaultData);
+  const [currentData, setCurrentData] = useState(data ?? defaultData);
 
   useEffect(() => {
     setCurrentData(data);
@@ -256,6 +256,16 @@ export function useCachedData(
 
   return currentData;
 }
+
+export const useHasLoaded = (data, check) => {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!loaded && check(data)) setLoaded(true);
+  }, [check, data, loaded, setLoaded]);
+
+  return loaded;
+};
 
 export function useUnmount(fn) {
   const fnRef = useRef(fn);

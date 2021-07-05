@@ -53,7 +53,8 @@ const { NextSeo, DefaultSeo } = ns;
 //   }
 // };
 
-export function useSeo(pageSeo = {}, useTitleTemplate = false) {
+export function useSeo(pageSeo = {}, options = {}) {
+  const { useTitleTemplate = false, router: routing = {} } = options;
   const router = useRouter();
   const site = useSite();
 
@@ -62,6 +63,7 @@ export function useSeo(pageSeo = {}, useTitleTemplate = false) {
 
     const { asPath, locale, defaultLocale, locales = [] } = router;
     const i18n = site?.i18n?.[locale] ?? translations?.[locale] ?? {};
+    const urls = { ...router.page, ...routing };
     const { _type, ...page } = { ...pageSeo };
     const { image, images, keywords, ...seo } = {
       ...defaults,
@@ -71,15 +73,15 @@ export function useSeo(pageSeo = {}, useTitleTemplate = false) {
 
     const { additionalMetaTags, additionalLinkTags } = seo;
 
-    const pathname = get(router, ['page', 'path'], asPath);
-    const canonical = get(router, ['page', 'canonical']);
+    const pathname = get(urls, 'path', asPath);
+    const canonical = get(urls, 'canonical');
 
     let openGraphImages = [];
     let metaKeywords = [];
 
     function getUrl(lc, path) {
       if (typeof path === 'string') return `${baseUrl}${path}`;
-      path = path ?? get(router, ['page', 'locales', lc], pathname);
+      path = path ?? get(urls, ['page', 'locales', lc], pathname);
       return lc === defaultLocale
         ? `${baseUrl}${path}`
         : `${baseUrl}/${lc}${path}`;
@@ -160,7 +162,7 @@ export function useSeo(pageSeo = {}, useTitleTemplate = false) {
     }
 
     return seo;
-  }, [pageSeo, router, site, useTitleTemplate]);
+  }, [pageSeo, router, routing, site, useTitleTemplate]);
 }
 
 export const usePageSeo = (options = {}) => {
