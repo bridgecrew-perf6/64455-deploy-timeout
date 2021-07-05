@@ -708,6 +708,10 @@ span > .uk-text-meta {
     top: 0;
   }
 
+  .tm-products-list &:last-child::after {
+    display: none;
+  }
+
   &:nth-child(3n + 3)::after {
     box-shadow: none;
   }
