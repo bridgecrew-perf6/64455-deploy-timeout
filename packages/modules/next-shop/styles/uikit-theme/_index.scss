@@ -27,7 +27,7 @@ $list-view-product-card-media-min-width: 160px !default;
 $list-view-product-card-price-font-size: 24px !default;
 
 // Scrollbox
-$scrollbox-max-height: 300px !default;
+$scrollbox-max-height: 305px !default; // max. 10 facets
 
 // Checkbox, radio
 $control-checkbox-image: $internal-form-checkbox-image !default;
@@ -1245,8 +1245,11 @@ span > .uk-text-meta {
 .tm-scrollbox {
   overflow: auto;
   max-height: $scrollbox-max-height;
-  background: linear-gradient(#fff 30%, rgba(255, 255, 255, 0)),
-    linear-gradient(rgba(255, 255, 255, 0), #fff 70%) 0 100%,
+  background: linear-gradient(
+      $card-default-background 30%,
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(rgba(255, 255, 255, 0), $card-default-background 70%) 0 100%,
     radial-gradient(
       farthest-side at 50% 0,
       rgba(0, 0, 0, 0.2),
@@ -1258,7 +1261,7 @@ span > .uk-text-meta {
         rgba(0, 0, 0, 0)
       )
       0 100%;
-  background-color: $global-background;
+  background-color: $card-default-background;
   background-repeat: no-repeat;
   background-attachment: local, local, scroll, scroll;
   background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
