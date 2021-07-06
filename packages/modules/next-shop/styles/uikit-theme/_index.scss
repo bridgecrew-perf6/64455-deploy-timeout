@@ -56,7 +56,14 @@ $label-secondary-color: $global-secondary-background !default;
 // Other
 $max-content-width: $breakpoint-small !default;
 
+$toolbar-container-color: $navbar-nav-item-color !default;
 $navbar-item-height: 60px !default;
+
+$global-light-muted-background: lighten($global-muted-background, 10%) !default;
+
+$toolbar-container-background: $global-secondary-background !default;
+
+$control-inputs-background: transparent !default;
 
 //
 // Extra small grid
@@ -162,6 +169,10 @@ a.uk-navbar-item.uk-active {
   @media (min-width: $breakpoint-medium) {
     z-index: $global-z-index;
   }
+}
+
+.uk-offcanvas-bar > .uk-card {
+  border-radius: 0;
 }
 
 .uk-icon.uk-icon-left {
@@ -578,11 +589,11 @@ span > .uk-text-meta {
 //
 
 .tm-toolbar-container:not(.uk-navbar-transparent) {
-  background: $global-secondary-background;
+  background: $toolbar-container-background;
 }
 
 .tm-toolbar-container .uk-navbar-item {
-  color: $navbar-nav-item-color;
+  color: $toolbar-container-color;
 }
 
 .tm-toolbar-container .uk-navbar-nav > li > a {
@@ -606,7 +617,7 @@ span > .uk-text-meta {
 }
 
 .tm-navbar-container:not(.uk-navbar-transparent) {
-  background: $global-background;
+  background: $navbar-background;
 }
 
 .tm-navbar-container {
@@ -717,7 +728,7 @@ span > .uk-text-meta {
   display: flex;
   flex-direction: row;
   transition: box-shadow $box-shadow-duration ease-in-out;
-  background-color: $global-background;
+  background-color: $card-default-background;
   box-shadow: 0 0 0 $global-border-width $global-border;
 
   &:last-child {
@@ -1279,6 +1290,7 @@ span > .uk-text-meta {
     margin-top: 3px;
     margin-right: $global-small-margin;
     border: $global-border-width solid $global-border;
+    background: $control-inputs-background;
     flex-shrink: 0;
   }
 
@@ -1949,6 +1961,11 @@ $color-dot-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
 //
 // Media box
 //
+
+.tm-media-box img,
+.tm-media-box-wrap img {
+  background: #fff;
+}
 
 .tm-media-box {
   display: block;
