@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { useCurrency, useSettings } from '../../lib';
 
-export default function CurrencySelect({ className, withCode }) {
+export default function CurrencySelect({ className, withCode, withChevron }) {
   const currency = useCurrency();
   const { setCurrency } = useSettings();
 
   const onChange = useCallback(
-    e => {
+    (e) => {
       e.preventDefault();
       setCurrency(e.target.value);
     },
@@ -23,6 +23,12 @@ export default function CurrencySelect({ className, withCode }) {
         ))}
       </select>
       <span>{currency.code}</span>
+      {withChevron && (
+        <span
+          className="uk-margin-xsmall-left"
+          uk-icon="icon: chevron-down; ratio: .75;"
+        />
+      )}
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { useLocale, useSettings } from '../../lib';
 
-export default function LocaleSelect({ className, withCode }) {
+export default function LocaleSelect({ className, withCode, withChevron }) {
   const { locale, locales, lang } = useLocale();
   const { setLocale } = useSettings();
 
   const onChange = useCallback(
-    e => {
+    (e) => {
       e.preventDefault();
       setLocale(e.target.value);
     },
@@ -23,6 +23,12 @@ export default function LocaleSelect({ className, withCode }) {
         ))}
       </select>
       <span>{String(lang).toUpperCase()}</span>
+      {withChevron && (
+        <span
+          className="uk-margin-xsmall-left"
+          uk-icon="icon: chevron-down; ratio: .75;"
+        />
+      )}
     </div>
   );
 }

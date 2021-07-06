@@ -120,6 +120,9 @@ export function useDocumentEvent(eventName, handler, options = {}) {
   const once = useRef(false);
 
   useEffect(() => {
+    const stopListening = () =>
+      document.removeEventListener(eventName, fn, options);
+
     if (once.current) return;
 
     document.addEventListener(
@@ -131,7 +134,7 @@ export function useDocumentEvent(eventName, handler, options = {}) {
       options
     );
 
-    return () => document.removeEventListener(eventName, fn, options);
+    return stopListening;
   }, [eventName, fn, options]);
 }
 
