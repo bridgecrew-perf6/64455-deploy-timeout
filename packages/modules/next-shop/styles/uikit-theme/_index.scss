@@ -116,7 +116,7 @@ $pagination-item-active-color: $global-emphasis-color !default;
   transform: translateY(-1px);
 }
 
-.uk-button .uk-icon {
+.uk-button:not(.tm-product-add-button) .uk-icon {
   transform: translateY(-2px);
 }
 
