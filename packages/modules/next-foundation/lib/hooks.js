@@ -101,12 +101,14 @@ export function useMounted() {
 }
 
 export function useEventListener(eventName, selector, handler, options = {}) {
+  const mounted = useMounted();
+
   const fn = useCallback(
     (e) => {
       const delegateTarget = closest(e.target, selector);
-      if (delegateTarget) handler(e, delegateTarget);
+      if (delegateTarget && mounted) handler(e, delegateTarget);
     },
-    [selector, handler]
+    [mounted, selector, handler]
   );
 
   useEffect(() => {
@@ -118,6 +120,7 @@ export function useEventListener(eventName, selector, handler, options = {}) {
 export function useDocumentEvent(eventName, handler, options = {}) {
   const fn = useCallback((e) => handler(e), [handler]);
   const once = useRef(false);
+  const mounted = useMounted();
 
   useEffect(() => {
     const stopListening = () =>
@@ -128,6 +131,7 @@ export function useDocumentEvent(eventName, handler, options = {}) {
     document.addEventListener(
       eventName,
       (...args) => {
+        if (!mounted) return; // skip
         if (options.once) once.current = true;
         fn(...args);
       },
@@ -135,7 +139,7 @@ export function useDocumentEvent(eventName, handler, options = {}) {
     );
 
     return stopListening;
-  }, [eventName, fn, options]);
+  }, [mounted, eventName, fn, options]);
 }
 
 export function useObject(data = {}) {

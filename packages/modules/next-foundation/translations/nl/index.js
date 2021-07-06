@@ -39,4 +39,7 @@ export default {
   search: {
     placeholder: 'Zoeken ...',
   },
+  address: {
+    phoneNumber: 'Telefoon',
+  },
 };

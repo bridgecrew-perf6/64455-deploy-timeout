@@ -25,6 +25,7 @@ export function joinUrl(...parts) {
   const isFullyQualified = isFullyQualifiedUrl(parts[0]);
   const url = flatten(
     parts.map((part) => {
+      if (isFullyQualifiedUrl(part)) return part;
       return typeof part === 'string' ? part.split('/') : '';
     })
   )

@@ -4,11 +4,11 @@ import Currency from './util/currency';
 
 export { Currency };
 
-export function useCurrency(currency, locale) {
+export function useCurrency(currency, options = {}) {
   const settings = useSettings();
   currency = currency || settings.currency;
-  locale = locale || settings.locale;
+  const locale = options.locale || settings.locale;
   return useMemo(() => {
-    return Currency.use(currency, { locale, convert: true });
-  }, [currency, locale]);
+    return Currency.use(currency, { locale, convert: true, ...options });
+  }, [currency, locale, options]);
 }

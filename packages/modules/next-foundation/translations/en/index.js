@@ -38,4 +38,7 @@ export default {
   search: {
     placeholder: 'Search ...',
   },
+  address: {
+    phoneNumber: 'Phone',
+  },
 };
