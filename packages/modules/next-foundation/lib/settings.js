@@ -100,9 +100,10 @@ export function useSettingsProvider(options = {}) {
       previousLocale &&
       locale &&
       router.locale &&
-      locale !== router.locale
+      locale !== router.locale &&
+      locale !== previousLocale
     ) {
-      router.push(
+      router.replace(
         {
           pathname: router.pathname,
           query: router.query,
