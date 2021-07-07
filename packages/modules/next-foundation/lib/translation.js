@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router'; // use standard
 
-import { get, simplifyLocale } from './util';
+import { get, set, simplifyLocale } from './util';
 
 export function useLocale() {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export function useLocale() {
   );
 
   const locales = useMemo(() => {
-    return [].concat(router.locales || []).map(code => {
+    return [].concat(router.locales || []).map((code) => {
       const isDefault = code === router.defaultLocale;
       // eslint-disable-next-line no-shadow
       const lang = simplifyLocale(code);
@@ -47,7 +47,7 @@ export function useTranslator(forceLocale) {
   return useMemo(() => {
     return (data, ...path) => {
       const key = path
-        .map(p => (Array.isArray(p) ? p : String(p).split('.')))
+        .map((p) => (Array.isArray(p) ? p : String(p).split('.')))
         .flat();
       const defaultKey = [].concat(key);
       defaultKey.splice(-1, 0, 'i18n', defaultLocale);
@@ -60,4 +60,11 @@ export function useTranslator(forceLocale) {
       );
     };
   }, [defaultLocale, locale]);
+}
+
+export function mapTranslations(t, mapping = {}) {
+  return Object.entries(mapping).reduce(
+    (memo, [to, from]) => set(memo, to, t(from)),
+    {}
+  );
 }
