@@ -10,6 +10,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const withTsConfigPaths = require('./plugins/tsconfig-paths')();
+
 const coreModules = [
   '@atelierfabien/next-foundation',
   '@atelierfabien/next-shop',
@@ -43,6 +45,7 @@ module.exports = (config = {}) => {
       withTranslations,
       withBundleAnalyzer,
       withRpc,
+      withTsConfigPaths,
       ...plugins,
     ],
     { ...defaults, ...nextConfig }
