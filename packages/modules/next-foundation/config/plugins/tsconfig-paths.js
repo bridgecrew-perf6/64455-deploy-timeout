@@ -10,6 +10,10 @@ const log = (...args) => {
 
 const asterisk = 0x2a;
 
+const NODE_MODULES_REGEX = /node_modules/;
+
+const INTERNAL_MODULES_REGEX = /@atelierfabien\//;
+
 /**
  * Handles tsconfig.json or jsconfig.js "paths" option for webpack
  * Largely based on how the TypeScript compiler handles it:
@@ -40,6 +44,16 @@ class TsConfigPathsPlugin {
       .getHook('described-resolve')
       .tapPromise('TsConfigPathsPlugin', async (request, resolveContext) => {
         const moduleName = request.request;
+
+        // Exclude node_modules from paths support (speeds up resolving)
+        if (
+          request.path.match(NODE_MODULES_REGEX) &&
+          !request.path.match(INTERNAL_MODULES_REGEX)
+        ) {
+          log('skipping request as it is inside node_modules %s', moduleName);
+          return;
+        }
+
         if (
           path.posix.isAbsolute(moduleName) ||
           (process.platform === 'win32' && path.win32.isAbsolute(moduleName))
@@ -47,6 +61,7 @@ class TsConfigPathsPlugin {
           log('skipping request as it is an absolute path %s', moduleName);
           return;
         }
+
         if (pathIsRelative(moduleName)) {
           log('skipping request as it is a relative path %s', moduleName);
           return;

@@ -12,11 +12,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const withTsConfigPaths = require('./plugins/tsconfig-paths')();
 
-const coreModules = [
-  '@atelierfabien/next-foundation',
-  '@atelierfabien/next-shop',
-  '@atelierfabien/next-sanity',
-];
+const coreModules = ['lodash-es', '@atelierfabien/next-foundation'];
 
 const defaults = {
   future: {
@@ -31,7 +27,7 @@ module.exports = (config = {}) => {
   const { transpile = {}, plugins = [], ...nextConfig } = config;
 
   const withTM = transpileModules(
-    ['lodash-es', ...coreModules, ...(transpile.modules || [])],
+    [...coreModules, ...(transpile.modules || [])],
     {
       resolveSymlinks: true,
       ...transpile.options,
