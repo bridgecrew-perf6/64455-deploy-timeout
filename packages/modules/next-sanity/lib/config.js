@@ -15,7 +15,7 @@ const config = defaults(
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     useCdn: process.env.NODE_ENV === 'production',
-    token: process.env.SANITY_TOKEN,
+    token: process.env.SANITY_API_WRITE_TOKEN,
   },
   { ...sanityConfig },
   {
