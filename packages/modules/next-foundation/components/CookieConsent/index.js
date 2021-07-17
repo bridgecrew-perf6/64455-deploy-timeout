@@ -2,13 +2,23 @@ import { useCallback, useRef } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useGoogleAnalytics, Link } from '../../lib';
+import { pick } from '../../lib/util';
+
+import site from '@app/config/site';
+
+const defaults = pick(site, 'cookiePolicy', 'privacyPolicy');
 
 export default function CookieConsent(props) {
-  const { cookiePolicy = '#cookies', privacyPolicy = '#privacy' } = props;
+  const { cookiePolicy = '#cookies', privacyPolicy = '#privacy' } = {
+    ...defaults,
+    ...props,
+  };
+
   const { prompt, accept, reject } = useGoogleAnalytics({
     initialize: true,
     ...props,
   });
+
   const { t } = useTranslation();
   const ref = useRef();
 

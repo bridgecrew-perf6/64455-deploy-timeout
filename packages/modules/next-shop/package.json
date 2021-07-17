@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-shop",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "E-commerce integration for NextJS projects",
   "module": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "homepage": "https://github.com/fabien/next-development#readme",
   "dependencies": {},
   "peerDependencies": {
-    "@atelierfabien/next-foundation": "^0.0.4",
-    "next": "^10.2.2",
+    "@atelierfabien/next-foundation": "^0.0.5",
+    "next": "^10.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
