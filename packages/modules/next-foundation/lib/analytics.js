@@ -32,7 +32,7 @@ export function useCookieConsent(type, options = {}) {
   });
 
   const accept = useCallback(
-    e => {
+    (e) => {
       if (e) e.preventDefault();
       if (settings) settings.set(type, true);
       if (settings && typeof options.accept === 'function') {
@@ -43,7 +43,7 @@ export function useCookieConsent(type, options = {}) {
   );
 
   const reject = useCallback(
-    e => {
+    (e) => {
       if (e) e.preventDefault();
       if (settings) settings.set(type, false);
       if (settings && typeof options.reject === 'function') {
@@ -57,7 +57,7 @@ export function useCookieConsent(type, options = {}) {
 }
 
 export function useGoogleAnalytics(options = {}) {
-  const { initialize, force, ignoreDoNotTrack } = options;
+  const { initialize, force, ignoreDoNotTrack = true } = options;
   const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_GA;
   const isDevelopment = process.env.NODE_ENV === 'development';
   const isProduction = force || process.env.NODE_ENV === 'production';
