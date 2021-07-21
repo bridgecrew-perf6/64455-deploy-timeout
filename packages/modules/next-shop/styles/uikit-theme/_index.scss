@@ -92,6 +92,14 @@ $grid-xsmall-gutter-vertical: $grid-xsmall-gutter-horizontal !default;
 }
 
 //
+// Fix uk-grid with stacking (tm-product-pricing)
+//
+
+.uk-grid.uk-grid-stack.uk-first-column {
+  box-sizing: initial;
+}
+
+//
 // Pagination
 //
 
@@ -739,6 +747,10 @@ span > .uk-text-meta {
 // Product card
 //
 
+.tm-products-overview {
+  overflow: hidden;
+}
+
 .tm-product-card {
   display: flex;
   flex-direction: row;
@@ -762,7 +774,22 @@ span > .uk-text-meta {
     top: 0;
   }
 
-  .tm-products-list &:last-child::after {
+  &:nth-child(3n + 3) {
+    position: relative;
+  }
+
+  &:nth-child(3n + 3)::after {
+    content: '';
+    width: 600%;
+    height: 100%;
+    background: $card-default-background;
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+
+  .tm-products-list &:last-child::after,
+  .tm-products-list &:nth-child(3n + 3)::after {
     display: none;
   }
 
