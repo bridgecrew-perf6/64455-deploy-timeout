@@ -775,11 +775,11 @@ span > .uk-text-meta {
     top: 0;
   }
 
-  &:nth-child(3n + 3) {
+  .tm-products-list &:nth-child(3n + 3) {
     position: relative;
   }
 
-  &:nth-child(3n + 3)::after {
+  .tm-products-list &:nth-child(3n + 3)::after {
     content: '';
     width: 600%;
     height: 100%;
