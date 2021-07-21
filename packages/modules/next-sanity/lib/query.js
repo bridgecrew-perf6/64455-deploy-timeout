@@ -4,6 +4,8 @@ import { get, isBlank, mergeObjects, trim } from '@foundation/next';
 import groq from 'groq';
 import { processResults } from './tree';
 
+export { processResults } from './tree';
+
 export const andPredicate = (...predicates) => {
   const valid = predicates.filter((p) => !isBlank(p));
   return valid.length > 0 ? `(${valid.join(' && ')})` : '';
