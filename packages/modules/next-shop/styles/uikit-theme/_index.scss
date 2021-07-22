@@ -792,6 +792,7 @@ span > .uk-text-meta {
     box-shadow: none;
   }
 
+  .tm-products-slider &:nth-child(3n + 3)::after,
   .tm-products-slider &:last-child::after {
     display: none;
   }
