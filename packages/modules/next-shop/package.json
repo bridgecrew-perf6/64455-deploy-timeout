@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-shop",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "E-commerce integration for NextJS projects",
   "module": "index.js",
   "scripts": {

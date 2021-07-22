@@ -763,8 +763,7 @@ span > .uk-text-meta {
     position: relative;
   }
 
-  &:last-child::after,
-  .tm-products-slider &:last-child::after {
+  .tm-products-grid &:last-child::after {
     box-shadow: 0 0 0 $global-border-width $global-border;
     content: '';
     width: 600%;
@@ -775,11 +774,11 @@ span > .uk-text-meta {
     top: 0;
   }
 
-  .tm-products-list &:nth-child(3n + 3) {
+  .tm-products-grid &:nth-child(3n + 3) {
     position: relative;
   }
 
-  .tm-products-list &:nth-child(3n + 3)::after {
+  .tm-products-grid &:nth-child(3n + 3)::after {
     content: '';
     width: 600%;
     height: 100%;
@@ -789,13 +788,12 @@ span > .uk-text-meta {
     top: 0;
   }
 
-  .tm-products-list &:last-child::after,
-  .tm-products-list &:nth-child(3n + 3)::after {
-    display: none;
+  .tm-products-grid &:nth-child(3n + 3)::after {
+    box-shadow: none;
   }
 
-  &:nth-child(3n + 3)::after {
-    box-shadow: none;
+  .tm-products-slider &:last-child::after {
+    display: none;
   }
 
   @media (max-width: $breakpoint-small) {
@@ -880,6 +878,7 @@ span > .uk-text-meta {
   flex-direction: column;
   padding: 15px 15px 15px 0;
   flex-grow: 1;
+  min-width: 1px;
 
   @media (min-width: $breakpoint-small) {
     padding: 20px 20px 20px 0;
