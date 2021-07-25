@@ -19,7 +19,7 @@ const defaults = {
     webpack5: false,
   },
   experimental: {
-    scrollRestoration: false,
+    scrollRestoration: true,
   },
 };
 

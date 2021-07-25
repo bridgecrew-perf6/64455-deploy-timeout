@@ -288,6 +288,11 @@ span > .uk-text-meta {
   }
 }
 
+.tm-margin-remove-first > :first-child {
+  padding-left: 0;
+  margin-left: 0;
+}
+
 .tm-border-left {
   border-left: $global-border-width solid $global-border;
 }
