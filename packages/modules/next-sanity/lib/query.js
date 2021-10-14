@@ -28,10 +28,30 @@ const getParams = (params, options = {}) => {
 
 const passThrough = () => true;
 
+const prepare = (query, params = {}, previewOptions = {}) => {
+  if (typeof previewOptions === 'object') {
+    previewOptions.query = query;
+    previewOptions.params = params;
+  }
+  return [query, params];
+};
+
+const ensureSingleItem = (data, isPreview) => {
+  if (!Array.isArray(data)) {
+    return data;
+  } else if (data.length === 1) {
+    return data[0];
+  } else if (isPreview) {
+    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0];
+  } else {
+    return data[0];
+  }
+};
+
 const types = {
   // Fetch multiple
   all: (options = {}) => {
-    return function (params = {}) {
+    return function (params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -41,18 +61,19 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
-        groq`
-          *[${andPredicate(predicate, query)}]{
-            ${projection}
-          }${filterPredicate(filter)}`,
-        { ...queryParams, locale, defaultLocale }
+      const args = prepare(
+        groq`*[${andPredicate(predicate, query)}]{
+          ${projection}
+        }${filterPredicate(filter)}`,
+        { ...queryParams, locale, defaultLocale },
+        _previewOptions
       );
+      return this.fetchData(...args);
     };
   },
   // Fetch one based on one param
   one: (options = {}) => {
-    return function (target, params = {}) {
+    return async function (target, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -62,18 +83,22 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
-        groq`
-            *[${andPredicate(predicate, query)}][0]{
-              ${projection}
-            }${filterPredicate(filter)}`,
-        { ...queryParams, target, locale, defaultLocale }
+      const isPreview = typeof _previewOptions === 'object';
+      const single = isPreview ? '' : '[0]';
+      const args = prepare(
+        groq`*[${andPredicate(predicate, query)}]${single}{
+          ${projection}
+        }${filterPredicate(filter)}`,
+        { ...queryParams, target, locale, defaultLocale },
+        _previewOptions
       );
+      const data = await this.fetchData(...args);
+      return ensureSingleItem(data, isPreview);
     };
   },
   // Fetch one as singleton
   singleton: (options = {}) => {
-    return function (params = {}) {
+    return async function (params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -83,18 +108,23 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
+      const isPreview = typeof _previewOptions === 'object';
+      const single = isPreview ? '' : '[0]';
+      const args = prepare(
         groq`
-            *[${andPredicate(predicate, query)}][0]{
+            *[${andPredicate(predicate, query)}]${single}{
               ${projection}
             }${filterPredicate(filter)}`,
-        { ...queryParams, locale, defaultLocale }
+        { ...queryParams, locale, defaultLocale },
+        _previewOptions
       );
+      const data = await this.fetchData(...args);
+      return ensureSingleItem(data, isPreview);
     };
   },
   // Fetch multiple by id
   ids: (options = {}) => {
-    return function (ids, params = {}) {
+    return function (ids, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -104,18 +134,20 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
+      const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)} && _id in $ids][0]{
+          *[${andPredicate(predicate, query)} && _id in $ids]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, ids, locale, defaultLocale }
+        { ...queryParams, ids, locale, defaultLocale },
+        _previewOptions
       );
+      return this.fetchData(...args);
     };
   },
   // Fetch one by id
   id: (options = {}) => {
-    return function (id, params = {}) {
+    return async function (id, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -125,13 +157,18 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
+      const isPreview = typeof _previewOptions === 'object';
+      const single = isPreview ? '' : '[0]';
+      const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)} && _id == $id][0]{
+          *[${andPredicate(predicate, query)} && _id == $id]${single}{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, id, locale, defaultLocale }
+        { ...queryParams, id, locale, defaultLocale },
+        _previewOptions
       );
+      const data = await this.fetchData(...args);
+      return ensureSingleItem(data, isPreview);
     };
   },
   // Fetch one by path
@@ -139,7 +176,7 @@ const types = {
     const basePredicate = options.i18n
       ? groq`$path in [i18n[$locale].path.current, i18n[$defaultLocale].path.current]`
       : groq`$path == path.current`;
-    return function (path, params = {}) {
+    return async function (path, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -150,13 +187,18 @@ const types = {
         ...queryParams
       } = getParams(params, options);
       const pathname = Array.isArray(path) ? `/${path.join('/')}` : path;
-      return this.fetchData(
+      const isPreview = typeof _previewOptions === 'object';
+      const single = isPreview ? '' : '[0]';
+      const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
+          *[${andPredicate(predicate, query)} && ${basePredicate}]${single}{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, path: pathname, locale, defaultLocale }
+        { ...queryParams, path: pathname, locale, defaultLocale },
+        _previewOptions
       );
+      const data = await this.fetchData(...args);
+      return ensureSingleItem(data, isPreview);
     };
   },
   // Fetch one by alias
@@ -164,7 +206,7 @@ const types = {
     const basePredicate = options.i18n
       ? groq`$alias in [i18n[$locale].alias.current, i18n[$defaultLocale].alias.current]`
       : groq`$alias == alias.current`;
-    return function (alias, params = {}) {
+    return async function (alias, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -174,18 +216,23 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
+      const isPreview = typeof _previewOptions === 'object';
+      const single = isPreview ? '' : '[0]';
+      const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)} && ${basePredicate}][0]{
+          *[${andPredicate(predicate, query)} && ${basePredicate}]${single}{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, alias, locale, defaultLocale }
+        { ...queryParams, alias, locale, defaultLocale },
+        _previewOptions
       );
+      const data = await this.fetchData(...args);
+      return ensureSingleItem(data, isPreview);
     };
   },
   // Fetch multiple by property
   property: (property, options = {}) => {
-    return function (target, params = {}) {
+    return function (target, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -195,18 +242,20 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
-      return this.fetchData(
+      const args = prepare(
         groq`
           *[${andPredicate(predicate, query)} && ${property} == $target]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, target, locale, defaultLocale }
+        { ...queryParams, target, locale, defaultLocale },
+        _previewOptions
       );
+      return this.fetchData(...args);
     };
   },
   // Custom function
   custom: (fn, options = {}) => {
-    return function (params = {}) {
+    return function (params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -216,13 +265,15 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(fn(params, options), options);
-      return this.fetchData(
+      const args = prepare(
         groq`
           *[${andPredicate(predicate, query)}]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, locale, defaultLocale }
+        { ...queryParams, locale, defaultLocale },
+        _previewOptions
       );
+      return this.fetchData(...args);
     };
   },
   // Attach function - this needs to be a normal function, not an arrow fn
