@@ -18,7 +18,7 @@ const { token, ...config } = sanityConfig;
  * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
  * Read more: https://www.sanity.io/docs/image-url
  * */
-export const urlFor = source => createImageUrlBuilder(config).image(source);
+export const urlFor = (source) => createImageUrlBuilder(config).image(source);
 
 // Set up the live preview subsscription hook
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
@@ -30,7 +30,7 @@ const PortableTextComponent = createPortableTextComponent({
 });
 
 export const PortableText = ({ blocks, ...props }) => {
-  blocks = [].concat(blocks || []).map(block => {
+  blocks = [].concat(blocks || []).map((block) => {
     if (block._type === 'block.content') {
       return { ...block, _type: 'block' };
     }
@@ -49,5 +49,5 @@ export const previewClient = createClient({
 });
 
 // Helper function for easily switching between normal client and preview client
-export const getClient = usePreview =>
+export const getClient = (usePreview) =>
   usePreview ? previewClient : sanityClient;

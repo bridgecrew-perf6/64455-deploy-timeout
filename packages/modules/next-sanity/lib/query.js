@@ -4,6 +4,7 @@ import { get, isBlank, mergeObjects, trim } from '@foundation/next';
 import groq from 'groq';
 import { processResults } from './tree';
 
+import { deduceItem } from './util';
 export { processResults } from './tree';
 
 export const andPredicate = (...predicates) => {
@@ -28,23 +29,23 @@ const getParams = (params, options = {}) => {
 
 const passThrough = () => true;
 
-const prepare = (query, params = {}, previewOptions = {}) => {
+const prepare = (query, params = {}, previewOptions, _singleItem = false) => {
   if (typeof previewOptions === 'object') {
+    previewOptions.enabled = true;
     previewOptions.query = query;
     previewOptions.params = params;
+    previewOptions.single = Boolean(_singleItem);
   }
   return [query, params];
 };
 
-const ensureSingleItem = (data, isPreview) => {
-  if (!Array.isArray(data)) {
-    return data;
-  } else if (data.length === 1) {
-    return data[0];
-  } else if (isPreview) {
-    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0];
+const finalize = (data, previewOptions) => {
+  if (typeof previewOptions === 'object') {
+    const initialData = previewOptions.single ? deduceItem(data, true) : data;
+    previewOptions.initialData = initialData;
+    return initialData;
   } else {
-    return data[0];
+    return data;
   }
 };
 
@@ -90,10 +91,11 @@ const types = {
           ${projection}
         }${filterPredicate(filter)}`,
         { ...queryParams, target, locale, defaultLocale },
-        _previewOptions
+        _previewOptions,
+        true
       );
       const data = await this.fetchData(...args);
-      return ensureSingleItem(data, isPreview);
+      return finalize(data, _previewOptions);
     };
   },
   // Fetch one as singleton
@@ -116,10 +118,11 @@ const types = {
               ${projection}
             }${filterPredicate(filter)}`,
         { ...queryParams, locale, defaultLocale },
-        _previewOptions
+        _previewOptions,
+        true
       );
       const data = await this.fetchData(...args);
-      return ensureSingleItem(data, isPreview);
+      return finalize(data, _previewOptions);
     };
   },
   // Fetch multiple by id
@@ -165,10 +168,11 @@ const types = {
             ${projection}
           }${filterPredicate(filter)}`,
         { ...queryParams, id, locale, defaultLocale },
-        _previewOptions
+        _previewOptions,
+        true
       );
       const data = await this.fetchData(...args);
-      return ensureSingleItem(data, isPreview);
+      return finalize(data, _previewOptions);
     };
   },
   // Fetch one by path
@@ -195,10 +199,11 @@ const types = {
             ${projection}
           }${filterPredicate(filter)}`,
         { ...queryParams, path: pathname, locale, defaultLocale },
-        _previewOptions
+        _previewOptions,
+        true
       );
       const data = await this.fetchData(...args);
-      return ensureSingleItem(data, isPreview);
+      return finalize(data, _previewOptions);
     };
   },
   // Fetch one by alias
@@ -224,10 +229,11 @@ const types = {
             ${projection}
           }${filterPredicate(filter)}`,
         { ...queryParams, alias, locale, defaultLocale },
-        _previewOptions
+        _previewOptions,
+        true
       );
       const data = await this.fetchData(...args);
-      return ensureSingleItem(data, isPreview);
+      return finalize(data, _previewOptions);
     };
   },
   // Fetch multiple by property

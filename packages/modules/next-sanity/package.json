@@ -22,10 +22,10 @@
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^2.13.0",
     "@sanity/image-url": "^0.140.22",
-    "groq": "^2.2.6",
-    "groq-js": "^0.3.0",
+    "groq": "^2.15.0",
+    "groq-js": "0.3.0-beta.2",
     "lodash.defaults": "^4.2.0",
-    "next-sanity": "^0.2.0",
+    "next-sanity": "^0.4.0",
     "traverse": "^0.6.6",
     "tree-walk-util": "^3.0.0"
   },

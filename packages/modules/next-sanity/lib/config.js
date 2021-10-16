@@ -24,7 +24,7 @@ const config = defaults(
      *
      * https://www.sanity.io/docs/api-versioning
      */
-    apiVersion: '2021-03-25',
+    apiVersion: '2021-06-25',
     /**
      * Set useCdn to `false` if your application require the freshest possible
      * data always (potentially slightly slower and a bit more expensive).
