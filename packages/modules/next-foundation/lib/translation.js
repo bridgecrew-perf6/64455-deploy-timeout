@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router'; // use standard
 
-import { get, set, simplifyLocale } from './util';
+import { get, set, simplifyLocale, joinUrl } from './util';
 
 export function useLocale() {
   const { t } = useTranslation();
@@ -27,11 +27,28 @@ export function useLocale() {
       );
       const asPath = isDefault ? router.asPath : `/${code}${router.asPath}`;
       const href = get(router, ['page', 'locales', code], asPath);
-      return { code, lang, name, active: code === locale, href };
+      return {
+        code,
+        lang,
+        name,
+        active: code === locale,
+        href,
+        default: isDefault,
+      };
     });
   }, [router, t, locale]);
 
   return { locale, lang: lc, language, locales };
+}
+
+export function useLocalePath() {
+  const { locales } = useLocale();
+  const locale = locales.find((lc) => lc.active) ?? locales[0];
+  if (locale?.default) {
+    return joinUrl('/', locale.href);
+  } else if (locale) {
+    return joinUrl('/', locale.code, locale.href);
+  }
 }
 
 export function useTranslated(data = {}, forceLocale) {

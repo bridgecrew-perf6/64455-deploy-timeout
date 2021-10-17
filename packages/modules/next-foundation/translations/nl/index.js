@@ -1,4 +1,9 @@
 export default {
+  preview: {
+    message: 'Preview mode is actief',
+    edit: 'Bewerken',
+    exit: 'Afsluiten',
+  },
   languages: {
     en: 'Engels',
     nl: 'Nederlands',

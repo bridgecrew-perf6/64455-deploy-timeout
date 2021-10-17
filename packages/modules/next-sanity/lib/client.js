@@ -5,7 +5,11 @@ import {
   createPreviewSubscriptionHook,
 } from 'next-sanity';
 
+import { useState, useEffect } from 'react';
+
 import serializers from './serializers';
+
+import { deduceItem } from './util';
 
 import sanityConfig from './config';
 
@@ -22,6 +26,65 @@ export const urlFor = (source) => createImageUrlBuilder(config).image(source);
 
 // Set up the live preview subsscription hook
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
+
+export const usePreviewProps = (props, fn) => {
+  const { previewOptions = {}, ...originalProps } = props;
+  const { query, params, initialData, enabled } = previewOptions;
+
+  const [previewProps, setPreviewProps] = useState(initialData);
+
+  const { data } = usePreviewSubscription(query, {
+    params,
+    initialData,
+    enabled,
+  });
+
+  useEffect(() => {
+    let disposed = false;
+
+    (async () => {
+      let currentData = previewOptions?.single ? deduceItem(data, true) : data;
+
+      if (!enabled) return setPreviewProps(currentData);
+
+      if (currentData === undefined || disposed) return;
+
+      if (typeof fn === 'function') {
+        currentData = await fn(
+          currentData,
+          props,
+          previewOptions?.context ?? {}
+        );
+      }
+
+      if (currentData === undefined || disposed) return;
+
+      setPreviewProps(currentData);
+    })();
+
+    return () => {
+      disposed = true;
+    };
+  }, [
+    enabled,
+    data,
+    props,
+    fn,
+
+    previewOptions?.context,
+    previewOptions?.single,
+  ]);
+
+  if (enabled) {
+    return {
+      ...originalProps,
+      ...previewProps,
+      page: previewProps.currentPageProps,
+    };
+  } else {
+    return originalProps;
+  }
+};
 
 // Set up Portable Text serialization
 const PortableTextComponent = createPortableTextComponent({

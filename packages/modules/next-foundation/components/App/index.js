@@ -13,6 +13,7 @@ import {
 } from '../../lib';
 
 import Head from '../Head';
+import NextPreview from '../Preview';
 
 import '../../config/module';
 
@@ -45,6 +46,7 @@ function App({ Component, pageProps, settings, children }) {
                 options={currentPageOptions}
               >
                 <Head />
+                <NextPreview {...props} />
                 <AppLayout Component={Component} pageProps={pageProps} />
                 {children}
               </PageProvider>
