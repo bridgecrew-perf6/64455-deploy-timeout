@@ -20,6 +20,7 @@ const NextPreview = ({ previewOptions }) => {
   if (enabled && studioUrl) {
     const sourceUrl = joinUrl(baseUrl, path);
     const targetUrl = joinUrl(baseStudioUrl, studioUrl);
+    const exitUrl = `/api/sanity/exit?source=${encodeURIComponent(sourceUrl)}`;
     return (
       <div className="p-3 uk-flex uk-flex-middle uk-section-secondary uk-light uk-text-small">
         <div className="uk-flex uk-flex-middle uk-width-expand@s">
@@ -33,7 +34,7 @@ const NextPreview = ({ previewOptions }) => {
           title={t('common:preview.edit')}
         ></a>
         <a
-          href={sourceUrl}
+          href={exitUrl}
           className="uk-icon-link uk-margin-small-left"
           uk-icon="close"
           title={t('common:preview.exit')}
