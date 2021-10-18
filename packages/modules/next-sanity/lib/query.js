@@ -2,9 +2,9 @@
 
 import { get, isBlank, mergeObjects, trim } from '@foundation/next';
 import groq from 'groq';
-import { processResults } from './tree';
 
-import { deduceItem } from './util';
+import { deduceItem, processData } from './util';
+
 export { processResults } from './tree';
 
 export const andPredicate = (...predicates) => {
@@ -365,9 +365,7 @@ async function fetchData(...args) {
   // eslint-disable-next-line no-console
   if (this.debug === true) console.log(args[0]);
   const data = await this.client.fetch(...args);
-  return typeof data === 'object' && data !== null
-    ? processResults(data)
-    : data;
+  return processData(data);
 }
 
 function getProperty(obj, property) {

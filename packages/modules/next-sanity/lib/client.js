@@ -5,11 +5,13 @@ import {
   createPreviewSubscriptionHook,
 } from 'next-sanity';
 
+import { usePage } from '@atelierfabien/next-foundation';
+
 import { useState, useEffect } from 'react';
 
 import serializers from './serializers';
 
-import { deduceItem } from './util';
+import { deduceItem, processData } from './util';
 
 import sanityConfig from './config';
 
@@ -27,7 +29,8 @@ export const urlFor = (source) => createImageUrlBuilder(config).image(source);
 // Set up the live preview subsscription hook
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 
-export const usePreviewProps = (props, fn) => {
+export const usePreviewProps = (props, options = {}) => {
+  const { fn } = options;
   const { previewOptions = {}, ...originalProps } = props;
   const { query, params, initialData, enabled } = previewOptions;
 
@@ -43,7 +46,9 @@ export const usePreviewProps = (props, fn) => {
     let disposed = false;
 
     (async () => {
-      let currentData = previewOptions?.single ? deduceItem(data, true) : data;
+      let currentData = processData(
+        previewOptions?.single ? deduceItem(data, true) : data
+      );
 
       if (!enabled) return setPreviewProps(currentData);
 
@@ -75,11 +80,18 @@ export const usePreviewProps = (props, fn) => {
     previewOptions?.single,
   ]);
 
+  const page =
+    previewProps?.currentPageProps ?? originalProps?.currentPageProps;
+
+  usePage((context) => {
+    context.reset(page ?? {});
+  });
+
   if (enabled) {
     return {
       ...originalProps,
       ...previewProps,
-      page: previewProps.currentPageProps,
+      page,
     };
   } else {
     return originalProps;

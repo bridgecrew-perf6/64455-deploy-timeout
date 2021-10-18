@@ -1,5 +1,5 @@
 import { joinUrl } from '@foundation/lib/util';
-import { useTranslation, useLocalePath } from '@foundation/next';
+import { useRouter, useTranslation, useLocalePath } from '@foundation/next';
 
 import siteConfig from '@app/config/site';
 
@@ -13,13 +13,14 @@ const baseStudioUrl =
   'http://localhost:3333';
 
 const NextPreview = ({ previewOptions }) => {
+  const router = useRouter();
   const { t } = useTranslation();
   const path = useLocalePath();
 
   const { enabled, studioUrl } = previewOptions ?? {};
-  if (enabled && studioUrl) {
+  if ((enabled && studioUrl) || router.isPreview) {
     const sourceUrl = joinUrl(baseUrl, path);
-    const targetUrl = joinUrl(baseStudioUrl, studioUrl);
+    const targetUrl = studioUrl ? joinUrl(baseStudioUrl, studioUrl) : null;
     const exitUrl = `/api/sanity/exit?source=${encodeURIComponent(sourceUrl)}`;
     return (
       <div className="p-3 uk-flex uk-flex-middle uk-section-secondary uk-light uk-text-small">
@@ -27,12 +28,14 @@ const NextPreview = ({ previewOptions }) => {
           <span className="uk-margin-small-right" uk-icon="icon: bolt"></span>{' '}
           {t('common:preview.message')}
         </div>
-        <a
-          href={targetUrl}
-          className="uk-icon-link"
-          uk-icon="pencil"
-          title={t('common:preview.edit')}
-        ></a>
+        {targetUrl && (
+          <a
+            href={targetUrl}
+            className="uk-icon-link"
+            uk-icon="pencil"
+            title={t('common:preview.edit')}
+          ></a>
+        )}
         <a
           href={exitUrl}
           className="uk-icon-link uk-margin-small-left"

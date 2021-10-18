@@ -1,3 +1,5 @@
+import { processResults } from '../tree';
+
 export * from 'groq-js';
 
 export const deduceItem = (data, isPreview) => {
@@ -10,4 +12,10 @@ export const deduceItem = (data, isPreview) => {
   } else {
     return data[0];
   }
+};
+
+export const processData = (data) => {
+  return typeof data === 'object' && data !== null
+    ? processResults(data)
+    : data;
 };
