@@ -2,20 +2,15 @@ import {
   createClient,
   createImageUrlBuilder,
   createPortableTextComponent,
-  createPreviewSubscriptionHook,
 } from 'next-sanity';
 
-import { usePage } from '@atelierfabien/next-foundation';
-
-import { useState, useEffect } from 'react';
-
 import serializers from './serializers';
-
-import { deduceItem, processData } from './util';
 
 import sanityConfig from './config';
 
 export * from './query';
+
+export * from './hooks';
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 const { token, ...config } = sanityConfig;
@@ -25,78 +20,6 @@ const { token, ...config } = sanityConfig;
  * Read more: https://www.sanity.io/docs/image-url
  * */
 export const urlFor = (source) => createImageUrlBuilder(config).image(source);
-
-// Set up the live preview subsscription hook
-export const usePreviewSubscription = createPreviewSubscriptionHook(config);
-
-export const usePreviewProps = (props, options = {}) => {
-  const { fn } = options;
-  const { previewOptions = {}, ...originalProps } = props;
-  const { query, params, initialData, enabled } = previewOptions;
-
-  const [previewProps, setPreviewProps] = useState(initialData);
-
-  const { data } = usePreviewSubscription(query, {
-    params,
-    initialData,
-    enabled,
-  });
-
-  useEffect(() => {
-    let disposed = false;
-
-    (async () => {
-      let currentData = processData(
-        previewOptions?.single ? deduceItem(data, true) : data
-      );
-
-      if (!enabled) return setPreviewProps(currentData);
-
-      if (currentData === undefined || disposed) return;
-
-      if (typeof fn === 'function') {
-        currentData = await fn(
-          currentData,
-          props,
-          previewOptions?.context ?? {}
-        );
-      }
-
-      if (currentData === undefined || disposed) return;
-
-      setPreviewProps(currentData);
-    })();
-
-    return () => {
-      disposed = true;
-    };
-  }, [
-    enabled,
-    data,
-    props,
-    fn,
-
-    previewOptions?.context,
-    previewOptions?.single,
-  ]);
-
-  const page =
-    previewProps?.currentPageProps ?? originalProps?.currentPageProps;
-
-  usePage((context) => {
-    context.reset(page ?? {});
-  });
-
-  if (enabled) {
-    return {
-      ...originalProps,
-      ...previewProps,
-      page,
-    };
-  } else {
-    return originalProps;
-  }
-};
 
 // Set up Portable Text serialization
 const PortableTextComponent = createPortableTextComponent({
