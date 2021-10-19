@@ -21,18 +21,12 @@ const sanityClient = createClient({
 
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 
-export const usePreviewProps = (props, options = {}) => {
+const usePreviewData = (data, props, options = {}) => {
   const { fn } = options;
   const { previewOptions = {}, ...originalProps } = props;
-  const { query, params, initialData, enabled } = previewOptions;
+  const { initialData, enabled } = previewOptions;
 
   const [previewProps, setPreviewProps] = useState(initialData);
-
-  const { data } = usePreviewSubscription(query, {
-    params,
-    initialData,
-    enabled,
-  });
 
   useEffect(() => {
     let disposed = false;
@@ -91,7 +85,7 @@ export const usePreviewProps = (props, options = {}) => {
 };
 
 export const useListeningQuery = (query, config = {}) => {
-  const { params = {}, initialData, enabled = false, delay = 1000 } = config;
+  const { params = {}, initialData, enabled = false, delay = 10000 } = config;
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(false);
 
@@ -100,11 +94,9 @@ export const useListeningQuery = (query, config = {}) => {
   const references = extract(`.._ref`, initialData);
   const ids = extract(`.._id`, initialData);
 
-  const docIds = Array.from(new Set([...references, ...ids])).filter(
-    (id) => !id.startsWith('image-') && !id.startsWith('file-')
-  );
-
-  console.log('IDS', docIds);
+  const docIds = Array.from(new Set([...references, ...ids]))
+    .filter((id) => !id.startsWith('image-') && !id.startsWith('file-'))
+    .reduce((memo, id) => memo.concat(id, `drafts.${id}`), []);
 
   function fetchData() {
     // This isn't a great place to put this because it only triggers when fetch starts,
@@ -123,9 +115,7 @@ export const useListeningQuery = (query, config = {}) => {
     let subscription;
 
     if (enabled) {
-      // Do we even need to fetch immediately if we already have data?
-      // Probably not
-      // fetchData();
+      fetchData(); // initial fetch
 
       // We're not listening to the passed-in query
       // We listen for changes on any of the initialData's _id's and _ref's
@@ -133,7 +123,6 @@ export const useListeningQuery = (query, config = {}) => {
         .listen(`*[_id in $docIds]`, { docIds }, { includeResult: false })
         .subscribe(
           debounce(() => {
-            // console.log(`Debounced fetch`)
             fetchData();
 
             // For some reason it helps to have a delayed additional fetch
@@ -156,4 +145,31 @@ export const useListeningQuery = (query, config = {}) => {
   }, [initialData]);
 
   return { data, loading };
+};
+
+export const usePreviewProps = (props, options = {}) => {
+  const { previewOptions = {} } = props;
+  const { query, params, initialData, enabled } = previewOptions;
+
+  const { data } = usePreviewSubscription(query, {
+    params,
+    initialData,
+    enabled,
+  });
+
+  return usePreviewData(data, props, options);
+};
+
+export const usePreviewQueryProps = (props, options = {}) => {
+  const { previewOptions = {} } = props;
+  const { query, params, initialData, enabled, delay } = previewOptions;
+
+  const { data } = useListeningQuery(query, {
+    params,
+    initialData,
+    enabled,
+    delay,
+  });
+
+  return usePreviewData(data, props, options);
 };
