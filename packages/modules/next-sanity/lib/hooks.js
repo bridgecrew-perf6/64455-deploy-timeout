@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { extract } from '@sanity/mutator';
-import debounce from 'lodash/debounce';
+import debounce from 'lodash.debounce';
 
 import { createClient, createPreviewSubscriptionHook } from 'next-sanity';
 
@@ -85,7 +85,7 @@ const usePreviewData = (data, props, options = {}) => {
 };
 
 export const useListeningQuery = (query, config = {}) => {
-  const { params = {}, initialData, enabled = false, delay = 10000 } = config;
+  const { params = {}, initialData, enabled = false, delay = 1000 } = config;
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(false);
 

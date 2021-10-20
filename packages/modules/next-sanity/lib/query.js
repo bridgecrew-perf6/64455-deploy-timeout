@@ -1,6 +1,7 @@
 /* eslint-disable func-names */
 
 import { get, isBlank, mergeObjects, trim } from '@foundation/next';
+import keyBy from 'lodash.keyby';
 import groq from 'groq';
 
 import { deduceItem, processData } from './util';
@@ -127,7 +128,7 @@ const types = {
   },
   // Fetch multiple by id
   ids: (options = {}) => {
-    return function (ids, params = {}, _previewOptions) {
+    return async function (ids, params = {}, _previewOptions) {
       const {
         query,
         predicate,
@@ -137,15 +138,30 @@ const types = {
         defaultLocale,
         ...queryParams
       } = getParams(params, options);
+      const isPreview = typeof _previewOptions === 'object';
+      const match = isPreview
+        ? '(_id in $ids || _id in $drafts)'
+        : '_id in $ids';
+      const previewParams = isPreview
+        ? { drafts: ids.map((id) => `drafts.${id}`) }
+        : {};
       const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)} && _id in $ids]{
+          *[${andPredicate(predicate, query)} && ${match}]{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, ids, locale, defaultLocale },
+        { ...queryParams, ...previewParams, ids, locale, defaultLocale },
         _previewOptions
       );
-      return this.fetchData(...args);
+      const data = await this.fetchData(...args);
+      if (Array.isArray(data)) {
+        const lookup = keyBy(data);
+        return ids.map((id) => {
+          return (isPreview ? lookup[`drafts.${$id}`] : null) ?? lookup[id];
+        });
+      } else {
+        return [];
+      }
     };
   },
   // Fetch one by id
@@ -162,12 +178,14 @@ const types = {
       } = getParams(params, options);
       const isPreview = typeof _previewOptions === 'object';
       const single = isPreview ? '' : '[0]';
+      const match = isPreview ? '(_id == $id || _id == $draft)' : '_id == $id';
+      const previewParams = isPreview ? { draft: `drafts.${id}` } : {};
       const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)} && _id == $id]${single}{
+          *[${andPredicate(predicate, query)} && ${match}]${single}{
             ${projection}
           }${filterPredicate(filter)}`,
-        { ...queryParams, id, locale, defaultLocale },
+        { ...queryParams, ...previewParams, id, locale, defaultLocale },
         _previewOptions,
         true
       );
