@@ -1,0 +1,8 @@
+*[] {
+  "attributes": coalesce(
+    attributes[] {
+      _key, _type, "_id": _ref
+    },
+    []
+  )
+}

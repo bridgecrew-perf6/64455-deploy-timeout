@@ -1,0 +1,6 @@
+*[] {
+  "categories": [level6, level5, level4, level3, level2, level1, level0][
+    _type == "product.category"
+    && !(defined(hidden) && hidden)
+  ]
+}

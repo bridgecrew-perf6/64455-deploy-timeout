@@ -1,0 +1,45 @@
+*[] {
+  ...,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale],
+
+  "i18n": null,
+
+  asset->,
+
+  image-> {
+    ..., asset->
+  },
+
+  "images": coalesce(
+    images[] {
+      ..., asset->
+    },
+    []
+  ),
+  "items": coalesce(
+    items[] {
+      ...,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      "i18n": null,
+
+      asset->,
+
+      image-> {
+        ..., asset->
+      },
+
+      "images": coalesce(
+        images[] {
+          ..., asset->
+        },
+        []
+      )
+    },
+    []
+  )
+}

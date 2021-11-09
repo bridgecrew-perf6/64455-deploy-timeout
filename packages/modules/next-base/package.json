@@ -1,0 +1,54 @@
+{
+  "name": "@atelierfabien/next-base",
+  "version": "0.0.1",
+  "author": "Fabien Franzen <info@atelierfabien.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "postbuild": "node ./scripts/robots.js",
+    "check": "node -r esm -r tsconfig-paths/register ./scripts/sanity-check.js",
+    "analyze": "ANALYZE=true next build",
+    "start": "next start",
+    "test": "mocha 'test/**/*.test.js' --bail --timeout 10000",
+    "algolia:replace": "mocha 'scripts/algolia.js' --bail --timeout 60000"
+  },
+  "dependencies": {
+    "@carbon/icons-react": "^10.33.0",
+    "@styled-jsx/plugin-sass": "^3.0.0",
+    "algoliasearch": "^4.10.2",
+    "axios": "^0.21.1",
+    "dotenv-flow": "^3.2.0",
+    "esm": "^3.2.25",
+    "groq": "^2.2.6",
+    "next-data-hooks": "^0.5.0",
+    "next-plugin-preval": "^1.2.0",
+    "next-sitemap": "^1.6.124",
+    "react-instantsearch-dom": "^6.11.2",
+    "react-use": "^17.2.4",
+    "sanity-algolia": "1.1.0-alpha",
+    "sass": "1.32.11"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "mocha": "^9.0.1",
+    "postcss": "^8.2.12",
+    "should": "^13.2.3",
+    "tailwindcss": "^2.1.4",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.3.4"
+  },
+  "peerDependencies": {
+    "@atelierfabien/next-foundation": "^0.0.7",
+    "@atelierfabien/next-sanity": "^0.0.7",
+    "@atelierfabien/next-shop": "^0.0.7",
+    "@atelierfabien/uikit": "^3.7.1",
+    "next": "^10.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

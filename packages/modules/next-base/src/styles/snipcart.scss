@@ -1,0 +1,422 @@
+//
+// Snipcart
+//
+
+#snipcart {
+  z-index: $global-z-index + 30;
+  position: relative;
+
+  [class^='snipcart__font'],
+  [class*=' snipcart__font'] {
+    font-family: $global-font-family;
+  }
+
+  .snipcart__font--slim,
+  .snipcart__font--large {
+    font-size: $product-card-title-font-size;
+  }
+
+  .snipcart__font--subtitle-small,
+  .snipcart-form__label {
+    font-family: $global-font-family;
+    font-size: $form-small-font-size;
+  }
+
+  .snipcart-input,
+  .snipcart-typeahead__input,
+  .snipcart-form__select {
+    height: $form-height;
+  }
+
+  .snipcart-form__address-autocomplete > .snipcart-textbox {
+    min-height: $form-height;
+  }
+
+  .snipcart__box--title {
+    margin-bottom: $padding-small-padding;
+  }
+
+  .snipcart__box,
+  .snipcart-cart-summary,
+  .snipcart-item-line__container {
+    background-color: $global-light-muted-background;
+    border-radius: $border-rounded-border-radius;
+  }
+
+  .snipcart-cart-summary-items-list {
+    padding: 4px 0;
+  }
+
+  .snipcart-base-button {
+    border-radius: $border-rounded-border-radius;
+    text-transform: uppercase;
+  }
+
+  .snipcart-item-quantity,
+  .snipcart-item-quantity__quantity {
+    font-size: $product-card-title-font-size-s;
+    background: transparent;
+  }
+
+  .snipcart-modal__container {
+    background: $offcanvas-bar-background;
+    box-shadow: $global-large-box-shadow;
+  }
+
+  .snipcart-modal__close-title {
+    @media (max-width: $breakpoint-medium) {
+      display: none;
+    }
+  }
+
+  .snipcart-item-line__container,
+  .snipcart-cart-summary__content {
+    padding: $padding-small-padding;
+
+    @media (max-width: $breakpoint-small) {
+      margin: 0;
+      border-bottom: $global-border-width solid $global-border;
+      border-radius: 0;
+    }
+  }
+
+  .snipcart-cart-summary-side .snipcart-item-line__container {
+    margin: 0;
+  }
+
+  .snipcart-layout--large .snipcart-item-line--cart-edit {
+    margin: 0;
+    padding: 0;
+
+    .snipcart-item-line__container {
+      margin: 0;
+    }
+  }
+
+  .snipcart-layout--large .snipcart-cart--edit {
+    .snipcart-cart__footer {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+
+  .snipcart-cart__secondary-header {
+    background: $navbar-background;
+    box-sizing: content-box;
+    min-height: 100px;
+    box-shadow: $global-medium-box-shadow;
+    border-bottom: $global-border-width solid $global-border;
+    z-index: 10;
+  }
+
+  .snipcart-cart-header__title,
+  .snipcart-cart__secondary-header-title {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+  }
+
+  .snipcart-item-line__title {
+    @extend .uk-text-truncate;
+    margin: 0 $global-small-gutter 0 0;
+    flex: 1;
+  }
+
+  .snipcart-item-line__header {
+    justify-content: left;
+    min-height: 60px;
+  }
+
+  .snipcart-item-line__header .snipcart-button-icon {
+    min-width: 36px;
+    min-height: 36px;
+    box-sizing: border-box;
+  }
+
+  .snipcart-item-line__media {
+    margin: 0 $global-margin 0 0;
+  }
+
+  .snipcart-item-line__media {
+    box-shadow: 0 0 0 $global-border-width $global-border;
+  }
+
+  .snipcart-item-line__media,
+  .snipcart-item-line__media img {
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  .snipcart-summary-fees__notice {
+    margin-bottom: $global-small-margin;
+  }
+
+  .snipcart-modal__close:focus {
+    outline: none;
+
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  .snipcart-item-quantity__quantity {
+    padding: 0;
+    height: auto;
+    width: auto;
+    border: 0;
+    &:after {
+      margin: 0 $global-xsmall-margin;
+      content: '\00D7';
+    }
+  }
+
+  .snipcart-cart-summary-item__quantity {
+    letter-spacing: 1ex;
+  }
+
+  .snipcart-cart-summary-item {
+    margin-right: 0;
+    grid-template-columns: 70% 30px auto;
+  }
+
+  .snipcart-cart-summary-item__name {
+    @extend .uk-text-truncate;
+  }
+
+  .snipcart-form__field + .snipcart-form__field {
+    padding-top: 0;
+  }
+
+  .snipcart-cart__footer-buttons {
+    .snipcart-button-link {
+      text-transform: uppercase;
+    }
+  }
+
+  @media (max-width: $breakpoint-small) {
+    .snipcart-form__row {
+      flex-wrap: wrap;
+    }
+
+    .snipcart-form__cell--tidy {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+// Either hide:
+
+// #snipcart {
+//   .snipcart-item-line__quantity {
+//     min-width: 120px;
+//     .snipcart-item-quantity__label,
+//     .snipcart-item-quantity__quantity button {
+//       display: none;
+//     }
+//   }
+// }
+
+// Or show:
+
+#snipcart {
+  .snipcart-item-line__quantity {
+    .snipcart-item-quantity__label {
+      display: none;
+    }
+  }
+
+  .snipcart-item-quantity__quantity {
+    span {
+      margin: 0 $global-small-margin;
+    }
+
+    &:focus-within {
+      box-shadow: none;
+    }
+
+    button {
+      background: transparent;
+      color: $global-secondary-background;
+      border: 1px solid $global-secondary-background;
+
+      &:hover {
+        background: $global-secondary-background;
+        color: $button-secondary-color;
+      }
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+#snipcart {
+  /* ----------------- 
+      Colors
+  ----------------- */
+  --color-default: #{$global-color};
+  --color-alt: #{$global-muted-color};
+  --color-icon: #{$global-primary-background};
+  --color-success: #{$global-success-background};
+  --color-error: #{$global-danger-background};
+
+  --color-link: #{$base-link-color};
+  --color-link-hover: #{$global-link-hover-color};
+  --color-link-active: var(--color-link);
+  --color-link-focus: var(--color-link);
+
+  --color-input: var(--color-default);
+  --color-input-hover: var(--color-input);
+  --color-input-focus: var(--color-input);
+  --color-input-checked: var(--color-input);
+  --color-input-disabled: var(--color-alt);
+  --color-input-error: var(--color-error);
+  --color-inputLabel: var(--color-default);
+  --color-inputLabel-hover: var(--color-inputLabel);
+  --color-inputLabel-focus: var(--color-inputLabel);
+  --color-inputIcon: var(--color-alt);
+  --color-inputIcon-hover: var(--color-default);
+  --color-inputIcon-focus: var(--color-inputIcon);
+  --color-inputIcon-checked: var(--color-default);
+  --color-inputIcon-error: var(--color-error);
+  --color-inputPlaceholder: var(--color-alt);
+
+  --color-buttonPrimary: #{$button-primary-color};
+  --color-buttonPrimary-hover: #{$button-primary-hover-color};
+  --color-buttonPrimary-active: #{$button-primary-active-color};
+  --color-buttonPrimary-focus: var(--color-buttonPrimary);
+  --color-buttonPrimary-disabled: #{$button-disabled-color};
+  --color-buttonPrimary-success: var(--color-buttonPrimary);
+  --color-buttonPrimary-error: var(--color-buttonPrimary);
+
+  --color-buttonSecondary: #{$button-secondary-color};
+  --color-buttonSecondary-hover: #{$button-secondary-hover-color};
+  --color-buttonSecondary-active: #{$button-secondary-active-color};
+  --color-buttonSecondary-focus: var(--color-buttonSecondary);
+  --color-buttonSecondary-disabled: #{$button-disabled-color};
+  --color-buttonSecondary-success: var(--color-success);
+  --color-buttonSecondary-error: var(--color-error);
+
+  --color-buttonDanger: #{$button-danger-color};
+  --color-buttonDanger-hover: #{$button-danger-hover-color};
+  --color-buttonDanger-active: #{$button-danger-active-color};
+  --color-buttonDanger-focus: var(--color-buttonDanger);
+  --color-buttonDanger-disabled: #{$button-disabled-color};
+  --color-buttonDanger-success: var(--color-default);
+  --color-buttonDanger-error: var(--color-default);
+
+  --color-badge: #{$inverse-base-link-color};
+  --color-badge-active: #{$inverse-global-emphasis-color};
+  --color-badge-disabled: var(--color-alt);
+
+  /* -----------------
+      Border colors
+  ----------------- */
+  --borderColor-default: #{$global-border};
+  --borderColor-error: #{$form-danger-color};
+
+  --borderColor-link: currentColor;
+  --borderColor-link-hover: currentColor;
+  --borderColor-link-active: currentColor;
+  --borderColor-link-focus: currentColor;
+
+  --borderColor-input: #{$form-border};
+  --borderColor-input-hover: #{$form-focus-border};
+  --borderColor-input-focus: var(--borderColor-input-hover);
+  --borderColor-input-checked: var(--borderColor-input-hover);
+  --borderColor-input-disabled: #{$form-disabled-border};
+  --borderColor-input-error: var(--borderColor-error);
+
+  --borderColor-buttonPrimary: transparent;
+  --borderColor-buttonPrimary-hover: transparent;
+  --borderColor-buttonPrimary-focus: transparent;
+  --borderColor-buttonPrimary-disabled: transparent;
+  --borderColor-buttonPrimary-success: transparent;
+  --borderColor-buttonPrimary-error: transparent;
+
+  --borderColor-buttonSecondary: transparent;
+  --borderColor-buttonSecondary-hover: transparent;
+  --borderColor-buttonSecondary-focus: transparent;
+  --borderColor-buttonSecondary-disabled: transparent;
+  --borderColor-buttonSecondary-success: transparent;
+  --borderColor-buttonSecondary-error: transparent;
+
+  --borderColor-badge: transparent;
+  --borderColor-badge-active: transparent;
+  --borderColor-badge-disabled: transparent;
+
+  /* -----------------
+      Background colors
+  ----------------- */
+  --bgColor-default: #{$card-default-background};
+  --bgColor-alt: #{$background-muted-background};
+  --bgColor-success: #{$global-success-background};
+  --bgColor-error: #{$global-danger-background};
+  --bgColor-info: #{$global-primary-background};
+
+  --bgColor-modal: var(--bgColor-default);
+  --bgColor-modalVeil: var(--bgColor-alt);
+
+  --bgColor-input: #{$form-background};
+  --bgColor-input-hover: var(--bgColor-input);
+  --bgColor-input-focus: var(--bgColor-input);
+  --bgColor-input-checked: var(--borderColor-input-hover);
+  --bgColor-input-disabled: #{$form-disabled-background};
+  --bgColor-input-error: var(--bgColor-input);
+  --bgColor-input-autofill: var(--bgColor-input);
+
+  --bgColor-buttonPrimary: #{$button-primary-background};
+  --bgColor-buttonPrimary-hover: #{$button-primary-hover-background};
+  --bgColor-buttonPrimary-active: var(--bgColor-buttonPrimary);
+  --bgColor-buttonPrimary-focus: var(--bgColor-buttonPrimary);
+  --bgColor-buttonPrimary-disabled: #{$button-disabled-background};
+  --bgColor-buttonPrimary-success: var(--bgColor-success);
+  --bgColor-buttonPrimary-error: var(--bgColor-error);
+
+  --bgColor-buttonSecondary: #{$button-secondary-background};
+  --bgColor-buttonSecondary-hover: #{$button-secondary-hover-background};
+  --bgColor-buttonSecondary-active: var(--bgColor-buttonSecondary);
+  --bgColor-buttonSecondary-focus: var(--bgColor-buttonSecondary);
+  --bgColor-buttonSecondary-disabled: #{$button-disabled-background};
+  --bgColor-buttonSecondary-success: var(--bgColor-success);
+  --bgColor-buttonSecondary-error: var(--bgColor-error);
+
+  --bgColor-buttonDanger: #{$button-danger-background};
+  --bgColor-buttonDanger-hover: #{$button-danger-hover-background};
+  --bgColor-buttonDanger-active: var(--bgColor-buttonDanger);
+  --bgColor-buttonDanger-focus: var(--bgColor-buttonDanger);
+  --bgColor-buttonDanger-disabled: #{$button-disabled-background};
+  --bgColor-buttonDanger-success: var(--bgColor-success);
+  --bgColor-buttonDanger-error: var(--bgColor-error);
+
+  --bgColor-badge: #{$global-emphasis-color};
+  --bgColor-badge-active: #{$global-primary-background};
+  --bgColor-badge-disabled: #{$global-muted-background};
+
+  /* -----------------
+      Shadows
+  ----------------- */
+
+  --shadow-default: 0px 5px 15px -10px hsla(0, 0%, 0%, 0.4);
+  --shadow-tooltip: 0px 8px 16px hsla(220, 70%, 22%, 0.5);
+
+  --shadow-link-focus: 0px 6px 4px -3px hsla(200, 90%, 40%, 0.5);
+
+  --shadow-input-hover: none;
+  --shadow-input-focus: 0px 5px 10px -3px hsla(200, 90%, 40%, 0.3);
+  --shadow-input-checked: none;
+
+  --shadow-buttonPrimary-hover: 0px 10px 4px -8px hsla(0, 0%, 0%, 0.5);
+  --shadow-buttonPrimary-active: none;
+  --shadow-buttonPrimary-focus: 0px 0px 6px 2px hsl(200, 90%, 40%);
+
+  --shadow-buttonSecondary-hover: 0px 10px 4px -8px hsla(0, 0%, 0%, 0.2);
+  --shadow-buttonSecondary-active: none;
+  --shadow-buttonSecondary-focus: 0px 0px 6px 2px hsla(200, 90%, 40%, 0.8);
+
+  --shadow-buttonDanger-hover: 0px 10px 4px -8px hsla(0, 0%, 0%, 0.25);
+  --shadow-buttonDanger-active: none;
+  --shadow-buttonDanger-focus: 0px 0px 6px 2px hsla(6, 55%, 60%);
+}

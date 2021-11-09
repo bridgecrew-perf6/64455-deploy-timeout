@@ -1,3 +1,6 @@
+// NOTE: pages need to explicitly "export default" in order to work
+// see: https://github.com/vinissimus/next-translate/issues/526
+
 module.exports = (config = {}) => ({
   logBuild: false,
   ...config,

@@ -1,0 +1,55 @@
+*[] {
+  ...,
+
+  "i18n": null,
+
+  ...i18n[$defaultLocale] {
+    ..., button {
+      _key, _type,
+
+      item->,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      internal-> {
+        _id, _type, _createdAt, _updatedAt,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        "path": coalesce(route->path.current, "") + coalesce(
+          i18n[$locale].path.current,
+          i18n[$defaultLocale].path.current
+        )
+      },
+
+      external, newWindow, label, layout, columns, style, color
+    }
+  },
+
+  ...i18n[$locale] {
+    ..., button {
+      _key, _type,
+
+      item->,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      internal-> {
+        _id, _type, _createdAt, _updatedAt,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        "path": coalesce(route->path.current, "") + coalesce(
+          i18n[$locale].path.current,
+          i18n[$defaultLocale].path.current
+        )
+      },
+
+      external, newWindow, label, layout, columns, style, color
+    }
+  }
+}

@@ -1,0 +1,43 @@
+*[] {
+  color-> {
+    _id, alias, numeric, order, schemaType,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale],
+
+    ...options,
+
+    "property": property._ref,
+    "color": display.color.hex,
+
+    value
+  },
+
+  size-> {
+    _id, alias, numeric, order, schemaType,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale],
+
+    ...options,
+
+    "property": property._ref,
+    "color": display.color.hex,
+
+    value
+  },
+
+  shoeSize-> {
+    _id, alias, numeric, order, schemaType,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale],
+
+    ...options,
+
+    "property": property._ref,
+    "color": display.color.hex,
+
+    value
+  }
+}

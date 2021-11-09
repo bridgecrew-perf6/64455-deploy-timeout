@@ -1,0 +1,11 @@
+*[] {
+  _id, _type, _createdAt, _updatedAt,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale],
+
+  "path": coalesce(route->path.current, "") + coalesce(
+    i18n[$locale].path.current,
+    i18n[$defaultLocale].path.current
+  )
+}

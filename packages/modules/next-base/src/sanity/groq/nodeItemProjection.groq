@@ -1,0 +1,12 @@
+*[] {
+  ......i18n[$defaultLocale],
+  ...i18n[$locale] {
+    label, name, title,
+
+    ...content
+  } {
+    "label": coalesce(label, name, title),
+
+    title
+  }
+}

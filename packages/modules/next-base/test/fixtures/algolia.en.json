@@ -1,0 +1,5561 @@
+[
+    {
+        "objectID": "643118df-1aaf-4975-87a2-91711b9c712f",
+        "sku": "5555",
+        "alias": "accessory-b",
+        "name": "Accessory B",
+        "keywords": [],
+        "kind": "accessory",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "2db788a7-daa3-43a6-88b2-a03b39c85660",
+            "name": "Bags & Wallets",
+            "path": "/accessories/women/bags-and-wallets",
+            "hierarchy": [
+                "Accessories",
+                "Women",
+                "Bags & Wallets"
+            ]
+        },
+        "createdAt": 1627018855,
+        "source": "024555d2-8406-49fa-b766-7326f98c6737",
+        "master": {
+            "id": "643118df-1aaf-4975-87a2-91711b9c712f",
+            "sku": "5555"
+        },
+        "paths": [
+            "/accessories",
+            "/accessories/women",
+            "/accessories/women/bags-and-wallets"
+        ],
+        "categories": {
+            "lvl0": [
+                "Accessories"
+            ],
+            "lvl1": [
+                "Accessories > Women"
+            ],
+            "lvl2": [
+                "Accessories > Women > Bags & Wallets"
+            ]
+        },
+        "taxons": [
+            "Accessories",
+            "Women",
+            "Bags & Wallets"
+        ],
+        "collections": [],
+        "attributes": {
+            "gender": [
+                "F"
+            ]
+        },
+        "attrs": {
+            "gender": [
+                "2cdee8a1-1d20-4364-8510-dda028df3fec"
+            ]
+        },
+        "all": {
+            "attributes": {},
+            "attrs": {}
+        },
+        "variable": {
+            "attributes": {},
+            "attrs": {}
+        },
+        "markers": [],
+        "pricing": {
+            "price": 635,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [],
+        "variants": [],
+        "isVariant": false,
+        "options": {
+            "gender": [
+                "F"
+            ]
+        },
+        "opts": {
+            "gender": [
+                "2cdee8a1-1d20-4364-8510-dda028df3fec"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-5cb37ea213383424bd6a6688247d0c90c1eae029-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5598630136986297,
+                    "width": 0.801369863013698,
+                    "x": 0.5034246575342466,
+                    "y": 0.5586849315068491
+                },
+                "palette": {
+                    "background": "#f4cc94",
+                    "foreground": "#000",
+                    "title": "#000"
+                }
+            },
+            {
+                "asset": {
+                    "_ref": "image-f0cb9ea9c0642f7c1e2e02619b7e3722a0f395e4-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.6283287671232872,
+                    "width": 0.8630136986301364,
+                    "x": 0.5513698630136988,
+                    "y": 0.5415684931506847
+                },
+                "palette": {
+                    "background": "#ddb893",
+                    "foreground": "#000",
+                    "title": "#fff"
+                }
+            }
+        ],
+        "image": "5cb37ea213383424bd6a6688247d0c90c1eae029-1000x1400.jpg"
+    },
+    {
+        "objectID": "adc3ca61-9310-47eb-9ac8-6b22b90a39f3",
+        "sku": "8888-01",
+        "identifier": "blue-small",
+        "alias": "product-e",
+        "name": "Product E",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "c2122df3-4a70-4221-839d-7860ded4a31f",
+            "name": "Dresses",
+            "path": "/clothing/women/dresses",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Dresses"
+            ]
+        },
+        "createdAt": 1626873892,
+        "source": "2f34da70-7d72-4b62-978c-74d790381d68",
+        "master": {
+            "sku": "8888"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/dresses"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Dresses"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Dresses"
+        ],
+        "collections": [],
+        "attributes": {
+            "material": [
+                "Leather"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "attrs": {
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#15529f"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 28,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "adc3ca61-9310-47eb-9ac8-6b22b90a39f3",
+            "7e178cde-4f69-46bc-81fa-bb482e8bf312",
+            "a19ceee9-7837-498c-8f73-b0e1513313c2"
+        ],
+        "display": {
+            "color": [
+                "#15529f"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "opts": {
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-9bcc4a774bd2a6f74557904076ebc99b24cb7fb3-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#edbd97",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-347b1f257b85aebd0be0615cf51bd3c20ea13bfe-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#e4d2c5",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            }
+        ],
+        "image": "9bcc4a774bd2a6f74557904076ebc99b24cb7fb3-800x1200.jpg"
+    },
+    {
+        "objectID": "7e178cde-4f69-46bc-81fa-bb482e8bf312",
+        "sku": "8888-02",
+        "identifier": "blue-medium",
+        "alias": "product-e",
+        "name": "Product E",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "c2122df3-4a70-4221-839d-7860ded4a31f",
+            "name": "Dresses",
+            "path": "/clothing/women/dresses",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Dresses"
+            ]
+        },
+        "createdAt": 1626873892,
+        "source": "2f34da70-7d72-4b62-978c-74d790381d68",
+        "master": {
+            "sku": "8888"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/dresses"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Dresses"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Dresses"
+        ],
+        "collections": [],
+        "attributes": {
+            "material": [
+                "Leather"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#15529f"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 28,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "adc3ca61-9310-47eb-9ac8-6b22b90a39f3",
+            "7e178cde-4f69-46bc-81fa-bb482e8bf312",
+            "a19ceee9-7837-498c-8f73-b0e1513313c2"
+        ],
+        "display": {
+            "color": [
+                "#15529f"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-9bcc4a774bd2a6f74557904076ebc99b24cb7fb3-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#edbd97",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-347b1f257b85aebd0be0615cf51bd3c20ea13bfe-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#e4d2c5",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            }
+        ],
+        "image": "9bcc4a774bd2a6f74557904076ebc99b24cb7fb3-800x1200.jpg"
+    },
+    {
+        "objectID": "a19ceee9-7837-498c-8f73-b0e1513313c2",
+        "sku": "8888-03",
+        "identifier": "blue-large",
+        "alias": "product-e",
+        "name": "Product E",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "c2122df3-4a70-4221-839d-7860ded4a31f",
+            "name": "Dresses",
+            "path": "/clothing/women/dresses",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Dresses"
+            ]
+        },
+        "createdAt": 1626873892,
+        "source": "2f34da70-7d72-4b62-978c-74d790381d68",
+        "master": {
+            "sku": "8888"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/dresses"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Dresses"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Dresses"
+        ],
+        "collections": [],
+        "attributes": {
+            "material": [
+                "Leather"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "attrs": {
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#15529f"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 28,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "adc3ca61-9310-47eb-9ac8-6b22b90a39f3",
+            "7e178cde-4f69-46bc-81fa-bb482e8bf312",
+            "a19ceee9-7837-498c-8f73-b0e1513313c2"
+        ],
+        "display": {
+            "color": [
+                "#15529f"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "opts": {
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-9bcc4a774bd2a6f74557904076ebc99b24cb7fb3-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#edbd97",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-347b1f257b85aebd0be0615cf51bd3c20ea13bfe-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#e4d2c5",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            }
+        ],
+        "image": "9bcc4a774bd2a6f74557904076ebc99b24cb7fb3-800x1200.jpg"
+    },
+    {
+        "objectID": "d426e53c-b5af-4be0-ba59-3444aaedf15a",
+        "sku": "1234-01",
+        "identifier": "red-medium",
+        "alias": "product-a",
+        "name": "Product A",
+        "description": "Lorem ipsum ...",
+        "keywords": [
+            "some",
+            "seo",
+            "keywords",
+            "and",
+            "tags"
+        ],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1620910648,
+        "source": "56685861-a884-44fe-aa75-0b62f453e054",
+        "master": {
+            "id": "3dbeb94b-db64-4e20-a0b3-ddc2b1527da0",
+            "sku": "1234"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts",
+            "/clothing/women/skirts/deep",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts",
+                "Clothing > Women > Tops & Shirts"
+            ],
+            "lvl3": [
+                "Clothing > Women > Skirts > Deep"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts",
+            "Deep",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 2 - 4 weeks"
+            ],
+            "color": [
+                "Red",
+                "Black",
+                "Gold"
+            ],
+            "material": [
+                "Leather"
+            ],
+            "condition": [
+                "New"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "81d276ff-1263-43c0-ab3d-4569a65c3221"
+            ],
+            "color": [
+                "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                "fb998a58-a64b-4dfa-8a76-321764506563"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "condition": [
+                "4cab1df9-dbcf-4a6b-8477-5ec8220304c8"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Black",
+                    "Gold"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                    "fb998a58-a64b-4dfa-8a76-321764506563"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#e32c24",
+                    "#15529f",
+                    "#0c9948"
+                ]
+            }
+        },
+        "markers": [
+            "highlight"
+        ],
+        "pricing": {
+            "price": 25,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "d426e53c-b5af-4be0-ba59-3444aaedf15a",
+            "43d3516b-e911-45d1-89c4-7d9c803c0750",
+            "437498b3-6ca8-4c7f-824c-0d2e21f4fa57",
+            "ce27a6e5-2d0b-41e0-80b3-0b5489555112",
+            "519e0a9c-c95a-46d9-84f8-99aba9eabfef"
+        ],
+        "display": {
+            "color": [
+                "#e32c24"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Red"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "d6e79c36-9026-47af-bd8b-e2198ad8d512"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5647534246575343,
+                    "width": 0.7876712328767117,
+                    "x": 0.517123287671233,
+                    "y": 0.5440136986301367
+                },
+                "palette": {
+                    "background": "#ddc2a8",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a217a73947c959aa7e67aeace188376a7c63ada8-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5500821917808247,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.37529452054794527
+                },
+                "palette": {
+                    "background": "#edddd3",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-a4b90ec1e40d0cf27b45aa758f90c12adc159c51-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.6136575342465752,
+                    "width": 0.8424657534246576,
+                    "x": 0.5068493150684931,
+                    "y": 0.414417808219178
+                },
+                "palette": {
+                    "background": "#e4c39c",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            }
+        ],
+        "image": "8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400.jpg"
+    },
+    {
+        "objectID": "43d3516b-e911-45d1-89c4-7d9c803c0750",
+        "sku": "1234-04",
+        "identifier": "red-small",
+        "alias": "product-a",
+        "name": "Product A",
+        "description": "Lorem ipsum ...",
+        "keywords": [
+            "some",
+            "seo",
+            "keywords",
+            "and",
+            "tags"
+        ],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1620910648,
+        "source": "56685861-a884-44fe-aa75-0b62f453e054",
+        "master": {
+            "id": "3dbeb94b-db64-4e20-a0b3-ddc2b1527da0",
+            "sku": "1234"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts",
+            "/clothing/women/skirts/deep",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts",
+                "Clothing > Women > Tops & Shirts"
+            ],
+            "lvl3": [
+                "Clothing > Women > Skirts > Deep"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts",
+            "Deep",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 2 - 4 weeks"
+            ],
+            "color": [
+                "Red",
+                "Black",
+                "Gold"
+            ],
+            "material": [
+                "Leather"
+            ],
+            "condition": [
+                "New"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "81d276ff-1263-43c0-ab3d-4569a65c3221"
+            ],
+            "color": [
+                "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                "fb998a58-a64b-4dfa-8a76-321764506563"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "condition": [
+                "4cab1df9-dbcf-4a6b-8477-5ec8220304c8"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Black",
+                    "Gold"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                    "fb998a58-a64b-4dfa-8a76-321764506563"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#e32c24",
+                    "#15529f",
+                    "#0c9948"
+                ]
+            }
+        },
+        "markers": [
+            "highlight"
+        ],
+        "pricing": {
+            "price": 25,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "d426e53c-b5af-4be0-ba59-3444aaedf15a",
+            "43d3516b-e911-45d1-89c4-7d9c803c0750",
+            "437498b3-6ca8-4c7f-824c-0d2e21f4fa57",
+            "ce27a6e5-2d0b-41e0-80b3-0b5489555112",
+            "519e0a9c-c95a-46d9-84f8-99aba9eabfef"
+        ],
+        "display": {
+            "color": [
+                "#e32c24"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Red"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "opts": {
+            "color": [
+                "d6e79c36-9026-47af-bd8b-e2198ad8d512"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5647534246575343,
+                    "width": 0.7876712328767117,
+                    "x": 0.517123287671233,
+                    "y": 0.5440136986301367
+                },
+                "palette": {
+                    "background": "#ddc2a8",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a217a73947c959aa7e67aeace188376a7c63ada8-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5500821917808247,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.37529452054794527
+                },
+                "palette": {
+                    "background": "#edddd3",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-a4b90ec1e40d0cf27b45aa758f90c12adc159c51-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.6136575342465752,
+                    "width": 0.8424657534246576,
+                    "x": 0.5068493150684931,
+                    "y": 0.414417808219178
+                },
+                "palette": {
+                    "background": "#e4c39c",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            }
+        ],
+        "image": "8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400.jpg"
+    },
+    {
+        "objectID": "437498b3-6ca8-4c7f-824c-0d2e21f4fa57",
+        "sku": "1234-02",
+        "identifier": "blue-medium",
+        "alias": "product-a",
+        "name": "Product A",
+        "description": "Lorem ipsum ...",
+        "keywords": [
+            "some",
+            "seo",
+            "keywords",
+            "and",
+            "tags"
+        ],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1620910648,
+        "source": "56685861-a884-44fe-aa75-0b62f453e054",
+        "master": {
+            "id": "3dbeb94b-db64-4e20-a0b3-ddc2b1527da0",
+            "sku": "1234"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts",
+            "/clothing/women/skirts/deep",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts",
+                "Clothing > Women > Tops & Shirts"
+            ],
+            "lvl3": [
+                "Clothing > Women > Skirts > Deep"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts",
+            "Deep",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 2 - 4 weeks"
+            ],
+            "color": [
+                "Blue",
+                "Black",
+                "Gold"
+            ],
+            "material": [
+                "Leather"
+            ],
+            "condition": [
+                "New"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "81d276ff-1263-43c0-ab3d-4569a65c3221"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                "fb998a58-a64b-4dfa-8a76-321764506563"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "condition": [
+                "4cab1df9-dbcf-4a6b-8477-5ec8220304c8"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Black",
+                    "Gold"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                    "fb998a58-a64b-4dfa-8a76-321764506563"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#e32c24",
+                    "#15529f",
+                    "#0c9948"
+                ]
+            }
+        },
+        "markers": [
+            "highlight"
+        ],
+        "pricing": {
+            "price": 30,
+            "suggested": 0,
+            "discount": 0,
+            "custom": true
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "d426e53c-b5af-4be0-ba59-3444aaedf15a",
+            "43d3516b-e911-45d1-89c4-7d9c803c0750",
+            "437498b3-6ca8-4c7f-824c-0d2e21f4fa57",
+            "ce27a6e5-2d0b-41e0-80b3-0b5489555112",
+            "519e0a9c-c95a-46d9-84f8-99aba9eabfef"
+        ],
+        "display": {
+            "color": [
+                "#15529f"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-a4b90ec1e40d0cf27b45aa758f90c12adc159c51-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.6136575342465752,
+                    "width": 0.8424657534246576,
+                    "x": 0.5068493150684931,
+                    "y": 0.414417808219178
+                },
+                "palette": {
+                    "background": "#e4c39c",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a217a73947c959aa7e67aeace188376a7c63ada8-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5500821917808247,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.37529452054794527
+                },
+                "palette": {
+                    "background": "#edddd3",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5647534246575343,
+                    "width": 0.7876712328767117,
+                    "x": 0.517123287671233,
+                    "y": 0.5440136986301367
+                },
+                "palette": {
+                    "background": "#ddc2a8",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "a4b90ec1e40d0cf27b45aa758f90c12adc159c51-1000x1400.jpg"
+    },
+    {
+        "objectID": "ce27a6e5-2d0b-41e0-80b3-0b5489555112",
+        "sku": "1234-03",
+        "identifier": "green-medium",
+        "alias": "product-a",
+        "name": "Product A",
+        "description": "Lorem ipsum ...",
+        "keywords": [
+            "some",
+            "seo",
+            "keywords",
+            "and",
+            "tags"
+        ],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1620910648,
+        "source": "56685861-a884-44fe-aa75-0b62f453e054",
+        "master": {
+            "id": "3dbeb94b-db64-4e20-a0b3-ddc2b1527da0",
+            "sku": "1234"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts",
+            "/clothing/women/skirts/deep",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts",
+                "Clothing > Women > Tops & Shirts"
+            ],
+            "lvl3": [
+                "Clothing > Women > Skirts > Deep"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts",
+            "Deep",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 2 - 4 weeks"
+            ],
+            "color": [
+                "Green",
+                "Black",
+                "Gold"
+            ],
+            "material": [
+                "Leather"
+            ],
+            "condition": [
+                "New"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "81d276ff-1263-43c0-ab3d-4569a65c3221"
+            ],
+            "color": [
+                "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                "fb998a58-a64b-4dfa-8a76-321764506563"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "condition": [
+                "4cab1df9-dbcf-4a6b-8477-5ec8220304c8"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Black",
+                    "Gold"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                    "fb998a58-a64b-4dfa-8a76-321764506563"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#e32c24",
+                    "#15529f",
+                    "#0c9948"
+                ]
+            }
+        },
+        "markers": [
+            "highlight"
+        ],
+        "pricing": {
+            "price": 25,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "d426e53c-b5af-4be0-ba59-3444aaedf15a",
+            "43d3516b-e911-45d1-89c4-7d9c803c0750",
+            "437498b3-6ca8-4c7f-824c-0d2e21f4fa57",
+            "ce27a6e5-2d0b-41e0-80b3-0b5489555112",
+            "519e0a9c-c95a-46d9-84f8-99aba9eabfef"
+        ],
+        "display": {
+            "color": [
+                "#0c9948"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Green"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "99dbd64b-f35a-4023-9020-6e815c5fb843"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-cba61c9524cc2c822722321e07dea705edb4466d-2000x2800-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47672602739725967,
+                    "width": 0.6780821917808209,
+                    "x": 0.45890410958904104,
+                    "y": 0.39241095890410954
+                },
+                "palette": {
+                    "background": "#dca79a",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a217a73947c959aa7e67aeace188376a7c63ada8-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5500821917808247,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.37529452054794527
+                },
+                "palette": {
+                    "background": "#edddd3",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5647534246575343,
+                    "width": 0.7876712328767117,
+                    "x": 0.517123287671233,
+                    "y": 0.5440136986301367
+                },
+                "palette": {
+                    "background": "#ddc2a8",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "cba61c9524cc2c822722321e07dea705edb4466d-2000x2800.jpg"
+    },
+    {
+        "objectID": "519e0a9c-c95a-46d9-84f8-99aba9eabfef",
+        "sku": "1234-05",
+        "identifier": "green-large",
+        "alias": "product-a",
+        "name": "Product A",
+        "description": "Lorem ipsum ...",
+        "keywords": [
+            "some",
+            "seo",
+            "keywords",
+            "and",
+            "tags"
+        ],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1620910648,
+        "source": "56685861-a884-44fe-aa75-0b62f453e054",
+        "master": {
+            "id": "3dbeb94b-db64-4e20-a0b3-ddc2b1527da0",
+            "sku": "1234"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts",
+            "/clothing/women/skirts/deep",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts",
+                "Clothing > Women > Tops & Shirts"
+            ],
+            "lvl3": [
+                "Clothing > Women > Skirts > Deep"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts",
+            "Deep",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 2 - 4 weeks"
+            ],
+            "color": [
+                "Green",
+                "Black",
+                "Gold"
+            ],
+            "material": [
+                "Leather"
+            ],
+            "condition": [
+                "New"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "81d276ff-1263-43c0-ab3d-4569a65c3221"
+            ],
+            "color": [
+                "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                "fb998a58-a64b-4dfa-8a76-321764506563"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17"
+            ],
+            "condition": [
+                "4cab1df9-dbcf-4a6b-8477-5ec8220304c8"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Black",
+                    "Gold"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843",
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd",
+                    "fb998a58-a64b-4dfa-8a76-321764506563"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Blue",
+                    "Green"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#e32c24",
+                    "#15529f",
+                    "#0c9948"
+                ]
+            }
+        },
+        "markers": [
+            "highlight"
+        ],
+        "pricing": {
+            "price": 25,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "d426e53c-b5af-4be0-ba59-3444aaedf15a",
+            "43d3516b-e911-45d1-89c4-7d9c803c0750",
+            "437498b3-6ca8-4c7f-824c-0d2e21f4fa57",
+            "ce27a6e5-2d0b-41e0-80b3-0b5489555112",
+            "519e0a9c-c95a-46d9-84f8-99aba9eabfef"
+        ],
+        "display": {
+            "color": [
+                "#0c9948"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Green"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "opts": {
+            "color": [
+                "99dbd64b-f35a-4023-9020-6e815c5fb843"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-cba61c9524cc2c822722321e07dea705edb4466d-2000x2800-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47672602739725967,
+                    "width": 0.6780821917808209,
+                    "x": 0.45890410958904104,
+                    "y": 0.39241095890410954
+                },
+                "palette": {
+                    "background": "#dca79a",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a217a73947c959aa7e67aeace188376a7c63ada8-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5500821917808247,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.37529452054794527
+                },
+                "palette": {
+                    "background": "#edddd3",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-8963eb8c0100fe105081646c6f14ad139cc34762-1000x1400-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5647534246575343,
+                    "width": 0.7876712328767117,
+                    "x": 0.517123287671233,
+                    "y": 0.5440136986301367
+                },
+                "palette": {
+                    "background": "#ddc2a8",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "cba61c9524cc2c822722321e07dea705edb4466d-2000x2800.jpg"
+    },
+    {
+        "objectID": "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+        "sku": "127-04",
+        "identifier": "white-medium",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "White"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "30464081-30dd-470b-b44b-c97cf3e04807"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#ffffff"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "White"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "30464081-30dd-470b-b44b-c97cf3e04807"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-852ee324c2f258aa7807ea4260e80e8a2c714556-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235296,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2869779411764702
+                },
+                "palette": {
+                    "background": "#e9a4ad",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436.jpg"
+    },
+    {
+        "objectID": "6aa52ad2-3e89-4a3b-b743-59707916400d",
+        "sku": "127-03",
+        "identifier": "white-large",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "White"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "30464081-30dd-470b-b44b-c97cf3e04807"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#ffffff"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "White"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "opts": {
+            "color": [
+                "30464081-30dd-470b-b44b-c97cf3e04807"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-852ee324c2f258aa7807ea4260e80e8a2c714556-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235296,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2869779411764702
+                },
+                "palette": {
+                    "background": "#e9a4ad",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436.jpg"
+    },
+    {
+        "objectID": "8063483a-e053-48fc-b680-2a1aeee63377",
+        "sku": "127-05",
+        "identifier": "bordeaux-small",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "Bordeaux"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "c95ce27a-afa1-4319-8277-e979c2b4f66b"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#6d2c1e"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Bordeaux"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "opts": {
+            "color": [
+                "c95ce27a-afa1-4319-8277-e979c2b4f66b"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-9ff6967ebe5eff7bbd5fe128d958977431482b2a-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.4466323529411766,
+                    "width": 0.9705882352941178,
+                    "x": 0.4926470588235294,
+                    "y": 0.2453529411764706
+                },
+                "palette": {
+                    "background": "#e7cbb6",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "9ff6967ebe5eff7bbd5fe128d958977431482b2a-958x1436.jpg"
+    },
+    {
+        "objectID": "78cd3f26-f12b-4692-b366-2ad633502655",
+        "sku": "127-09",
+        "identifier": "bordeaux-medium",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "Bordeaux"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "c95ce27a-afa1-4319-8277-e979c2b4f66b"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#6d2c1e"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Bordeaux"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "c95ce27a-afa1-4319-8277-e979c2b4f66b"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-9ff6967ebe5eff7bbd5fe128d958977431482b2a-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.4466323529411766,
+                    "width": 0.9705882352941178,
+                    "x": 0.4926470588235294,
+                    "y": 0.2453529411764706
+                },
+                "palette": {
+                    "background": "#e7cbb6",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "9ff6967ebe5eff7bbd5fe128d958977431482b2a-958x1436.jpg"
+    },
+    {
+        "objectID": "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+        "sku": "127-06",
+        "identifier": "bordeaux-large",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "Bordeaux"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "c95ce27a-afa1-4319-8277-e979c2b4f66b"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#6d2c1e"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Bordeaux"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "opts": {
+            "color": [
+                "c95ce27a-afa1-4319-8277-e979c2b4f66b"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-9ff6967ebe5eff7bbd5fe128d958977431482b2a-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.4466323529411766,
+                    "width": 0.9705882352941178,
+                    "x": 0.4926470588235294,
+                    "y": 0.2453529411764706
+                },
+                "palette": {
+                    "background": "#e7cbb6",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "9ff6967ebe5eff7bbd5fe128d958977431482b2a-958x1436.jpg"
+    },
+    {
+        "objectID": "de95c5bc-7341-4601-9def-9007676bb509",
+        "sku": "127-08",
+        "identifier": "blue-small",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#15529f"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "opts": {
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-14b56b7c58dddb556477f95ddd697927818552ca-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.4956029411764702,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.27473529411764686
+                },
+                "palette": {
+                    "background": "#e5c8b2",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "14b56b7c58dddb556477f95ddd697927818552ca-958x1436.jpg"
+    },
+    {
+        "objectID": "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+        "sku": "127-07",
+        "identifier": "blue-medium",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#15529f"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Blue"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-14b56b7c58dddb556477f95ddd697927818552ca-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.4956029411764702,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.27473529411764686
+                },
+                "palette": {
+                    "background": "#e5c8b2",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "14b56b7c58dddb556477f95ddd697927818552ca-958x1436.jpg"
+    },
+    {
+        "objectID": "b4360591-aa6b-499c-8131-51570b5ebb02",
+        "sku": "127-02",
+        "identifier": "lightsalmon-medium",
+        "alias": "product-d",
+        "name": "Product D",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1622814486,
+        "source": "726308d1-04f8-417f-a23e-bc84e58d56fc",
+        "master": {
+            "sku": "127"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "availability": [
+                "Ships in 4 - 8 weeks"
+            ],
+            "color": [
+                "Lightsalmon"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "ac1c8f84-acbf-4362-849a-c3e9cd20db79"
+            ],
+            "color": [
+                "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "White",
+                    "Bordeaux",
+                    "Blue",
+                    "Lightsalmon"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "30464081-30dd-470b-b44b-c97cf3e04807",
+                    "c95ce27a-afa1-4319-8277-e979c2b4f66b",
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e",
+                    "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ffffff",
+                    "#6d2c1e",
+                    "#15529f",
+                    "#ffa07a"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 32,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "7bf1eb95-e3b8-43d2-b124-254d59c802c1",
+            "6aa52ad2-3e89-4a3b-b743-59707916400d",
+            "8063483a-e053-48fc-b680-2a1aeee63377",
+            "78cd3f26-f12b-4692-b366-2ad633502655",
+            "71161859-c2ba-4bd9-92e4-416a3b62cd3e",
+            "de95c5bc-7341-4601-9def-9007676bb509",
+            "6a7b1880-3803-4f6d-90a5-afffc46a9f5d",
+            "b4360591-aa6b-499c-8131-51570b5ebb02"
+        ],
+        "display": {
+            "color": [
+                "#ffa07a"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Lightsalmon"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "c9c406c5-d187-42af-be7c-8ef21f0977c6"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-852ee324c2f258aa7807ea4260e80e8a2c714556-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235296,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2869779411764702
+                },
+                "palette": {
+                    "background": "#e9a4ad",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-45b1e3052c7a28f9797c4fe21ba655e5cf8ae485-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.47111764705882286,
+                    "width": 1,
+                    "x": 0.5,
+                    "y": 0.2575955882352938
+                },
+                "palette": {
+                    "background": "#e5d3c4",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            },
+            {
+                "asset": {
+                    "_ref": "image-fd17f88c4b2fdfc7484af706115d0cde7657e57b-958x1436-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.5053970588235286,
+                    "width": 0.9117647058823529,
+                    "x": 0.5,
+                    "y": 0.28942647058823495
+                },
+                "palette": {
+                    "background": "#dcc484",
+                    "foreground": "#000",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "852ee324c2f258aa7807ea4260e80e8a2c714556-958x1436.jpg"
+    },
+    {
+        "objectID": "4977c54d-85aa-4274-862a-a5d3ce036e59",
+        "sku": "abcde-01",
+        "identifier": "darkorange-small",
+        "alias": "product-g",
+        "name": "Product G",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "164c82de-3929-4f63-bbf3-fabb4f256e0d",
+            "name": "Skirts",
+            "path": "/clothing/women/skirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Skirts"
+            ]
+        },
+        "createdAt": 1627114470,
+        "source": "7616d275-8625-458e-bd84-ef11c395b541",
+        "master": {
+            "id": "4b9cf7f9-beda-483a-825f-38136d245953",
+            "sku": "abcde"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts"
+        ],
+        "collections": [],
+        "attributes": {
+            "availability": [
+                "Ships in 1 - 3 weeks"
+            ],
+            "material": [
+                "Cotton"
+            ],
+            "color": [
+                "Darkorange"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "54ead120-dc9b-4f55-9b85-794be2072f1b"
+            ],
+            "material": [
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ],
+            "color": [
+                "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ff8c00",
+                    "#e32c24"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 35,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "4977c54d-85aa-4274-862a-a5d3ce036e59",
+            "e501aa9d-acb9-4192-a0b8-b177abe504c3",
+            "e5b66a2c-21bc-4521-9307-0f3538c332ae",
+            "357f90c5-2bca-4e6c-9565-ea5a6eefdd79"
+        ],
+        "display": {
+            "color": [
+                "#ff8c00"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Darkorange"
+            ],
+            "size": [
+                "Small"
+            ]
+        },
+        "opts": {
+            "color": [
+                "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+            ],
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-fa6b8582e1b91b638111ea499e76edec51626557-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#f5ebd0",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a3585e21ae953487ba0f03391e65d165618ffffc-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#d07074",
+                    "foreground": "#fff",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "fa6b8582e1b91b638111ea499e76edec51626557-800x1200.jpg"
+    },
+    {
+        "objectID": "e501aa9d-acb9-4192-a0b8-b177abe504c3",
+        "sku": "abcde-02",
+        "identifier": "darkorange-medium",
+        "alias": "product-g",
+        "name": "Product G",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "164c82de-3929-4f63-bbf3-fabb4f256e0d",
+            "name": "Skirts",
+            "path": "/clothing/women/skirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Skirts"
+            ]
+        },
+        "createdAt": 1627114470,
+        "source": "7616d275-8625-458e-bd84-ef11c395b541",
+        "master": {
+            "id": "4b9cf7f9-beda-483a-825f-38136d245953",
+            "sku": "abcde"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts"
+        ],
+        "collections": [],
+        "attributes": {
+            "availability": [
+                "Ships in 1 - 3 weeks"
+            ],
+            "material": [
+                "Cotton"
+            ],
+            "color": [
+                "Darkorange"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "54ead120-dc9b-4f55-9b85-794be2072f1b"
+            ],
+            "material": [
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ],
+            "color": [
+                "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ff8c00",
+                    "#e32c24"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 35,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "4977c54d-85aa-4274-862a-a5d3ce036e59",
+            "e501aa9d-acb9-4192-a0b8-b177abe504c3",
+            "e5b66a2c-21bc-4521-9307-0f3538c332ae",
+            "357f90c5-2bca-4e6c-9565-ea5a6eefdd79"
+        ],
+        "display": {
+            "color": [
+                "#ff8c00"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Darkorange"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-fa6b8582e1b91b638111ea499e76edec51626557-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#f5ebd0",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a3585e21ae953487ba0f03391e65d165618ffffc-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#d07074",
+                    "foreground": "#fff",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "fa6b8582e1b91b638111ea499e76edec51626557-800x1200.jpg"
+    },
+    {
+        "objectID": "e5b66a2c-21bc-4521-9307-0f3538c332ae",
+        "sku": "abcde-03",
+        "identifier": "darkorange-large",
+        "alias": "product-g",
+        "name": "Product G",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "164c82de-3929-4f63-bbf3-fabb4f256e0d",
+            "name": "Skirts",
+            "path": "/clothing/women/skirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Skirts"
+            ]
+        },
+        "createdAt": 1627114470,
+        "source": "7616d275-8625-458e-bd84-ef11c395b541",
+        "master": {
+            "id": "4b9cf7f9-beda-483a-825f-38136d245953",
+            "sku": "abcde"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts"
+        ],
+        "collections": [],
+        "attributes": {
+            "availability": [
+                "Ships in 1 - 3 weeks"
+            ],
+            "material": [
+                "Cotton"
+            ],
+            "color": [
+                "Darkorange"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "54ead120-dc9b-4f55-9b85-794be2072f1b"
+            ],
+            "material": [
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ],
+            "color": [
+                "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ff8c00",
+                    "#e32c24"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 35,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "4977c54d-85aa-4274-862a-a5d3ce036e59",
+            "e501aa9d-acb9-4192-a0b8-b177abe504c3",
+            "e5b66a2c-21bc-4521-9307-0f3538c332ae",
+            "357f90c5-2bca-4e6c-9565-ea5a6eefdd79"
+        ],
+        "display": {
+            "color": [
+                "#ff8c00"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Darkorange"
+            ],
+            "size": [
+                "Large"
+            ]
+        },
+        "opts": {
+            "color": [
+                "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+            ],
+            "size": [
+                "50971d24-4262-4537-8840-9ada19d3bb9c"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-fa6b8582e1b91b638111ea499e76edec51626557-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#f5ebd0",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-a3585e21ae953487ba0f03391e65d165618ffffc-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#d07074",
+                    "foreground": "#fff",
+                    "title": "#fff"
+                },
+                "variant": false
+            }
+        ],
+        "image": "fa6b8582e1b91b638111ea499e76edec51626557-800x1200.jpg"
+    },
+    {
+        "objectID": "357f90c5-2bca-4e6c-9565-ea5a6eefdd79",
+        "sku": "abcde-04",
+        "identifier": "red-medium",
+        "alias": "product-g",
+        "name": "Product G",
+        "description": "Lorem ipsum ...",
+        "keywords": [],
+        "kind": "clothing",
+        "category": {
+            "id": "164c82de-3929-4f63-bbf3-fabb4f256e0d",
+            "name": "Skirts",
+            "path": "/clothing/women/skirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Skirts"
+            ]
+        },
+        "createdAt": 1627114470,
+        "source": "7616d275-8625-458e-bd84-ef11c395b541",
+        "master": {
+            "id": "4b9cf7f9-beda-483a-825f-38136d245953",
+            "sku": "abcde"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts"
+        ],
+        "collections": [],
+        "attributes": {
+            "availability": [
+                "Ships in 1 - 3 weeks"
+            ],
+            "material": [
+                "Cotton"
+            ],
+            "color": [
+                "Red"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "attrs": {
+            "availability": [
+                "54ead120-dc9b-4f55-9b85-794be2072f1b"
+            ],
+            "material": [
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ],
+            "color": [
+                "d6e79c36-9026-47af-bd8b-e2198ad8d512"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "color": [
+                    "Red",
+                    "Darkorange"
+                ],
+                "size": [
+                    "Small",
+                    "Medium",
+                    "Large"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "d6e79c36-9026-47af-bd8b-e2198ad8d512",
+                    "9ae7cfe5-1ed5-45f4-96c1-248e8e856443"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29",
+                    "49fc413c-6765-46b8-9892-1bd847fc2588",
+                    "50971d24-4262-4537-8840-9ada19d3bb9c"
+                ]
+            },
+            "display": {
+                "color": [
+                    "#ff8c00",
+                    "#e32c24"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 35,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "color",
+            "size"
+        ],
+        "variants": [
+            "4977c54d-85aa-4274-862a-a5d3ce036e59",
+            "e501aa9d-acb9-4192-a0b8-b177abe504c3",
+            "e5b66a2c-21bc-4521-9307-0f3538c332ae",
+            "357f90c5-2bca-4e6c-9565-ea5a6eefdd79"
+        ],
+        "display": {
+            "color": [
+                "#e32c24"
+            ]
+        },
+        "isVariant": true,
+        "options": {
+            "color": [
+                "Red"
+            ],
+            "size": [
+                "Medium"
+            ]
+        },
+        "opts": {
+            "color": [
+                "d6e79c36-9026-47af-bd8b-e2198ad8d512"
+            ],
+            "size": [
+                "49fc413c-6765-46b8-9892-1bd847fc2588"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-a3585e21ae953487ba0f03391e65d165618ffffc-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#d07074",
+                    "foreground": "#fff",
+                    "title": "#fff"
+                },
+                "variant": true
+            },
+            {
+                "asset": {
+                    "_ref": "image-fa6b8582e1b91b638111ea499e76edec51626557-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#f5ebd0",
+                    "foreground": "#000",
+                    "title": "#000"
+                },
+                "variant": false
+            }
+        ],
+        "image": "a3585e21ae953487ba0f03391e65d165618ffffc-800x1200.jpg"
+    },
+    {
+        "objectID": "3113468a-87f4-46e5-b71d-c415c5451da1",
+        "sku": "3333",
+        "alias": "product-b",
+        "name": "Product B",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "keywords": [],
+        "kind": "accessory",
+        "category": {
+            "id": "164c82de-3929-4f63-bbf3-fabb4f256e0d",
+            "name": "Skirts",
+            "path": "/clothing/women/skirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Skirts"
+            ]
+        },
+        "createdAt": 1621073202,
+        "source": "9631cdd9-a785-4be2-bf7c-353e9c7de8ae",
+        "master": {
+            "id": "3113468a-87f4-46e5-b71d-c415c5451da1",
+            "sku": "3333"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/skirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women"
+            ],
+            "lvl2": [
+                "Clothing > Women > Skirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Skirts"
+        ],
+        "collections": [
+            "81ea7a58-1624-4981-8e2e-9b82f93197d9"
+        ],
+        "attributes": {
+            "color": [
+                "Green"
+            ],
+            "material": [
+                "Leather",
+                "Cotton"
+            ],
+            "condition": [
+                "Used"
+            ]
+        },
+        "attrs": {
+            "color": [
+                "99dbd64b-f35a-4023-9020-6e815c5fb843"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17",
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ],
+            "condition": [
+                "985d5d4e-4c70-489d-8f8a-e8b68dc601b9"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Green"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "99dbd64b-f35a-4023-9020-6e815c5fb843"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {},
+            "attrs": {}
+        },
+        "markers": [
+            "sale"
+        ],
+        "pricing": {
+            "price": 31.5,
+            "suggested": 45,
+            "discount": 30,
+            "custom": false
+        },
+        "variantOptions": [],
+        "variants": [],
+        "isVariant": false,
+        "options": {
+            "color": [
+                "Green"
+            ],
+            "material": [
+                "Leather",
+                "Cotton"
+            ],
+            "condition": [
+                "Used"
+            ]
+        },
+        "opts": {
+            "color": [
+                "99dbd64b-f35a-4023-9020-6e815c5fb843"
+            ],
+            "material": [
+                "7912a4e5-26d4-4375-b7bb-011c77d1db17",
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ],
+            "condition": [
+                "985d5d4e-4c70-489d-8f8a-e8b68dc601b9"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-efe60e03a91062d388aaf3ffb7908b027e8fb190-800x1200-jpg"
+                },
+                "crop": {
+                    "bottom": 0,
+                    "left": 0,
+                    "right": 0,
+                    "top": 0
+                },
+                "hotspot": {
+                    "height": 0.6180294117647055,
+                    "width": 0.8455882352941181,
+                    "x": 0.4963235294117647,
+                    "y": 0.3506397058823528
+                },
+                "palette": {
+                    "background": "#e7cfbd",
+                    "foreground": "#000",
+                    "title": "#000"
+                }
+            }
+        ],
+        "image": "efe60e03a91062d388aaf3ffb7908b027e8fb190-800x1200.jpg"
+    },
+    {
+        "objectID": "f40563c4-6116-4e81-91f4-df92d592f685",
+        "sku": "4444-01",
+        "identifier": "42",
+        "alias": "product-c",
+        "name": "Product C",
+        "description": "A Shoe ...",
+        "keywords": [],
+        "kind": "shoes",
+        "category": {
+            "id": "b9098479-2cec-4e8f-88fd-128ba636f715",
+            "name": "Boots",
+            "path": "/shoes/men/boots",
+            "hierarchy": [
+                "Shoes",
+                "Men",
+                "Boots"
+            ]
+        },
+        "createdAt": 1621692089,
+        "source": "a3791f5a-77e4-4a09-884e-1472bfd38b6f",
+        "master": {
+            "id": "48fc1de8-82f1-49da-88ed-0e4183e93e42",
+            "sku": "4444"
+        },
+        "paths": [
+            "/shoes",
+            "/shoes/men",
+            "/shoes/men/boots"
+        ],
+        "categories": {
+            "lvl0": [
+                "Shoes"
+            ],
+            "lvl1": [
+                "Shoes > Men"
+            ],
+            "lvl2": [
+                "Shoes > Men > Boots"
+            ]
+        },
+        "taxons": [
+            "Shoes",
+            "Men",
+            "Boots"
+        ],
+        "collections": [],
+        "attributes": {
+            "color": [
+                "Black"
+            ],
+            "shoeSize": [
+                "42"
+            ]
+        },
+        "attrs": {
+            "color": [
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd"
+            ],
+            "shoeSize": [
+                "889468bb-0bc7-4842-9457-bacba64c4b3e"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Black"
+                ],
+                "shoeSize": [
+                    "42",
+                    "43"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd"
+                ],
+                "shoeSize": [
+                    "889468bb-0bc7-4842-9457-bacba64c4b3e",
+                    "67da3e62-5efd-411d-8237-c60d8638ea05"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "shoeSize": [
+                    "42",
+                    "43"
+                ]
+            },
+            "attrs": {
+                "shoeSize": [
+                    "889468bb-0bc7-4842-9457-bacba64c4b3e",
+                    "67da3e62-5efd-411d-8237-c60d8638ea05"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 35.65,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "shoeSize"
+        ],
+        "variants": [
+            "f40563c4-6116-4e81-91f4-df92d592f685",
+            "d76508ab-44a4-452f-9475-c5d32c1892f6"
+        ],
+        "isVariant": true,
+        "options": {
+            "shoeSize": [
+                "42"
+            ]
+        },
+        "opts": {
+            "shoeSize": [
+                "889468bb-0bc7-4842-9457-bacba64c4b3e"
+            ]
+        },
+        "images": []
+    },
+    {
+        "objectID": "d76508ab-44a4-452f-9475-c5d32c1892f6",
+        "sku": "4444-02",
+        "identifier": "43",
+        "alias": "product-c",
+        "name": "Product C",
+        "description": "A Shoe ...",
+        "keywords": [],
+        "kind": "shoes",
+        "category": {
+            "id": "b9098479-2cec-4e8f-88fd-128ba636f715",
+            "name": "Boots",
+            "path": "/shoes/men/boots",
+            "hierarchy": [
+                "Shoes",
+                "Men",
+                "Boots"
+            ]
+        },
+        "createdAt": 1621692089,
+        "source": "a3791f5a-77e4-4a09-884e-1472bfd38b6f",
+        "master": {
+            "id": "48fc1de8-82f1-49da-88ed-0e4183e93e42",
+            "sku": "4444"
+        },
+        "paths": [
+            "/shoes",
+            "/shoes/men",
+            "/shoes/men/boots"
+        ],
+        "categories": {
+            "lvl0": [
+                "Shoes"
+            ],
+            "lvl1": [
+                "Shoes > Men"
+            ],
+            "lvl2": [
+                "Shoes > Men > Boots"
+            ]
+        },
+        "taxons": [
+            "Shoes",
+            "Men",
+            "Boots"
+        ],
+        "collections": [],
+        "attributes": {
+            "color": [
+                "Black"
+            ],
+            "shoeSize": [
+                "43"
+            ]
+        },
+        "attrs": {
+            "color": [
+                "429e4ac8-3928-4d8a-8021-b1638e3535bd"
+            ],
+            "shoeSize": [
+                "67da3e62-5efd-411d-8237-c60d8638ea05"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Black"
+                ],
+                "shoeSize": [
+                    "42",
+                    "43"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "429e4ac8-3928-4d8a-8021-b1638e3535bd"
+                ],
+                "shoeSize": [
+                    "889468bb-0bc7-4842-9457-bacba64c4b3e",
+                    "67da3e62-5efd-411d-8237-c60d8638ea05"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {
+                "shoeSize": [
+                    "42",
+                    "43"
+                ]
+            },
+            "attrs": {
+                "shoeSize": [
+                    "889468bb-0bc7-4842-9457-bacba64c4b3e",
+                    "67da3e62-5efd-411d-8237-c60d8638ea05"
+                ]
+            }
+        },
+        "markers": [],
+        "pricing": {
+            "price": 35.65,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [
+            "shoeSize"
+        ],
+        "variants": [
+            "f40563c4-6116-4e81-91f4-df92d592f685",
+            "d76508ab-44a4-452f-9475-c5d32c1892f6"
+        ],
+        "isVariant": true,
+        "options": {
+            "shoeSize": [
+                "43"
+            ]
+        },
+        "opts": {
+            "shoeSize": [
+                "67da3e62-5efd-411d-8237-c60d8638ea05"
+            ]
+        },
+        "images": []
+    },
+    {
+        "objectID": "4dac2810-6ab1-4747-b2de-b0aec2f8e89e",
+        "sku": "2345-8",
+        "alias": "product-f",
+        "name": "Product F",
+        "description": "Lorem ipsum ...\n\nTwo\n\nThree\n\nFour",
+        "keywords": [
+            "two",
+            "three",
+            "four"
+        ],
+        "kind": "clothing",
+        "brand": {
+            "alias": "polene-paris",
+            "id": "7b7b903c-50c6-4d17-bd30-92d0b7cd5c79",
+            "logo": "https://cdn.sanity.io/images/tvc9fi5q/production/cd86c9cec3e121b6e72dc376aacc868f5482ae1b-1200x600.png",
+            "name": "Polène"
+        },
+        "category": {
+            "id": "7a5ec815-c7e5-4354-a6b4-503b7485c245",
+            "name": "Tops & Shirts",
+            "path": "/clothing/women/tops-and-shirts",
+            "hierarchy": [
+                "Clothing",
+                "Women",
+                "Tops & Shirts"
+            ]
+        },
+        "createdAt": 1627113141,
+        "source": "aa6c44d4-cadc-4ed8-ad69-459779a60eb1",
+        "master": {
+            "id": "4dac2810-6ab1-4747-b2de-b0aec2f8e89e",
+            "sku": "2345-8"
+        },
+        "paths": [
+            "/clothing",
+            "/clothing/women",
+            "/clothing/women/tops-and-shirts",
+            "/clothing/men",
+            "/clothing/men/tops-and-shirts"
+        ],
+        "categories": {
+            "lvl0": [
+                "Clothing"
+            ],
+            "lvl1": [
+                "Clothing > Women",
+                "Clothing > Men"
+            ],
+            "lvl2": [
+                "Clothing > Women > Tops & Shirts",
+                "Clothing > Men > Tops & Shirts"
+            ]
+        },
+        "taxons": [
+            "Clothing",
+            "Women",
+            "Tops & Shirts",
+            "Men"
+        ],
+        "collections": [],
+        "attributes": {
+            "size": [
+                "Small"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "material": [
+                "Cotton"
+            ]
+        },
+        "attrs": {
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "material": [
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ]
+        },
+        "all": {
+            "attributes": {
+                "color": [
+                    "Blue"
+                ],
+                "size": [
+                    "Small"
+                ]
+            },
+            "attrs": {
+                "color": [
+                    "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+                ],
+                "size": [
+                    "0b73d03e-82c3-4506-9081-c4e336b28b29"
+                ]
+            }
+        },
+        "variable": {
+            "attributes": {},
+            "attrs": {}
+        },
+        "markers": [
+            "highlight"
+        ],
+        "pricing": {
+            "price": 24.5,
+            "suggested": 0,
+            "discount": 10,
+            "custom": false
+        },
+        "variantOptions": [],
+        "variants": [],
+        "isVariant": false,
+        "options": {
+            "size": [
+                "Small"
+            ],
+            "color": [
+                "Blue"
+            ],
+            "material": [
+                "Cotton"
+            ]
+        },
+        "opts": {
+            "size": [
+                "0b73d03e-82c3-4506-9081-c4e336b28b29"
+            ],
+            "color": [
+                "14c9e658-9d3e-40e1-a78b-d473cbd1938e"
+            ],
+            "material": [
+                "b9cc8491-fd83-43f7-9b6b-a48692937e8e"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-5c38d179610e19d5d01f57ba246afb324845c575-800x1200-jpg"
+                },
+                "palette": {
+                    "background": "#e7c5af",
+                    "foreground": "#000",
+                    "title": "#000"
+                }
+            }
+        ],
+        "image": "5c38d179610e19d5d01f57ba246afb324845c575-800x1200.jpg"
+    },
+    {
+        "objectID": "cb257c41-d856-4a9c-9b25-ad5c515ae028",
+        "sku": "4545",
+        "alias": "accessory-a",
+        "name": "Accessory A",
+        "keywords": [],
+        "kind": "accessory",
+        "category": {
+            "id": "3bddacc1-f549-4b82-837a-bc83fab5f134",
+            "name": "Bags & Wallets",
+            "path": "/accessories/men/bags-and-wallets",
+            "hierarchy": [
+                "Accessories",
+                "Men",
+                "Bags & Wallets"
+            ]
+        },
+        "createdAt": 1627018380,
+        "source": "e6101cb0-efb0-4099-868c-d891b379ac00",
+        "master": {
+            "id": "cb257c41-d856-4a9c-9b25-ad5c515ae028",
+            "sku": "4545"
+        },
+        "paths": [
+            "/accessories",
+            "/accessories/men",
+            "/accessories/men/bags-and-wallets"
+        ],
+        "categories": {
+            "lvl0": [
+                "Accessories"
+            ],
+            "lvl1": [
+                "Accessories > Men"
+            ],
+            "lvl2": [
+                "Accessories > Men > Bags & Wallets"
+            ]
+        },
+        "taxons": [
+            "Accessories",
+            "Men",
+            "Bags & Wallets"
+        ],
+        "collections": [],
+        "attributes": {
+            "gender": [
+                "M"
+            ]
+        },
+        "attrs": {
+            "gender": [
+                "f7a8717f-d82d-43cc-8140-dbbe08bf5cd9"
+            ]
+        },
+        "all": {
+            "attributes": {},
+            "attrs": {}
+        },
+        "variable": {
+            "attributes": {},
+            "attrs": {}
+        },
+        "markers": [],
+        "pricing": {
+            "price": 125,
+            "suggested": 0,
+            "discount": 0,
+            "custom": false
+        },
+        "variantOptions": [],
+        "variants": [],
+        "isVariant": false,
+        "options": {
+            "gender": [
+                "M"
+            ]
+        },
+        "opts": {
+            "gender": [
+                "f7a8717f-d82d-43cc-8140-dbbe08bf5cd9"
+            ]
+        },
+        "images": [
+            {
+                "asset": {
+                    "_ref": "image-001f5a0538ae3a6b83f6e241fd21dbafcd8d3edb-3000x4529-jpg"
+                },
+                "crop": {
+                    "bottom": 0.06374814814814811,
+                    "left": 0.09259259259259255,
+                    "right": 0.10370370370370385,
+                    "top": 0.40945925925925897
+                },
+                "hotspot": {
+                    "height": 0.5267925925925925,
+                    "width": 0.8037037037037036,
+                    "x": 0.49444444444444435,
+                    "y": 0.6728555555555557
+                },
+                "palette": {
+                    "background": "#ecb17e",
+                    "foreground": "#000",
+                    "title": "#fff"
+                }
+            },
+            {
+                "asset": {
+                    "_ref": "image-612db426dece2343eb01931ca7acfbe7f0bd824f-3000x4529-jpg"
+                },
+                "crop": {
+                    "bottom": 0.0760074074074073,
+                    "left": 0.11111111111111112,
+                    "right": 0.11111111111111116,
+                    "top": 0.4241703703703706
+                },
+                "hotspot": {
+                    "height": 0.49982222222222195,
+                    "width": 0.7777777777777777,
+                    "x": 0.49999999999999994,
+                    "y": 0.6740814814814817
+                },
+                "palette": {
+                    "background": "#ecb888",
+                    "foreground": "#000",
+                    "title": "#fff"
+                }
+            }
+        ],
+        "image": "001f5a0538ae3a6b83f6e241fd21dbafcd8d3edb-3000x4529.jpg"
+    }
+]

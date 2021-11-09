@@ -1,0 +1,21 @@
+*[] {
+  "alias": alias.current,
+
+  i18n,
+
+  "entries": coalesce(
+    entries[] {
+      "alias": alias.current,
+
+      i18n, value,
+
+      "options": coalesce(
+        options,
+        {
+
+        }
+      )
+    },
+    []
+  )
+}

@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@root/*": [
+        "./*"
+      ],
+      "@app/*": [
+        "./src/*"
+      ],
+      "@app/config/*": [
+        "./config/*",
+        "./config/*.preval",
+        "./src/config/*",
+        "./src/config/*.preval"
+      ],
+      "@shop/*": [
+        "./src/*",
+        "./node_modules/@atelierfabien/next-shop/*",
+        "../../../node_modules/@atelierfabien/next-shop/*"
+      ],
+      "@foundation/*": [
+        "./node_modules/@atelierfabien/next-foundation/*",
+        "../../../node_modules/@atelierfabien/next-foundation/*"
+      ],
+      "@slices/*": [
+        "./slices/*"
+      ]
+    },
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}

@@ -1,0 +1,13 @@
+*[] {
+  "value": {
+    "currency": *[_type == "settings.shop"] [0].currency-> {
+      code, i18n
+    },
+
+    "currencies": *[_type == "settings.shop"] [0].currencies[]-> {
+      code, i18n,
+
+      "rate": rate.current
+    }
+  }
+}

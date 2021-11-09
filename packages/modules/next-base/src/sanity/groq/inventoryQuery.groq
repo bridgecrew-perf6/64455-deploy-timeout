@@ -1,0 +1,15 @@
+*[_type == "product" && ($id == master.id || $id in variants[].id)] {
+  _id,
+
+  !defined(variants) || length(variants) => {
+    master {
+      id, _type, units
+    }
+  },
+
+  length(variants) > 0 => {
+    "variant": variants[id == $id] [0] {
+      id, _type, units
+    }
+  }
+}

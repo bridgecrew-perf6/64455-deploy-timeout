@@ -1,0 +1,67 @@
+*[] {
+  _id, _type, type, hidden, partial, newWindow,
+
+  ......i18n[$defaultLocale],
+  ...i18n[$locale] {
+    label, external,
+
+    "path": coalesce(^.route->path.current, "") + path.current
+  },
+
+  item-> {
+    _id, _type, hidden, alias, path,
+
+    ......i18n[$defaultLocale],
+    ...i18n[$locale] {
+      label, name, title,
+
+      ...content
+    } {
+      "label": coalesce(label, name, title),
+
+      title
+    },
+
+    "options": coalesce(
+      options,
+      {
+
+      }
+    ),
+    "nodes": coalesce(
+      *[
+        _type == "product.category"
+        && !(defined(hidden) && hidden)
+        && ^._id in parents[]._ref
+      ] | order(order) {
+        _id, _type, path,
+
+        ......i18n[$defaultLocale],
+        ...i18n[$locale] {
+          label, name, title,
+
+          ...content
+        } {
+          "label": coalesce(label, name, title),
+
+          title
+        },
+
+        "options": coalesce(
+          options,
+          {
+
+          }
+        )
+      },
+      []
+    )
+  },
+
+  "options": coalesce(
+    options,
+    {
+
+    }
+  )
+}

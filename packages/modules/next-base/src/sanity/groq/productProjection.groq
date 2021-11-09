@@ -1,0 +1,1198 @@
+*[] {
+  _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale],
+
+  "markers": {
+    "highlight": coalesce(markers.highlight, false),
+    "sale": coalesce(markers.sale, false)
+  },
+
+  pricing {
+    price > 0 => {
+      price
+    },
+
+    discount > 0 => {
+      discount
+    },
+
+    suggested > 0 => {
+      suggested
+    },
+
+    onSale
+  },
+
+  master {
+    "_id": id, _type, sku,
+
+    "units": coalesce(units, 0)
+  },
+
+  brand-> {
+    _id, _type, _createdAt, _updatedAt, type, alias,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale],
+
+    name,
+
+    link {
+      _key, _type,
+
+      item->,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      internal-> {
+        _id, _type, _createdAt, _updatedAt,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        "path": coalesce(route->path.current, "") + coalesce(
+          i18n[$locale].path.current,
+          i18n[$defaultLocale].path.current
+        )
+      },
+
+      external, newWindow
+    },
+
+    "logoUrl": logo.asset->url
+  },
+
+  "hasVariants": defined(variantOptions)
+  && length(variantOptions) > 0,
+
+  "category": categories [0] {
+    ...@-> {
+      _id, _type, path, hidden, order,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale]
+    },
+
+    "parents": coalesce(
+      @-> {
+        "level0": {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "level1": parents [0]-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "level2": parents [0]->parents [0]-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "level3": parents [0]->parents [0]->parents [0]-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "level4": parents [0]->parents [0]->parents [0]->parents [0]-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "level5": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "level6": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        }
+      } {
+        "categories": [level6, level5, level4, level3, level2, level1, level0][
+          _type == "product.category"
+          && !(defined(hidden) && hidden)
+        ]
+      }.categories,
+      []
+    ) [0...-1]
+  },
+
+  "images": coalesce(
+    images[] {
+      ...,
+
+      "attributes": coalesce(
+        attributes[] {
+          _key, _type, "_id": _ref
+        },
+        []
+      ),
+
+      asset-> {
+        ..., metadata {
+          ...,
+
+          "lqip": null,
+
+          palette {
+            lightVibrant
+          }
+        }
+      }
+    },
+    []
+  ),
+  "attributes": coalesce(
+    attributes[]-> | order(order) {
+      _id, alias, numeric, order, schemaType,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      ...options,
+
+      "property": property._ref,
+      "color": display.color.hex,
+
+      value
+    },
+    []
+  ),
+  "variantOptions": coalesce(
+    variantOptions[]-> {
+      _id, alias, variantOption, distinct, order, schemaType,
+
+      ...options,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale]
+    } | order(order),
+    []
+  ),
+  "variants": coalesce(
+    variants[] {
+      _key, "_id": id, _type, sku,
+
+      "units": coalesce(units, 0),
+
+      identifier,
+
+      customPrice => {
+        pricing {
+          price > 0 => {
+            price
+          },
+
+          discount > 0 => {
+            discount
+          },
+
+          suggested > 0 => {
+            suggested
+          },
+
+          onSale
+        }
+      },
+
+      "units": coalesce(units, 0),
+      "options": coalesce(
+        options {
+          color-> {
+            _id, alias, numeric, order, schemaType,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            ...options,
+
+            "property": property._ref,
+            "color": display.color.hex,
+
+            value
+          },
+
+          size-> {
+            _id, alias, numeric, order, schemaType,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            ...options,
+
+            "property": property._ref,
+            "color": display.color.hex,
+
+            value
+          },
+
+          shoeSize-> {
+            _id, alias, numeric, order, schemaType,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            ...options,
+
+            "property": property._ref,
+            "color": display.color.hex,
+
+            value
+          }
+        },
+        {
+
+        }
+      )
+    },
+    []
+  ),
+  "categories": coalesce(
+    categories[]-> {
+      _id, _type, path, hidden, order,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale]
+    },
+    []
+  ),
+
+  "collections": *[_type == "collection" && references(^._id)] {
+    _id, _type, alias,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale]
+  },
+
+  "related": coalesce(
+    related[]-> {
+      _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      "markers": {
+        "highlight": coalesce(markers.highlight, false),
+        "sale": coalesce(markers.sale, false)
+      },
+
+      pricing {
+        price > 0 => {
+          price
+        },
+
+        discount > 0 => {
+          discount
+        },
+
+        suggested > 0 => {
+          suggested
+        },
+
+        onSale
+      },
+
+      master {
+        "_id": id, _type, sku,
+
+        "units": coalesce(units, 0)
+      },
+
+      brand-> {
+        _id, _type, _createdAt, _updatedAt, type, alias,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        name,
+
+        link {
+          _key, _type,
+
+          item->,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale],
+
+          internal-> {
+            _id, _type, _createdAt, _updatedAt,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            "path": coalesce(route->path.current, "") + coalesce(
+              i18n[$locale].path.current,
+              i18n[$defaultLocale].path.current
+            )
+          },
+
+          external, newWindow
+        },
+
+        "logoUrl": logo.asset->url
+      },
+
+      "hasVariants": defined(variantOptions)
+      && length(variantOptions) > 0,
+
+      "category": categories [0] {
+        ...@-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "parents": coalesce(
+          @-> {
+            "level0": {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level1": parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level2": parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level3": parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level4": parents [0]->parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level5": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level6": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            }
+          } {
+            "categories": [
+              level6,
+              level5,
+              level4,
+              level3,
+              level2,
+              level1,
+              level0
+            ][
+              _type == "product.category"
+              && !(defined(hidden) && hidden)
+            ]
+          }.categories,
+          []
+        ) [0...-1]
+      },
+
+      "images": coalesce(
+        images [0...1] {
+          ..., asset-> {
+            ..., metadata {
+              ...,
+
+              "lqip": null,
+
+              palette {
+                lightVibrant
+              }
+            }
+          }
+        },
+        []
+      )
+    },
+    []
+  ),
+  "social": coalesce(
+    social,
+    {
+
+    }
+  ),
+
+  layout-> {
+    ...,
+
+    "identifier": alias.current,
+
+    "assets": coalesce(
+      assets[] {
+        ..., ...@->
+      } {
+        ..., "asset": file.asset-> {
+          ..., metadata {
+            ...,
+
+            "lqip": null,
+
+            palette {
+              lightVibrant
+            }
+          }
+        }
+      },
+      []
+    ),
+    "fragments": coalesce(
+      fragments {
+        header-> {
+          _id, _type,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale],
+
+          alias, hidden, code, component, layout, columns, style, color,
+
+          "options": coalesce(
+            options,
+            {
+
+            }
+          ),
+          "images": coalesce(
+            images[] {
+              ..., asset->
+            },
+            []
+          ),
+
+          navigation-> {
+            _id, _type, alias,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            "options": coalesce(
+              options,
+              {
+
+              }
+            ),
+            "nodes": coalesce(
+              nodes[@->hidden != true && @->item->hidden != true] {
+                _id, _key, _type, type, rule,
+
+                ......i18n[$defaultLocale],
+                ...i18n[$locale] {
+                  label, name, title,
+
+                  ...content
+                } {
+                  "label": coalesce(label, name, title),
+
+                  title
+                },
+
+                ...@-> {
+                  _id, _type, type, hidden, partial, newWindow,
+
+                  ......i18n[$defaultLocale],
+                  ...i18n[$locale] {
+                    label, external,
+
+                    "path": coalesce(^.route->path.current, "") + path.current
+                  },
+
+                  item-> {
+                    _id, _type, hidden, alias, path,
+
+                    ......i18n[$defaultLocale],
+                    ...i18n[$locale] {
+                      label, name, title,
+
+                      ...content
+                    } {
+                      "label": coalesce(label, name, title),
+
+                      title
+                    },
+
+                    "options": coalesce(
+                      options,
+                      {
+
+                      }
+                    ),
+                    "nodes": coalesce(
+                      *[
+                        _type == "product.category"
+                        && !(defined(hidden) && hidden)
+                        && ^._id in parents[]._ref
+                      ] | order(order) {
+                        _id, _type, path,
+
+                        ......i18n[$defaultLocale],
+                        ...i18n[$locale] {
+                          label, name, title,
+
+                          ...content
+                        } {
+                          "label": coalesce(label, name, title),
+
+                          title
+                        },
+
+                        "options": coalesce(
+                          options,
+                          {
+
+                          }
+                        )
+                      },
+                      []
+                    )
+                  },
+
+                  "options": coalesce(
+                    options,
+                    {
+
+                    }
+                  )
+                }
+              },
+              []
+            )
+          }
+        },
+
+        sidebar-> {
+          _id, _type,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale],
+
+          alias, hidden, code, component, layout, columns, style, color,
+
+          "options": coalesce(
+            options,
+            {
+
+            }
+          ),
+          "images": coalesce(
+            images[] {
+              ..., asset->
+            },
+            []
+          ),
+
+          navigation-> {
+            _id, _type, alias,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            "options": coalesce(
+              options,
+              {
+
+              }
+            ),
+            "nodes": coalesce(
+              nodes[@->hidden != true && @->item->hidden != true] {
+                _id, _key, _type, type, rule,
+
+                ......i18n[$defaultLocale],
+                ...i18n[$locale] {
+                  label, name, title,
+
+                  ...content
+                } {
+                  "label": coalesce(label, name, title),
+
+                  title
+                },
+
+                ...@-> {
+                  _id, _type, type, hidden, partial, newWindow,
+
+                  ......i18n[$defaultLocale],
+                  ...i18n[$locale] {
+                    label, external,
+
+                    "path": coalesce(^.route->path.current, "") + path.current
+                  },
+
+                  item-> {
+                    _id, _type, hidden, alias, path,
+
+                    ......i18n[$defaultLocale],
+                    ...i18n[$locale] {
+                      label, name, title,
+
+                      ...content
+                    } {
+                      "label": coalesce(label, name, title),
+
+                      title
+                    },
+
+                    "options": coalesce(
+                      options,
+                      {
+
+                      }
+                    ),
+                    "nodes": coalesce(
+                      *[
+                        _type == "product.category"
+                        && !(defined(hidden) && hidden)
+                        && ^._id in parents[]._ref
+                      ] | order(order) {
+                        _id, _type, path,
+
+                        ......i18n[$defaultLocale],
+                        ...i18n[$locale] {
+                          label, name, title,
+
+                          ...content
+                        } {
+                          "label": coalesce(label, name, title),
+
+                          title
+                        },
+
+                        "options": coalesce(
+                          options,
+                          {
+
+                          }
+                        )
+                      },
+                      []
+                    )
+                  },
+
+                  "options": coalesce(
+                    options,
+                    {
+
+                    }
+                  )
+                }
+              },
+              []
+            )
+          }
+        },
+
+        footer-> {
+          _id, _type,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale],
+
+          alias, hidden, code, component, layout, columns, style, color,
+
+          "options": coalesce(
+            options,
+            {
+
+            }
+          ),
+          "images": coalesce(
+            images[] {
+              ..., asset->
+            },
+            []
+          ),
+
+          navigation-> {
+            _id, _type, alias,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            "options": coalesce(
+              options,
+              {
+
+              }
+            ),
+            "nodes": coalesce(
+              nodes[@->hidden != true && @->item->hidden != true] {
+                _id, _key, _type, type, rule,
+
+                ......i18n[$defaultLocale],
+                ...i18n[$locale] {
+                  label, name, title,
+
+                  ...content
+                } {
+                  "label": coalesce(label, name, title),
+
+                  title
+                },
+
+                ...@-> {
+                  _id, _type, type, hidden, partial, newWindow,
+
+                  ......i18n[$defaultLocale],
+                  ...i18n[$locale] {
+                    label, external,
+
+                    "path": coalesce(^.route->path.current, "") + path.current
+                  },
+
+                  item-> {
+                    _id, _type, hidden, alias, path,
+
+                    ......i18n[$defaultLocale],
+                    ...i18n[$locale] {
+                      label, name, title,
+
+                      ...content
+                    } {
+                      "label": coalesce(label, name, title),
+
+                      title
+                    },
+
+                    "options": coalesce(
+                      options,
+                      {
+
+                      }
+                    ),
+                    "nodes": coalesce(
+                      *[
+                        _type == "product.category"
+                        && !(defined(hidden) && hidden)
+                        && ^._id in parents[]._ref
+                      ] | order(order) {
+                        _id, _type, path,
+
+                        ......i18n[$defaultLocale],
+                        ...i18n[$locale] {
+                          label, name, title,
+
+                          ...content
+                        } {
+                          "label": coalesce(label, name, title),
+
+                          title
+                        },
+
+                        "options": coalesce(
+                          options,
+                          {
+
+                          }
+                        )
+                      },
+                      []
+                    )
+                  },
+
+                  "options": coalesce(
+                    options,
+                    {
+
+                    }
+                  )
+                }
+              },
+              []
+            )
+          }
+        }
+      },
+      {
+
+      }
+    ),
+    "sections": coalesce(
+      sections[] {
+        ...,
+
+        asset-> {
+          ..., metadata {
+            ...,
+
+            "lqip": null,
+
+            palette {
+              lightVibrant
+            }
+          }
+        },
+
+        "images": coalesce(
+          images[] {
+            ..., asset-> {
+              ..., metadata {
+                ...,
+
+                "lqip": null,
+
+                palette {
+                  lightVibrant
+                }
+              }
+            }
+          },
+          []
+        ),
+
+        _type == "section.component" && resolve => {
+          reference-> {
+            ...,
+
+            "i18n": null,
+
+            ...{
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            }
+          }
+        },
+
+        _type == "section.fragment" => {
+          fragment-> {
+            _id, _type,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            alias, hidden, code, component, layout, columns, style, color,
+
+            "options": coalesce(
+              options,
+              {
+
+              }
+            ),
+            "images": coalesce(
+              images[] {
+                ..., asset->
+              },
+              []
+            ),
+
+            navigation-> {
+              _id, _type, alias,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale],
+
+              "options": coalesce(
+                options,
+                {
+
+                }
+              ),
+              "nodes": coalesce(
+                nodes[@->hidden != true && @->item->hidden != true] {
+                  _id, _key, _type, type, rule,
+
+                  ......i18n[$defaultLocale],
+                  ...i18n[$locale] {
+                    label, name, title,
+
+                    ...content
+                  } {
+                    "label": coalesce(label, name, title),
+
+                    title
+                  },
+
+                  ...@-> {
+                    _id, _type, type, hidden, partial, newWindow,
+
+                    ......i18n[$defaultLocale],
+                    ...i18n[$locale] {
+                      label, external,
+
+                      "path": coalesce(^.route->path.current, "") + path.current
+                    },
+
+                    item-> {
+                      _id, _type, hidden, alias, path,
+
+                      ......i18n[$defaultLocale],
+                      ...i18n[$locale] {
+                        label, name, title,
+
+                        ...content
+                      } {
+                        "label": coalesce(label, name, title),
+
+                        title
+                      },
+
+                      "options": coalesce(
+                        options,
+                        {
+
+                        }
+                      ),
+                      "nodes": coalesce(
+                        *[
+                          _type == "product.category"
+                          && !(defined(hidden) && hidden)
+                          && ^._id in parents[]._ref
+                        ] | order(order) {
+                          _id, _type, path,
+
+                          ......i18n[$defaultLocale],
+                          ...i18n[$locale] {
+                            label, name, title,
+
+                            ...content
+                          } {
+                            "label": coalesce(label, name, title),
+
+                            title
+                          },
+
+                          "options": coalesce(
+                            options,
+                            {
+
+                            }
+                          )
+                        },
+                        []
+                      )
+                    },
+
+                    "options": coalesce(
+                      options,
+                      {
+
+                      }
+                    )
+                  }
+                },
+                []
+              )
+            }
+          }
+        },
+
+        _type == "section.collection" => {
+          collection-> {
+            _id, _type,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            alias, query, component,
+
+            "items": coalesce(
+              items[]-> {
+                ...,
+
+                ...i18n[$defaultLocale],
+                ...i18n[$locale],
+
+                "i18n": null,
+
+                asset->,
+
+                image-> {
+                  ..., asset->
+                },
+
+                "images": coalesce(
+                  images[] {
+                    ..., asset->
+                  },
+                  []
+                ),
+                "items": coalesce(
+                  items[] {
+                    ...,
+
+                    ...i18n[$defaultLocale],
+                    ...i18n[$locale],
+
+                    "i18n": null,
+
+                    asset->,
+
+                    image-> {
+                      ..., asset->
+                    },
+
+                    "images": coalesce(
+                      images[] {
+                        ..., asset->
+                      },
+                      []
+                    )
+                  },
+                  []
+                )
+              },
+              []
+            )
+          }
+        },
+
+        _type == "section.cta" => {
+          button {
+            ..., internal-> {
+              _id, _type, _createdAt, _updatedAt,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale],
+
+              "path": coalesce(route->path.current, "") + coalesce(
+                i18n[$locale].path.current,
+                i18n[$defaultLocale].path.current
+              )
+            }
+          }
+        }
+      },
+      []
+    ),
+
+    navigation-> {
+      _id, _type, alias,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      "options": coalesce(
+        options,
+        {
+
+        }
+      ),
+      "nodes": coalesce(
+        nodes[@->hidden != true && @->item->hidden != true] {
+          _id, _key, _type, type, rule,
+
+          ......i18n[$defaultLocale],
+          ...i18n[$locale] {
+            label, name, title,
+
+            ...content
+          } {
+            "label": coalesce(label, name, title),
+
+            title
+          },
+
+          ...@-> {
+            _id, _type, type, hidden, partial, newWindow,
+
+            ......i18n[$defaultLocale],
+            ...i18n[$locale] {
+              label, external,
+
+              "path": coalesce(^.route->path.current, "") + path.current
+            },
+
+            item-> {
+              _id, _type, hidden, alias, path,
+
+              ......i18n[$defaultLocale],
+              ...i18n[$locale] {
+                label, name, title,
+
+                ...content
+              } {
+                "label": coalesce(label, name, title),
+
+                title
+              },
+
+              "options": coalesce(
+                options,
+                {
+
+                }
+              ),
+              "nodes": coalesce(
+                *[
+                  _type == "product.category"
+                  && !(defined(hidden) && hidden)
+                  && ^._id in parents[]._ref
+                ] | order(order) {
+                  _id, _type, path,
+
+                  ......i18n[$defaultLocale],
+                  ...i18n[$locale] {
+                    label, name, title,
+
+                    ...content
+                  } {
+                    "label": coalesce(label, name, title),
+
+                    title
+                  },
+
+                  "options": coalesce(
+                    options,
+                    {
+
+                    }
+                  )
+                },
+                []
+              )
+            },
+
+            "options": coalesce(
+              options,
+              {
+
+              }
+            )
+          }
+        },
+        []
+      )
+    }
+  }
+}

@@ -1,0 +1,6 @@
+*[] {
+  _id, _type, alias,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale]
+}

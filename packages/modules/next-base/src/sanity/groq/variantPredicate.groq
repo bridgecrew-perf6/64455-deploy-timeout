@@ -1,0 +1,5 @@
+*[
+  _type == "product"
+  && !(defined(hidden) && hidden)
+  && ($target == master.id || $target in variants[].id)
+]

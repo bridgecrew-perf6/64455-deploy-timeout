@@ -1,0 +1,168 @@
+*[] {
+  "value": coalesce(
+    related[]-> {
+      _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
+
+      ...i18n[$defaultLocale],
+      ...i18n[$locale],
+
+      "markers": {
+        "highlight": coalesce(markers.highlight, false),
+        "sale": coalesce(markers.sale, false)
+      },
+
+      pricing {
+        price > 0 => {
+          price
+        },
+
+        discount > 0 => {
+          discount
+        },
+
+        suggested > 0 => {
+          suggested
+        },
+
+        onSale
+      },
+
+      master {
+        "_id": id, _type, sku,
+
+        "units": coalesce(units, 0)
+      },
+
+      brand-> {
+        _id, _type, _createdAt, _updatedAt, type, alias,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        name,
+
+        link {
+          _key, _type,
+
+          item->,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale],
+
+          internal-> {
+            _id, _type, _createdAt, _updatedAt,
+
+            ...i18n[$defaultLocale],
+            ...i18n[$locale],
+
+            "path": coalesce(route->path.current, "") + coalesce(
+              i18n[$locale].path.current,
+              i18n[$defaultLocale].path.current
+            )
+          },
+
+          external, newWindow
+        },
+
+        "logoUrl": logo.asset->url
+      },
+
+      "hasVariants": defined(variantOptions)
+      && length(variantOptions) > 0,
+
+      "category": categories [0] {
+        ...@-> {
+          _id, _type, path, hidden, order,
+
+          ...i18n[$defaultLocale],
+          ...i18n[$locale]
+        },
+
+        "parents": coalesce(
+          @-> {
+            "level0": {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level1": parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level2": parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level3": parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level4": parents [0]->parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level5": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            },
+
+            "level6": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+              _id, _type, path, hidden, order,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale]
+            }
+          } {
+            "categories": [
+              level6,
+              level5,
+              level4,
+              level3,
+              level2,
+              level1,
+              level0
+            ][
+              _type == "product.category"
+              && !(defined(hidden) && hidden)
+            ]
+          }.categories,
+          []
+        ) [0...-1]
+      },
+
+      "images": coalesce(
+        images [0...1] {
+          ..., asset-> {
+            ..., metadata {
+              ...,
+
+              "lqip": null,
+
+              palette {
+                lightVibrant
+              }
+            }
+          }
+        },
+        []
+      )
+    },
+    []
+  )
+}

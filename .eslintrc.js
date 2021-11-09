@@ -25,6 +25,7 @@ module.exports = {
     ...a11yOff, // disable for now
     'import/no-unresolved': ['off', { ignore: ['^@'] }],
     'import/no-cycle': [0, { ignoreExternal: true }],
+    'import/no-named-default': 'off',
     'import/extensions': 'off',
     'arrow-body-style': ['off', 'never'],
     'node/callback-return': 'off',

@@ -1,0 +1,5 @@
+*[] {
+  _id, alias, variantOption, distinct, order, schemaType,
+
+  ...options
+}

@@ -1,0 +1,187 @@
+// Override variables before import:
+
+// $border-rounded-border-radius: 0;
+
+$lightbox-background: #000 !default;
+$lightbox-button-background: none !default;
+$lightbox-button-color: rgba(255, 255, 255, 0.7) !default;
+$lightbox-button-hover-color: #fff !default;
+$lightbox-item-color: rgba(255, 255, 255, 0.7) !default;
+$lightbox-toolbar-background: transparent !default;
+$lightbox-toolbar-color: rgba(255, 255, 255, 0.7) !default;
+$lightbox-toolbar-icon-color: rgba(255, 255, 255, 0.7) !default;
+$lightbox-toolbar-icon-hover-color: #fff !default;
+
+$pagination-item-active-color: #1e87f0 !default;
+
+@import '@atelierfabien/next-shop/styles/main';
+
+$nprogress-color: $global-primary-background !default;
+
+@import '@atelierfabien/next-foundation/styles/nprogress';
+
+@import '@atelierfabien/sanity-shop-app/src/styles/snipcart.scss';
+
+.tm-logo {
+  color: $global-emphasis-color;
+  width: 200px;
+  height: auto;
+
+  &.tm-logo-inverse {
+    color: $inverse-global-color;
+  }
+
+  .uk-navbar-item & {
+    width: 160px;
+
+    @media (max-width: $breakpoint-small) {
+      width: 120px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.tm-page-viewport {
+  padding-top: 20px;
+}
+
+.tm-page .tm-page-container {
+  margin-top: 20px;
+}
+
+@media (max-width: $breakpoint-small) {
+  [data-page-layout='shop'] {
+    .tm-page-heading {
+      margin: $global-margin 0;
+    }
+
+    .tm-page-container {
+      margin-top: 0;
+    }
+  }
+}
+
+.uk-container.tm-container-expand {
+  .uk-card-default {
+    border-radius: 0;
+  }
+}
+
+.tm-navbar-container {
+  box-shadow: $global-medium-box-shadow;
+}
+
+.uk-offcanvas-bar {
+  width: 33.33%;
+
+  @media (max-width: $breakpoint-small) {
+    width: 80%;
+  }
+}
+
+.tm-aside-column.uk-offcanvas-overlay {
+  width: 100%;
+}
+
+@media (max-width: $breakpoint-small) {
+  .uk-breadcrumb {
+    display: flex;
+  }
+
+  .uk-breadcrumb > :last-child {
+    display: block;
+  }
+
+  .uk-breadcrumb > :nth-last-child(2):not(.uk-first-column) {
+    margin-left: 0;
+  }
+
+  .uk-breadcrumb > :nth-last-child(2):not(.uk-first-column)::before {
+    display: none;
+    margin: 0;
+    content: '';
+  }
+}
+
+.uk-lightbox-items > * > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.uk-lightbox-button {
+  @media (max-width: $breakpoint-small) {
+    display: none;
+  }
+}
+
+.tm-banner .tm-portable-text {
+  p:last-child {
+    margin-bottom: $global-xsmall-margin;
+  }
+}
+
+.tm-slider-items .tm-media-box-frame {
+  padding: 0;
+  overflow: hidden;
+
+  max-width: 96px !important;
+  max-height: 96px !important;
+}
+
+.tm-slider-items > li {
+  transition: opacity 200ms ease;
+  opacity: 0;
+
+  &.tm-visible {
+    opacity: 1;
+  }
+}
+
+.tm-disabled a {
+  opacity: 0.6;
+}
+
+.tm-navbar-container .uk-navbar-nav > .uk-active-match a {
+  color: $navbar-nav-item-color;
+}
+
+[data-placeholder] {
+  background: $global-muted-color;
+  background-image: url('/images/placeholder-pattern.png');
+}
+
+.tm-product-card[data-target-href] {
+  cursor: pointer;
+}
+
+[data-part='content'] {
+  .tm-section.tm-background {
+    box-shadow: $card-default-box-shadow;
+  }
+}
+
+// TODO - remove (already defined in next-shop)
+
+.tm-margin-remove-first > :first-child {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+// TODO - refactor this
+
+.tm-newsletter-subscription {
+  background: #000
+    url('https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80')
+    center center no-repeat;
+  background-size: cover;
+
+  input[type='email'] {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 1);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}

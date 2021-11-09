@@ -1,0 +1,8 @@
+*[] {
+  "value": coalesce(
+    images[
+      ^.variants[id == $target] [0].options.color._ref in attributes[]._ref
+    ] [0].asset->url,
+    images [0].asset->url
+  )
+}

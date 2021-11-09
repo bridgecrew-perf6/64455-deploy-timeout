@@ -1,0 +1,75 @@
+*[] {
+  _key, "_id": id, _type, sku,
+
+  "units": coalesce(units, 0),
+
+  identifier,
+
+  customPrice => {
+    pricing {
+      price > 0 => {
+        price
+      },
+
+      discount > 0 => {
+        discount
+      },
+
+      suggested > 0 => {
+        suggested
+      },
+
+      onSale
+    }
+  },
+
+  "units": coalesce(units, 0),
+  "options": coalesce(
+    options {
+      color-> {
+        _id, alias, numeric, order, schemaType,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        ...options,
+
+        "property": property._ref,
+        "color": display.color.hex,
+
+        value
+      },
+
+      size-> {
+        _id, alias, numeric, order, schemaType,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        ...options,
+
+        "property": property._ref,
+        "color": display.color.hex,
+
+        value
+      },
+
+      shoeSize-> {
+        _id, alias, numeric, order, schemaType,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale],
+
+        ...options,
+
+        "property": property._ref,
+        "color": display.color.hex,
+
+        value
+      }
+    },
+    {
+
+    }
+  )
+}

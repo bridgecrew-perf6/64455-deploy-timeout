@@ -1,0 +1,68 @@
+*[] {
+  _id, _type, _createdAt, _updatedAt, alias,
+
+  master {
+    "_id": id, _type, sku,
+
+    "units": coalesce(units, 0),
+
+    "pricing": ^.pricing {
+      price > 0 => {
+        price
+      },
+
+      discount > 0 => {
+        discount
+      },
+
+      suggested > 0 => {
+        suggested
+      },
+
+      onSale
+    }
+  },
+
+  "variant": variants[id == $target] [0] {
+    "_id": id, _type, sku,
+
+    "units": coalesce(units, 0),
+
+    pricing {
+      price > 0 => {
+        price
+      },
+
+      discount > 0 => {
+        discount
+      },
+
+      suggested > 0 => {
+        suggested
+      },
+
+      onSale
+    },
+
+    "color": options.color._ref
+  },
+
+  "hasVariants": defined(variantOptions)
+  && length(variantOptions) > 0,
+
+  "variants": coalesce(variants[].units, 0),
+  "availability": coalesce(
+    variants[id == $target] [0].attributes[
+      _type == "property.availability"
+    ] [0]-> {
+      _id, alias, variantOption, distinct, order, schemaType,
+
+      ...options
+    },
+    attributes[_type == "property.availability"] [0]-> {
+      _id, alias, variantOption, distinct, order, schemaType,
+
+      ...options
+    }
+  )
+}

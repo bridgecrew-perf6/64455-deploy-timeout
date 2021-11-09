@@ -1,0 +1,1 @@
+*[_type == "product.category" && !(defined(hidden) && hidden)]

@@ -1,0 +1,11 @@
+export { default as BasketIcon } from './Basket';
+export { default as BellIcon } from './Bell';
+export { default as CartIcon } from './Cart';
+export { default as CartAddIcon } from './CartAdd';
+export { default as DeliveryIcon } from './Delivery';
+export { default as GiftIcon } from './Gift';
+export { default as OfferIcon } from './Offer';
+export { default as OpenBoxIcon } from './OpenBox';
+export { default as PhoneIcon } from './Phone';
+export { default as VanIcon } from './Van';
+export { default as WalletIcon } from './Wallet';

@@ -1,0 +1,10 @@
+*[] {
+  ...,
+
+  "i18n": null,
+
+  ...{
+    ...i18n[$defaultLocale],
+    ...i18n[$locale]
+  }
+}

@@ -1,0 +1,6 @@
+*[] {
+  _id, _type, path, hidden, order,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale]
+}

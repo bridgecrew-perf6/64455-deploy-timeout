@@ -1,0 +1,18 @@
+*[] {
+  _key, _type,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale],
+
+  asset-> {
+    ..., metadata {
+      ...,
+
+      "lqip": null,
+
+      palette {
+        lightVibrant
+      }
+    }
+  }
+}

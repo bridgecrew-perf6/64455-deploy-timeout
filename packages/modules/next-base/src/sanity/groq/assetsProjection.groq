@@ -1,0 +1,20 @@
+*[] {
+  "value": coalesce(
+    assets[] {
+      ..., ...@->
+    } {
+      ..., "asset": file.asset-> {
+        ..., metadata {
+          ...,
+
+          "lqip": null,
+
+          palette {
+            lightVibrant
+          }
+        }
+      }
+    },
+    []
+  )
+}

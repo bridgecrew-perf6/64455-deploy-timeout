@@ -1,0 +1,33 @@
+import ProductVariantHeader from '@shop/components/Product/Variants/Variant/Header';
+import ProductVariantItem from '@shop/components/Product/Variants/Variant/Item';
+
+const ProductVariantColor = props => {
+  const { type, values, setValue } = props;
+  if (Array.isArray(values) && values.length > 0) {
+    return (
+      <div>
+        <ProductVariantHeader {...props} />
+        <div className="uk-grid uk-grid-xsmall tm-variations" uk-grid="true">
+          {values.map(value => (
+            <ProductVariantItem
+              key={value._id}
+              type={type}
+              value={value}
+              onClick={setValue}
+            >
+              <div
+                style={{
+                  backgroundColor: value.color,
+                }}
+              />
+            </ProductVariantItem>
+          ))}
+        </div>
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
+
+export default ProductVariantColor;

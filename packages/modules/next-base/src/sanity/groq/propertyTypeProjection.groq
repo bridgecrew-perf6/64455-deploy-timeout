@@ -1,0 +1,8 @@
+*[] {
+  _id, alias, variantOption, distinct, order, schemaType,
+
+  ...options,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale]
+}

@@ -1,0 +1,11 @@
+*[_type == "product.category" && path.current match $path] {
+  _id,
+
+  "ids": *[
+    _type == "product"
+    && !(defined(hidden) && hidden)
+    && references(^._id)
+  ] {
+    _id
+  }
+}.ids[]._id

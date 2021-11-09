@@ -1,0 +1,78 @@
+*[] {
+  ...@ {
+    _id, _type, path, hidden, order,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale]
+  },
+
+  "parents": coalesce(
+    @ {
+      "level0": {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      },
+
+      "level1": parents [0]-> {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      },
+
+      "level2": parents [0]->parents [0]-> {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      },
+
+      "level3": parents [0]->parents [0]->parents [0]-> {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      },
+
+      "level4": parents [0]->parents [0]->parents [0]->parents [0]-> {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      },
+
+      "level5": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      },
+
+      "level6": parents [0]->parents [0]->parents [0]->parents [0]->parents [0]->parents [0]-> {
+        _id, _type, path, hidden, order,
+
+        ...i18n[$defaultLocale],
+        ...i18n[$locale]
+      }
+    } {
+      "categories": [level6, level5, level4, level3, level2, level1, level0][
+        _type == "product.category"
+        && !(defined(hidden) && hidden)
+      ]
+    }.categories,
+    []
+  ) [0...-1],
+
+  "children": *[
+    _type == "product.category"
+    && !(defined(hidden) && hidden)
+    && references(^._id)
+  ] | order(order) {
+    _id, _type, path, hidden, order,
+
+    ...i18n[$defaultLocale],
+    ...i18n[$locale]
+  }
+}

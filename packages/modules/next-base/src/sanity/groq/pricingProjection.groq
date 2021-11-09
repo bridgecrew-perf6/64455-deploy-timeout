@@ -1,0 +1,15 @@
+*[] {
+  price > 0 => {
+    price
+  },
+
+  discount > 0 => {
+    discount
+  },
+
+  suggested > 0 => {
+    suggested
+  },
+
+  onSale
+}

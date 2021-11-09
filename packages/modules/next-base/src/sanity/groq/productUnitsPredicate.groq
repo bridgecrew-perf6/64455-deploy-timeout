@@ -1,0 +1,6 @@
+*[
+  _type == "product"
+  && ((length(variantProperties) == 0 && master.units == 0) || length(
+    variants[units == 0]
+  ) > 0)
+]

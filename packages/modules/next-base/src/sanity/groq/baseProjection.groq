@@ -1,0 +1,8 @@
+*[] {
+  _id, _type, _createdAt, _updatedAt, type, alias,
+
+  ...i18n[$defaultLocale],
+  ...i18n[$locale],
+
+  layout->
+}
