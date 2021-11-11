@@ -13,8 +13,8 @@ import {
 import Application from '@shop/components/Application';
 
 import '@app/styles/main.scss';
-// import '@foundation/styles/reset.scss';
-// import '@foundation/styles/tailwind.scss';
+import '@foundation/styles/reset.scss';
+import '@foundation/styles/tailwind.scss';
 
 // Setup NProgress
 
