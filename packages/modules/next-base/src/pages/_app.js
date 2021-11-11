@@ -13,8 +13,8 @@ import {
 import Application from '@shop/components/Application';
 
 import '@app/styles/main.scss';
-import '@foundation/styles/reset.scss';
-import '@foundation/styles/tailwind.scss';
+// import '@foundation/styles/reset.scss';
+// import '@foundation/styles/tailwind.scss';
 
 // Setup NProgress
 
@@ -32,7 +32,7 @@ beforeRender((page, { router, options }) => {
     page.hasVariants &&
     !isBlank(router.query.sku)
   ) {
-    const variant = page.variants.find(v => v.sku === router.query.sku);
+    const variant = page.variants.find((v) => v.sku === router.query.sku);
 
     options.set(['seo', 'image'], getOpengraphImage(page, variant) ?? null);
 
