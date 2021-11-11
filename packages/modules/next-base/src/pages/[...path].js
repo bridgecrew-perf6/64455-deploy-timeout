@@ -1,3 +1,4 @@
+import { get } from '@atelierfabien/next-foundation/lib/util';
 import { getClient } from '@atelierfabien/next-sanity/lib/server';
 
 import {
@@ -11,11 +12,13 @@ import init from '@app/sanity/types/node';
 
 import config from '@app/config/app';
 
+import { defaultLocale } from '@root/i18n';
+
 const nodes = init(getBrowserClient());
 
 const homepageId = config?.homepage?.page;
 
-export const getStaticProps = async context => {
+export const getStaticProps = async (context) => {
   const { params, preview = false } = context;
   const segments = [].concat(params?.path ?? []);
 
@@ -39,10 +42,11 @@ export const getStaticProps = async context => {
   }
 };
 
-export const getStaticPaths = async context => {
+export const getStaticPaths = async (context) => {
   const nodes = init(getClient());
-  const paths = await nodes.getStaticPaths(context, doc => {
-    return doc.item?._ref !== homepageId;
+  const paths = await nodes.getStaticPaths(context, (doc) => {
+    const path = get(doc, ['i18n', defaultLocale, 'path']);
+    return doc.item?._ref !== homepageId && path !== '/';
   });
   return { paths, fallback: false };
 };
@@ -50,7 +54,7 @@ export const getStaticPaths = async context => {
 const prepareData = (node, _props, context) =>
   nodes.resolveProps(node.item, { ...context, node });
 
-const PageContainer = props => {
+const PageContainer = (props) => {
   const pageProps = usePreviewQueryProps(props, { fn: prepareData });
   return <Container {...pageProps} />;
 };
