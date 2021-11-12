@@ -16,7 +16,7 @@ const coreModules = ['lodash-es', '@atelierfabien/next-foundation'];
 
 const defaults = {
   future: {
-    webpack5: false,
+    webpack5: true,
   },
   experimental: {
     scrollRestoration: true,

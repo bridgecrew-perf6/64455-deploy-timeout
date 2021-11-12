@@ -19,5 +19,8 @@ export * from './site';
 export * from './translation';
 export * from './uikit';
 
-export { default as getTranslation } from 'next-translate/getT';
-export { default as useTranslation } from 'next-translate/useTranslation';
+import getT from 'next-translate/getT';
+import useT from 'next-translate/useTranslation';
+
+export const getTranslation = (...args) => getT(...args);
+export const useTranslation = (...args) => useT(...args);
