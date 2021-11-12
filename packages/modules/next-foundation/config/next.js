@@ -15,9 +15,6 @@ const withTsConfigPaths = require('./plugins/tsconfig-paths')();
 const coreModules = ['lodash-es', '@atelierfabien/next-foundation'];
 
 const defaults = {
-  future: {
-    webpack5: true,
-  },
   experimental: {
     scrollRestoration: true,
   },
