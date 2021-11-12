@@ -72,7 +72,7 @@ $nprogress-color: lighten($global-primary-background, 15%) !default;
 
 @import '@atelierfabien/next-foundation/styles/nprogress';
 
-@import '@atelierfabien/sanity-shop-app/src/styles/snipcart.scss';
+@import '@atelierfabien/next-base/src/styles/snipcart.scss';
 
 .tm-logo {
   color: $global-emphasis-color;

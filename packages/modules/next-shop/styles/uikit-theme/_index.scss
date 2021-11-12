@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 //
 // Custom variables
 //
@@ -652,8 +654,8 @@ span > .uk-text-meta {
   border-bottom: $global-border-width solid $global-border;
 
   @media (max-width: $breakpoint-small) {
-    padding-left: $padding-small-padding / 2;
-    padding-right: $padding-small-padding / 2;
+    padding-left: math.div($padding-small-padding, 2);
+    padding-right: math.div($padding-small-padding, 2);
 
     .uk-logo {
       flex: 1;
@@ -1567,7 +1569,7 @@ $color-dot-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
   }
 
   &.tm-variation-color {
-    padding: $subnav-pill-item-padding-horizontal / 2;
+    padding: math.div($subnav-pill-item-padding-horizontal, 2);
     border-radius: 50%;
     display: block;
 
