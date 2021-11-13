@@ -3,7 +3,6 @@
   "version": "0.0.8",
   "author": "Fabien Franzen <info@atelierfabien.com>",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",
