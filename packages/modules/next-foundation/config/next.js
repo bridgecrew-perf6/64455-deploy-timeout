@@ -31,16 +31,17 @@ module.exports = (config = {}) => {
     }
   );
 
-  return withPlugins(
-    [
-      withPreval(), // first
-      withTM, // second
-      withTranslations,
-      withBundleAnalyzer,
-      withRpc,
-      withTsConfigPaths,
-      ...plugins,
-    ],
-    { ...defaults, ...nextConfig }
+  return withPreval(
+    withPlugins(
+      [
+        withTM, // first
+        withTranslations,
+        withBundleAnalyzer,
+        withRpc,
+        withTsConfigPaths,
+        ...plugins,
+      ],
+      { ...defaults, ...nextConfig }
+    )
   );
 };
