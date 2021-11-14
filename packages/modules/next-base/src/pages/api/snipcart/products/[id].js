@@ -1,4 +1,4 @@
-import { getProductAvailability } from '@app/pages/api/rpc';
+import { getProductAvailability } from '@app/lib/rpc';
 
 import { isBlank } from '@foundation/lib/util';
 
