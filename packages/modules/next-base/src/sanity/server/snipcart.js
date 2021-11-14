@@ -6,6 +6,8 @@ import { get } from '@atelierfabien/next-foundation/server';
 
 import { inventoryQuery } from '@app/sanity/queries';
 
+import { handleUpdate } from '@app/config/snipcart';
+
 const { SNIPCART_SECRET_KEY } = process.env;
 
 const client = getClient(true); // with token
@@ -41,9 +43,11 @@ export async function handleSnipcartUpdate(
   const valid = verifyToken ? await validateSnipcartToken(token) : true;
   const handler = events[eventName];
 
+  const proceed = valid && (await handleUpdate(eventName, payload, handler));
+
   if (typeof handler !== 'function') {
     return []; // skip
-  } else if (valid) {
+  } else if (proceed) {
     return handler(payload);
   } else {
     throw new Error('Invalid Snipcart token');
@@ -74,7 +78,7 @@ async function processItems(items, processItem) {
   const transaction = client.transaction();
   return items.reduce((promise, item) => {
     return promise.then(() => {
-      return client.fetch(inventoryQuery, { id: item.id }).then(docs => {
+      return client.fetch(inventoryQuery, { id: item.id }).then((docs) => {
         return docs.reduce(
           (tx, doc) => processItem(doc, item, tx),
           transaction
@@ -124,14 +128,14 @@ function processInventoryUpdate(method, doc, item, transaction) {
     if (target._type === 'product.master') {
       // Update master unit count
       return transaction
-        .patch(doc._id, p =>
+        .patch(doc._id, (p) =>
           patchInventory(p, method, 'master.units', item.quantity)
         )
-        .patch(doc._id, p => p.set({ '..[units < 0].units': 0 }));
+        .patch(doc._id, (p) => p.set({ '..[units < 0].units': 0 }));
     } else if (target._type === 'product.variant') {
       // Update variant unit count, if variant
       return transaction
-        .patch(doc._id, p =>
+        .patch(doc._id, (p) =>
           patchInventory(
             p,
             method,
@@ -139,7 +143,7 @@ function processInventoryUpdate(method, doc, item, transaction) {
             item.quantity
           )
         )
-        .patch(doc._id, p => p.set({ 'variants[units < 0].units': 0 }));
+        .patch(doc._id, (p) => p.set({ 'variants[units < 0].units': 0 }));
     }
   } else {
     return transaction;
@@ -150,7 +154,7 @@ function updateStats(method, doc, item, transaction) {
   const target = doc.variant ?? doc.master;
   if (target?.id === item.id && method === 'dec') {
     // outbound inventory should decrease, but sold count should increase
-    return transaction.patch(doc._id, p =>
+    return transaction.patch(doc._id, (p) =>
       patchInventory(p, 'inc', 'stats.sold', item.quantity)
     );
   } else {
