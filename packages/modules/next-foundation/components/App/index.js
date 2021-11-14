@@ -17,6 +17,8 @@ import NextPreview from '../Preview';
 
 import '../../config/module';
 
+import AppContainer from '@app/components/App/Container';
+
 const useAppLayout = buildLayout(layoutConfig);
 
 function AppLayout({ Component, pageProps }) {
@@ -39,17 +41,19 @@ function App({ Component, pageProps, settings, children }) {
         <Hydrate state={pageProps.dehydratedState}>
           <NextDataHooksProvider {...props}>
             <Settings cookie={cookie}>
-              <PageProvider
-                Component={Component}
-                props={props}
-                data={currentPageProps}
-                options={currentPageOptions}
-              >
-                <Head />
-                <NextPreview {...props} />
-                <AppLayout Component={Component} pageProps={pageProps} />
-                {children}
-              </PageProvider>
+              <AppContainer Component={Component} pageProps={pageProps}>
+                <PageProvider
+                  Component={Component}
+                  props={props}
+                  data={currentPageProps}
+                  options={currentPageOptions}
+                >
+                  <Head />
+                  <NextPreview {...props} />
+                  <AppLayout Component={Component} pageProps={pageProps} />
+                  {children}
+                </PageProvider>
+              </AppContainer>
             </Settings>
           </NextDataHooksProvider>
         </Hydrate>
