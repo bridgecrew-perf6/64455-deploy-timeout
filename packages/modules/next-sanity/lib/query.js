@@ -1,6 +1,7 @@
 /* eslint-disable func-names */
 
 import { get, isBlank, mergeObjects, trim } from '@foundation/next';
+import bindAll from 'lodash.bindall';
 import keyBy from 'lodash.keyby';
 import groq from 'groq';
 
@@ -374,6 +375,7 @@ export const define = (methods = {}, setupFn) => {
       client,
       fetchData,
     };
+    bindAll(definition, Object.keys(methods));
     if (typeof setupFn === 'function') setupFn(definition);
     return definition;
   };

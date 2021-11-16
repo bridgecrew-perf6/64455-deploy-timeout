@@ -9,7 +9,12 @@
   "author": "Fabien Franzen <info@atelierfabien.com>",
   "license": "ISC",
   "dependencies": {
+    "argon2": "^0.27.2",
     "next-auth": "^3.29.0",
     "next-auth-sanity": "^1.3.0"
+  },
+  "peerDependencies": {
+    "@atelierfabien/next-foundation": "^0.0.8",
+    "@atelierfabien/next-sanity": "^0.0.8"
   }
 }
