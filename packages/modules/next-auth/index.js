@@ -2,13 +2,11 @@ export { default as NextAuth } from 'next-auth';
 export { default as Providers } from 'next-auth/providers';
 export * from 'next-auth/client';
 
-export { default as SanityAdapter } from './src/lib/adapter';
+export * from './src/lib/email';
+export * from './src/lib/handlers';
 
-export * from 'next-auth-sanity/dist/credentials';
+import SanityCredentials from './src/lib/credentials';
+import SanityAdapter from './src/lib/adapter';
+import queries from './src/lib/queries';
 
-import * as queries from 'next-auth-sanity/dist/queries';
-import * as schemas from 'next-auth-sanity/dist/schemas';
-
-queries.getVerificationRequestQuery = `*[_type == 'verification-request' && identifier == $identifier && _id == $id][0]`;
-
-export { queries, schemas };
+export { SanityCredentials, SanityAdapter, queries };

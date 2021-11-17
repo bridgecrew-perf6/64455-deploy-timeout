@@ -1,4 +1,5 @@
 export default {
+  loading: 'Loading ...',
   errors: {
     signIn: 'Failed to sign in',
     signUp: 'Sign up failed',
@@ -38,6 +39,12 @@ export default {
       title: 'Sign In with Email',
       button: 'Sign In',
       message: 'Please check your mailbox',
+    },
+    verification: {
+      subject: 'Sign in to {{name}}',
+      signInAs: 'Sign in as',
+      ignoreMessage:
+        'If you did not request this email you can safely ignore it.',
     },
   },
 };

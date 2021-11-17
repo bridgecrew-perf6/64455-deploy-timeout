@@ -13,7 +13,7 @@ const AuthPage = (props) => {
 
   const { t } = useTranslation();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>{t('auth:loading')}</p>;
 
   return (
     <div>

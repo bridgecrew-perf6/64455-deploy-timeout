@@ -1,4 +1,5 @@
 export default {
+  loading: 'Laden ...',
   errors: {
     signIn: 'Aanmelden mislukt',
     signUp: 'Registratie mislukt',
@@ -38,6 +39,12 @@ export default {
       title: 'Aanmelden met E-mail adres',
       button: 'Aanmelden',
       message: 'Check uw mailbox',
+    },
+    verification: {
+      subject: 'Aanmelden bij {{name}}',
+      signInAs: 'Aanmelden als',
+      ignoreMessage:
+        'Als u dit verzoek niet hebt aangevraagd, kunt u dit bericht negeren.',
     },
   },
 };

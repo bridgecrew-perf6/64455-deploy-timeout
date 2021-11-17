@@ -1,6 +1,9 @@
-import { queries } from '@atelierfabien/next-auth';
 import { uuid } from '@sanity/uuid';
 import argon2 from 'argon2';
+
+import { defaultLocale } from '@root/i18n';
+
+import queries from './queries';
 
 const {
   getUserByIdQuery,
@@ -17,6 +20,8 @@ const SanityAdapter = (client) => {
       }
 
       const hashToken = (token) => argon2.hash(`${token}${secret}`);
+
+      const { locale = defaultLocale } = appOptions;
 
       return {
         displayName: 'Sanity',
@@ -158,6 +163,7 @@ const SanityAdapter = (client) => {
             url: `${url}:${id}`,
             baseUrl: appOptions.baseUrl,
             provider,
+            locale,
           });
         },
 

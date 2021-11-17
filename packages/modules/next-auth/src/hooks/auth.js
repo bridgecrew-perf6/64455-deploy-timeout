@@ -11,7 +11,7 @@ export const useCredentialsForm = (options = {}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   return useMemo(() => {
     const resetForm = () => {
@@ -28,6 +28,7 @@ export const useCredentialsForm = (options = {}) => {
       const response = await signIn(provider, {
         email,
         password,
+        locale: lang,
         redirect: false,
         ...options,
       });
@@ -63,7 +64,7 @@ export const useCredentialsForm = (options = {}) => {
           password,
         });
 
-        if (response.error) {
+        if (response.error && !response.signIn) {
           UIkit.notification({
             message: t('auth:errors.signUp'),
             status: 'warning',
@@ -86,6 +87,7 @@ export const useCredentialsForm = (options = {}) => {
       setEmail,
       password,
       setPassword,
+      locale: lang,
     };
-  }, [t, options, email, loading, name, password, session]);
+  }, [lang, session, loading, name, email, password, options, t]);
 };
