@@ -1,5 +1,5 @@
 // See: https://next-auth.js.org/v3/configuration/options
 
-import config from '../lib/config';
+import configure from '../lib/configure';
 
-export default config();
+export default configure();

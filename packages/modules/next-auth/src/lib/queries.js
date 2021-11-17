@@ -1,5 +1,24 @@
-import * as queries from 'next-auth-sanity/dist/queries';
+import { groq } from '@atelierfabien/next-sanity';
 
-queries.getVerificationRequestQuery = `*[_type == 'verification-request' && identifier == $identifier && _id == $id][0]`;
+export const getUserByIdQuery = groq`
+  *[_type == 'user' && _id == $id][0]
+`;
 
-export default queries;
+export const getUserByProviderAccountIdQuery = groq`
+  *[_type == 'account' && providerId == $providerId && providerAccountId == $providerAccountId] {
+    accessToken,
+    accessTokenExpires,
+    providerId,
+    providerType,
+    providerAccountId,
+    user->
+  }[0]
+`;
+
+export const getUserByEmailQuery = groq`
+  *[_type == 'user' && email == $email][0]
+`;
+
+export const getVerificationRequestQuery = groq`
+ *[_type == 'verification-request' && identifier == $identifier && _id == $id][0]
+`;

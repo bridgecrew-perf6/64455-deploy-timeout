@@ -3,14 +3,12 @@ import argon2 from 'argon2';
 
 import { defaultLocale } from '@root/i18n';
 
-import queries from './queries';
-
-const {
+import {
   getUserByIdQuery,
   getUserByProviderAccountIdQuery,
   getUserByEmailQuery,
   getVerificationRequestQuery,
-} = queries;
+} from './queries';
 
 const SanityAdapter = (client) => {
   return {

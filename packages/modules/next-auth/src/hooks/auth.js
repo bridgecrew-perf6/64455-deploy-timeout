@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from '@foundation/next';
 import { signIn, useSession } from 'next-auth/client';
-import { signUp } from 'next-auth-sanity/dist/client';
+import { signUp } from '../lib/client';
 
 const signupProviders = ['sanity-login'];
 
@@ -70,7 +70,18 @@ export const useCredentialsForm = (options = {}) => {
             status: 'warning',
           });
         } else {
-          handleSignIn(e);
+          resetForm();
+
+          UIkit.notification({
+            message: t(
+              response.disabled
+                ? 'auth:credentials.signUp.managed'
+                : 'auth:credentials.signUp.message'
+            ),
+            status: 'success',
+          });
+
+          if (!response.disabled) handleSignIn(e);
         }
       }
     };

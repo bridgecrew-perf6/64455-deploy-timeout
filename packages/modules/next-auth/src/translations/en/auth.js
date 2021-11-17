@@ -26,12 +26,13 @@ export default {
     signIn: {
       title: 'Sign In with Password',
       button: 'Sign In',
-      message: "You've are now signed in",
+      message: 'You are now signed in',
     },
     signUp: {
       title: 'Sign Up',
       button: 'Sign Up',
-      message: "You've are now signed up",
+      message: 'You are now signed up',
+      managed: 'You are now signed up. We will active your account soon.',
     },
   },
   email: {

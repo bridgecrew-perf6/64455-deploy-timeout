@@ -32,6 +32,7 @@ export default {
       title: 'Registreren',
       button: 'Registreren',
       message: 'U bent nu geregistreerd',
+      managed: 'U bent nu geregistreerd. Wij activeren uw account spoedig.',
     },
   },
   email: {

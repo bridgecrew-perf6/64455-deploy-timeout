@@ -2,11 +2,9 @@ import Providers from 'next-auth/providers';
 
 import argon2 from 'argon2';
 
-import queries from './queries';
+import { getUserByEmailQuery } from './queries';
 
 import { defaultLocale } from '@root/i18n';
-
-const { getUserByEmailQuery } = queries;
 
 export default (client) =>
   Providers.Credentials({
@@ -28,6 +26,8 @@ export default (client) =>
       });
 
       if (!user) throw new Error('Email does not exist');
+
+      if (user.disabled) throw new Error('Access disabled');
 
       if (await argon2.verify(user.password, credentials.password)) {
         return {

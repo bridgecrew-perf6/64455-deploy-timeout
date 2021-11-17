@@ -18,6 +18,11 @@ export default (options = {}) => ({
   theme: 'auto',
   debug: false,
   ...options,
+  signUp: {
+    disabled: false, // will fully disable sign up
+    managed: false, // will set disabled: true on all new users
+    ...options.signUp,
+  },
   providers: [
     SanityCredentials(client),
     Providers.Email({
@@ -53,10 +58,11 @@ export default (options = {}) => ({
   },
   callbacks: {
     async signIn(user, account, profile) {
-      if (account.type === 'email' && profile.verificationRequest) {
-        return String(user.id).startsWith('user.');
+      if (user && account.type === 'email' && profile.verificationRequest) {
+        return String(user.id).startsWith('user.') && !user.disabled;
+      } else {
+        return true; // or: return string with url to redirect to
       }
-      return true; // or: return string with url to redirect to
     },
     async jwt(token, user, _account, _profile, isNewUser) {
       if (user) {
