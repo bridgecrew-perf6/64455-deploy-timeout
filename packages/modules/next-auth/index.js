@@ -1,7 +1,7 @@
 export { default as NextAuth } from 'next-auth';
 export { default as Providers } from 'next-auth/providers';
-export * from 'next-auth/client';
 
+export * from './src/lib/client';
 export * from './src/lib/email';
 export * from './src/lib/handlers';
 

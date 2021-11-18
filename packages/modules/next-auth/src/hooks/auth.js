@@ -1,11 +1,14 @@
 import { useState, useMemo } from 'react';
+import { useRouter } from '@atelierfabien/next-foundation';
+import { isBlank } from '@atelierfabien/next-foundation/lib/util';
 import { useTranslation } from '@foundation/next';
 import { signIn, useSession } from 'next-auth/client';
 import { signUp } from '../lib/client';
 
 const signupProviders = ['sanity-login'];
 
-export const useCredentialsForm = (options = {}) => {
+export const useCredentialsForm = ({ redirectTo, ...options }) => {
+  const router = useRouter();
   const [session, loading] = useSession();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -49,6 +52,8 @@ export const useCredentialsForm = (options = {}) => {
           ),
           status: 'success',
         });
+
+        if (!isBlank(redirectTo)) router.push(redirectTo);
       }
     };
 
@@ -87,6 +92,7 @@ export const useCredentialsForm = (options = {}) => {
     };
 
     return {
+      router,
       handleSignUp,
       handleSignIn,
       resetForm,
@@ -100,5 +106,5 @@ export const useCredentialsForm = (options = {}) => {
       setPassword,
       locale: lang,
     };
-  }, [lang, session, loading, name, email, password, options, t]);
+  }, [router, lang, session, loading, name, email, password, options, t]);
 };
