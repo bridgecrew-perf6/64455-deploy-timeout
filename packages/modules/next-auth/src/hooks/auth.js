@@ -27,12 +27,18 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
       e.preventDefault();
 
       const provider = e.target.dataset.provider ?? 'sanity-login';
+      const isEmail = provider === 'email';
+
+      const callbackUrl = !isBlank(router.query.callbackUrl)
+        ? router.query.callbackUrl
+        : redirectTo;
 
       const response = await signIn(provider, {
         email,
         password,
         locale: lang,
         redirect: false,
+        callbackUrl,
         ...options,
       });
 
@@ -46,14 +52,16 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
 
         UIkit.notification({
           message: t(
-            provider === 'email'
+            isEmail
               ? 'auth:email.signIn.message'
               : 'auth:credentials.signIn.message'
           ),
           status: 'success',
         });
 
-        if (!isBlank(redirectTo)) router.push(redirectTo);
+        if (!isEmail && !isBlank(callbackUrl)) {
+          router.push(callbackUrl);
+        }
       }
     };
 
@@ -106,5 +114,16 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
       setPassword,
       locale: lang,
     };
-  }, [router, lang, session, loading, name, email, password, options, t]);
+  }, [
+    router,
+    session,
+    loading,
+    name,
+    email,
+    password,
+    lang,
+    redirectTo,
+    options,
+    t,
+  ]);
 };

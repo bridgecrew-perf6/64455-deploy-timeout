@@ -21,7 +21,7 @@ import AppContainer from '@app/components/App/Container';
 
 const useAppLayout = buildLayout(layoutConfig);
 
-function AppLayout({ Component, pageProps }) {
+export function AppLayout({ Component, pageProps }) {
   const LayoutComponent = useAppLayout(Component, pageProps);
   return <LayoutProvider Component={LayoutComponent} pageProps={pageProps} />;
 }

@@ -1,8 +1,16 @@
 export default {
   loading: 'Loading ...',
+  unauthorized: {
+    title: 'Sign In required',
+    message: "You don't have access to this page.",
+  },
   errors: {
     signIn: 'Failed to sign in',
     signUp: 'Sign up failed',
+  },
+  signIn: {
+    button: 'Sign In',
+    message: "You've are now signed in",
   },
   signOut: {
     button: 'Sign Out',

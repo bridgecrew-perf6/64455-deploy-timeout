@@ -12,14 +12,14 @@ import {
 
 const SanityAdapter = (client) => {
   return {
-    async getAdapter({ secret, logger, ...appOptions }) {
-      if (!appOptions.jwt) {
+    async getAdapter({ secret, logger, ...apiOptions }) {
+      if (!apiOptions.jwt) {
         logger.warn('this adapter only works with JWT');
       }
 
       const hashToken = (token) => argon2.hash(`${token}${secret}`);
 
-      const { locale = defaultLocale } = appOptions;
+      const { locale = defaultLocale } = apiOptions;
 
       return {
         displayName: 'Sanity',
@@ -159,7 +159,7 @@ const SanityAdapter = (client) => {
             identifier,
             token: `${token}:${id}`,
             url: `${url}:${id}`,
-            baseUrl: appOptions.baseUrl,
+            baseUrl: apiOptions.baseUrl,
             provider,
             locale,
           });

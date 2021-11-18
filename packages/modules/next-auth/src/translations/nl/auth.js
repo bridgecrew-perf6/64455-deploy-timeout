@@ -1,8 +1,16 @@
 export default {
   loading: 'Laden ...',
+  unauthorized: {
+    title: 'Aanmelden vereist',
+    message: 'U hebt geen toegang tot deze pagina.',
+  },
   errors: {
     signIn: 'Aanmelden mislukt',
     signUp: 'Registratie mislukt',
+  },
+  signIn: {
+    button: 'Aanmelden',
+    message: 'U bent nu aangemeld',
   },
   signOut: {
     button: 'Afmelden',
