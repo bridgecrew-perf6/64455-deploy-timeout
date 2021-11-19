@@ -5,16 +5,20 @@ import AuthUnauthorizedContainer from '@app/components/Auth/Unauthorized/Contain
 import AuthUnauthorizedLoading from '@app/components/Auth/Unauthorized/Loading';
 import AuthUnauthorizedWarning from '@app/components/Auth/Unauthorized/Warning';
 
-export const useUnauthorizedComponent = (action, loading = false) => {
+export const useUnauthorizedComponent = (
+  action,
+  loading = false,
+  options = {}
+) => {
   return useMemo(() => {
     const Comp = loading ? AuthUnauthorizedLoading : AuthUnauthorizedWarning;
-    // eslint-disable-next-line react/display-name
-    return () => (
-      <AuthUnauthorizedContainer>
-        <Comp action={action} />
+    const AuthUnauthorizedPage = () => (
+      <AuthUnauthorizedContainer action={action} options={options}>
+        <Comp action={action} options={options} />
       </AuthUnauthorizedContainer>
     );
-  }, [action, loading]);
+    return AuthUnauthorizedPage;
+  }, [action, loading, options]);
 };
 
 const AuthUnauthorized = ({ action, loading, pageProps }) => {
