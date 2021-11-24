@@ -16,7 +16,7 @@ const omitted = ['updatedAt', 'publishedAt'];
 
 describe('Algolia', () => {
   describe('Locale: en', () => {
-    const filepath = path.join(__dirname, 'fixtures', 'algolia.en.json');
+    const filepath = path.join(path.cwd(), 'fixtures', 'algolia.en.json');
 
     // it('should fetch data in correct format', async () => {
     //   const response = await axios.get(apiUrl);
@@ -36,7 +36,7 @@ describe('Algolia', () => {
   });
 
   describe('Locale: nl', () => {
-    const filepath = path.join(__dirname, 'fixtures', 'algolia.nl.json');
+    const filepath = path.join(path.cwd(), 'fixtures', 'algolia.nl.json');
 
     // it('should fetch data in correct format', async () => {
     //   const response = await axios.get(`${apiUrl}?locale=nl`);
@@ -57,5 +57,5 @@ describe('Algolia', () => {
 });
 
 function normalize(data, omitted = []) {
-  return data.map(item => omit(item, omitted));
+  return data.map((item) => omit(item, omitted));
 }

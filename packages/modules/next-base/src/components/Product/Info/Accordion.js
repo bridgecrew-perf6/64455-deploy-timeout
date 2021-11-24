@@ -4,8 +4,9 @@ import ProductInfoProperties from '@shop/components/Product/Info/Properties';
 import ProductInfoDescription from '@shop/components/Product/Info/Description';
 import ProductInfoVariants from '@shop/components/Product/Info/Variants';
 
-const ProductInfoAccordion = props => {
-  const hasVariants = props?.variants?.hasVariants;
+const ProductInfoAccordion = (props) => {
+  const hasVariants =
+    props?.variants?.hasVariants && props?.variants?.properties?.length > 1;
 
   const { t } = useTranslation();
 

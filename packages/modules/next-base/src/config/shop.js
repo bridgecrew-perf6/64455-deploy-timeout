@@ -1,3 +1,24 @@
+import { parseDate } from '@foundation/lib/util';
+
+import { defaultLocale } from '@root/i18n';
+
+const dateFormat = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+};
+
+const shortFormat = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+};
+
 export default {
   linkToBrand: false,
   linkToVariant: false,
@@ -12,7 +33,23 @@ export default {
     ratio: '1:1',
     scale: 0.4,
   },
-  variantOptions: ['color', 'size', 'shoeSize'],
+  variantOptions: ['color', 'size', 'shoeSize', 'date'],
+  variantOptionMapping: {
+    date: (value, { option, context = {} }) => {
+      const date = parseDate(value);
+      if (date) {
+        const locale = context.locale ?? defaultLocale;
+        const value = date.getTime();
+        const _id = String(value);
+        const label = date.toLocaleDateString(
+          locale,
+          option.format ?? dateFormat
+        );
+        const shortLabel = date.toLocaleDateString(locale, shortFormat);
+        return { _id, label, shortLabel, value, numeric: true };
+      }
+    },
+  },
   imageAttributes: ['color'],
   list: {
     perPage: 6,

@@ -1623,6 +1623,14 @@ $color-dot-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
   border-top: $global-border solid $global-border-width;
 }
 
+// Variations
+.tm-variations-date {
+  .tm-variations > div {
+    display: block;
+    width: 100%;
+  }
+}
+
 // Availability
 
 [data-availability] [data-part='icon'] svg {

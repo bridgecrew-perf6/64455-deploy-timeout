@@ -85,7 +85,7 @@ export const aliasToProperty = appConfig?.shop?.properties?.reduce(
   {}
 );
 
-export const buildSnipcartUrl = variant => {
+export const buildSnipcartUrl = (variant) => {
   return joinUrl(
     siteConfig.baseUrl,
     `/api/snipcart/products/${variant._id ?? variant.id}`
@@ -215,7 +215,7 @@ export function prepareProductBreadcrumbs(product, category, targetPath) {
 
 export function getVariantImages(variant, images = [], selective = false) {
   if (variant) {
-    const [specific, generic] = partition(images, image => {
+    const [specific, generic] = partition(images, (image) => {
       if (Array.isArray(image.attributes) && image.attributes.length > 0) {
         const imageAttrs = map(image.attributes, '_id');
         const variantAttrs = map(variant.attributes, '_id');
@@ -237,7 +237,7 @@ export function getProductAttributes(product, options = {}) {
     const productAttributes = findAttributes(property, product.attributes);
 
     const variantOption = product.variantOptions.some(
-      v => v._id === property._id
+      (v) => v._id === property._id
     );
 
     let variantAttributes = [];
@@ -332,25 +332,25 @@ export function buildVariants(product, options = {}) {
     let match;
 
     if (hasVariant) {
-      match = variants.find(v => matchesVariant(variant, v));
+      match = variants.find((v) => matchesVariant(variant, v));
       if (match) partialSelection = pick(match.opts, partialProperties);
     } else {
       match = variants.find(
-        v => fullSelection && isEqual(pick(v.opts, variantOptions), selection)
+        (v) => fullSelection && isEqual(pick(v.opts, variantOptions), selection)
       );
     }
 
     const matches = variants.filter(
-      v => hasPreset && isMatch(v.opts, partialSelection)
+      (v) => hasPreset && isMatch(v.opts, partialSelection)
     );
 
     if (autoSelect && !match && matches.length > 0) {
       if (matches[0] && setSelection) setSelection(matches[0].opts);
     }
 
-    matches.forEach(v => {
+    matches.forEach((v) => {
       Object.values(v.opts).forEach(
-        v => !matchedValues.includes(v) && matchedValues.push(v)
+        (v) => !matchedValues.includes(v) && matchedValues.push(v)
       );
     });
 
@@ -366,7 +366,7 @@ export function buildVariants(product, options = {}) {
       const prop = lookup[property.alias];
       let selected;
       if (prop) {
-        let values = prop.values.map(value => {
+        let values = prop.values.map((value) => {
           const mapped = { ...value };
           mapped.opts = set({ ...currentSelection }, property.alias, value._id);
           mapped.active = value._id === currentSelection[property.alias];
@@ -378,7 +378,7 @@ export function buildVariants(product, options = {}) {
               : false,
           ]).join(' ');
 
-          mapped.variant = variants.find(v => isMatch(v.opts, mapped.opts));
+          mapped.variant = variants.find((v) => isMatch(v.opts, mapped.opts));
 
           if (mapped.variant && mapped?.variant?._id === match?._id) {
             mapped.variant.active = true;
@@ -397,7 +397,7 @@ export function buildVariants(product, options = {}) {
 
         if (selected) selectedProperties.push({ ...property, value: selected });
 
-        const type = every(values, 'color') ? 'color' : 'value';
+        const type = every(values, 'color') ? 'color' : prop.type ?? 'value';
         const setValue = createPropertySetter(property, values, setSelection);
 
         memo.push({
@@ -415,7 +415,9 @@ export function buildVariants(product, options = {}) {
 
     const imageVariant =
       match ??
-      variants.find(v => hasImageProperty && isMatch(v.opts, imageProperties));
+      variants.find(
+        (v) => hasImageProperty && isMatch(v.opts, imageProperties)
+      );
 
     const images = getVariantImages(imageVariant, productImages);
 
@@ -474,7 +476,7 @@ export function getProductImage(product, variant, options = {}) {
   const imageUrl =
     variant?.imageUrl || get(product, ['images', 0, 'asset', 'url']);
 
-  const image = product.images.find(img => img?.asset?.url === imageUrl);
+  const image = product.images.find((img) => img?.asset?.url === imageUrl);
 
   const previewImage = image ? buildImage(image, options) : {};
 
@@ -509,9 +511,9 @@ export function processVariants(product) {
     map(product.variantOptions, 'alias')
   );
   return orderBy(
-    product.variants.map(variant => processVariant(product, variant)),
+    product.variants.map((variant) => processVariant(product, variant)),
     variantProperties.map(
-      property => variant =>
+      (property) => (variant) =>
         get(variant, ['options', property, 'order'], Number.MAX_SAFE_INTEGER)
     )
   );
@@ -548,7 +550,7 @@ export function getProductOffers(product) {
   let offers;
 
   if (product.hasVariants) {
-    offers = product.variants.map(variant => {
+    offers = product.variants.map((variant) => {
       const url = buildProductUrl(
         { alias: product.alias, sku: variant.sku },
         true
@@ -626,7 +628,7 @@ function lookupAttributeValue(name, product, variant) {
 }
 
 function getAttributeValue(property, attributes = []) {
-  return attributes.find(a => a.property === property);
+  return attributes.find((a) => a.property === property);
 }
 
 function findAttributes(property, attributes = [], isVariant = false) {
@@ -648,7 +650,7 @@ function createPropertySetter(property, values, fn) {
   const valid = map(values, '_id');
   return (v, e, toggle = false) => {
     if (e && e.preventDefault) e.preventDefault();
-    fn(current => {
+    fn((current) => {
       if (valid.includes(v)) {
         if (toggle && current[property.alias] === v) {
           unset(current, property.alias);
@@ -669,7 +671,7 @@ export const convertPrice = (amount, rate = 1) => {
   return price.multiply(rate).toUnit(2);
 };
 
-export const convertPricing = pricing => {
+export const convertPricing = (pricing) => {
   const conversions = Object.entries(currencyConfig.currencies).reduce(
     (memo, [code, info]) => {
       if (typeof pricing.price === 'number') {
@@ -682,7 +684,7 @@ export const convertPricing = pricing => {
   return isBlank(conversions) ? undefined : conversions;
 };
 
-export const processAvailability = data => {
+export const processAvailability = (data) => {
   const target = data?.variant ?? data?.master;
   if (target) {
     const isOrderable = !get(data, ['availability', 'isUnavailable']);
@@ -776,7 +778,7 @@ function assignTargetPath(target, targetPath) {
 }
 
 function findString(targets, key) {
-  const target = targets.find(t => has(t, key));
+  const target = targets.find((t) => has(t, key));
   if (target) {
     const value = get(target, key);
     if (!isBlank(value)) return blocksToText(value);

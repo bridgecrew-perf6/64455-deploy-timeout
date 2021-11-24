@@ -20,6 +20,17 @@ export function isBlank(value) {
   );
 }
 
+export function parseDate(str) {
+  try {
+    const date = new Date(str);
+    if (isValidDate(date)) return date;
+  } catch (e) {}
+}
+
+export function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
+
 export function titleizeString(camelCase) {
   return camelCase
     .replace(/([A-Z0-9])/g, (match) => ` ${match}`)

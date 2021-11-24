@@ -11,6 +11,7 @@ import {
   isBlank,
   detect,
   mergeObjects,
+  kebabCase,
 } from '@foundation/lib/util';
 
 import { getPageLayout, getPageType } from '@app/lib/page';
@@ -109,24 +110,43 @@ export async function resolveProps(item = {}, context = {}) {
 
   // Variants
 
-  item.variantOptions.forEach(option => {
+  item.variantOptions.forEach((option) => {
     option.values = [];
-    item.variants.forEach(variant => {
+    item.variants.forEach((variant, index) => {
       variant.opts = variant.opts ?? {};
       const value = getter(variant, ['options', option.alias]);
-      const exists = option.values.find(o => o.alias === value?.alias);
-      if (!exists && !isBlank(value)) option.values.push(value);
-      if (value) variant.opts[option.alias] = value._id;
+      let mapped = value;
+
+      const mapping = option.type
+        ? shopConfig?.variantOptionMapping?.[option.type]
+        : false;
+
+      if (typeof mapping === 'function') {
+        mapped = mapping(value, { variant, option, context });
+        if (typeof mapped !== 'object') return; // skip
+        mapped.property = option._id;
+        mapped.value = mapped.value ?? value;
+        mapped.label = mapped.label ?? String(mapped.value);
+        mapped.alias = mapped.alias ?? kebabCase(mapped.label);
+        mapped.order = mapped.order ?? index + 1;
+      }
+
+      if (typeof mapped === 'object' && !isBlank(mapped)) {
+        const exists = option.values.find((o) => o.alias === mapped?.alias);
+        if (!exists) option.values.push(mapped);
+        variant.opts[option.alias] = mapped._id;
+        variant.options[option.alias] = mapped;
+      }
     });
     option.values = orderBy(option.values, 'order');
   });
 
-  item.variants.forEach(variant => {
+  item.variants.forEach((variant) => {
     if (!isBlank(variant.sku)) skus.push(variant.sku);
 
     variant.isActive = Boolean(targetSKU && variant.sku === targetSKU);
 
-    variant.attributes = orderBy(Object.values(variant.options), attr =>
+    variant.attributes = orderBy(Object.values(variant.options), (attr) =>
       propertiesOrder.indexOf(attr.property)
     );
 
@@ -145,8 +165,8 @@ export async function resolveProps(item = {}, context = {}) {
     );
 
     const image =
-      detect(images, image => {
-        const match = image.attributes.find(attr =>
+      detect(images, (image) => {
+        const match = image.attributes.find((attr) =>
           imageAttrs.includes(attr._id)
         );
         if (match) return image;
