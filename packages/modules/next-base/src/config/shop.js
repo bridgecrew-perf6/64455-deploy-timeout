@@ -1,5 +1,3 @@
-import { parseDate } from '@foundation/lib/util';
-
 import { defaultLocale } from '@root/i18n';
 
 const dateFormat = {
@@ -68,3 +66,14 @@ export default {
     perPage: 48,
   },
 };
+
+function parseDate(str) {
+  try {
+    const date = new Date(str);
+    if (isValidDate(date)) return date;
+  } catch (e) {}
+}
+
+function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
