@@ -21,7 +21,7 @@ const standalone = [
   'variantImageProjection',
 ];
 
-const baseDir = path.join(path.cwd(), 'src', 'sanity', 'groq');
+const baseDir = path.join(process.cwd(), 'src', 'sanity', 'groq');
 
 function preprocess(q) {
   return q.replace(/pt::text\((.*)\)/g, '$1');

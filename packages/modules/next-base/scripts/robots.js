@@ -23,7 +23,7 @@ Sitemap: SITE_URL/sitemap.xml`;
 
 async function writeRobotsTxt(baseUrl) {
   const formatted = robots.replace(/SITE_URL/g, baseUrl);
-  const filepath = path.join(path.cwd(), 'public', 'robots.txt');
+  const filepath = path.join(process.cwd(), 'public', 'robots.txt');
   return fs.promises.writeFile(filepath, formatted, 'utf8');
 }
 
