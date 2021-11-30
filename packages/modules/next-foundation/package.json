@@ -28,7 +28,7 @@
     "lodash-es": "^4.17.21",
     "next-compose-plugins": "^2.2.1",
     "next-data-hooks": "^0.5.1",
-    "next-plugin-preval": "^1.2.2",
+    "next-plugin-preval": "1.2.1",
     "next-rpc": "^3.1.4",
     "next-seo": "^4.26.0",
     "next-translate": "^1.0.7",
