@@ -23,6 +23,7 @@ module.exports = {
   },
   rules: {
     ...a11yOff, // disable for now
+    'no-restricted-exports': 'off',
     'import/no-unresolved': ['off', { ignore: ['^@'] }],
     'import/no-cycle': [0, { ignoreExternal: true }],
     'import/no-named-default': 'off',
