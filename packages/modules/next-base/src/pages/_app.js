@@ -32,7 +32,7 @@ beforeRender((page, { router, options }) => {
     page.hasVariants &&
     !isBlank(router.query.sku)
   ) {
-    const variant = page.variants.find((v) => v.sku === router.query.sku);
+    const variant = page.variants.find(v => v.sku === router.query.sku);
 
     options.set(['seo', 'image'], getOpengraphImage(page, variant) ?? null);
 

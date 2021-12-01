@@ -6,7 +6,7 @@ import colors from '@shop/config/colors';
 
 import { useRouter, useQuery, wrapQuery, isBlank } from '@foundation/next';
 
-import { getCollection } from '@app/pages/api/rpc';
+import { getCollection } from '@app/lib/rpc';
 
 const query = wrapQuery(getCollection);
 

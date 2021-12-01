@@ -43,7 +43,7 @@ import {
   buildCategorySeo,
 } from '@app/lib/shop';
 
-import { getCategory } from '@app/pages/api/rpc';
+import { getCategory } from '@app/lib/rpc';
 
 import { buildImage, lookupImageSettings } from '@app/hooks/image';
 
@@ -326,7 +326,7 @@ export function useProductAvailability(variantId, attributes, options = {}) {
 }
 
 export const withProduct = (Component, config = {}) => {
-  return props => {
+  return function (props) {
     const { item } = props;
     const router = useRouter();
 
@@ -381,7 +381,7 @@ export const withProduct = (Component, config = {}) => {
 
 export const withPurchaseButtonLabel = Component => {
   // eslint-disable-next-line react/display-name
-  return props => {
+  return function (props) {
     const {
       variants,
       availability,
@@ -502,7 +502,7 @@ export function useCategorySeo(category) {
 
 export function withProductCategory(Component) {
   // eslint-disable-next-line react/display-name
-  return props => {
+  return function (props) {
     const [category, node] = useCategory();
     return <Component {...props} category={category} node={node} />;
   };
