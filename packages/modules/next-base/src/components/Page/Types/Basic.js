@@ -1,6 +1,7 @@
 import { usePropsOrPage, usePageFragments, get } from '@foundation/next';
 
 import Sections, { Section } from '@shop/components/Page/Sections';
+import Regions from '@shop/components/Page/Regions';
 
 const BasicLayout = ({ page, children, inheritFragments = 'layout' }) => {
   const { content, sections, images, layout } = usePropsOrPage(page);
@@ -39,6 +40,7 @@ const BasicLayout = ({ page, children, inheritFragments = 'layout' }) => {
         data-part="sections"
       >
         <Sections sections={sections} />
+        <Regions page={page} render={['main', 'body']} />
       </div>
       {footer && (
         <Section sectionType="section.fragment" fragment={footer} main />

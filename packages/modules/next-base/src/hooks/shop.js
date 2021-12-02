@@ -326,7 +326,7 @@ export function useProductAvailability(variantId, attributes, options = {}) {
 }
 
 export const withProduct = (Component, config = {}) => {
-  return function (props) {
+  return function ProductComponent(props) {
     const { item } = props;
     const router = useRouter();
 
@@ -380,8 +380,7 @@ export const withProduct = (Component, config = {}) => {
 };
 
 export const withPurchaseButtonLabel = Component => {
-  // eslint-disable-next-line react/display-name
-  return function (props) {
+  return function PurchaseButtonLabel(props) {
     const {
       variants,
       availability,
@@ -501,8 +500,7 @@ export function useCategorySeo(category) {
 }
 
 export function withProductCategory(Component) {
-  // eslint-disable-next-line react/display-name
-  return function (props) {
+  return function ProductCategory(props) {
     const [category, node] = useCategory();
     return <Component {...props} category={category} node={node} />;
   };

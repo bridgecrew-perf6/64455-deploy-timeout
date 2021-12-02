@@ -19,6 +19,7 @@ export * from './reference';
 export * from './link';
 export * from './node';
 export * from './section';
+export * from './region';
 
 // Secondary
 export * from './layout';

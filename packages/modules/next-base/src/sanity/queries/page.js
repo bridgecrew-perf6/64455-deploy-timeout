@@ -10,6 +10,7 @@ import {
   fragmentsProjection,
   layoutProjection,
   linkProjection,
+  regionProjection,
   sectionProjection,
 } from '.';
 
@@ -19,6 +20,7 @@ export const pageProjection = groq`
   ${coreProjection},
   ...,
   'sections': coalesce(i18n[$locale].sections, i18n[$defaultLocale].sections, [])[]{ ${sectionProjection} },
+  'regions': coalesce(i18n[$locale].regions, i18n[$defaultLocale].regions, [])[]{ ${regionProjection} },
   'social': coalesce(social, {}),
   'assets': coalesce(assets[]{ ..., asset-> { ${assetProjection} } }, []),
   'images': coalesce(images[]{ ..., asset-> { ${assetProjection} } }, []),

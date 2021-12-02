@@ -35,7 +35,7 @@ export const projection = pageProjection;
 
 const options = { predicate, projection, defaultLocale };
 
-const sectionResolvers = new Map();
+export const sectionResolvers = new Map();
 
 sectionResolvers.set('section.collection', async (client, section, options) => {
   const { collection } = section;
@@ -62,6 +62,30 @@ export const resolveSections = async (client, sections = [], options = {}) => {
   });
 
   return Promise.all(promises);
+};
+
+export const regionResolvers = new Map();
+
+export const resolveRegions = async (client, regions = [], options = {}) => {
+  const { locale = defaultLocale } = options;
+  const opts = { locale };
+
+  const promises = regions.map(r => {
+    if (typeof r.item !== 'object') return r;
+    const resolver = regionResolvers.get(r._type);
+    if (typeof resolver === 'function') {
+      return Promise.resolve(resolver(client, r, opts));
+    } else {
+      return r;
+    }
+  });
+
+  return Promise.all(promises).then(resolved => {
+    return resolved.reduce((memo, region) => {
+      memo[region.id] = region;
+      return memo;
+    }, {});
+  });
 };
 
 export async function resolveProps(item = {}, context = {}) {
@@ -100,6 +124,10 @@ export async function resolveProps(item = {}, context = {}) {
     locale,
   });
 
+  const resolvedRegions = await resolveRegions(this.client, item.regions, {
+    locale,
+  });
+
   return getPageProps(context, {
     page: {
       ...props,
@@ -109,6 +137,7 @@ export async function resolveProps(item = {}, context = {}) {
       subtitle: item.content?.subtitle ?? null,
       content: item.content ?? null,
       sections: resolvedSections,
+      regions: resolvedRegions,
       images: item.images ?? [],
       files: item.files ?? [],
       links: item.links ?? [],
