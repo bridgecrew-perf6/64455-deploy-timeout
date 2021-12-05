@@ -1,6 +1,6 @@
 import { get, useConfig } from '@foundation/next';
 
-const types = [
+export const types = [
   { title: 'Website', value: 'website' },
   { title: 'Instagram', value: 'instagram' },
   { title: 'Facebook', value: 'facebook' },

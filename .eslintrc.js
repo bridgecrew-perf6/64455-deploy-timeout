@@ -37,6 +37,7 @@ module.exports = {
     'no-shadow': strict ? 'warn' : 'off',
     'no-use-before-define': [1, 'nofunc'],
     'prefer-const': 'off',
+    'react/function-component-definition': 'off',
     'react/jsx-filename-extension': [
       1,
       {

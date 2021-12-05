@@ -2,7 +2,7 @@ import { useCurrency, Link } from '@foundation/next';
 
 import { useSnipcartStats } from '@app/hooks/cart';
 
-import { ShoppingCart20 } from '@carbon/icons-react';
+import CommonNavbarMenuCartIcon from '@shop/components/Common/Navbar/Menu/Cart/Icon';
 
 const CommonNavbarMenuCartItem = ({ withTotal = false }) => {
   const { currency, count, total, isLoading, isSandboxMode } =
@@ -28,7 +28,7 @@ const CommonNavbarMenuCartItem = ({ withTotal = false }) => {
               {c.format(total)}
             </span>
           )}
-          <ShoppingCart20 className="uk-icon" />
+          <CommonNavbarMenuCartIcon />
           {count > 0 && <span className={badgeClassName}>{count}</span>}
         </>
       )}

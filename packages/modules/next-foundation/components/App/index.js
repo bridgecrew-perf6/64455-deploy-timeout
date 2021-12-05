@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { Hydrate } from 'react-query/hydration';
 import layoutConfig from '@app/layouts';
+import AppContainer from '@app/components/App/Container';
+
 import {
   useSettingsProvider,
   buildLayout,
@@ -16,8 +18,6 @@ import Head from '../Head';
 import NextPreview from '../Preview';
 
 import '../../config/module';
-
-import AppContainer from '@app/components/App/Container';
 
 const useAppLayout = buildLayout(layoutConfig);
 
