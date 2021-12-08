@@ -110,7 +110,7 @@ export async function resolveProps(item = {}, context = {}) {
 
   // Variants
 
-  item.variantOptions.forEach((option) => {
+  item.variantOptions.forEach(option => {
     option.values = [];
     item.variants.forEach((variant, index) => {
       variant.opts = variant.opts ?? {};
@@ -132,7 +132,7 @@ export async function resolveProps(item = {}, context = {}) {
       }
 
       if (typeof mapped === 'object' && !isBlank(mapped)) {
-        const exists = option.values.find((o) => o.alias === mapped?.alias);
+        const exists = option.values.find(o => o.alias === mapped?.alias);
         if (!exists) option.values.push(mapped);
         variant.opts[option.alias] = mapped._id;
         variant.options[option.alias] = mapped;
@@ -141,12 +141,12 @@ export async function resolveProps(item = {}, context = {}) {
     option.values = orderBy(option.values, 'order');
   });
 
-  item.variants.forEach((variant) => {
+  item.variants.forEach(variant => {
     if (!isBlank(variant.sku)) skus.push(variant.sku);
 
     variant.isActive = Boolean(targetSKU && variant.sku === targetSKU);
 
-    variant.attributes = orderBy(Object.values(variant.options), (attr) =>
+    variant.attributes = orderBy(Object.values(variant.options), attr =>
       propertiesOrder.indexOf(attr.property)
     );
 
@@ -165,8 +165,8 @@ export async function resolveProps(item = {}, context = {}) {
     );
 
     const image =
-      detect(images, (image) => {
-        const match = image.attributes.find((attr) =>
+      detect(images, image => {
+        const match = image.attributes.find(attr =>
           imageAttrs.includes(attr._id)
         );
         if (match) return image;

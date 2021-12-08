@@ -144,6 +144,7 @@ export async function resolveProps(item = {}, context = {}) {
       pages: item.pages ?? [],
       layout: item.layout ?? null,
       fragments: item.fragments ?? {},
+      tags: item.tags ?? [],
       navigation,
     },
     assets: assets ?? [],
@@ -166,6 +167,19 @@ const getByAlias = defineQuery('alias', options);
 
 const fetch = defineQuery('all', options);
 
+// Example: const results = await pages.fetchByTag({ tag: 'example-b' });
+
+const fetchByTag = defineQuery(
+  'custom',
+  params => {
+    const customPredicate = groq`
+      references(*[_type == 'property.value' && property->alias.current == 'tag' && alias.current == $tag]._id)
+    `;
+    return { ...params, customPredicate };
+  },
+  options
+);
+
 const getStaticPaths = defineQuery('staticPaths', {
   ...options,
   query: groq`standalone != true`,
@@ -177,6 +191,7 @@ export default define({
   get,
   getByAlias,
   fetch,
+  fetchByTag,
   getStaticPaths,
   resolveProps,
 });

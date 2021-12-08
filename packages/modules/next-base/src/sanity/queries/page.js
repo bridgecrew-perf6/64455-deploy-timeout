@@ -12,6 +12,7 @@ import {
   linkProjection,
   regionProjection,
   sectionProjection,
+  propertyValueProjection,
 } from '.';
 
 export const pagePredicate = groq`_type == 'page' && hidden != true`;
@@ -30,4 +31,5 @@ export const pageProjection = groq`
   'navigation': navigation->{ ${buildNodesProjection(1)} },
   'fragments': ${fragmentsProjection},
   'layout': layout->{ ${layoutProjection} },
+  'tags': coalesce(tags[]->{ ${propertyValueProjection} }, [])
 `;

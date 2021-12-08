@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 /* eslint-disable func-names */
 
 import { get, isBlank, mergeObjects, trim } from '@foundation/next';
@@ -10,23 +11,23 @@ import { deduceItem, processData } from './util';
 export { processResults } from './tree';
 
 export const andPredicate = (...predicates) => {
-  const valid = predicates.filter((p) => !isBlank(p));
+  const valid = predicates.filter(p => !isBlank(p));
   return valid.length > 0 ? `(${valid.join(' && ')})` : '';
 };
 
 export const orPredicate = (...predicates) => {
-  const valid = predicates.filter((p) => !isBlank(p));
+  const valid = predicates.filter(p => !isBlank(p));
   return valid.length > 0 ? `(${valid.join(' || ')})` : '';
 };
 
-export const filterPredicate = (filter) => {
+export const filterPredicate = filter => {
   return isBlank(filter) ? '' : `|${filter}`;
 };
 
 const getParams = (params, options = {}) => {
   const merged = mergeObjects(options, params);
-  const { defaultLocale } = merged;
-  return { locale: defaultLocale, ...merged };
+  const { defaultLocale = 'en' } = merged;
+  return { locale: defaultLocale, defaultLocale, ...merged };
 };
 
 const passThrough = () => true;
@@ -144,7 +145,7 @@ const types = {
         ? '(_id in $ids || _id in $drafts)'
         : '_id in $ids';
       const previewParams = isPreview
-        ? { drafts: ids.map((id) => `drafts.${id}`) }
+        ? { drafts: ids.map(id => `drafts.${id}`) }
         : {};
       const args = prepare(
         groq`
@@ -157,8 +158,8 @@ const types = {
       const data = await this.fetchData(...args);
       if (Array.isArray(data)) {
         const lookup = keyBy(data);
-        return ids.map((id) => {
-          return (isPreview ? lookup[`drafts.${$id}`] : null) ?? lookup[id];
+        return ids.map(id => {
+          return (isPreview ? lookup[`drafts.${id}`] : null) ?? lookup[id];
         });
       } else {
         return [];
@@ -282,6 +283,7 @@ const types = {
   custom: (fn, options = {}) => {
     return function (params = {}, _previewOptions) {
       const {
+        customPredicate,
         query,
         predicate,
         projection,
@@ -292,7 +294,7 @@ const types = {
       } = getParams(fn(params, options), options);
       const args = prepare(
         groq`
-          *[${andPredicate(predicate, query)}]{
+          *[${andPredicate(customPredicate, predicate, query)}]{
             ${projection}
           }${filterPredicate(filter)}`,
         { ...queryParams, locale, defaultLocale },
@@ -302,7 +304,7 @@ const types = {
     };
   },
   // Attach function - this needs to be a normal function, not an arrow fn
-  attach: (fn) => {
+  attach: fn => {
     return function (...args) {
       return fn.apply(this, args);
     };
@@ -335,11 +337,11 @@ const types = {
 
       return documents.reduce((memo, node) => {
         if (!filterFn(node)) return memo; // skip
-        locales.forEach((locale) => {
+        locales.forEach(locale => {
           const i18n = node?.i18n ?? {};
           const merged = mergeObjects(node, i18n[defaultLocale], i18n[locale]);
           const path = pathProperties
-            .map((p) => getProperty(merged, p))
+            .map(p => getProperty(merged, p))
             .join('/');
           const meta = raw ? node : {};
           if (path === '/') {
@@ -358,18 +360,20 @@ const types = {
   },
 };
 
-export const defineQuery = (type, options = {}) => {
+export const defineQuery = (type, ...args) => {
   if (typeof type === 'function') {
-    return types.attach(type, options);
+    return types.attach(type, ...args);
+  } else if (type === 'custom' && typeof args[0] === 'function') {
+    return types.custom(args[0], args[1]);
   } else if (typeof types[type] === 'function') {
-    return types[type](options);
+    return types[type](...args);
   } else {
     throw new Error(`Invalid query type: ${type}`);
   }
 };
 
 export const define = (methods = {}, setupFn) => {
-  return (client) => {
+  return client => {
     const definition = {
       ...methods,
       client,

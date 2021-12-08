@@ -4,7 +4,7 @@ import OffcanvasNav from '@shop/components/Offcanvas/Nav';
 
 import { SnipcartContainer } from '@shop/components/Snipcart';
 
-const DefaultLayout = ({ children }) => {
+const CommonLayout = ({ children }) => {
   return (
     <div className="tm-page">
       <CommonHeader />
@@ -16,4 +16,4 @@ const DefaultLayout = ({ children }) => {
   );
 };
 
-export default DefaultLayout;
+export default CommonLayout;

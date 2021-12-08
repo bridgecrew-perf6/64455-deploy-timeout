@@ -60,6 +60,7 @@ $max-content-width: $breakpoint-small !default;
 
 $toolbar-container-color: $navbar-nav-item-color !default;
 $navbar-item-height: 60px !default;
+$navbar-border: $global-border-width solid $global-border !default;
 
 $global-light-muted-background: lighten($global-muted-background, 10%) !default;
 
@@ -651,7 +652,7 @@ span > .uk-text-meta {
 }
 
 .tm-navbar-container {
-  border-bottom: $global-border-width solid $global-border;
+  border-bottom: $navbar-border;
 
   @media (max-width: $breakpoint-small) {
     padding-left: math.div($padding-small-padding, 2);
