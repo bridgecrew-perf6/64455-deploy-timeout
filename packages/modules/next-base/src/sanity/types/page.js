@@ -7,7 +7,6 @@ import {
   lookup,
   mergeObjects,
   isBlank,
-  isEmpty,
 } from '@foundation/next';
 
 import {
@@ -23,7 +22,10 @@ import {
   pageProjection,
 } from '@app/sanity/queries';
 
-import { resolveCollectionQuery } from '@app/sanity/types/collection';
+import { layoutResolvers } from '@app/config/layouts';
+import { pageResolvers } from '@app/config/pages';
+import { sectionResolvers } from '@app/config/sections';
+import { regionResolvers } from '@app/config/regions';
 
 import { defaultLocale } from '@root/i18n';
 
@@ -35,18 +37,63 @@ export const projection = pageProjection;
 
 const options = { predicate, projection, defaultLocale };
 
-export const sectionResolvers = new Map();
+export const executeResolvers = async (
+  client,
+  resolverMap,
+  identifier,
+  page,
+  options = {}
+) => {
+  const opts = { locale: defaultLocale, ...options };
 
-sectionResolvers.set('section.collection', async (client, section, options) => {
-  const { collection } = section;
+  const resolvers = ['default'].concat(identifier ?? []);
 
-  if (collection && isEmpty(collection.items) && !isEmpty(collection.query)) {
-    const resolved = await resolveCollectionQuery(client, collection, options);
-    return { ...section, collection: resolved };
-  } else {
-    return section;
-  }
-});
+  const promises = resolvers.map(r => {
+    const resolver = resolverMap.get(r);
+    if (typeof resolver === 'function') {
+      return Promise.resolve(resolver(client, page, { ...opts }));
+    } else {
+      return Promise.resolve();
+    }
+  });
+
+  return Promise.all(promises);
+};
+
+export const resolveLayout = async (client, page, options = {}) => {
+  return executeResolvers(
+    client,
+    layoutResolvers,
+    page.layout?.alias,
+    page,
+    options
+  );
+};
+
+export const resolvePage = async (client, page, options = {}) => {
+  return executeResolvers(client, pageResolvers, page.alias, page, options);
+};
+
+export const resolveRegions = async (client, regions = [], options = {}) => {
+  const { locale = defaultLocale } = options;
+  const opts = { locale };
+
+  const promises = regions.map(r => {
+    const resolver = regionResolvers.get(r._type);
+    if (typeof resolver === 'function') {
+      return Promise.resolve(resolver(client, r, opts));
+    } else {
+      return r;
+    }
+  });
+
+  return Promise.all(promises).then(resolved => {
+    return resolved.reduce((memo, region) => {
+      memo[region.id] = region;
+      return memo;
+    }, {});
+  });
+};
 
 export const resolveSections = async (client, sections = [], options = {}) => {
   const { locale = defaultLocale } = options;
@@ -64,32 +111,14 @@ export const resolveSections = async (client, sections = [], options = {}) => {
   return Promise.all(promises);
 };
 
-export const regionResolvers = new Map();
-
-export const resolveRegions = async (client, regions = [], options = {}) => {
-  const { locale = defaultLocale } = options;
-  const opts = { locale };
-
-  const promises = regions.map(r => {
-    if (typeof r.item !== 'object') return r;
-    const resolver = regionResolvers.get(r._type);
-    if (typeof resolver === 'function') {
-      return Promise.resolve(resolver(client, r, opts));
-    } else {
-      return r;
-    }
-  });
-
-  return Promise.all(promises).then(resolved => {
-    return resolved.reduce((memo, region) => {
-      memo[region.id] = region;
-      return memo;
-    }, {});
-  });
-};
-
 export async function resolveProps(item = {}, context = {}) {
   const { node, locale, locales, router = {} } = context;
+
+  // Resolve data, based on the page layout alias
+  await resolveLayout(this.client, item, context);
+
+  // Resolve data, based on the page alias
+  await resolvePage(this.client, item, context);
 
   const canonicalUrl =
     typeof router.path === 'string' ? null : `/${locale}/pages/${item.alias}`;
