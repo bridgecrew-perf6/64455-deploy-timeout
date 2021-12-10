@@ -49,7 +49,7 @@ const ImageItem = ({
           width={width}
           height={height}
           className={`tm-image ${imageClassName}`}
-          uk-cover={cover ? 'true' : false}
+          uk-cover={cover ? 'true' : null}
         />
         <Item image={image} />
       </figure>

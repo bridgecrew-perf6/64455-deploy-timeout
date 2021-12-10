@@ -209,6 +209,11 @@ export const useImages = (data = {}, layout = 'grid') => {
   }, [columns, image, images, layout, limit, props, ratio]);
 };
 
+export const useImage = (image, options = {}) => {
+  const [images, meta, props] = useImages({ image, ...options });
+  return [images[0], meta, props];
+};
+
 export const useImageWithPresets = (image, options = {}) => {
   const { scope, presets = [], urls = false } = options;
   const defaults = lookupImageSettings(scope);

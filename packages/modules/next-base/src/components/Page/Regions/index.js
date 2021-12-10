@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 
 import TextRegion from '@shop/components/Page/Regions/Text';
+import ImageRegion from '@shop/components/Page/Regions/Image';
 
 // Example:
 //
@@ -20,6 +21,7 @@ import TextRegion from '@shop/components/Page/Regions/Text';
 export const regions = new Map();
 
 regions.set('region.text', TextRegion);
+regions.set('region.image', ImageRegion);
 
 const Wrapper = ({ region, children, ...props }) => (
   <div data-region-id={region.id} data-region-type={region._type} {...props}>
@@ -70,6 +72,8 @@ const Regions = ({
   renderAll = false,
   children,
 }) => {
+  if (typeof show === 'string') show = [show];
+  if (typeof render === 'string') render = [render];
   if ((render.length > 0 || renderAll) && typeof page.regions === 'object') {
     return (
       <>

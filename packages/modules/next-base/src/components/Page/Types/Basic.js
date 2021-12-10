@@ -40,7 +40,7 @@ const BasicLayout = ({ page, children, inheritFragments = 'layout' }) => {
         data-part="sections"
       >
         <Sections sections={sections} />
-        <Regions page={page} render={['main', 'body']} />
+        <Regions page={page} render={['image', 'main', 'body']} />
       </div>
       {footer && (
         <Section sectionType="section.fragment" fragment={footer} main />

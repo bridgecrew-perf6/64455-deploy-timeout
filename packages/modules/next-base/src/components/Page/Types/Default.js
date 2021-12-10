@@ -34,7 +34,7 @@ const DefaultLayout = ({ page, children, inheritFragments = 'all' }) => {
           {content && <Section {...content} main />}
           {children}
           <Sections sections={sections} />
-          <Regions page={page} render={['main', 'body']} />
+          <Regions page={page} render={['image', 'main', 'body']} />
         </article>
         {footer && (
           <Section sectionType="section.fragment" fragment={footer} main />
