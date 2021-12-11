@@ -23,7 +23,7 @@ import {
 } from '@app/sanity/queries';
 
 import { layoutResolvers } from '@app/config/layouts';
-import { pageResolvers } from '@app/config/pages';
+import { pageResolvers, pageTypeResolvers } from '@app/config/pages';
 import { sectionResolvers } from '@app/config/sections';
 import { regionResolvers } from '@app/config/regions';
 
@@ -72,6 +72,10 @@ export const resolveLayout = async (client, page, options = {}) => {
 
 export const resolvePage = async (client, page, options = {}) => {
   return executeResolvers(client, pageResolvers, page.alias, page, options);
+};
+
+export const resolvePageType = async (client, pageType, page, options = {}) => {
+  return executeResolvers(client, pageTypeResolvers, pageType, page, options);
 };
 
 export const resolveRegions = async (client, regions = [], options = {}) => {
@@ -136,6 +140,9 @@ export async function resolveProps(item = {}, context = {}) {
 
   // Page type, mapped to page component
   const pageType = getPageType(item);
+
+  // Resolve data, based on the page type
+  await resolvePageType(this.client, pageType, item, context);
 
   // Use page assets, or fall back to layout assets
   const assets = lookup(item, ['assets'], ['layout', 'assets']);

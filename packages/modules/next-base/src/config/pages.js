@@ -1,5 +1,7 @@
 export const pageResolvers = new Map();
 
+export const pageTypeResolvers = new Map();
+
 // Example - default (runs for all pages):
 //
 // pageResolvers.set('default', (client, page, options) => {});

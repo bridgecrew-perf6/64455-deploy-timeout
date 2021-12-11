@@ -2,13 +2,13 @@ import { lookup, compactObject } from '@foundation/lib/util';
 
 import layoutConfig from '@app/layouts';
 
-export const getOpengraphImage = (item) => {
+export const getOpengraphImage = item => {
   // Use the given image, then try the social media image or the first image
   let opengraphImage = lookup(item, ['social', 'image'], ['images', 0]);
 
   // Try to find the first image inside a section
   if (!opengraphImage && Array.isArray(item.sections)) {
-    item.sections.find((s) => {
+    item.sections.find(s => {
       const image = s?.asset?.url ? s : lookup(s, ['image'], ['images', 0]);
       const isValid = image?.asset?._type === 'sanity.imageAsset';
       if (isValid) opengraphImage = image;
@@ -51,7 +51,8 @@ export const getPageLayout = (item, defaultLayout = 'pages') => {
 };
 
 export const getPageType = (item, defaultType = 'default') =>
-  lookup(item, ['type'], ['layout', 'page', 'type']) ?? defaultType;
+  lookup(item, ['type'], ['layout', 'page', 'type'], ['layout', 'alias']) ??
+  defaultType;
 
-export const getPageNavigation = (item) =>
+export const getPageNavigation = item =>
   item.navigation ?? item.layout?.navigation ?? null;
