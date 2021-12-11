@@ -18,7 +18,7 @@ const nodes = init(getBrowserClient());
 
 const homepageId = config?.homepage?.page;
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async context => {
   const { params, preview = false } = context;
   const segments = [].concat(params?.path ?? []);
 
@@ -42,9 +42,9 @@ export const getStaticProps = async (context) => {
   }
 };
 
-export const getStaticPaths = async (context) => {
+export const getStaticPaths = async context => {
   const nodes = init(getClient());
-  const paths = await nodes.getStaticPaths(context, (doc) => {
+  const paths = await nodes.getStaticPaths(context, doc => {
     const path = get(doc, ['i18n', defaultLocale, 'path']);
     return doc.item?._ref !== homepageId && path !== '/';
   });
@@ -54,7 +54,7 @@ export const getStaticPaths = async (context) => {
 const prepareData = (node, _props, context) =>
   nodes.resolveProps(node.item, { ...context, node });
 
-const PageContainer = (props) => {
+const PageContainer = props => {
   const pageProps = usePreviewQueryProps(props, { fn: prepareData });
   return <Container {...pageProps} />;
 };

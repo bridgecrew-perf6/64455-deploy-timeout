@@ -10,7 +10,7 @@ const client = init(getClient());
 
 const MAX_AGE = 86400; // Cache in CDN for a day
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async context => {
   const { res } = context;
 
   const searchState = pick(context.query ?? {}, ['page']);

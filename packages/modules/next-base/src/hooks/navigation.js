@@ -6,6 +6,7 @@ import {
   joinUrl,
   isBlank,
   mergeObjects,
+  isEmpty,
 } from '@foundation/lib/util';
 
 import { buildProductUrl, buildCategoryUrl } from '@app/lib/navigation';
@@ -57,7 +58,10 @@ linkMapping.set('file', item => {
   return { ...item, label, title, href, mimeType, badge };
 });
 
-linkMapping.set('product', item => ({ ...item, href: buildProductUrl(item) }));
+linkMapping.set('product', item => ({
+  ...item,
+  href: buildProductUrl(item),
+}));
 
 linkMapping.set('product.category', item => ({
   ...item,
@@ -134,11 +138,12 @@ export const useNavigationNode = (node = {}, filter) => {
   const options = { levels, ...parent?.options, ...node.options };
 
   const nodes = useMemo(() => {
-    const children = Array.isArray(item?.nodes)
-      ? item.nodes
-      : Array.isArray(node.nodes)
-      ? node.nodes
-      : [];
+    const children =
+      Array.isArray(node.nodes) && !isEmpty(node.nodes)
+        ? node.nodes
+        : Array.isArray(item?.nodes)
+        ? item.nodes
+        : [];
     return typeof filter === 'function' ? children.filter(filter) : children;
   }, [filter, item, node.nodes]);
 
