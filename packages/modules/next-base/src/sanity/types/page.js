@@ -7,6 +7,8 @@ import {
   lookup,
   mergeObjects,
   isBlank,
+  difference,
+  isPlainObject,
 } from '@foundation/next';
 
 import {
@@ -28,6 +30,15 @@ import { sectionResolvers } from '@app/config/sections';
 import { regionResolvers } from '@app/config/regions';
 
 import { defaultLocale } from '@root/i18n';
+
+function mergeResolved(resolvedProps, results) {
+  if (Array.isArray(results)) {
+    results.forEach(r => {
+      if (isPlainObject(r)) Object.assign(resolvedProps, r);
+    });
+  }
+  return resolvedProps;
+}
 
 // Resolving
 
@@ -118,11 +129,15 @@ export const resolveSections = async (client, sections = [], options = {}) => {
 export async function resolveProps(item = {}, context = {}) {
   const { node, locale, locales, router = {} } = context;
 
+  const sourceKeys = Object.keys(item);
+
+  const resolvedProps = {};
+
   // Resolve data, based on the page layout alias
-  await resolveLayout(this.client, item, context);
+  mergeResolved(resolvedProps, await resolveLayout(this.client, item, context));
 
   // Resolve data, based on the page alias
-  await resolvePage(this.client, item, context);
+  mergeResolved(resolvedProps, await resolvePage(this.client, item, context));
 
   const canonicalUrl =
     typeof router.path === 'string' ? null : `/${locale}/pages/${item.alias}`;
@@ -142,7 +157,10 @@ export async function resolveProps(item = {}, context = {}) {
   const pageType = getPageType(item);
 
   // Resolve data, based on the page type
-  await resolvePageType(this.client, pageType, item, context);
+  mergeResolved(
+    resolvedProps,
+    await resolvePageType(this.client, pageType, item, context)
+  );
 
   // Use page assets, or fall back to layout assets
   const assets = lookup(item, ['assets'], ['layout', 'assets']);
@@ -164,6 +182,9 @@ export async function resolveProps(item = {}, context = {}) {
     locale,
   });
 
+  // Gather all newly resolved properties and merge them into the page
+  const pageProps = pick(item, difference(Object.keys(item), sourceKeys));
+
   return getPageProps(context, {
     page: {
       ...props,
@@ -182,6 +203,7 @@ export async function resolveProps(item = {}, context = {}) {
       fragments: item.fragments ?? {},
       tags: item.tags ?? [],
       navigation,
+      ...pageProps,
     },
     assets: assets ?? [],
     seo: mergeObjects(node?.seo, item.seo, { image: openGraphImage }),
@@ -192,6 +214,7 @@ export async function resolveProps(item = {}, context = {}) {
     },
     pageLayout,
     pageType,
+    ...resolvedProps,
   });
 }
 

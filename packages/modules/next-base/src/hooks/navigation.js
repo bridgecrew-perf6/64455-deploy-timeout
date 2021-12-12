@@ -68,7 +68,7 @@ linkMapping.set('product.category', item => ({
   href: buildCategoryUrl(item),
 }));
 
-export const buildLink = (link = {}, type) => {
+export const buildLink = (link = {}, type = null) => {
   const { _type } = link;
 
   const defaultCallback = linkMapping.get('default');
@@ -121,7 +121,7 @@ export const useNavigation = name => {
   }, [locale, defaultLocale, name]);
 };
 
-export const useNavigationNode = (node = {}, filter) => {
+export const useNavigationNode = (node = {}, filter = null) => {
   const {
     type,
     parent,

@@ -6,4 +6,8 @@ export const layoutResolvers = new Map();
 
 // Example - specific, by layout alias:
 //
-// layoutResolvers.set('homePage', (client, page, options) => {});
+// layoutResolvers.set('home', (client, page, options) => {});
+
+// Example - return object to merge with currentPageOptions
+//
+// layoutResolvers.set('home', (client, page, options) => ({ foo: 'bar' }));

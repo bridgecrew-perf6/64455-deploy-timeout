@@ -12,12 +12,16 @@ export const nodeItemProjection = groq`...{ ...i18n[$defaultLocale], ...i18n[$lo
 
 export const nodeProjection = groq`_id, _key, _type, type, rule, ${nodeItemProjection}`;
 
-export const nodeReferenceProjection = groq`
+export const nodeCoreProjection = groq`
   _id, _type, type, hidden, partial, newWindow,
   ...{ ...i18n[$defaultLocale], ...i18n[$locale] }{
     label, external,
     'path': coalesce(^.route->path.current, '') + path.current
-  },
+  }
+`;
+
+export const nodeReferenceProjection = groq`
+  ${nodeCoreProjection},
   item->{
     _id, _type, hidden, alias, path, ${nodeItemProjection},
     'options': coalesce(options, {}),
