@@ -44,6 +44,9 @@ export default {
     placeholder: 'Search ...',
   },
   address: {
+    address: 'Address',
+    contact: 'Contact',
     phoneNumber: 'Phone',
+    email: 'Email',
   },
 };

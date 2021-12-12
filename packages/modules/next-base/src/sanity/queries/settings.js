@@ -30,7 +30,7 @@ export const settingsProjection = groq`
     }{ ..., 'asset': file.asset-> { ${assetProjection} } }, []),
   },
   'shop': *[_type == 'settings.shop'][0]{
-    'address': address{ name, street, postalCode, city, country },
+    'address': address{ name, title, street, postalCode, city, country },
     'location': location{ lat, lng },
     'contact': [
       { '_key': 'a1a1a1aa111a', 'type': 'phone', 'value': contact.phone },

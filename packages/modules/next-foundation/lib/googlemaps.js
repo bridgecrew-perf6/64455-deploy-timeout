@@ -2,8 +2,16 @@ import { useState, useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { useMounted } from './hooks';
 
+const grayscaleStyle = [
+  {
+    featureType: 'all',
+    elementType: 'all',
+    stylers: [{ saturation: -100 }],
+  },
+];
+
 export function useGoogleMaps(apiKey, options = {}) {
-  const { marker: mapMarker, ...mapOptions } = options;
+  const { marker: mapMarker, grayscale = false, ...mapOptions } = options;
   const mounted = useMounted();
   const google = useGoogleMapsApi(apiKey);
   const ref = useRef(null);
@@ -15,7 +23,24 @@ export function useGoogleMaps(apiKey, options = {}) {
       let gmap;
       let gmarker;
 
-      gmap = new google.maps.Map(ref.current, mapOptions);
+      if (grayscale) {
+        gmap = new google.maps.Map(ref.current, {
+          ...mapOptions,
+          mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'grayscale'],
+          },
+        });
+      } else {
+        gmap = new google.maps.Map(ref.current, mapOptions);
+      }
+
+      if (grayscale) {
+        const mapType = new google.maps.StyledMapType(grayscaleStyle, {
+          name: 'Grayscale',
+        });
+        gmap.mapTypes.set('grayscale', mapType);
+        gmap.setMapTypeId('grayscale');
+      }
 
       if (typeof mapMarker === 'function') {
         gmarker = mapMarker(gmap, google.maps.Marker);
@@ -35,7 +60,7 @@ export function useGoogleMaps(apiKey, options = {}) {
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mounted, google]);
+  }, [mounted, google, grayscale]);
 
   return { ref, map, marker, google };
 }

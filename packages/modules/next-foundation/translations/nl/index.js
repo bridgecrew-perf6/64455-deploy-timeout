@@ -45,6 +45,9 @@ export default {
     placeholder: 'Zoeken ...',
   },
   address: {
+    address: 'Adres',
+    contact: 'Contact',
     phoneNumber: 'Telefoon',
+    email: 'E-mail',
   },
 };
