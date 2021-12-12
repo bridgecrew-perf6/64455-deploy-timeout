@@ -71,9 +71,10 @@ function parseDate(str) {
   try {
     const date = new Date(str);
     if (isValidDate(date)) return date;
+    // eslint-disable-next-line no-empty
   } catch (e) {}
 }
 
 function isValidDate(d) {
-  return d instanceof Date && !isNaN(d);
+  return d instanceof Date && !Number.isNaN(d);
 }

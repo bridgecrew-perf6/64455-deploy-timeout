@@ -1,27 +1,6 @@
 import { useMemo } from 'react';
 
-import TextRegion from '@shop/components/Page/Regions/Text';
-import ImageRegion from '@shop/components/Page/Regions/Image';
-
-// Example:
-//
-// import Regions, { Region } from '@shop/components/Page/Regions';
-//
-// <Regions page={page} show={['main', 'side']}> // optional, conditional display
-//   <div className="uk-grid-small" uk-grid="true">
-//     <Region className="uk-width-2-3" region={page.regions.main} />
-//     <Region className="uk-width-1-3" region={page.regions.side} />
-//   </div>
-// </Regions>
-//
-// <Regions page={page} renderAll /> // render all
-//
-// <Regions page={page} render={['main', 'side']} /> // render named
-
-export const regions = new Map();
-
-regions.set('region.text', TextRegion);
-regions.set('region.image', ImageRegion);
+import { regions } from '@app/config/regions';
 
 const Wrapper = ({ region, children, ...props }) => (
   <div data-region-id={region.id} data-region-type={region._type} {...props}>
@@ -37,29 +16,28 @@ const Default = ({ id, _type }) => {
   );
 };
 
-export const Region = props => {
-  const { region, wrapper = true } = props;
+export const Region = ({ Component, ...props }) => {
+  const { region, className, wrapper = true, ...properties } = props;
 
-  const Component = useMemo(() => {
+  const Comp = useMemo(() => {
     if (
       typeof region === 'object' &&
       typeof region.id === 'string' &&
       typeof region._type === 'string' &&
-      typeof region.item === 'object' &&
-      !region.item?.hidden
+      !region.hidden
     ) {
-      return regions.get(region._type) ?? Default;
+      return Component ?? regions.get(region._type) ?? Default;
     }
-  }, [region]);
+  }, [Component, region]);
 
-  if (Component && wrapper) {
+  if (Comp && wrapper) {
     return (
-      <Wrapper {...props}>
-        <Component {...region} />
+      <Wrapper region={region} className={className} {...properties}>
+        <Comp {...region} {...properties} />
       </Wrapper>
     );
-  } else if (Component) {
-    return <Component {...region} />;
+  } else if (Comp) {
+    return <Comp {...region} />;
   } else {
     return null;
   }
@@ -71,6 +49,7 @@ const Regions = ({
   render = [],
   renderAll = false,
   children,
+  ...properties
 }) => {
   if (typeof show === 'string') show = [show];
   if (typeof render === 'string') render = [render];
@@ -79,7 +58,9 @@ const Regions = ({
       <>
         {(renderAll ? Object.keys(page.regions) : render).map(name => {
           const region = page.regions[name];
-          return region ? <Region key={region._key} region={region} /> : null;
+          return region ? (
+            <Region key={region._key} region={region} {...properties} />
+          ) : null;
         })}
       </>
     );

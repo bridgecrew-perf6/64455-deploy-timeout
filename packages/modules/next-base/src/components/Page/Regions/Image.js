@@ -1,15 +1,15 @@
 import { useImage } from '@app/hooks/image';
 
 const ImageRegion = ({
-  item,
+  image,
   className,
   alt = '',
   cover = false,
   options = {},
 }) => {
-  const [image] = useImage(item.image, { ...options, ...item.options });
+  const [img] = useImage(image, { ...options, ...options });
 
-  const { url, width, height } = image;
+  const { url, width, height } = img;
 
   return (
     <img

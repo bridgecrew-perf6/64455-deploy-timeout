@@ -1,12 +1,12 @@
 import { PortableText } from '@shop/components/Sanity';
 
-const TextRegion = ({ item }) => {
+const TextRegion = ({ title, subtitle, body }) => {
   return (
     <>
-      <h1>{item.title}</h1>
-      {item.subtitle && <h2>{item.subtitle}</h2>}
+      <h1>{title}</h1>
+      {subtitle && <h2>{subtitle}</h2>}
       <div>
-        <PortableText blocks={item.body} />
+        <PortableText blocks={body} />
       </div>
     </>
   );
