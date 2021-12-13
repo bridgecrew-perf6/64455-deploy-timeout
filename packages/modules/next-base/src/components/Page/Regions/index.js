@@ -81,7 +81,7 @@ const Regions = ({
 };
 
 export async function resolveReferences(client, page, options) {
-  const { locale, defaultLocale } = options;
+  const { locale, defaultLocale, map } = options;
 
   const basePredicate = groq`_id in $ids`;
 
@@ -113,7 +113,10 @@ export async function resolveReferences(client, page, options) {
     }
   );
 
-  const lookup = keyBy(references, '_id');
+  const lookup = keyBy(
+    typeof map === 'function' ? references.map(map) : references,
+    '_id'
+  );
 
   page.regions.forEach(region => {
     if (typeof region.reference?._ref === 'string') {
