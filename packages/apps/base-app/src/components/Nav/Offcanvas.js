@@ -29,8 +29,8 @@ const OffCanvas = withPortal(() => {
           <button
             className="uk-offcanvas-close"
             type="button"
-            uk-close=""
-          ></button>
+            uk-close="true"
+          />
           <div className="uk-panel">
             <ul className="uk-nav uk-nav-default">
               <li className="uk-nav-header">Site</li>

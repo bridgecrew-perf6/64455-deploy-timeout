@@ -7,6 +7,10 @@ const block = groq`
   'button': button { ..., internal->{ ${internalReferenceProjection} } }
 `;
 
+const cta = groq`
+  'button': button { ..., internal->{ ${internalReferenceProjection} } }
+`;
+
 const slideshow = groq`
   'images': coalesce(images[]{
     ...,
@@ -18,6 +22,7 @@ const slideshow = groq`
 export const regionProjection = groq`
   id, _key, _type, ...item,
   _type == 'region.block' => { ...item{ ${block} } },
+  _type == 'region.cta' => { ...item{ ${cta} } },
   _type == 'region.slideshow' => { ...item{ ${slideshow} } }
 `;
 

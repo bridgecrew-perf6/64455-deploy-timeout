@@ -1,5 +1,7 @@
 import { usePropsOrPage, usePageFragments } from '@foundation/next';
 
+import { camelCase } from '@foundation/lib/util';
+
 export const usePageWithLayout = props => {
   const { page, inheritFragments = 'layout' } = props;
   const { layout, ...pageProps } = usePropsOrPage(page);
@@ -16,7 +18,7 @@ export const usePageWithLayout = props => {
 export const withPageWithLayout = (type, Component, options = {}) => {
   const { expandViewport = true } = options;
 
-  return function PageWithLayout(props) {
+  const fn = function PageWithLayout(props) {
     const page = usePageWithLayout(props);
     const containerProps = page.options.containerProps ?? {};
 
@@ -31,4 +33,8 @@ export const withPageWithLayout = (type, Component, options = {}) => {
       </section>
     );
   };
+
+  fn.displayName = `${camelCase(type)}Page`;
+
+  return fn;
 };

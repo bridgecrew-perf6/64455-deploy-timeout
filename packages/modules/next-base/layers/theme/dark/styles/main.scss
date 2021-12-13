@@ -131,6 +131,18 @@ $nprogress-color: lighten($global-primary-background, 15%) !default;
   }
 }
 
+.uk-offcanvas-responsive .uk-offcanvas-bar {
+  width: 100%;
+
+  @media (max-width: $breakpoint-small) {
+    width: 100%;
+  }
+}
+
+.uk-offcanvas-fullscreen .uk-offcanvas-bar {
+  padding: 0;
+}
+
 .tm-aside-column.uk-offcanvas-overlay {
   width: 100%;
 }

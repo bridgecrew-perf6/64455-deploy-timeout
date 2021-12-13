@@ -1,6 +1,14 @@
 import { useMemo } from 'react';
 
+import groq from 'groq';
+
+import { uniq, keyBy, isEmpty, omit } from '@foundation/lib/util';
+
+import { layoutResolvers } from '@base/config/layouts';
+
 import { regions } from '@app/config/regions';
+
+const CORE_PROPS = ['_type', '_key', 'id'];
 
 const Wrapper = ({ region, children, ...props }) => (
   <div data-region-id={region.id} data-region-type={region._type} {...props}>
@@ -24,6 +32,7 @@ export const Region = ({ Component, ...props }) => {
       typeof region === 'object' &&
       typeof region.id === 'string' &&
       typeof region._type === 'string' &&
+      !isEmpty(omit(region, CORE_PROPS)) &&
       !region.hidden
     ) {
       return Component ?? regions.get(region._type) ?? Default;
@@ -70,5 +79,55 @@ const Regions = ({
     return null;
   }
 };
+
+export async function resolveReferences(client, page, options) {
+  const { locale, defaultLocale } = options;
+
+  const basePredicate = groq`_id in $ids`;
+
+  const ids = uniq(
+    page.regions.reduce((memo, region) => {
+      if (typeof region.reference?._ref === 'string') {
+        memo.push(region.reference._ref);
+      } else if (Array.isArray(region.references)) {
+        region.references.forEach(({ _ref }) => {
+          if (typeof _ref === 'string') memo.push(_ref);
+        });
+      }
+      return memo;
+    }, [])
+  );
+
+  const predicate = options.predicate
+    ? groq`${options.predicate} && ${basePredicate}`
+    : basePredicate;
+
+  const projection = options.projection ?? '...';
+
+  const references = await client.fetch(
+    groq`*[${predicate}]{ ${projection} }`,
+    {
+      ids,
+      locale,
+      defaultLocale,
+    }
+  );
+
+  const lookup = keyBy(references, '_id');
+
+  page.regions.forEach(region => {
+    if (typeof region.reference?._ref === 'string') {
+      const reference = lookup[region.reference._ref];
+      region.reference = reference ?? null;
+    } else if (Array.isArray(region.references)) {
+      region.references = region.references.reduce((memo, { _ref }) => {
+        if (typeof _ref === 'string' && lookup[_ref]) memo.push(lookup[_ref]);
+        return memo;
+      }, []);
+    }
+  });
+}
+
+export { layoutResolvers };
 
 export default Regions;

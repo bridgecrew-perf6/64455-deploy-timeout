@@ -182,6 +182,10 @@ a.uk-navbar-item.uk-active {
   }
 }
 
+.uk-offcanvas.uk-offcanvas-fullscreen {
+  z-index: $global-z-index + 10;
+}
+
 .uk-offcanvas-bar > .uk-card {
   border-radius: 0;
 }
