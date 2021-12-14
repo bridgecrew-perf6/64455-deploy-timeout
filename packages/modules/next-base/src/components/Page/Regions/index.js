@@ -80,19 +80,23 @@ const Regions = ({
   }
 };
 
+const defaultFilter = () => true;
+
 export async function resolveReferences(client, page, options) {
-  const { locale, defaultLocale, map } = options;
+  const { locale, defaultLocale, map, filter = defaultFilter } = options;
 
   const basePredicate = groq`_id in $ids`;
 
   const ids = uniq(
     page.regions.reduce((memo, region) => {
-      if (typeof region.reference?._ref === 'string') {
-        memo.push(region.reference._ref);
-      } else if (Array.isArray(region.references)) {
-        region.references.forEach(({ _ref }) => {
-          if (typeof _ref === 'string') memo.push(_ref);
-        });
+      if (filter(region)) {
+        if (typeof region.reference?._ref === 'string') {
+          memo.push(region.reference._ref);
+        } else if (Array.isArray(region.references)) {
+          region.references.forEach(({ _ref }) => {
+            if (typeof _ref === 'string') memo.push(_ref);
+          });
+        }
       }
       return memo;
     }, [])
@@ -119,14 +123,16 @@ export async function resolveReferences(client, page, options) {
   );
 
   page.regions.forEach(region => {
-    if (typeof region.reference?._ref === 'string') {
-      const reference = lookup[region.reference._ref];
-      region.reference = reference ?? null;
-    } else if (Array.isArray(region.references)) {
-      region.references = region.references.reduce((memo, { _ref }) => {
-        if (typeof _ref === 'string' && lookup[_ref]) memo.push(lookup[_ref]);
-        return memo;
-      }, []);
+    if (filter(region)) {
+      if (typeof region.reference?._ref === 'string') {
+        const reference = lookup[region.reference._ref];
+        region.reference = reference ?? null;
+      } else if (Array.isArray(region.references)) {
+        region.references = region.references.reduce((memo, { _ref }) => {
+          if (typeof _ref === 'string' && lookup[_ref]) memo.push(lookup[_ref]);
+          return memo;
+        }, []);
+      }
     }
   });
 }
