@@ -5,6 +5,7 @@ import {
   unset,
   isEmpty,
   isNumber,
+  isDate,
   isNaN,
   omitBy,
   isBoolean,
@@ -20,7 +21,23 @@ export function isBlank(value) {
   );
 }
 
+export function formatDate(value, options = {}) {
+  const { locale = 'en-GB', format } = options;
+  const date = parseDate(value);
+  if (isValidDate(date)) {
+    return date.toLocaleDateString(
+      locale,
+      format ?? {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }
+    );
+  }
+}
+
 export function parseDate(str) {
+  if (isDate(str)) return str;
   try {
     const date = new Date(str);
     if (isValidDate(date)) return date;
