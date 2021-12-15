@@ -12,5 +12,5 @@ export default async (req, res) => {
     term,
     distinct: true,
   });
-  res.status(200).json(data ?? {});
+  res.status(200).json(data ?? []);
 };

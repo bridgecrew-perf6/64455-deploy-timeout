@@ -115,7 +115,7 @@ export default (client, _options = {}) => {
     const lookups = await fetchLookupData();
     const products = await fetchProducts(locale, lookups.optionNames);
     return products
-      .map((d) => serializeProduct(d, lookups, locale, options))
+      .map(d => serializeProduct(d, lookups, locale, options))
       .flat();
   };
 
@@ -162,12 +162,18 @@ export default (client, _options = {}) => {
 
     const products = processResults(data);
 
-    return products
-      .map((d) => serializeProduct(d, lookups, locale, options))
-      .flat();
+    if (typeof options.serializeProduct === 'function') {
+      return products
+        .map(d => options.serializeProduct(d, lookups, locale, options))
+        .flat();
+    } else {
+      return products
+        .map(d => serializeProduct(d, lookups, locale, options))
+        .flat();
+    }
   };
 
-  const isVisibleProduct = (document) => {
+  const isVisibleProduct = document => {
     if (has(document, 'hidden') && typeof document.hidden === 'boolean') {
       return !document.hidden;
     } else {
@@ -178,7 +184,7 @@ export default (client, _options = {}) => {
   const getConfig = async (locale = defaultLocale) => {
     const lookups = await fetchLookupData();
     const projection = buildProductsProjection(locale, lookups.optionNames);
-    const serializer = (d) => serializeProduct(d, lookups, locale);
+    const serializer = d => serializeProduct(d, lookups, locale);
     const visible = isVisibleProduct;
     return { projection: `{ ${projection} }`, serializer, visible };
   };
@@ -218,9 +224,7 @@ export function buildProductsProjection(
   optionNames = [],
   isQuery = false
 ) {
-  const optionProjection = optionNames
-    .map((o) => `'${o}': ${o}._ref`)
-    .join(', ');
+  const optionProjection = optionNames.map(o => `'${o}': ${o}._ref`).join(', ');
 
   const query = algoliaProductProjection
     .replace(/\sOptionsProjection\s/g, optionProjection)
@@ -296,7 +300,7 @@ function serializeProduct(
 
   common.collections = (
     Array.isArray(document.collections) ? document.collections : []
-  ).map((c) => c._id);
+  ).map(c => c._id);
 
   let attributes = lookupValue(document.attributes, variantValues);
 
@@ -348,9 +352,9 @@ function serializeProduct(
     document.variants.length > 0 &&
     !distinct
   ) {
-    document.variants.forEach((variant) => {
+    document.variants.forEach(variant => {
       common.variants.push(variant.id);
-      common.variantOptions.forEach((option) => {
+      common.variantOptions.forEach(option => {
         const propValue = get(variantValues, get(variant, ['options', option]));
         if (propValue) {
           assignAttribute(propValue, common.all, locale);
@@ -362,7 +366,7 @@ function serializeProduct(
     postProcessOptions(locale, common, common.all, variantValues);
     postProcessOptions(locale, common, common.variable, variantValues);
 
-    return document.variants.map((variant) =>
+    return document.variants.map(variant =>
       serializeVariant(cloneDeep(common), variant, document, lookups, locale)
     );
   } else {
@@ -383,7 +387,7 @@ function serializeMaster(common, document, _lookups, _locale = defaultLocale) {
   data.opts = cloneDeep(common.attrs);
 
   if (Array.isArray(document.images) && document.images.length > 0) {
-    data.images = document.images.map((img) => omit(img, 'attributes'));
+    data.images = document.images.map(img => omit(img, 'attributes'));
   } else {
     data.images = [];
   }
@@ -436,7 +440,7 @@ function serializeVariant(
     const variantImages = [];
     const masterImages = [];
 
-    document.images.forEach((img) => {
+    document.images.forEach(img => {
       if (matchesAttributes(img, attributes)) {
         variantImages.push({ ...omit(img, 'attributes'), variant: true });
       } else {
@@ -471,7 +475,7 @@ function postProcess(data) {
     data.image = getImageId(get(data, ['images', 0, 'asset', '_ref']));
   }
 
-  const images = data.images.slice(0, 3).map((img) => omit(img, 'url'));
+  const images = data.images.slice(0, 3).map(img => omit(img, 'url'));
 
   return { ...omit(data, []), all, images };
 }
@@ -500,7 +504,7 @@ function toUnixTs(dateTime) {
 
 function lookupValue(value, lookup) {
   if (Array.isArray(value)) {
-    return value.map((v) => lookupValue(v, lookup));
+    return value.map(v => lookupValue(v, lookup));
   } else if (typeof value === 'string') {
     return get(lookup, value);
   }
@@ -541,27 +545,27 @@ function assignAttribute(propValue, common, locale) {
 
 function matchesAttributes(image, attributes) {
   const attrs = get(image, ['attributes'], []);
-  return attrs.some((attr) => attributes.includes(attr));
+  return attrs.some(attr => attributes.includes(attr));
 }
 
 function postProcessOptions(locale, common, target, variantValues) {
-  common.variantOptions.forEach((option) => {
+  common.variantOptions.forEach(option => {
     const values = get(target, ['attrs', option]);
     if (Array.isArray(values)) {
-      const propValues = values.map((v) => get(variantValues, v));
+      const propValues = values.map(v => get(variantValues, v));
       const sorted = sortBy(propValues, sortByValueOrOrder);
       set(target, ['attrs', option], map(sorted, 'id'));
       set(
         target,
         ['attributes', option],
-        map(sorted, (v) => translate(locale, 'label', v))
+        map(sorted, v => translate(locale, 'label', v))
       );
     }
   });
 }
 
 function getOptionNames(variantOptions) {
-  return Object.values(variantOptions).map((o) => o.alias);
+  return Object.values(variantOptions).map(o => o.alias);
 }
 
 function sortByValueOrOrder(attr) {
