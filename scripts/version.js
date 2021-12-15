@@ -12,9 +12,7 @@ const options = {
   ignore: ['**/node_modules/**'],
 };
 
-const coreVersions = {
-  next: '^12.0.7',
-};
+const coreVersions = require('./versions.json');
 
 const main = require(path.join(__dirname, '..', 'package.json'));
 
