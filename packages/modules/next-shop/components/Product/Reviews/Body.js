@@ -6,8 +6,8 @@ const ProductReviewsBody = () => (
       className="uk-grid-small uk-grid-divider uk-child-width-1-1"
       uk-grid="true"
     >
-      <ProductReviewsItem></ProductReviewsItem>
-      <ProductReviewsItem></ProductReviewsItem>
+      <ProductReviewsItem />
+      <ProductReviewsItem />
     </div>
   </div>
 );

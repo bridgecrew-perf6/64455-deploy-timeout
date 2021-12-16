@@ -24,13 +24,13 @@ export const useSearchForm = (action = '/search', options = {}) => {
     setQuery('');
   }, []);
 
-  const handleChange = useCallback((e) => {
+  const handleChange = useCallback(e => {
     setTouched(true);
     setQuery(e.target.value);
   }, []);
 
   const handleSubmit = useCallback(
-    (e) => {
+    e => {
       e.preventDefault();
       setPending(true);
       const method = router.pathname.startsWith(action) ? 'replace' : 'push';

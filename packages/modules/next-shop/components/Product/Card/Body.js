@@ -4,9 +4,9 @@ import ProductCardPurchase from '@shop/components/Product/Card/Purchase';
 const ProductCardBody = () => (
   <div className="tm-product-card-body">
     {/* Info */}
-    <ProductCardInfo></ProductCardInfo>
+    <ProductCardInfo />
     {/* Shop */}
-    <ProductCardPurchase></ProductCardPurchase>
+    <ProductCardPurchase />
   </div>
 );
 

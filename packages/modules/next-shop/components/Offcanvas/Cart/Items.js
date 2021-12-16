@@ -4,10 +4,10 @@ const OffcanvasCartItems = () => (
   <div className="uk-card-body uk-overflow-auto">
     <ul className="uk-list uk-list-divider">
       <li className="uk-visible-toggle">
-        <OffcanvasCartItem></OffcanvasCartItem>
+        <OffcanvasCartItem />
       </li>
       <li className="uk-visible-toggle">
-        <OffcanvasCartItem></OffcanvasCartItem>
+        <OffcanvasCartItem />
       </li>
     </ul>
   </div>

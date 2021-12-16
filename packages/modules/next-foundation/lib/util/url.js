@@ -24,12 +24,12 @@ export function isFullyQualifiedUrl(url) {
 export function joinUrl(...parts) {
   const isFullyQualified = isFullyQualifiedUrl(parts[0]);
   const url = flatten(
-    parts.map((part) => {
+    parts.map(part => {
       if (isFullyQualifiedUrl(part)) return part;
       return typeof part === 'string' ? part.split('/') : '';
     })
   )
-    .filter((part) => !isBlank(part))
+    .filter(part => !isBlank(part))
     .join('/');
   return isFullyQualified ? url : `/${url}`;
 }

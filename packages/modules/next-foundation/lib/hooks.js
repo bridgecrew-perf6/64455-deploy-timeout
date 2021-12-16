@@ -7,13 +7,12 @@ import {
   useContext,
 } from 'react';
 
+import { NextDataHooksContext } from 'next-data-hooks';
 import { useRouter } from './router';
 
 import { useGlobalContext } from './context';
 
 import { get, detect, isBlank } from './util';
-
-import { NextDataHooksContext } from 'next-data-hooks';
 
 export * from 'next-data-hooks';
 
@@ -85,7 +84,7 @@ export function useMemoCompare(next, compare) {
 export function useMappedState(initialState, ...mapFns) {
   const [state, setState] = useState(initialState || (() => {}));
   const memo = useMemo(
-    () => mapFns.map((mapFn) => mapFn(state)),
+    () => mapFns.map(mapFn => mapFn(state)),
     [mapFns, state]
   );
   return [state, setState, memo];
@@ -104,7 +103,7 @@ export function useEventListener(eventName, selector, handler, options = {}) {
   const mounted = useMounted();
 
   const fn = useCallback(
-    (e) => {
+    e => {
       const delegateTarget = closest(e.target, selector);
       if (delegateTarget && mounted) handler(e, delegateTarget);
     },
@@ -118,7 +117,7 @@ export function useEventListener(eventName, selector, handler, options = {}) {
 }
 
 export function useDocumentEvent(eventName, handler, options = {}) {
-  const fn = useCallback((e) => handler(e), [handler]);
+  const fn = useCallback(e => handler(e), [handler]);
   const once = useRef(false);
   const mounted = useMounted();
 
@@ -147,7 +146,7 @@ export function useObject(data = {}) {
     (...path) => {
       if (path.length === 0) return data;
       const key = path
-        .map((p) => (Array.isArray(p) ? p : String(p).split('.')))
+        .map(p => (Array.isArray(p) ? p : String(p).split('.')))
         .flat();
       return get(data, key);
     },
@@ -234,18 +233,16 @@ export const useClickedItem = (
 
   const disconnect = useMutationObserver(
     containerRef,
-    (mutations) => {
+    mutations => {
       const { id, scrollTop } = global.get(persistenceKey, {});
       if (isBlank(id)) {
         global.unset(persistenceKey);
         disconnect();
       } else {
-        const element = detect(mutations, (mutation) => {
+        const element = detect(mutations, mutation => {
           if (mutation.type !== 'childList') return false;
           const addedNodes = Array.from(mutation?.addedNodes ?? []);
-          return detect(addedNodes, (el) =>
-            el.dataset.id === id ? el : false
-          );
+          return detect(addedNodes, el => (el.dataset.id === id ? el : false));
         });
 
         if (element && !target.current) {

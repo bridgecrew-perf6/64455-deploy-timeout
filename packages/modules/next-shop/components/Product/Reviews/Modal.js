@@ -25,7 +25,7 @@ const ProductReviewsModal = () => (
           </div>
           <div>
             <div className="uk-form-label">Rating</div>
-            <ProductRatingStars></ProductRatingStars>
+            <ProductRatingStars />
           </div>
           <div>
             <label>

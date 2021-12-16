@@ -9,9 +9,9 @@ const ProductMedia = () => (
       uk-grid="true"
     >
       {/* Primary image */}
-      <ProductMediaImage></ProductMediaImage>
+      <ProductMediaImage />
       {/* Additional images */}
-      <ProductMediaImages></ProductMediaImages>
+      <ProductMediaImages />
     </div>
   </div>
 );

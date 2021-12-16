@@ -22,7 +22,7 @@ const Currency = (options = {}) => {
   return Dinero(opts);
 };
 
-Currency.configure = (config) => {
+Currency.configure = config => {
   if (typeof config === 'function') {
     config(Dinero);
   } else if (typeof config === 'object') {
@@ -91,7 +91,7 @@ Currency.use = (currency, options = {}) => {
       .toFormat(format, roundingMode);
   };
 
-  const currencies = Currency.getCurrencies(true).map((c) => ({
+  const currencies = Currency.getCurrencies(true).map(c => ({
     ...localizeCurrency(locale, c),
     active: c.code === meta.code,
   }));
@@ -111,7 +111,7 @@ Currency.getDefault = () => {
   return Currency.getCurrency();
 };
 
-Currency.setDefault = (currency) => {
+Currency.setDefault = currency => {
   Dinero.defaultCurrency = currency ?? DEFAULT_CURRENCY;
 };
 
@@ -119,7 +119,7 @@ Currency.getLocale = () => {
   return Dinero.globalLocale || 'en-GB';
 };
 
-Currency.setLocale = (locale) => {
+Currency.setLocale = locale => {
   Dinero.globalLocale = locale;
 };
 
@@ -136,7 +136,7 @@ Currency.getCurrency = (currency = Dinero.defaultCurrency) => {
   }
 };
 
-Currency.isCurrency = (currency) => {
+Currency.isCurrency = currency => {
   const currencies = Currency.getCurrencies();
   return typeof currencies[currency] === 'object';
 };
@@ -167,7 +167,7 @@ function localizeCurrency(locale, currency) {
 }
 
 function floatMultiply(a, b) {
-  const getFactor = (number) => 10 ** countFractionDigits(number);
+  const getFactor = number => 10 ** countFractionDigits(number);
   const factor = Math.max(getFactor(a), getFactor(b));
   return (Math.round(a * factor) * Math.round(b * factor)) / (factor * factor);
 }

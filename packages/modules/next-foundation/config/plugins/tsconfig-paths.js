@@ -31,7 +31,7 @@ class TsConfigPathsPlugin {
   }
 
   apply(resolver) {
-    const paths = this.paths;
+    const { paths } = this;
     const pathsKeys = Object.keys(paths);
     // If no aliases are added bail out
     if (pathsKeys.length === 0) {
@@ -87,10 +87,8 @@ class TsConfigPathsPlugin {
             continue;
           }
           const candidate = path.join(baseDirectory, curPath);
-          const [err, result] = await new Promise((resolve) => {
-            const obj = Object.assign({}, request, {
-              request: candidate,
-            });
+          const [err, result] = await new Promise(resolve => {
+            const obj = { ...request, request: candidate };
             resolver.doResolve(
               target,
               obj,
@@ -115,12 +113,13 @@ class TsConfigPathsPlugin {
 const withTsConfigPaths =
   () =>
   (nextConfig = {}) => {
-    return Object.assign({}, nextConfig, {
+    return {
+      ...nextConfig,
       webpack(config, options) {
         config.resolve.plugins = [...(config.resolve.plugins ?? [])];
 
         const plugin = config.resolve.plugins.find(
-          (p) => p.paths && p.resolvedBaseUrl
+          p => p.paths && p.resolvedBaseUrl
         );
 
         // Use own implementation, that doesn't skip node_modules
@@ -138,7 +137,7 @@ const withTsConfigPaths =
 
         return config;
       },
-    });
+    };
   };
 
 module.exports = withTsConfigPaths;
@@ -220,7 +219,7 @@ function matchPatternOrExact(patternStrings, candidate) {
       return patternString;
     }
   }
-  return findBestPatternMatch(patterns, (_) => _, candidate);
+  return findBestPatternMatch(patterns, _ => _, candidate);
 }
 
 /**

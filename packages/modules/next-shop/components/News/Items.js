@@ -3,13 +3,13 @@ import NewsItem from '@shop/components/News/Item';
 const NewsItems = () => (
   <ul className="uk-list uk-list-large uk-list-divider">
     <li>
-      <NewsItem></NewsItem>
+      <NewsItem />
     </li>
     <li>
-      <NewsItem></NewsItem>
+      <NewsItem />
     </li>
     <li>
-      <NewsItem></NewsItem>
+      <NewsItem />
     </li>
   </ul>
 );

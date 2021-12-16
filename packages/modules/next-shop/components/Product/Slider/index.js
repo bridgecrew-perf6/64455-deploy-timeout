@@ -30,15 +30,15 @@ const ProductSlider = () => (
           <div className="uk-position-relative">
             <div className="uk-slider-container">
               <div className="uk-slider-items uk-grid-collapse uk-child-width-1-3 uk-child-width-1-4@m tm-products-grid">
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
-                <ProductCard></ProductCard>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
               </div>
             </div>
           </div>

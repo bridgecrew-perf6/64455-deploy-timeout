@@ -46,9 +46,9 @@ const AboutBody = () => (
       </li>
     </ul>
     <h2 className="uk-text-center">Our team</h2>
-    <AboutTeam></AboutTeam>
+    <AboutTeam />
     <h2 className="uk-text-center">Some stats</h2>
-    <AboutStats></AboutStats>
+    <AboutStats />
     <h2 className="uk-text-center">Store</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet
@@ -56,7 +56,7 @@ const AboutBody = () => (
       ullamcorper turpis. Maecenas sed libero quis orci egestas vehicula
       fermentum id diam.
     </p>
-    <CommonAddress></CommonAddress>
+    <CommonAddress />
     <div className="tm-expand">
       <CommonMap className="tm-ratio tm-ratio-16-9" />
     </div>

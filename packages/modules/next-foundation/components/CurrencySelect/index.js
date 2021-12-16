@@ -6,7 +6,7 @@ export default function CurrencySelect({ className, withCode, withChevron }) {
   const { setCurrency } = useSettings();
 
   const onChange = useCallback(
-    (e) => {
+    e => {
       e.preventDefault();
       setCurrency(e.target.value);
     },

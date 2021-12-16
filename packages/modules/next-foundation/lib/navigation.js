@@ -38,7 +38,7 @@ export function useLocationHash(fn) {
   }, [onHashChange]);
 
   const _setHash = useCallback(
-    (newHash) => {
+    newHash => {
       if (isBrowser && newHash !== hash) {
         window.location.hash = newHash;
       }

@@ -69,7 +69,7 @@ const usePreviewData = (data, props, options = {}) => {
   const page =
     previewProps?.currentPageProps ?? originalProps?.currentPageProps;
 
-  usePage((context) => {
+  usePage(context => {
     context.reset(page ?? {});
   });
 
@@ -95,7 +95,7 @@ export const useListeningQuery = (query, config = {}) => {
   const ids = extract(`.._id`, initialData);
 
   const docIds = Array.from(new Set([...references, ...ids]))
-    .filter((id) => !id.startsWith('image-') && !id.startsWith('file-'))
+    .filter(id => !id.startsWith('image-') && !id.startsWith('file-'))
     .reduce((memo, id) => memo.concat(id, `drafts.${id}`), []);
 
   function fetchData() {
@@ -105,7 +105,7 @@ export const useListeningQuery = (query, config = {}) => {
     setLoading(true);
 
     // Listener client uses credentials to fetch draft content
-    sanityClient.fetch(query, params).then((newData) => {
+    sanityClient.fetch(query, params).then(newData => {
       setData(newData);
       setLoading(false);
     });

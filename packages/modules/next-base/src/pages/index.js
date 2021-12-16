@@ -21,7 +21,7 @@ const _query = wrapQuery(getHomepage, true);
 
 const pages = init(getBrowserClient());
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async context => {
   const { preview = false } = context;
 
   const previewOptions = preview ? {} : undefined;
@@ -59,7 +59,7 @@ export const getStaticProps = async (context) => {
 const prepareData = (item, _props, context) =>
   pages.resolveProps(item, { ...context });
 
-const Index = (props) => {
+const Index = props => {
   const { locale } = useRouter();
 
   const pageProps = usePreviewQueryProps(props, { fn: prepareData });

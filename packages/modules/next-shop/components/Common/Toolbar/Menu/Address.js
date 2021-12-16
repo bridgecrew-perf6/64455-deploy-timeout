@@ -5,7 +5,7 @@ import CommonMap from '@shop/components/Common/Map';
 
 const CommonToolbarMenuAddress = () => (
   <li>
-    <Link href="/contacts" onClick={(e) => e.preventDefault()}>
+    <Link href="/contacts" onClick={e => e.preventDefault()}>
       <span
         className="uk-margin-xsmall-right"
         uk-icon="icon: location; ratio: .75;"

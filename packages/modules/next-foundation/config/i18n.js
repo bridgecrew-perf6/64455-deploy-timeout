@@ -9,6 +9,6 @@ module.exports = (config = {}) => ({
     ...config.pages,
   },
   loadLocaleFrom: (lang, ns) => {
-    return import(`@app/translations/${lang}/${ns}`).then((m) => m.default);
+    return import(`@app/translations/${lang}/${ns}`).then(m => m.default);
   },
 });

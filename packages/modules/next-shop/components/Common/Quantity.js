@@ -25,13 +25,15 @@ const Quantity = ({
     [max, min, resetTo]
   );
 
-  const increment = useCallback(() => setCount(count => clamp(count + 1)), [
-    clamp,
-  ]);
+  const increment = useCallback(
+    () => setCount(count => clamp(count + 1)),
+    [clamp]
+  );
 
-  const decrement = useCallback(() => setCount(count => clamp(count - 1)), [
-    clamp,
-  ]);
+  const decrement = useCallback(
+    () => setCount(count => clamp(count - 1)),
+    [clamp]
+  );
 
   const update = useCallback(
     e => {

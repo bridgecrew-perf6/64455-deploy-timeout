@@ -6,7 +6,7 @@ export default function LocaleSelect({ className, withCode, withChevron }) {
   const { setLocale } = useSettings();
 
   const onChange = useCallback(
-    (e) => {
+    e => {
       e.preventDefault();
       setLocale(e.target.value);
     },

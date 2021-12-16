@@ -11,7 +11,7 @@ const ProductCardMedia = () => (
           <span className="uk-label uk-label-danger">trade-in</span>
         </div>
         {/* Image */}
-        <ProductCardImage></ProductCardImage>
+        <ProductCardImage />
       </Link>
     </div>
   </div>

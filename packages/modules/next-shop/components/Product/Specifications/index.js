@@ -2,14 +2,14 @@ import ProductSpecificationsGroup from '@shop/components/Product/Specifications/
 
 const ProductSpecifications = () => (
   <section>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
-    <ProductSpecificationsGroup></ProductSpecificationsGroup>
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
+    <ProductSpecificationsGroup />
   </section>
 );
 

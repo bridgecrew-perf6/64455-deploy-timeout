@@ -5,9 +5,9 @@ const ProductInfoDetails = () => (
   <div className="uk-margin">
     <div className="uk-grid-small" uk-grid="true">
       {/* Rating */}
-      <ProductRating></ProductRating>
+      <ProductRating />
       {/* Statuses */}
-      <ProductStatus></ProductStatus>
+      <ProductStatus />
     </div>
   </div>
 );

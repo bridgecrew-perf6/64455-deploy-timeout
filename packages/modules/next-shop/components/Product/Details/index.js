@@ -10,11 +10,11 @@ const ProductDetails = () => (
         uk-grid="true"
       >
         {/* Media */}
-        <ProductMedia></ProductMedia>
+        <ProductMedia />
         {/* Info */}
-        <ProductInfo></ProductInfo>
+        <ProductInfo />
         {/* Description */}
-        <ProductDescription></ProductDescription>
+        <ProductDescription />
       </div>
     </div>
   </div>

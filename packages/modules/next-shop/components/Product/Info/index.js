@@ -9,17 +9,17 @@ const ProductInfo = () => (
   <div className="uk-width-1-1 uk-width-1-3@m tm-product-info">
     <div className="uk-card-body">
       {/* Brand */}
-      <ProductInfoBrand></ProductInfoBrand>
+      <ProductInfoBrand />
       {/* Rating & Statuses */}
-      <ProductInfoDetails></ProductInfoDetails>
+      <ProductInfoDetails />
       {/* Variations */}
-      <ProductVariants></ProductVariants>
+      <ProductVariants />
       {/* Shop */}
-      <ProductPurchase></ProductPurchase>
+      <ProductPurchase />
       {/* Delivery info */}
-      <ProductInfoDelivery></ProductInfoDelivery>
+      <ProductInfoDelivery />
       {/* Properties */}
-      <ProductInfoProperties></ProductInfoProperties>
+      <ProductInfoProperties />
     </div>
   </div>
 );

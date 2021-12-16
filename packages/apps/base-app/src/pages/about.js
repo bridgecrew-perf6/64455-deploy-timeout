@@ -11,7 +11,7 @@ import Page from '@foundation/components/Page';
 import LocaleList from '@foundation/components/LocaleList';
 import CurrencyList from '@foundation/components/CurrencyList';
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async context => {
   const t = await getTranslation(context.locale, 'app');
 
   return {
@@ -79,7 +79,6 @@ export default function About() {
   );
 }
 
-// eslint-disable-next-line react/display-name
 About.pageLayout = ({ children }) => {
   return (
     <div

@@ -1,10 +1,9 @@
 import { useCallback, useRef } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
+import site from '@app/config/site';
 import { useGoogleAnalytics, Link } from '../../lib';
 import { pick } from '../../lib/util';
-
-import site from '@app/config/site';
 
 const defaults = pick(site, 'cookiePolicy', 'privacyPolicy');
 
@@ -23,7 +22,7 @@ export default function CookieConsent(props) {
   const ref = useRef();
 
   const onClose = useCallback(
-    (consent) => {
+    consent => {
       const { Transition, removeClass } = UIkit.util;
       if (ref.current) {
         removeClass(ref.current, 'uk-animation-slide-bottom');
@@ -48,7 +47,7 @@ export default function CookieConsent(props) {
           type="button"
           onClick={() => onClose(reject)}
           uk-close=""
-        ></button>
+        />
         <p className="mt-0 mr-4 mb-4">
           <Trans
             i18nKey="common:cookieConsent.text"

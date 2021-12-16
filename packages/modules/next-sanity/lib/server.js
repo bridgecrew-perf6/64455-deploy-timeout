@@ -21,7 +21,7 @@ export const publicClient = createClient({
 });
 
 // Helper function for easily switching between normal client and public client
-export const getClient = (useToken) => (useToken ? sanityClient : publicClient);
+export const getClient = useToken => (useToken ? sanityClient : publicClient);
 
 const handleApiRequest = (req, res, fn) => {
   if (!req?.query?.secret) {

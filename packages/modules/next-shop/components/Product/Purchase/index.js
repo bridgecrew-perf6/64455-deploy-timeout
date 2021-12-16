@@ -6,9 +6,9 @@ const ProductPurchase = () => (
     <div className="uk-padding-small uk-background-primary-lighten uk-border-rounded">
       <div className="uk-grid-small uk-child-width-1-1" uk-grid="true">
         {/* Prices */}
-        <ProductPurchasePricing></ProductPurchasePricing>
+        <ProductPurchasePricing />
         {/* Add to cart */}
-        <ProductPurchaseCart></ProductPurchaseCart>
+        <ProductPurchaseCart />
       </div>
     </div>
   </div>

@@ -4,9 +4,9 @@ import ProductCardBody from '@shop/components/Product/Card/Body';
 const ProductCard = () => (
   <article className="tm-product-card">
     {/* Media */}
-    <ProductCardMedia></ProductCardMedia>
+    <ProductCardMedia />
     {/* Body */}
-    <ProductCardBody></ProductCardBody>
+    <ProductCardBody />
   </article>
 );
 

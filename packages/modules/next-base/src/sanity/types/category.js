@@ -165,7 +165,7 @@ export default define(
     getStaticPaths,
     resolveProps,
   },
-  (handler) => {
+  handler => {
     handler.node = handler.node ?? initNode(handler.client);
     handler.getNodeByPath = (routePath, path, options = {}) =>
       handler.node.getByPath(path, {

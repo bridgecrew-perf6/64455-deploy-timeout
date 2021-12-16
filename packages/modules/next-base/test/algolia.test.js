@@ -57,5 +57,5 @@ describe('Algolia', () => {
 });
 
 function normalize(data, omitted = []) {
-  return data.map((item) => omit(item, omitted));
+  return data.map(item => omit(item, omitted));
 }

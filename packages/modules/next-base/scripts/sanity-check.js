@@ -118,11 +118,11 @@ Object.entries(queries)
   )
   .then(() => {
     if (changed.length > 0) console.log('');
-    changed.forEach((target) =>
+    changed.forEach(target =>
       logger.color('magenta').log(`Changed: ${target}`)
     );
     if (skipped.length > 0) console.log('');
-    skipped.forEach((target) => logger.color('cyan').log(`Skipped: ${target}`));
+    skipped.forEach(target => logger.color('cyan').log(`Skipped: ${target}`));
     if (changed.length > 0 || skipped.length > 0) console.log('');
     logger.color('blue').log('Checked all GROQ code');
   });

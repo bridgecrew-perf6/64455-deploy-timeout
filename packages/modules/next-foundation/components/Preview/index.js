@@ -25,7 +25,7 @@ const NextPreview = ({ previewOptions }) => {
     return (
       <div className="p-3 uk-flex uk-flex-middle uk-section-secondary uk-light uk-text-small">
         <div className="uk-flex uk-flex-middle uk-width-expand@s">
-          <span className="uk-margin-small-right" uk-icon="icon: bolt"></span>{' '}
+          <span className="uk-margin-small-right" uk-icon="icon: bolt" />{' '}
           {t('common:preview.message')}
         </div>
         {targetUrl && (
@@ -34,14 +34,14 @@ const NextPreview = ({ previewOptions }) => {
             className="uk-icon-link"
             uk-icon="pencil"
             title={t('common:preview.edit')}
-          ></a>
+          />
         )}
         <a
           href={exitUrl}
           className="uk-icon-link uk-margin-small-left"
           uk-icon="close"
           title={t('common:preview.exit')}
-        ></a>
+        />
       </div>
     );
   } else {

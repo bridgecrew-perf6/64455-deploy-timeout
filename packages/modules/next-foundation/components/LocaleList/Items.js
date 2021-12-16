@@ -8,7 +8,7 @@ export default function LocaleListItems({ activeClassName, withCode }) {
   const className = activeClassName ?? 'uk-active';
 
   const onClick = useCallback(
-    (e) => {
+    e => {
       e.preventDefault();
       setLocale(e.target.dataset.code);
     },

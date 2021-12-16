@@ -16,15 +16,15 @@ const SubcategoryFiltersAccordion = () => (
     }}
   >
     {/* Prices */}
-    <CategoryFiltersPrice></CategoryFiltersPrice>
+    <CategoryFiltersPrice />
     {/* Properties */}
-    <CategoryFiltersBrand></CategoryFiltersBrand>
-    <CategoryFiltersType></CategoryFiltersType>
-    <CategoryFiltersScreenSize></CategoryFiltersScreenSize>
-    <CategoryFiltersScreenResolution></CategoryFiltersScreenResolution>
-    <CategoryFiltersProcessor></CategoryFiltersProcessor>
-    <CategoryFiltersMemory></CategoryFiltersMemory>
-    <CategoryFiltersReset></CategoryFiltersReset>
+    <CategoryFiltersBrand />
+    <CategoryFiltersType />
+    <CategoryFiltersScreenSize />
+    <CategoryFiltersScreenResolution />
+    <CategoryFiltersProcessor />
+    <CategoryFiltersMemory />
+    <CategoryFiltersReset />
   </div>
 );
 

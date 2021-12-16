@@ -81,7 +81,7 @@ export const sendVerificationRequest = ({
 
     const base = merge(locale, appConfig.base);
 
-    getTranslation(locale, 'auth').then((t) => {
+    getTranslation(locale, 'auth').then(t => {
       const params = {
         ...base,
         url,
@@ -106,7 +106,7 @@ export const sendVerificationRequest = ({
           text: content.text?.(params) ?? text(params),
           html: content.html?.(params) ?? html(params),
         },
-        (error) => {
+        error => {
           if (error) {
             logger.error('SEND_VERIFICATION_EMAIL_ERROR', email, error);
             return reject(new Error('SEND_VERIFICATION_EMAIL_ERROR', error));

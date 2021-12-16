@@ -17,7 +17,7 @@ const AuthCredentialsSignIn = ({ provider = 'sanity-login', ...props }) => {
             value={email}
             placeholder={t('auth:fields.email.placeholder')}
             className="uk-input"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
         </div>
         <div className="uk-margin">
@@ -26,7 +26,7 @@ const AuthCredentialsSignIn = ({ provider = 'sanity-login', ...props }) => {
             placeholder={t('auth:fields.password.placeholder')}
             value={password}
             className="uk-input"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
           />
         </div>
         <div className="uk-margin">

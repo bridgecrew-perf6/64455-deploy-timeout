@@ -7,7 +7,7 @@ export * as tree from 'tree-walk-util';
 
 export { default as traverse } from 'traverse';
 
-export const processResults = (data) => {
+export const processResults = data => {
   return traverse(data).map(function (x) {
     if (this.circular || x === null) {
       this.remove();

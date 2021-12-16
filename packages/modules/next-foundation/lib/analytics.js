@@ -32,7 +32,7 @@ export function useCookieConsent(type, options = {}) {
   });
 
   const accept = useCallback(
-    (e) => {
+    e => {
       if (e) e.preventDefault();
       if (settings) settings.set(type, true);
       if (settings && typeof options.accept === 'function') {
@@ -43,7 +43,7 @@ export function useCookieConsent(type, options = {}) {
   );
 
   const reject = useCallback(
-    (e) => {
+    e => {
       if (e) e.preventDefault();
       if (settings) settings.set(type, false);
       if (settings && typeof options.reject === 'function') {

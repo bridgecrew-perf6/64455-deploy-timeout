@@ -12,7 +12,7 @@ export function defineStatic(path = '/', defaults = {}) {
   definePath(
     path,
     ({ locales }) => {
-      return locales.map((locale) => ({ params: { path: [] }, locale }));
+      return locales.map(locale => ({ params: { path: [] }, locale }));
     },
     defaults
   );
@@ -43,7 +43,7 @@ export function buildPage(path, page, defaults = {}, options = {}) {
     priority: page.priority,
   });
 
-  const alternateRefs = options.locales.map((hreflang) => {
+  const alternateRefs = options.locales.map(hreflang => {
     return {
       href: buildUrl(
         path,
@@ -73,7 +73,7 @@ export function buildAll(options = {}) {
   };
   const promises = registry.map(async ({ path, fn, defaults }) => {
     const pages = await fn(opts);
-    return pages.map((page) => buildPage(path, page, defaults, opts));
+    return pages.map(page => buildPage(path, page, defaults, opts));
   });
-  return Promise.all(promises).then((v) => v.flat());
+  return Promise.all(promises).then(v => v.flat());
 }

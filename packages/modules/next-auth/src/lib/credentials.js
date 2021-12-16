@@ -2,11 +2,10 @@ import Providers from 'next-auth/providers';
 
 import argon2 from 'argon2';
 
+import { defaultLocale } from '@root/i18n';
 import { getUserByEmailQuery } from './queries';
 
-import { defaultLocale } from '@root/i18n';
-
-export default (client) =>
+export default client =>
   Providers.Credentials({
     name: 'Credentials',
     id: 'sanity-login',

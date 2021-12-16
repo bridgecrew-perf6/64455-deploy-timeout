@@ -15,19 +15,16 @@ const ProductList = () => {
         <div className="uk-card uk-card-default uk-card-small tm-ignore-container">
           <div className="uk-grid-collapse uk-child-width-1-1" uk-grid="true">
             {/* Settings */}
-            <ProductListSettings
-              mode={mode}
-              setMode={setMode}
-            ></ProductListSettings>
+            <ProductListSettings mode={mode} setMode={setMode} />
             {/* Items */}
-            <ProductListItems mode={mode}></ProductListItems>
+            <ProductListItems mode={mode} />
             {/* Load more */}
-            <ProductListMore></ProductListMore>
+            <ProductListMore />
           </div>
         </div>
       </div>
       {/* Pagination */}
-      <ProductListPagination></ProductListPagination>
+      <ProductListPagination />
     </div>
   );
 };

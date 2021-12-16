@@ -46,7 +46,7 @@ const icons = {
   dinersClub: DinersClub,
   ethereum: Ethereum,
   girocard: Girocard,
-  girocard: Giropay,
+  giropay: Giropay,
   googlePay: GooglePay,
   ideal: Ideal,
   klarna: Klarna,

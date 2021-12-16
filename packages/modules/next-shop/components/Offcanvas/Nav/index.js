@@ -29,11 +29,11 @@ const OffcanvasNav = withPortal(() => {
       <aside className="uk-offcanvas-bar uk-padding-remove tm-offcanvas-bar">
         <div className="uk-card uk-card-default uk-card-small uk-padding-remove-top tm-shadow-remove uk-flex uk-flex-column uk-height-1-1">
           <div className="uk-flex-1">
-            <OffcanvasNavHeader></OffcanvasNavHeader>
-            <OffcanvasNavMenu></OffcanvasNavMenu>
-            <OffcanvasNavToolbar></OffcanvasNavToolbar>
+            <OffcanvasNavHeader />
+            <OffcanvasNavMenu />
+            <OffcanvasNavToolbar />
           </div>
-          <OffcanvasNavSocial></OffcanvasNavSocial>
+          <OffcanvasNavSocial />
         </div>
       </aside>
     </div>

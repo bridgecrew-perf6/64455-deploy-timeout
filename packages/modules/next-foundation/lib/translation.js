@@ -16,7 +16,7 @@ export function useLocale() {
   );
 
   const locales = useMemo(() => {
-    return [].concat(router.locales || []).map((code) => {
+    return [].concat(router.locales || []).map(code => {
       const isDefault = code === router.defaultLocale;
       // eslint-disable-next-line no-shadow
       const lang = simplifyLocale(code);
@@ -43,7 +43,7 @@ export function useLocale() {
 
 export function useLocalePath() {
   const { locales } = useLocale();
-  const locale = locales.find((lc) => lc.active) ?? locales[0];
+  const locale = locales.find(lc => lc.active) ?? locales[0];
   if (locale?.default) {
     return joinUrl('/', locale.href);
   } else if (locale) {
@@ -64,7 +64,7 @@ export function useTranslator(forceLocale) {
   return useMemo(() => {
     return (data, ...path) => {
       const key = path
-        .map((p) => (Array.isArray(p) ? p : String(p).split('.')))
+        .map(p => (Array.isArray(p) ? p : String(p).split('.')))
         .flat();
       const defaultKey = [].concat(key);
       defaultKey.splice(-1, 0, 'i18n', defaultLocale);

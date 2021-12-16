@@ -24,11 +24,7 @@ const getDimensions = (source, setWidth, setHeight) => {
 };
 
 const BuildSrc = (source, width, max = 800) =>
-  urlFor(source)
-    .width(Math.min(width, max))
-    .quality(75)
-    .fit('max')
-    .url();
+  urlFor(source).width(Math.min(width, max)).quality(75).fit('max').url();
 
 const BuildSrcSet = (source, max = 800, dimensions) =>
   Object.values(

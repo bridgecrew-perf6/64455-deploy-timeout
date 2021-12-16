@@ -7,12 +7,12 @@ import CommonNavbarMenuContactsItem from '@shop/components/Common/Navbar/Menu/Co
 
 const CommonNavbarMenu = () => (
   <ul className="uk-navbar-nav">
-    <CommonNavbarMenuCatalogItem></CommonNavbarMenuCatalogItem>
-    <CommonNavbarMenuBrandsItem></CommonNavbarMenuBrandsItem>
-    <CommonNavbarMenuPagesItem></CommonNavbarMenuPagesItem>
-    <CommonNavbarMenuBlogItem></CommonNavbarMenuBlogItem>
-    <CommonNavbarMenuAboutItem></CommonNavbarMenuAboutItem>
-    <CommonNavbarMenuContactsItem></CommonNavbarMenuContactsItem>
+    <CommonNavbarMenuCatalogItem />
+    <CommonNavbarMenuBrandsItem />
+    <CommonNavbarMenuPagesItem />
+    <CommonNavbarMenuBlogItem />
+    <CommonNavbarMenuAboutItem />
+    <CommonNavbarMenuContactsItem />
   </ul>
 );
 

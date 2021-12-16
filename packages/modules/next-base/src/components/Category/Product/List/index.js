@@ -22,7 +22,7 @@ const CategoryProductList = () => {
 
   const query = useQuery(
     ['products', path, locale, params.query ?? ''],
-    () => fetch(url).then((response) => response.json()),
+    () => fetch(url).then(response => response.json()),
     {
       keepPreviousData: true,
       staleTime: 60 * 1000,

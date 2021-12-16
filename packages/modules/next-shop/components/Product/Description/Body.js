@@ -8,15 +8,15 @@ const ProductDescriptionBody = () => (
   <div className="uk-card-body">
     <div className="uk-switcher js-product-switcher js-tabs">
       {/* Overview */}
-      <ProductOverview></ProductOverview>
+      <ProductOverview />
       {/* Specifications */}
-      <ProductSpecifications></ProductSpecifications>
+      <ProductSpecifications />
       {/* Accessories */}
-      <ProductAccessories></ProductAccessories>
+      <ProductAccessories />
       {/* Reviews */}
-      <ProductReviews></ProductReviews>
+      <ProductReviews />
       {/* Q&A */}
-      <ProductQuestions></ProductQuestions>
+      <ProductQuestions />
     </div>
   </div>
 );

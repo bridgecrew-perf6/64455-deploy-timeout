@@ -10,7 +10,7 @@ const CommonNavbarMenuCatalogItem = () => (
         uk-icon="icon: chevron-down; ratio: .75;"
       />
     </Link>
-    <CommonNavbarMenuCatalogDropdown></CommonNavbarMenuCatalogDropdown>
+    <CommonNavbarMenuCatalogDropdown />
   </>
 );
 

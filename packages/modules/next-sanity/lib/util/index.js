@@ -8,13 +8,13 @@ export const deduceItem = (data, isPreview) => {
   } else if (data.length === 1) {
     return data[0];
   } else if (isPreview) {
-    return data.find((item) => item._id.startsWith(`drafts.`)) || data[0];
+    return data.find(item => item._id.startsWith(`drafts.`)) || data[0];
   } else {
     return data[0];
   }
 };
 
-export const processData = (data) => {
+export const processData = data => {
   return typeof data === 'object' && data !== null
     ? processResults(data)
     : data;

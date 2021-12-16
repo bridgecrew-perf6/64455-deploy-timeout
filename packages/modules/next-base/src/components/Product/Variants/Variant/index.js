@@ -7,7 +7,7 @@ const mapping = {
   color: ProductVariantColor,
 };
 
-const ProductVariant = (props) => {
+const ProductVariant = props => {
   const { type } = props;
   const Component = useMemo(() => {
     return mapping[type] ?? ProductVariantValue;

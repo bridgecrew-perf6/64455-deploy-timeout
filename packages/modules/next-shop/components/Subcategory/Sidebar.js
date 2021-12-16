@@ -6,7 +6,7 @@ const SubcategorySidebar = () => (
     id="filters"
     uk-offcanvas="overlay: true; container: #__next;"
   >
-    <SubcategoryFilters></SubcategoryFilters>
+    <SubcategoryFilters />
   </aside>
 );
 

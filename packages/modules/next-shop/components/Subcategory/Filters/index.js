@@ -5,9 +5,9 @@ const SubcategoryFilters = () => (
   <div className="uk-offcanvas-bar uk-padding-remove">
     <div className="uk-card uk-card-default uk-card-small uk-flex uk-flex-column uk-height-1-1">
       {/* Header */}
-      <CategoryFiltersHeader></CategoryFiltersHeader>
+      <CategoryFiltersHeader />
       {/* Accordion */}
-      <SubcategoryFiltersAccordion></SubcategoryFiltersAccordion>
+      <SubcategoryFiltersAccordion />
     </div>
   </div>
 );

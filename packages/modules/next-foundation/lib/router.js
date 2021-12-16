@@ -2,10 +2,9 @@ import { useEffect } from 'react';
 import { Router, useRouter as useNextRouter } from 'next/router';
 import { pick, isEqual } from 'lodash-es';
 
+import NProgress from 'nprogress';
 import { usePrevious } from './hooks';
 import { usePageOptions } from './page';
-
-import NProgress from 'nprogress';
 
 export { Router, NProgress };
 

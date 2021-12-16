@@ -10,13 +10,13 @@ const ProductInfoVariants = ({ variant, variants }) => {
   const { all, setVariant, properties } = variants;
 
   const orderedVariants = useMemo(() => {
-    return all.map((v) => {
+    return all.map(v => {
       return { ...v, label: buildAttributesString(v) };
     });
   }, [all]);
 
   const toggleVariant = useCallback(
-    (e) => {
+    e => {
       e.preventDefault();
       const sku = e.currentTarget?.dataset?.sku;
       setVariant(variant.sku === sku ? '' : sku);
@@ -33,7 +33,7 @@ const ProductInfoVariants = ({ variant, variants }) => {
         className={`uk-grid uk-grid-small uk-child-width-1-${baseColumns} uk-child-width-1-${columns}@s`}
         uk-grid="true"
       >
-        {orderedVariants.map((v) => (
+        {orderedVariants.map(v => (
           <div key={v._id}>
             <div className={v.active ? 'uk-active' : ''}>
               <Link
