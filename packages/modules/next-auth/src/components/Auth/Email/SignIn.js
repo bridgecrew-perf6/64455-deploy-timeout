@@ -1,6 +1,6 @@
 import { useTranslation } from '@foundation/next';
 
-const AuthEmailSignIn = (props) => {
+const AuthEmailSignIn = props => {
   const { handleSignIn, email, setEmail } = props;
 
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ const AuthEmailSignIn = (props) => {
             value={email}
             placeholder={t('auth:fields.email.placeholder')}
             className="uk-input"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
         </div>
         <div className="uk-margin">

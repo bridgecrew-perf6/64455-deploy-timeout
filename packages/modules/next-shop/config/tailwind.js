@@ -4,7 +4,7 @@ const local = path.resolve(path.join(__dirname, '..'));
 
 module.exports = (config = {}) => {
   return {
-    purge: [`${local}/**/*.{js,jsx,ts,tsx}`, ...(config.purge || [])],
+    content: [`${local}/**/*.{js,jsx,ts,tsx}`, ...(config.content || [])],
     ...config,
   };
 };

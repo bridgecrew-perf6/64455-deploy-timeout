@@ -26,12 +26,12 @@ export default function Nav() {
             <Links />
             <li>
               <a href="#">
-                <span uk-icon="cog"></span>
+                <span uk-icon="cog" />
               </a>
               <div className="uk-navbar-dropdown" uk-dropdown="offset: 0">
                 <ul className="uk-nav uk-navbar-dropdown-nav">
                   <LocaleListItems />
-                  <li className="uk-nav-divider"></li>
+                  <li className="uk-nav-divider" />
                   <CurrencyListItems />
                 </ul>
               </div>
@@ -41,9 +41,9 @@ export default function Nav() {
         <a
           className="uk-navbar-toggle uk-hidden@m"
           href="#offcanvas"
-          uk-toggle=""
+          uk-toggle="true"
           uk-navbar-toggle-icon=""
-        ></a>
+        />
       </div>
     </nav>
   );

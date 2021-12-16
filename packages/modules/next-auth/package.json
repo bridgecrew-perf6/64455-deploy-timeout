@@ -2,7 +2,7 @@
   "name": "@atelierfabien/next-auth",
   "version": "0.0.10",
   "description": "Auth related functionality",
-  "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,8 +12,11 @@
     "@sanity/uuid": "^3.0.1",
     "argon2": "^0.27.2",
     "axios": "^0.24.0",
+    "groq": "^2.15.0",
     "next-auth": "^3.29.0",
-    "nodemailer": "^6.7.1"
+    "nodemailer": "^6.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "@atelierfabien/next-foundation": "^0.0.10",

@@ -3,28 +3,27 @@ import NextAuth from 'next-auth';
 import argon2 from 'argon2';
 import { uuid } from '@sanity/uuid';
 
-import { getUserByEmailQuery } from './queries';
-
 import config from '@app/config/auth';
 
 import { defaultLocale, locales } from '@root/i18n';
+import { getUserByEmailQuery } from './queries';
 
-const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
+const { WEBHOOK_SECRET } = process.env;
 
 const ACTIONS = {
-  purge: async (client) => {
+  purge: async client => {
     return client
       .delete({
         query: `*[_type == 'verification-request' && expires < now()]`,
       })
-      .then((info) => {
+      .then(info => {
         return [200, { ok: true, count: info.documentIds.length }];
       })
-      .catch((err) => [200, { ok: false, error: err.message }]);
+      .catch(err => [200, { ok: false, error: err.message }]);
   },
 };
 
-const detectLocale = (req) =>
+const detectLocale = req =>
   locales.includes(req.body.locale) ? req.body.locale : defaultLocale;
 
 export const authHandler =

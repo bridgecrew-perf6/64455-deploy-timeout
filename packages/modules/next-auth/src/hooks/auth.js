@@ -23,7 +23,7 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
       setPassword('');
     };
 
-    const handleSignIn = async (e) => {
+    const handleSignIn = async e => {
       e.preventDefault();
 
       const provider = e.target.dataset.provider ?? 'sanity-login';
@@ -65,7 +65,7 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
       }
     };
 
-    const handleSignUp = async (e) => {
+    const handleSignUp = async e => {
       e.preventDefault();
 
       const provider = e.target.dataset.provider ?? 'sanity-login';

@@ -5,11 +5,10 @@ import { pick, isBlank } from '@atelierfabien/next-foundation/lib/util';
 import { getClient } from '@atelierfabien/next-sanity/lib/server';
 
 import Providers from 'next-auth/providers';
+import { defaultLocale, locales } from '@root/i18n';
 import SanityCredentials from './credentials';
 import SanityAdapter from './adapter';
 import { sendVerificationRequest } from './email';
-
-import { defaultLocale, locales } from '@root/i18n';
 
 const client = getClient(true);
 

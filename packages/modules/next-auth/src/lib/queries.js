@@ -1,4 +1,4 @@
-import { groq } from '@atelierfabien/next-sanity';
+import groq from 'groq';
 
 export const getUserByIdQuery = groq`
   *[_type == 'user' && _id == $id][0]

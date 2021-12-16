@@ -1,8 +1,7 @@
 import { isBlank } from '@atelierfabien/next-foundation/lib/util';
 
-import { signUpHandler } from '@atelierfabien/next-auth';
-
 import { getClient } from '@atelierfabien/next-sanity/lib/server';
+import { signUpHandler } from '../../../lib/handlers';
 
 const client = getClient(true);
 

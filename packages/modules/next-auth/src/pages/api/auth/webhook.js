@@ -1,6 +1,5 @@
-import { webhookHandler } from '@atelierfabien/next-auth';
-
 import { getClient } from '@atelierfabien/next-sanity/lib/server';
+import { webhookHandler } from '../../../lib/handlers';
 
 const handler = webhookHandler(getClient(true));
 

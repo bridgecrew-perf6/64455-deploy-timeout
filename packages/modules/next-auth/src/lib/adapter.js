@@ -10,14 +10,14 @@ import {
   getVerificationRequestQuery,
 } from './queries';
 
-const SanityAdapter = (client) => {
+const SanityAdapter = client => {
   return {
     async getAdapter({ secret, logger, ...apiOptions }) {
       if (!apiOptions.jwt) {
         logger.warn('this adapter only works with JWT');
       }
 
-      const hashToken = (token) => argon2.hash(`${token}${secret}`);
+      const hashToken = token => argon2.hash(`${token}${secret}`);
 
       const { locale = defaultLocale } = apiOptions;
 

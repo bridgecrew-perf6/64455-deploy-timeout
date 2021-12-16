@@ -3,16 +3,15 @@ const path = require('path');
 const local = path.resolve(path.join(__dirname, '..'));
 
 module.exports = (config = {}) => {
-  const { purge, extend, ...overrides } = config;
+  const { content, extend, ...overrides } = config;
   return {
-    purge: [
+    content: [
       './public/**/*.html',
       './src/**/*.{js,jsx,ts,tsx}',
       './slices/**/*.{js,jsx,ts,tsx}',
       `${local}/**/*.{js,jsx,ts,tsx}`,
-      ...(purge || []),
+      ...(content || []),
     ],
-    darkMode: false, // or 'media' or 'class'
     theme: {
       extend: {
         // setup UIkit breakpoints

@@ -7,7 +7,7 @@ import AuthCredentialsSignIn from '@app/components/Auth/Credentials/SignIn';
 import AuthCredentialsSignUp from '@app/components/Auth/Credentials/SignUp';
 import AuthEmailSignIn from '@app/components/Auth/Email/SignIn';
 
-const AuthPage = (props) => {
+const AuthPage = props => {
   const form = useCredentialsForm(props);
   const { session, loading } = form;
 
@@ -20,9 +20,13 @@ const AuthPage = (props) => {
       {session && (
         <>
           <p>
-            User: {session?.user?.name} / {session?.user?.email}
+            {session?.user?.name} / {session?.user?.email}
           </p>
-          <button onClick={signOut} className="uk-button uk-button-danger">
+          <button
+            type="button"
+            onClick={signOut}
+            className="uk-button uk-button-danger"
+          >
             {t('auth:signOut.button')}
           </button>
         </>

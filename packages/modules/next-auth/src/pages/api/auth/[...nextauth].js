@@ -1,4 +1,4 @@
-import { authHandler } from '@atelierfabien/next-auth';
+import { authHandler } from '../../../lib/handlers';
 
 const handler = authHandler();
 
