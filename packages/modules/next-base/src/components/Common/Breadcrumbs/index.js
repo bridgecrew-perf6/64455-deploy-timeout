@@ -13,7 +13,7 @@ const CommonBreadcrumbs = ({ className, items = [], prependItems = [] }) => {
             {t('app:homepage')}
           </Link>
           {breadcrumbs.map(({ _key, label, href }) => (
-            <Link key={_key} href={href} as="li" shallow>
+            <Link key={_key} href={href} as="li">
               {label}
             </Link>
           ))}
