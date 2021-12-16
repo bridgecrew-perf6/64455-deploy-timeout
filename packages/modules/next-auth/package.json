@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-auth",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Auth related functionality",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "nodemailer": "^6.7.1"
   },
   "peerDependencies": {
-    "@atelierfabien/next-foundation": "^0.0.9",
-    "@atelierfabien/next-sanity": "^0.0.9"
+    "@atelierfabien/next-foundation": "^0.0.10",
+    "@atelierfabien/next-sanity": "^0.0.10"
   }
 }

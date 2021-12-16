@@ -11,7 +11,7 @@ export const usePageWithLayout = props => {
     ...pageProps,
     layout,
     fragments,
-    options: layout.options ?? {},
+    options: layout?.options ?? {},
   };
 };
 
