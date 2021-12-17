@@ -24,6 +24,7 @@ export const pageProjection = groq`
   'regions': coalesce(i18n[$locale].regions, i18n[$defaultLocale].regions, [])[]{ ${regionProjection} },
   'social': coalesce(social, {}),
   'assets': coalesce(assets[]{ ..., asset-> { ${assetProjection} } }, []),
+  'cover': cover { ..., asset-> { ${assetProjection} } },
   'images': coalesce(images[]{ ..., asset-> { ${assetProjection} } }, []),
   'files': coalesce(files[]{ ${fileProjection} }, []),
   'links': coalesce(links[]{ ${linkProjection} }, []),
