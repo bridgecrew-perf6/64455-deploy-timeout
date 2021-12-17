@@ -117,9 +117,9 @@ export async function resolveProps(item = {}, context = {}) {
       const value = getter(variant, ['options', option.alias]);
       let mapped = value;
 
-      const mapping = option.type
-        ? shopConfig?.variantOptionMapping?.[option.type]
-        : false;
+      const type = option.type ?? option.alias;
+
+      const mapping = type ? shopConfig?.variantOptionMapping?.[type] : false;
 
       if (typeof mapping === 'function') {
         mapped = mapping(value, { variant, option, context });

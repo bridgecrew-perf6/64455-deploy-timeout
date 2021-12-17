@@ -130,7 +130,7 @@ $pagination-item-active-color: $global-emphasis-color !default;
 
 // Icons
 
-.uk-icon {
+.uk-icon:not(.uk-spinner) {
   transform: translateY(-1px);
 }
 
@@ -823,7 +823,7 @@ span > .uk-text-meta {
     }
   }
 
-  @media (max-width: $breakpoint-medium - 1) {
+  @media (max-width: ($breakpoint-medium - 1)) {
     width: 100%;
 
     &.tm-visible {

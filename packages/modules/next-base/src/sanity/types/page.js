@@ -31,15 +31,6 @@ import { regionResolvers } from '@app/config/regions';
 
 import { defaultLocale } from '@root/i18n';
 
-function mergeResolved(resolvedProps, results) {
-  if (Array.isArray(results)) {
-    results.forEach(r => {
-      if (isPlainObject(r)) Object.assign(resolvedProps, r);
-    });
-  }
-  return resolvedProps;
-}
-
 // Resolving
 
 export const predicate = pagePredicate;
@@ -56,19 +47,22 @@ export const executeResolvers = async (
   options = {}
 ) => {
   const opts = { locale: defaultLocale, ...options };
+  const { resolvedProps } = options;
 
   const resolvers = ['default'].concat(identifier ?? []);
 
-  const promises = resolvers.map(r => {
-    const resolver = resolverMap.get(r);
-    if (typeof resolver === 'function') {
-      return Promise.resolve(resolver(client, page, { ...opts }));
-    } else {
-      return Promise.resolve();
-    }
-  });
-
-  return Promise.all(promises);
+  return resolvers.reduce((previous, r) => {
+    return previous.then(() => {
+      const resolver = resolverMap.get(r);
+      if (typeof resolver === 'function') {
+        return Promise.resolve(resolver(client, page, { ...opts })).then(r => {
+          if (isPlainObject(r)) Object.assign(resolvedProps, r);
+        });
+      } else {
+        return Promise.resolve();
+      }
+    });
+  }, Promise.resolve());
 };
 
 export const resolveLayout = async (client, page, options = {}) => {
@@ -133,11 +127,13 @@ export async function resolveProps(item = {}, context = {}) {
 
   const resolvedProps = {};
 
+  context.resolvedProps = resolvedProps;
+
   // Resolve data, based on the page layout alias
-  mergeResolved(resolvedProps, await resolveLayout(this.client, item, context));
+  await resolveLayout(this.client, item, context);
 
   // Resolve data, based on the page alias
-  mergeResolved(resolvedProps, await resolvePage(this.client, item, context));
+  await resolvePage(this.client, item, context);
 
   const canonicalUrl =
     typeof router.path === 'string' ? null : `/${locale}/pages/${item.alias}`;
@@ -157,10 +153,7 @@ export async function resolveProps(item = {}, context = {}) {
   const pageType = getPageType(item);
 
   // Resolve data, based on the page type
-  mergeResolved(
-    resolvedProps,
-    await resolvePageType(this.client, pageType, item, context)
-  );
+  await resolvePageType(this.client, pageType, item, context);
 
   // Use page assets, or fall back to layout assets
   const assets = lookup(item, ['assets'], ['layout', 'assets']);

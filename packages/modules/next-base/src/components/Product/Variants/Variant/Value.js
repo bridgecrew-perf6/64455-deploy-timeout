@@ -7,18 +7,20 @@ const ProductVariantValue = props => {
     return (
       <div className={`tm-variations-${type}`}>
         <ProductVariantHeader {...props} />
-        <div className="uk-grid uk-grid-xsmall tm-variations" uk-grid="true">
-          {values.map(value => (
-            <ProductVariantItem
-              key={value._id}
-              type={type}
-              value={value}
-              onClick={setValue}
-            >
-              {value.label}
-            </ProductVariantItem>
-          ))}
-        </div>
+        {values.length > 1 && (
+          <div className="uk-grid uk-grid-xsmall tm-variations" uk-grid="true">
+            {values.map(value => (
+              <ProductVariantItem
+                key={value._id}
+                type={type}
+                value={value}
+                onClick={setValue}
+              >
+                {value.label}
+              </ProductVariantItem>
+            ))}
+          </div>
+        )}
       </div>
     );
   } else {

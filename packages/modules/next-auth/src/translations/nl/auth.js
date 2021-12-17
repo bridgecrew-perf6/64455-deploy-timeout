@@ -45,7 +45,7 @@ export default {
   },
   email: {
     signIn: {
-      title: 'Aanmelden met E-mail adres',
+      title: 'Aanmelden met E-mail',
       button: 'Aanmelden',
       message: 'Check uw mailbox',
     },

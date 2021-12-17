@@ -42,7 +42,6 @@ import { getOpengraphImage as getDefaultOpengraphImage } from '@app/lib/page';
 import currencyConfig from '@app/config/currency';
 
 import shopConfig from '@app/config/shop';
-
 import appConfig from '@app/config/app';
 
 import siteConfig from '@app/config/site';
@@ -57,6 +56,8 @@ const FUTURE_YEARS = 1; // One year from now
 const propertyNames = map(appConfig?.shop?.properties, 'alias');
 
 const imageAttributes = ['color'].concat(shopConfig.imageAttributes ?? []);
+
+const minVariants = shopConfig.minVariants ?? 0;
 
 const availabilityProps = [
   '_id',
@@ -292,13 +293,13 @@ export function buildVariants(product, options = {}) {
 
   const productImages = Array.isArray(product.images) ? product.images : [];
 
-  if (product.variantOptions.length > 0 && variants.length > 1) {
+  if (product.variantOptions.length > 0 && variants.length > minVariants) {
     let lookup = keyBy(product.variantOptions, 'alias');
 
     const allProperties = map(properties, 'alias');
 
     const variantOptions = Object.values(lookup).reduce((memo, prop) => {
-      if (prop.values.length > 1) memo.push(prop.alias);
+      if (prop.values.length > minVariants) memo.push(prop.alias);
       return memo;
     }, []);
 
@@ -333,7 +334,10 @@ export function buildVariants(product, options = {}) {
     let partialSelection = pick(selection, partialProperties);
     let match;
 
-    if (hasVariant) {
+    if (variants.length === 1) {
+      // eslint-disable-next-line prefer-destructuring
+      match = variants[0];
+    } else if (hasVariant) {
       match = variants.find(v => matchesVariant(variant, v));
       if (match) partialSelection = pick(match.opts, partialProperties);
     } else {
