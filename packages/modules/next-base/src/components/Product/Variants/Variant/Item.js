@@ -11,7 +11,7 @@ const ProductVariantItem = ({ children, type, value, onClick }) => {
     <div>
       <div className={value.className}>
         <Link
-          href={value.href}
+          href={value?.variant?.href}
           onClick={handler}
           className={`tm-pill tm-variation-${type}`}
           suppressHydrationWarning
