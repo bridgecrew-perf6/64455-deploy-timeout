@@ -164,7 +164,7 @@ export function sortObjectsByIds(idName, ids, objects = [], strict = false) {
   objects.forEach(x => {
     if (typeof x === 'object') {
       let idx = indexOf(x);
-      if (strict && idx === -1) return;
+      if (strict && idx === -1) return null;
       idx === -1 ? tailing.push(x) : heading.push(x);
     }
   });

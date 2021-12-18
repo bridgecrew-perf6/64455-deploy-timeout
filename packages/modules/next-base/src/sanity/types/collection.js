@@ -10,12 +10,14 @@ import { isBlank } from '@foundation/next';
 
 import { defaultLocale } from '@root/i18n';
 
+import { i18nProjection } from '@shop/sanity/queries';
+
 export const predicate = groq`
   _type == 'collection'
 `;
 
 const baseItemProjection = groq`
-  ..., ...i18n[$defaultLocale], ...i18n[$locale],
+  ..., ${i18nProjection},
   'i18n': null,
   'asset': asset->,
   'image': image->{ ..., asset-> },
@@ -28,7 +30,7 @@ export const itemProjection = groq`
 `;
 
 export const projection = groq`
-  _id, _type, ...i18n[$defaultLocale], ...i18n[$locale],
+  _id, _type, ${i18nProjection},
   alias, query, component,
   'items': coalesce(items[]->{ ${itemProjection} }, [])
 `;

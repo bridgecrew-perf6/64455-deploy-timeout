@@ -1,12 +1,14 @@
 import groq from 'groq';
 
+import { i18nProjection } from '.';
+
 export const categoryPredicate = groq`
   _type == 'product.category' && !(defined(hidden) && hidden)
 `;
 
 export const categoryProjection = groq`
   _id, _type, path, hidden, order,
-  ...i18n[$defaultLocale], ...i18n[$locale]
+  ${i18nProjection}
 `;
 
 export const categoryLevelsProjection = groq`
@@ -36,7 +38,7 @@ export const categoriesProjection = groq`
 `;
 
 export const productCollectionProjection = groq`
-  _id, _type, alias, ...i18n[$defaultLocale], ...i18n[$locale]
+  _id, _type, alias, ${i18nProjection}
 `;
 
 export const categoryDetailsProjection = groq`

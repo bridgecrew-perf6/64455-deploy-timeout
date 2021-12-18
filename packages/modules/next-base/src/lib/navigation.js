@@ -21,7 +21,7 @@ export const buildCategoryUrl = (params = {}, external = false) => {
   return interpolateUrl(pathname, params, external);
 };
 
-export function interpolateUrl(pathname, params = {}, external) {
+export function interpolateUrl(pathname, params = {}, external = false) {
   const url = _interpolateUrl(pathname, params);
   return external ? joinUrl(siteConfig.baseUrl, url) : url;
 }

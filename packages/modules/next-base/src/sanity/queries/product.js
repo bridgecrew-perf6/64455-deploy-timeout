@@ -1,6 +1,7 @@
 import groq from 'groq';
 
 import {
+  i18nProjection,
   assetProjection,
   brandProjection,
   basePropertyTypeProjection,
@@ -40,7 +41,7 @@ export const variantProjection = groq`
 
 export const baseProductProjection = groq`
   _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
-  ...i18n[$defaultLocale], ...i18n[$locale],
+  ${i18nProjection},
   'markers': { 'highlight': coalesce(markers.highlight, false), 'sale': coalesce(markers.sale, false) },
   'pricing': pricing{ ${pricingProjection} },
   'master': master{ ${masterProjection} },

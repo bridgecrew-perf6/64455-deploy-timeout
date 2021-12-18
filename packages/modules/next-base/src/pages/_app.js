@@ -1,6 +1,15 @@
-import { initializeApp, beforeRender, NProgress } from '@foundation/next';
+import {
+  initializeApp,
+  afterPageHooks,
+  beforeRender,
+  NProgress,
+} from '@foundation/next';
 
 import { isBlank } from '@foundation/lib/util';
+
+import { registerHook } from '@atelierfabien/next-sanity';
+
+import { resolveReferences } from '@shop/lib/server';
 
 import {
   buildProductTitle,
@@ -23,6 +32,14 @@ NProgress.configure({ showSpinner: false });
 // Initialize app
 
 initializeApp();
+
+// Called on server through getPageProps (in getStaticProps, getServerSideProps):
+
+afterPageHooks('main', async () => {});
+
+// Called on all Sanity results
+
+registerHook('finalize', resolveReferences);
 
 // Handle SEO updates
 

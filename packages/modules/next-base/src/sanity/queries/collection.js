@@ -1,7 +1,9 @@
 import groq from 'groq';
 
+import { i18nProjection } from '.';
+
 const baseItemProjection = groq`
-  ..., ...i18n[$defaultLocale], ...i18n[$locale],
+  ..., ${i18nProjection},
   'i18n': null,
   'asset': asset->,
   'image': image->{ ..., asset-> },
@@ -14,7 +16,7 @@ export const collectionItemProjection = groq`
 `;
 
 export const collectionProjection = groq`
-  _id, _type, ...i18n[$defaultLocale], ...i18n[$locale],
+  _id, _type, ${i18nProjection},
   alias, query, component,
   'items': coalesce(items[]->{ ${collectionItemProjection} }, [])
 `;

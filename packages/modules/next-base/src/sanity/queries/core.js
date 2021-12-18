@@ -10,9 +10,13 @@ export const coreProperties = [
   'path',
 ];
 
+export const i18nProjection = groq`
+  ...i18n[$defaultLocale], ...i18n[$locale]
+`;
+
 export const coreProjection = groq`
   _id, _type, _createdAt, _updatedAt, type, alias,
-  ...i18n[$defaultLocale], ...i18n[$locale]
+  ${i18nProjection}
 `;
 
 export const baseProjection = groq`${coreProjection}, layout->`;

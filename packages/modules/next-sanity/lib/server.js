@@ -4,6 +4,8 @@ import sanityConfig from './config';
 
 export { default as groq } from 'groq';
 
+export { default as DataLoader } from 'dataloader';
+
 export * from './tree';
 
 // eslint-disable-next-line unused-imports/no-unused-vars

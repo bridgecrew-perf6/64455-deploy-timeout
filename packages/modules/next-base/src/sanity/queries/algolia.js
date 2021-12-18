@@ -1,5 +1,7 @@
 import groq from 'groq';
 
+import { i18nProjection } from '.';
+
 export const algoliaProductProjection = groq`
   'alias': alias.current,
   'name': coalesce(i18n[$locale].name, i18n[$defaultLocale].name, ''),
@@ -22,7 +24,7 @@ export const algoliaProductProjection = groq`
   'category': *[_type == 'product.category' && _id == ^.categories[0]._ref && !(defined(hidden) && hidden)][0] {
     'id': _id,
     'path': path.current,
-    ...i18n[$defaultLocale], ...i18n[$locale]
+    ${i18nProjection}
   },
   'categories': *[_type == 'product.category' && _id in ^.categories[]._ref && !(defined(hidden) && hidden)] {
     'level0': _id,
@@ -36,7 +38,7 @@ export const algoliaProductProjection = groq`
     'categories': [level6, level5, level4, level3, level2, level1, level0][defined(@)]
   }.categories,
   'collections': *[_type == 'collection' && references(^._id)] {
-    _id, ...i18n[$defaultLocale], ...i18n[$locale]
+    _id, ${i18nProjection}
   },
   'attributes': attributes[]._ref,
   'markers': markers { highlight, sale },

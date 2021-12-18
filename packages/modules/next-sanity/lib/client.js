@@ -1,10 +1,10 @@
 import {
   createClient,
   createImageUrlBuilder,
-  createPortableTextComponent,
+  createPortableTextComponent as createPortableTextComp,
 } from 'next-sanity';
 
-import serializers from './serializers';
+import defaultSerializers from './serializers';
 
 import sanityConfig from './config';
 
@@ -22,20 +22,27 @@ const { token, ...config } = sanityConfig;
 export const urlFor = source => createImageUrlBuilder(config).image(source);
 
 // Set up Portable Text serialization
-const PortableTextComponent = createPortableTextComponent({
-  ...config,
-  serializers,
-});
 
-export const PortableText = ({ blocks, ...props }) => {
-  blocks = [].concat(blocks || []).map(block => {
-    if (block._type === 'block.content') {
-      return { ...block, _type: 'block' };
-    }
-    return block;
+export const createPortableTextComponent = (options = {}) => {
+  const { serializers = {}, ...conf } = options;
+  const Component = createPortableTextComp({
+    ...config,
+    ...conf,
+    serializers: { ...defaultSerializers, ...serializers },
   });
-  return <PortableTextComponent blocks={blocks} {...props} />;
+
+  return function PortableText({ blocks, ...props }) {
+    blocks = [].concat(blocks || []).map(block => {
+      if (block._type === 'block.content') {
+        return { ...block, _type: 'block' };
+      }
+      return block;
+    });
+    return <Component blocks={blocks} {...props} />;
+  };
 };
+
+export const PortableText = createPortableTextComponent();
 
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config);

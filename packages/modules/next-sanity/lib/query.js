@@ -8,6 +8,8 @@ import groq from 'groq';
 
 import { deduceItem, processData } from './util';
 
+const hooks = {};
+
 export { processResults } from './tree';
 
 export const andPredicate = (...predicates) => {
@@ -24,6 +26,10 @@ export const filterPredicate = filter => {
   return isBlank(filter) ? '' : `|${filter}`;
 };
 
+export const registerHook = (name, fn) => {
+  if (typeof fn === 'function') hooks[name] = fn;
+};
+
 const getParams = (params, options = {}) => {
   const merged = mergeObjects(options, params);
   const { defaultLocale = 'en' } = merged;
@@ -32,6 +38,14 @@ const getParams = (params, options = {}) => {
 
 const passThrough = () => true;
 
+const processHook = (name, ...args) => {
+  if (typeof hooks[name] === 'function') {
+    return hooks[name](...args);
+  } else {
+    return args[0];
+  }
+};
+
 const prepare = (query, params = {}, previewOptions, _singleItem = false) => {
   if (typeof previewOptions === 'object') {
     previewOptions.enabled = true;
@@ -39,16 +53,17 @@ const prepare = (query, params = {}, previewOptions, _singleItem = false) => {
     previewOptions.params = params;
     previewOptions.single = Boolean(_singleItem);
   }
-  return [query, params];
+  const q = processHook('prepare', query, params);
+  return [q ?? query, params];
 };
 
-const finalize = (data, previewOptions) => {
+const finalize = (data, options, previewOptions) => {
   if (typeof previewOptions === 'object') {
     const initialData = previewOptions.single ? deduceItem(data, true) : data;
     previewOptions.initialData = initialData;
-    return initialData;
+    return processHook('finalize', initialData, options, previewOptions);
   } else {
-    return data;
+    return processHook('finalize', data, options);
   }
 };
 
@@ -98,7 +113,7 @@ const types = {
         true
       );
       const data = await this.fetchData(...args);
-      return finalize(data, _previewOptions);
+      return finalize(data, { locale, defaultLocale }, _previewOptions);
     };
   },
   // Fetch one as singleton
@@ -125,7 +140,7 @@ const types = {
         true
       );
       const data = await this.fetchData(...args);
-      return finalize(data, _previewOptions);
+      return finalize(data, { locale, defaultLocale }, _previewOptions);
     };
   },
   // Fetch multiple by id
@@ -155,12 +170,13 @@ const types = {
         { ...queryParams, ...previewParams, ids, locale, defaultLocale },
         _previewOptions
       );
-      const data = await this.fetchData(...args);
+      let data = await this.fetchData(...args);
       if (Array.isArray(data)) {
         const lookup = keyBy(data);
-        return ids.map(id => {
+        data = ids.map(id => {
           return (isPreview ? lookup[`drafts.${id}`] : null) ?? lookup[id];
         });
+        return finalize(data, { locale, defaultLocale }, _previewOptions);
       } else {
         return [];
       }
@@ -192,7 +208,7 @@ const types = {
         true
       );
       const data = await this.fetchData(...args);
-      return finalize(data, _previewOptions);
+      return finalize(data, { locale, defaultLocale }, _previewOptions);
     };
   },
   // Fetch one by path
@@ -223,7 +239,7 @@ const types = {
         true
       );
       const data = await this.fetchData(...args);
-      return finalize(data, _previewOptions);
+      return finalize(data, { locale, defaultLocale }, _previewOptions);
     };
   },
   // Fetch one by alias
@@ -253,7 +269,7 @@ const types = {
         true
       );
       const data = await this.fetchData(...args);
-      return finalize(data, _previewOptions);
+      return finalize(data, { locale, defaultLocale }, _previewOptions);
     };
   },
   // Fetch multiple by property
