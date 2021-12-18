@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-development",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Next Development mono-repo",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "lint:strict": "STRICT=true eslint .",
     "lint:fix": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "version": "node scripts/version.js"
+    "version": "node scripts/version.js",
+    "release": "node scripts/release.js"
   },
   "repository": {
     "type": "git",

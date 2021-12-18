@@ -11,8 +11,12 @@ export default {
   language: 'Language',
   currency: 'Currency',
   cookieConsent: {
+    basic:
+      'We use cookies to understand how you use our site and to improve your experience. By continuing to use our site, you accept our <0>use of cookies and privacy policy</0>.',
     text: 'We use cookies to understand how you use our site and to improve your experience. By continuing to use our site, you accept our <0>use of cookies</0> and <1>privacy policy</1>.',
     accept: 'Got it!',
+    cookiePolicyHref: '#cookies',
+    privacyPolicyHref: '#privacy',
   },
   errors: {
     pageNotFound: {

@@ -8,7 +8,7 @@ import { pick } from '../../lib/util';
 const defaults = pick(site, 'cookiePolicy', 'privacyPolicy');
 
 export default function CookieConsent(props) {
-  const { cookiePolicy = '#cookies', privacyPolicy = '#privacy' } = {
+  const { cookiePolicy, privacyPolicy } = {
     ...defaults,
     ...props,
   };
@@ -20,6 +20,12 @@ export default function CookieConsent(props) {
 
   const { t } = useTranslation();
   const ref = useRef();
+
+  const cookiePolicyHref =
+    cookiePolicy ?? t('common:cookieConsent.cookiePolicyHref');
+
+  const privacyPolicyHref =
+    privacyPolicy ?? t('common:cookieConsent.privacyPolicyHref');
 
   const onClose = useCallback(
     consent => {
@@ -50,16 +56,20 @@ export default function CookieConsent(props) {
         />
         <p className="mt-0 mr-4 mb-4">
           <Trans
-            i18nKey="common:cookieConsent.text"
+            i18nKey={
+              privacyPolicyHref === cookiePolicyHref
+                ? 'common:cookieConsent.basic'
+                : 'common:cookieConsent.text'
+            }
             components={[
               <Link
                 key="cookie"
-                href={cookiePolicy}
+                href={cookiePolicyHref}
                 className="uk-text-bold"
               />,
               <Link
                 key="privacy"
-                href={privacyPolicy}
+                href={privacyPolicyHref}
                 className="uk-text-bold"
               />,
             ]}
