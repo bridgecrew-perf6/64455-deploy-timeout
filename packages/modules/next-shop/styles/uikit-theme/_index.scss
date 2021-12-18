@@ -1588,6 +1588,10 @@ $color-dot-shadow: 0 0 2px rgba(0, 0, 0, 0.4) !default;
   }
 }
 
+.tm-variations-value[data-property='date'] .tm-variations > div {
+  width: 100%;
+}
+
 //
 // Product
 //

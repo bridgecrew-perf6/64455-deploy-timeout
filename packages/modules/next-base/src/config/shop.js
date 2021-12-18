@@ -31,6 +31,7 @@ export default {
     ratio: '1:1',
     scale: 0.4,
   },
+  hiddenVariantOptions: [],
   minVariants: 1, // set to 1 to hide variants unless more than one
   variantOptions: ['color', 'size', 'shoeSize', 'date'],
   variantOptionMapping: {
