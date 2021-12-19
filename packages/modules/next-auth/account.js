@@ -45,9 +45,16 @@ const getDocumentsList = defineQuery(
   documentsQueryOptions
 );
 
-const getDocument = defineQuery('one', {
-  ...documentsQueryOptions,
+const getDocument = defineQuery('id', {
   predicate: documentsPredicate,
+  types: referencedTypes,
+  defaultLocale,
+});
+
+const getDocumentByAlias = defineQuery('alias', {
+  predicate: documentsPredicate,
+  types: referencedTypes,
+  defaultLocale,
 });
 
 // Example:
@@ -90,6 +97,7 @@ const checkDocuments = defineQuery(
 
 export default define({
   getDocuments,
+  getDocumentByAlias,
   getDocumentsList,
   getDocument,
   checkDocument,
