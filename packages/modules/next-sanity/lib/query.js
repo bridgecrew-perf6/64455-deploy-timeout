@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable default-param-last */
 /* eslint-disable func-names */
 
@@ -33,7 +34,7 @@ export const registerHook = (name, fn) => {
 const getParams = (params, options = {}) => {
   const merged = mergeObjects(options, params);
   const { defaultLocale = 'en' } = merged;
-  return { locale: defaultLocale, defaultLocale, ...merged };
+  return { projection: '...', locale: defaultLocale, defaultLocale, ...merged };
 };
 
 const passThrough = () => true;
@@ -290,6 +291,46 @@ const types = {
             ${projection}
           }${filterPredicate(filter)}`,
         { ...queryParams, target, locale, defaultLocale },
+        _previewOptions
+      );
+      return this.fetchData(...args);
+    };
+  },
+  // Raw query
+  raw: (groqQuery, options = {}) => {
+    return function (params = {}, _previewOptions) {
+      const {
+        query,
+        predicate,
+        projection,
+        filter,
+        locale,
+        defaultLocale,
+        ...queryParams
+      } = getParams(params, options);
+      const args = prepare(
+        query ?? groqQuery,
+        { ...queryParams, locale, defaultLocale },
+        _previewOptions
+      );
+      return this.client.fetch(...args);
+    };
+  },
+  // Custom query
+  query: (groqQuery, options = {}) => {
+    return function (params = {}, _previewOptions) {
+      const {
+        query,
+        predicate,
+        projection,
+        filter,
+        locale,
+        defaultLocale,
+        ...queryParams
+      } = getParams(params, options);
+      const args = prepare(
+        `${query ?? groqQuery}${filterPredicate(filter)}`,
+        { ...queryParams, locale, defaultLocale },
         _previewOptions
       );
       return this.fetchData(...args);

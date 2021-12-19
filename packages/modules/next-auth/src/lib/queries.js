@@ -20,5 +20,18 @@ export const getUserByEmailQuery = groq`
 `;
 
 export const getVerificationRequestQuery = groq`
- *[_type == 'verification-request' && identifier == $identifier && _id == $id][0]
+  *[_type == 'verification-request' && identifier == $identifier && _id == $id][0]
+`;
+
+export const getUserReferencesQuery = groq`
+  *[_type in $types && _id in (*[_type == 'user' && _id == $userId][].references[]._ref)]{
+    ...,
+    ...i18n[$defaultLocale], ...i18n[$locale],
+  }{
+    _id, _type, _createdAt, _updatedAt, alias,
+    'type': coalesce(type, kind),
+    'name': coalesce(label, name, title),
+    'description': coalesce(content.intro, intro, description),
+    'image': coalesce(cover, images[0]),
+  }|order(name, _type)
 `;
