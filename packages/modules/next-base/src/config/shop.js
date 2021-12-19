@@ -18,6 +18,8 @@ const shortFormat = {
 };
 
 export default {
+  autohidePurchaseOptions: false,
+  outOfStockPurchase: true,
   linkToBrand: false,
   linkToVariant: false,
   image: {

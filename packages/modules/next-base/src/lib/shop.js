@@ -25,7 +25,6 @@ import {
   isEmpty,
   isNumber,
   cloneDeep,
-  sum,
   mergeObjects,
   blocksToText,
   joinUrl,
@@ -691,21 +690,28 @@ export const convertPricing = pricing => {
 export const processAvailability = data => {
   const target = data?.variant ?? data?.master;
   if (target) {
-    const isOrderable = !get(data, ['availability', 'isUnavailable']);
+    let isOrderable = !get(data, ['availability', 'isUnavailable']);
     target.pricing = mergeObjects(data.master.pricing, target.pricing);
+
     if (
       target._type === 'product.master' &&
       data.hasVariants &&
-      Array.isArray(data.variants)
+      typeof data.variants === 'number'
     ) {
-      target.units = sum(data.variants);
+      target.units = data.variants;
     }
+
+    const isAvailable = target.units > 0;
+
+    isOrderable = shopConfig.outOfStockPurchase ? isOrderable : isAvailable;
+
     const conversions = convertPricing(target.pricing);
     const url = buildSnipcartUrl(target);
+
     return {
       ...target,
       isOrderable,
-      isAvailable: target.units > 0,
+      isAvailable,
       conversions,
       url,
     };
@@ -717,9 +723,9 @@ export const buildAvailability = (product, variant) => {
   if (data.hasVariants && Array.isArray(product.variants)) {
     if (typeof variant === 'object') data.variant = variant;
     data.variants = product.variants.reduce((memo, v) => {
-      if (typeof v.units === 'number') memo.push(v.units);
+      if (typeof v.units === 'number') return memo + v.units;
       return memo;
-    }, []);
+    }, 0);
   }
   return processAvailability(data);
 };

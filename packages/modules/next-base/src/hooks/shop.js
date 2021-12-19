@@ -22,6 +22,7 @@ import {
   union,
   lookup,
   isBlank,
+  isBoolean,
   without,
   truncate,
   blocksToText,
@@ -268,6 +269,7 @@ export function useProductAvailability(variantId, attributes, options = {}) {
   const units = current.data?.units ?? initialUnits;
   const pricing = current.data?.pricing ?? {};
   const conversions = current.data?.conversions;
+  const currentlyOrderable = current.data?.isOrderable;
 
   const status = useMemo(() => {
     const info = attributes.find(attr => attr.alias === 'availability');
@@ -293,7 +295,11 @@ export function useProductAvailability(variantId, attributes, options = {}) {
 
   // Note: isOrderable means available from stock, or on request
   // See PropertyValue custom option: isUnavailable
-  const isOrderable = isAvailable || !status.isUnavailable;
+  let isOrderable = isAvailable || !status.isUnavailable;
+
+  if (isBoolean(currentlyOrderable)) {
+    isOrderable = isOrderable && currentlyOrderable;
+  }
 
   let maxQuantity = units; // Note: -1 means unlimited
 
