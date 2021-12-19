@@ -21,7 +21,7 @@ const typeMapping = {
   dropbar: NavbarDropbar,
 };
 
-const linkMapping = new Map();
+export const linkMapping = new Map();
 
 linkMapping.set('default', item => {
   const label = lookup(item, ['label'], ['name'], ['title']);
