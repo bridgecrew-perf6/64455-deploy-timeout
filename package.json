@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-development",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Next Development mono-repo",
   "main": "index.js",
   "scripts": {
