@@ -1,6 +1,6 @@
 import { getClient, uuid, nanoid } from '@atelierfabien/next-sanity/lib/server';
 
-import { getUserByEmailQuery } from './queries';
+import { getUserByEmailQuery } from './src/lib/queries';
 
 const client = getClient(true); // private cli
 
