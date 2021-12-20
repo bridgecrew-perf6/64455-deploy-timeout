@@ -26,15 +26,15 @@ const ACTIONS = {
 const detectLocale = req =>
   locales.includes(req.body.locale) ? req.body.locale : defaultLocale;
 
-export const authHandler =
-  (options = {}) =>
-  async (req, res) => {
+export const authHandler = (options = {}) => {
+  return (req, res) => {
     return NextAuth(req, res, {
       ...config,
       ...options,
       locale: detectLocale(req),
     });
   };
+};
 
 export const signUpHandler =
   (client, options = {}) =>
