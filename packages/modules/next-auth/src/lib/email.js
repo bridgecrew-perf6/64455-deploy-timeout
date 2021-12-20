@@ -14,14 +14,14 @@ const merge = (locale, item) => {
 
 // Email HTML body
 
-const html = ({ t, name, url, escapedEmail }) => {
+const html = ({ t, name, url, escapedEmail, colors = {} }) => {
   // Some simple styling options
-  const backgroundColor = '#f9f9f9';
-  const textColor = '#444444';
-  const mainBackgroundColor = '#ffffff';
-  const buttonBackgroundColor = '#346df1';
-  const buttonBorderColor = '#346df1';
-  const buttonTextColor = '#ffffff';
+  const backgroundColor = colors.backgroundColor ?? '#f9f9f9';
+  const textColor = colors.textColor ?? '#444444';
+  const mainBackgroundColor = colors.mainBackgroundColor ?? '#ffffff';
+  const buttonBackgroundColor = colors.buttonBackgroundColor ?? '#346df1';
+  const buttonBorderColor = colors.buttonBorderColor ?? '#346df1';
+  const buttonTextColor = colors.buttonTextColor ?? '#ffffff';
 
   return `
 <body style="background: ${backgroundColor};">
@@ -108,7 +108,6 @@ export const sendVerificationRequest = ({
         },
         error => {
           if (error) {
-            logger.error('SEND_VERIFICATION_EMAIL_ERROR', email, error);
             return reject(new Error('SEND_VERIFICATION_EMAIL_ERROR', error));
           }
           return resolve();
