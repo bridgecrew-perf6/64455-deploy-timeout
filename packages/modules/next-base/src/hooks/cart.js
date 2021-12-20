@@ -73,6 +73,7 @@ export function variantToCartItem(variant, quantity = 1) {
   item.price = variant.snipcartPrice;
   item.url = variant.snipcartUrl;
   item.quantity = quantity;
+  item.shippable = variant.shippable;
 
   if (variant.units > 0) item.maxQuantity = variant.units;
 

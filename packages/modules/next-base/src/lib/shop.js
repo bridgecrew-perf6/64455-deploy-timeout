@@ -28,6 +28,7 @@ import {
   mergeObjects,
   blocksToText,
   joinUrl,
+  toBoolean,
 } from '@foundation/lib/util';
 
 import { Currency } from '@foundation/lib/currency';
@@ -539,6 +540,11 @@ export function processVariant(product, variant) {
     scale: 0.4,
     format: 'jpg',
   });
+
+  // Physical vs. digital goods
+  info.shippable = product.hasDigitalGoods
+    ? toBoolean(product.requiresShipping)
+    : true;
 
   return { ...variant, ...info, href, previewUrl, snipcartUrl };
 }

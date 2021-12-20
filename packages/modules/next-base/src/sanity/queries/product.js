@@ -40,14 +40,15 @@ export const variantProjection = groq`
 `;
 
 export const baseProductProjection = groq`
-  _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
+  _id, _type, _createdAt, _updatedAt, alias, kind, ratio, requiresShipping,
   ${i18nProjection},
   'markers': { 'highlight': coalesce(markers.highlight, false), 'sale': coalesce(markers.sale, false) },
   'pricing': pricing{ ${pricingProjection} },
   'master': master{ ${masterProjection} },
   'brand': brand->{ ${brandProjection} },
   'hasVariants': defined(variantOptions) && length(variantOptions) > 0,
-  'category': categories[0] { ${categoryReferenceProjection} }
+  'category': categories[0] { ${categoryReferenceProjection} },
+  'hasDigitalGoods': defined(digitalGoods) && length(digitalGoods) > 0
 `;
 
 export const relatedProductsProjection = groq`
@@ -79,7 +80,7 @@ export const variantPredicate = groq`
 `;
 
 export const variantDetailsProjection = groq`
-  _id, _type, _createdAt, _updatedAt, alias,
+  _id, _type, _createdAt, _updatedAt, alias, requiresShipping,
   'master': master{
     ${masterProjection},
     'pricing': ^.pricing{ ${pricingProjection} },
@@ -98,7 +99,8 @@ export const variantDetailsProjection = groq`
     attributes[_type == 'property.availability'][0]->{
       ${basePropertyTypeProjection}
     }
-  )
+  ),
+  'hasDigitalGoods': defined(digitalGoods) && length(digitalGoods) > 0
 `;
 
 // Example of looking up the image url for the variant, with fallback to master
