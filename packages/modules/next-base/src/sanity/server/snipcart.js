@@ -14,6 +14,8 @@ const client = getClient(true); // with token
 
 const requireValidation = process.env.NODE_ENV !== 'development';
 
+const defaultPredicate = `_type == 'product' && ($id == master.id || $id in variants[].id)`;
+
 const events = {
   'order.completed': handleOrderCompleted,
   'order.status.changed': handleOrderChanged,
@@ -69,12 +71,12 @@ export async function handleOrderChanged(payload) {
 }
 
 export async function updateInventory(items, processItem) {
-  const transaction = await processItems(items, processItem);
+  const transaction = await _processItems(items, processItem);
   const result = await transaction.commit();
   return result.documentIds ?? [];
 }
 
-async function processItems(items, processItem) {
+async function _processItems(items, processItem) {
   const transaction = client.transaction();
   return items.reduce((promise, item) => {
     return promise.then(() => {
@@ -82,6 +84,21 @@ async function processItems(items, processItem) {
         return docs.reduce(
           (tx, doc) => processItem(doc, item, tx),
           transaction
+        );
+      });
+    });
+  }, Promise.resolve());
+}
+
+export async function processItems(items, fn, options = {}) {
+  const { predicate = defaultPredicate, projection = '...' } = options;
+  const query = options.query ?? `*[${predicate}]{ ${projection} }`;
+  return items.reduce((promise, item) => {
+    return promise.then(() => {
+      return client.fetch(query, { id: item.id }).then(docs => {
+        return docs.reduce(
+          (p, doc) => p.then(() => fn(doc, item)),
+          Promise.resolve()
         );
       });
     });
