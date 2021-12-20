@@ -1,4 +1,6 @@
+import groq from 'groq';
+import config from './lib/config';
+
 export * from './lib';
-export { default as groq } from 'groq';
-export { default as config } from './lib/config';
+export { config, groq };
 export { deduceItem } from './lib/util';

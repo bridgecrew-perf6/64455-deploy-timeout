@@ -5,7 +5,7 @@ import traverse from 'traverse';
 
 export * as tree from 'tree-walk-util';
 
-export { default as traverse } from 'traverse';
+export { traverse };
 
 export const processResults = data => {
   return traverse(data).map(function (x) {

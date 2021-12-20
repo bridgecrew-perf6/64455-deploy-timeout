@@ -1,14 +1,16 @@
 import { createClient } from 'next-sanity';
 
-import sanityConfig from './config';
+import DataLoader from 'dataloader';
 
-export { default as groq } from 'groq';
+import groq from 'groq';
+
+import sanityConfig from './config';
 
 export { uuid } from '@sanity/uuid';
 
 export { nanoid } from 'nanoid';
 
-export { default as DataLoader } from 'dataloader';
+export { groq, DataLoader };
 
 export * from './tree';
 
