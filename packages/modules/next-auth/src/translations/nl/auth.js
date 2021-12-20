@@ -32,7 +32,7 @@ export default {
   },
   credentials: {
     signIn: {
-      title: 'Aanmelden met Wachtwoord',
+      title: 'Aanmelden met wachtwoord',
       button: 'Aanmelden',
       message: 'U bent nu aangemeld',
     },
