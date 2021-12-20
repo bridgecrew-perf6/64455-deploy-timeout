@@ -7,7 +7,8 @@ import { signUp } from '../lib/client';
 
 const signupProviders = ['sanity-login'];
 
-export const useCredentialsForm = ({ redirectTo, ...options }) => {
+export const useCredentialsForm = (config = {}) => {
+  const { redirectTo, onSubmit, ...options } = config;
   const router = useRouter();
   const [session, loading] = useSession();
   const [name, setName] = useState('');
@@ -33,14 +34,16 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
         ? router.query.callbackUrl
         : redirectTo;
 
-      const response = await signIn(provider, {
+      const data = {
         email,
         password,
         locale: lang,
         redirect: false,
         callbackUrl,
         ...options,
-      });
+      };
+
+      const response = await signIn(provider, data);
 
       if (response?.error) {
         UIkit.notification({
@@ -49,6 +52,8 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
         });
       } else {
         resetForm();
+
+        if (typeof onSubmit === 'function') onSubmit(data);
 
         UIkit.notification({
           message: t(
@@ -71,11 +76,13 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
       const provider = e.target.dataset.provider ?? 'sanity-login';
 
       if (signupProviders.includes(provider)) {
-        let response = await signUp({
+        const data = {
           name,
           email,
           password,
-        });
+        };
+
+        let response = await signUp(data);
 
         if (response.error && !response.signIn) {
           UIkit.notification({
@@ -84,6 +91,8 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
           });
         } else {
           resetForm();
+
+          if (typeof onSubmit === 'function') onSubmit(data);
 
           UIkit.notification({
             message: t(
@@ -119,11 +128,15 @@ export const useCredentialsForm = ({ redirectTo, ...options }) => {
     session,
     loading,
     name,
+    setName,
     email,
+    setEmail,
     password,
+    setPassword,
     lang,
     redirectTo,
     options,
+    onSubmit,
     t,
   ]);
 };
