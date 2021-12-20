@@ -52,7 +52,7 @@ export async function handleSnipcartUpdate(
   } else if (proceed) {
     return handler(payload);
   } else {
-    throw new Error('Invalid Snipcart token');
+    throw new Error(valid ? 'Invalid request' : 'Invalid Snipcart token');
   }
 }
 

@@ -4,6 +4,10 @@ import sanityConfig from './config';
 
 export { default as groq } from 'groq';
 
+export { uuid } from '@sanity/uuid';
+
+export { nanoid } from 'nanoid';
+
 export { default as DataLoader } from 'dataloader';
 
 export * from './tree';
