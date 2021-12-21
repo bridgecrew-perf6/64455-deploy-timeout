@@ -62,6 +62,7 @@ const getStaticPaths = defineQuery('staticPaths', {
     'sku': master.sku, 'updatedAt': coalesce(item->_updatedAt, _updatedAt)
   `,
   properties: ['alias', 'sku'],
+  map: ({ alias, sku }) => ({ alias, sku }),
 });
 
 const getVariant = defineQuery('one', {

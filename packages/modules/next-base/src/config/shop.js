@@ -69,6 +69,10 @@ export default {
   ssr: {
     perPage: 48,
   },
+  revalidation: {
+    category: 60 * 60 * 24, // 24 hours
+    product: 60 * 60, // 1 hour
+  },
 };
 
 function parseDate(str) {

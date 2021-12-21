@@ -368,7 +368,7 @@ const types = {
   },
   // Get all static paths
   staticPaths: (options = {}) => {
-    const { properties, property = ['path'] } = options;
+    const { properties, property = ['path'], map } = options;
     const pathProperties = Array.isArray(properties) ? properties : [property];
     return async function (params = {}, filterFn = passThrough) {
       const {
@@ -401,7 +401,11 @@ const types = {
             .map(p => getProperty(merged, p))
             .join('/');
           const meta = raw ? node : {};
-          if (path === '/') {
+          if (typeof map === 'function') {
+            const params = map(merged, locale, meta);
+            if (typeof params === 'object')
+              memo.push({ ...meta, params, locale });
+          } else if (path === '/') {
             memo.push({ ...meta, params: { path: [] }, locale });
           } else if (!isBlank(path)) {
             memo.push({
