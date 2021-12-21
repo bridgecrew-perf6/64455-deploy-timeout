@@ -15,6 +15,7 @@ const withTsConfigPaths = require('./plugins/tsconfig-paths')();
 const coreModules = ['lodash-es', '@atelierfabien/next-foundation'];
 
 const defaults = {
+  staticPageGenerationTimeout: 60 * 2, // 2 minutes
   experimental: {
     scrollRestoration: true,
   },

@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-development",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "description": "Next Development mono-repo",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "lint:fix": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "version": "node scripts/version.js",
-    "release": "node scripts/release.js"
+    "release": "node scripts/release.js",
+    "update": "npm run version; rm package-lock.json; npm i; npm run release;"
   },
   "repository": {
     "type": "git",

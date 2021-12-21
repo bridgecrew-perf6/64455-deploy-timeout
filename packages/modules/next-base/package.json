@@ -1,6 +1,6 @@
 {
   "name": "@atelierfabien/next-base",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "author": "Fabien Franzen <info@atelierfabien.com>",
   "license": "MIT",
   "scripts": {
@@ -37,9 +37,9 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "@atelierfabien/next-foundation": "^0.0.23",
-    "@atelierfabien/next-sanity": "^0.0.23",
-    "@atelierfabien/next-shop": "^0.0.23",
+    "@atelierfabien/next-foundation": "^0.0.25",
+    "@atelierfabien/next-sanity": "^0.0.25",
+    "@atelierfabien/next-shop": "^0.0.25",
     "@atelierfabien/uikit": "^3.9.4",
     "next": "^12.0.7",
     "react": "^17.0.2",
