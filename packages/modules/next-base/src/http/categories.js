@@ -12,7 +12,11 @@ const client = init(getClient());
 
 const routePath = '/shop/categories';
 
-export const getCategoryPropsByPath = async (path, context) => {
+export const getCategoryPropsByPath = async (
+  path,
+  context,
+  serverSide = false
+) => {
   const [category, node] = await client.category.fetchCategoryAndNode(
     path,
     context
@@ -23,7 +27,7 @@ export const getCategoryPropsByPath = async (path, context) => {
     node,
   });
 
-  return revalidate > 0 ? { props, revalidate } : { props };
+  return revalidate > 0 && !serverSide ? { props, revalidate } : { props };
 };
 
 export const getStaticProps = async context => {
@@ -31,9 +35,9 @@ export const getStaticProps = async context => {
   return getCategoryPropsByPath(path, context);
 };
 
-export const getServerProps = async context => {
+export const getServerSideProps = async context => {
   const path = context.params?.path;
-  return getCategoryPropsByPath(path, context);
+  return getCategoryPropsByPath(path, context, true);
 };
 
 export const getStaticPaths = async context => {

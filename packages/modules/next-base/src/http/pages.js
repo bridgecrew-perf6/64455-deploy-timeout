@@ -50,7 +50,7 @@ export const getStaticProps = async context => {
   return getPagePropsByAlias(Array.isArray(path) ? path[0] : path, context);
 };
 
-export const getServerProps = async context => {
+export const getServerSideProps = async context => {
   const path = context.params?.path;
   return getPagePropsByAlias(Array.isArray(path) ? path[0] : path, context);
 };

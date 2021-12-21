@@ -1,6 +1,8 @@
 import getT from 'next-translate/getT';
 import useT from 'next-translate/useTranslation';
 
+import i18nConfig from '@root/i18n';
+
 export * from './analytics';
 export * from './baobab';
 export * from './context';
@@ -22,5 +24,17 @@ export * from './site';
 export * from './translation';
 export * from './uikit';
 
-export const getTranslation = (...args) => getT(...args);
-export const useTranslation = (...args) => useT(...args);
+const ensureConfig = () => {
+  const g = typeof window === 'undefined' ? global : window;
+  g.i18nConfig = g.i18nConfig ?? i18nConfig;
+};
+
+export const getTranslation = (...args) => {
+  ensureConfig();
+  return getT(...args);
+};
+
+export const useTranslation = (...args) => {
+  ensureConfig();
+  return useT(...args);
+};

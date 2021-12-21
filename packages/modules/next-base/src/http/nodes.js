@@ -56,7 +56,7 @@ export const getStaticProps = async (context) => {
   return getPagePropsByPath(context.params?.path, context);
 };
 
-export const getServerProps = async (context) => {
+export const getServerSideProps = async (context) => {
   return getPagePropsByPath(context.params?.path, context);
 };
 

@@ -18,7 +18,11 @@ const revalidate = shopConfig.revalidation?.product ?? 0;
 
 const products = init(getBrowserClient());
 
-export const getProductPropsByAlias = async (alias, context) => {
+export const getProductPropsByAlias = async (
+  alias,
+  context,
+  serverSide = false
+) => {
   const { params, preview = false } = context;
 
   const previewOptions = preview ? {} : undefined;
@@ -47,7 +51,7 @@ export const getProductPropsByAlias = async (alias, context) => {
       return { notFound: true };
     }
 
-    return revalidate > 0 ? { props, revalidate } : { props };
+    return revalidate > 0 && !serverSide ? { props, revalidate } : { props };
   } else {
     return {
       notFound: true,
@@ -60,9 +64,9 @@ export const getStaticProps = async context => {
   return getProductPropsByAlias(alias, context);
 };
 
-export const getServerProps = async context => {
+export const getServerSideProps = async context => {
   const alias = context.params?.alias;
-  return getProductPropsByAlias(alias, context);
+  return getProductPropsByAlias(alias, context, true);
 };
 
 export const getStaticPaths = async context => {
