@@ -12,7 +12,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@atelierfabien/next-foundation": "^0.0.17",
+    "@atelierfabien/next-foundation": "^0.0.18",
     "@atelierfabien/nextjs-sitemap": "^1.1.3",
     "@atelierfabien/uikit": "^3.9.4",
     "@styled-jsx/plugin-sass": "^3.0.0",
