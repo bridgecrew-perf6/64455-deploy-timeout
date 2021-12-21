@@ -20,18 +20,15 @@ const CommonNavbarMenuCartItem = ({ withTotal = false }) => {
       href="#"
       onClick={e => e.preventDefault()}
     >
-      {isLoading && <span uk-spinner="ratio: 0.5" />}
-      {!isLoading && (
-        <>
-          {withTotal && count > 0 && (
-            <span className="uk-margin-right uk-animation-fade uk-visible@s">
-              {c.format(total)}
-            </span>
-          )}
-          <CommonNavbarMenuCartIcon />
-          {count > 0 && <span className={badgeClassName}>{count}</span>}
-        </>
-      )}
+      <>
+        {withTotal && count > 0 && (
+          <span className="uk-margin-right uk-animation-fade uk-visible@s">
+            {c.format(total)}
+          </span>
+        )}
+        <CommonNavbarMenuCartIcon />
+        {count > 0 && <span className={badgeClassName}>{count}</span>}
+      </>
     </Link>
   );
 };
