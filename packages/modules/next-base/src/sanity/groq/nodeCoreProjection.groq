@@ -1,0 +1,10 @@
+*[] {
+  _id, _type, type, hidden, partial, newWindow,
+
+  ......i18n[$defaultLocale],
+  ...i18n[$locale] {
+    label, external,
+
+    "path": coalesce(^.route->path.current, "") + path.current
+  }
+}

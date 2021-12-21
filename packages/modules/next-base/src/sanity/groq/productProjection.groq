@@ -1,5 +1,5 @@
 *[] {
-  _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
+  _id, _type, _createdAt, _updatedAt, alias, kind, ratio, requiresShipping,
 
   ...i18n[$defaultLocale],
   ...i18n[$locale],
@@ -136,6 +136,9 @@
     ) [0...-1]
   },
 
+  "hasDigitalGoods": defined(digitalGoods)
+  && length(digitalGoods) > 0,
+
   "images": coalesce(
     images[] {
       ...,
@@ -257,7 +260,9 @@
             "color": display.color.hex,
 
             value
-          }
+          },
+
+          date
         },
         {
 
@@ -285,7 +290,7 @@
 
   "related": coalesce(
     related[]-> {
-      _id, _type, _createdAt, _updatedAt, alias, kind, ratio,
+      _id, _type, _createdAt, _updatedAt, alias, kind, ratio, requiresShipping,
 
       ...i18n[$defaultLocale],
       ...i18n[$locale],
@@ -429,6 +434,9 @@
           []
         ) [0...-1]
       },
+
+      "hasDigitalGoods": defined(digitalGoods)
+      && length(digitalGoods) > 0,
 
       "images": coalesce(
         images [0...1] {

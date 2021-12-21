@@ -1,5 +1,5 @@
 *[] {
-  _id, _type, _createdAt, _updatedAt, alias,
+  _id, _type, _createdAt, _updatedAt, alias, requiresShipping,
 
   master {
     "_id": id, _type, sku,
@@ -50,7 +50,7 @@
   "hasVariants": defined(variantOptions)
   && length(variantOptions) > 0,
 
-  "variants": coalesce(variants[].units, 0),
+  "variants": coalesce(variants[].units, [0]),
   "availability": coalesce(
     variants[id == $target] [0].attributes[
       _type == "property.availability"
@@ -64,5 +64,8 @@
 
       ...options
     }
-  )
+  ),
+
+  "hasDigitalGoods": defined(digitalGoods)
+  && length(digitalGoods) > 0
 }

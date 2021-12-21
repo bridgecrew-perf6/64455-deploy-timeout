@@ -828,7 +828,7 @@
 
   "shop": *[_type == "settings.shop"] [0] {
     address {
-      name, street, postalCode, city, country
+      name, title, street, postalCode, city, country
     },
 
     location {

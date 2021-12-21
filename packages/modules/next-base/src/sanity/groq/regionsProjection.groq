@@ -1,0 +1,97 @@
+*[] {
+  "value": coalesce(
+    regions[] {
+      id, _key, _type,
+
+      ...item,
+
+      _type == "region.block" => {
+        ...item {
+          image {
+            ..., asset-> {
+              ..., metadata {
+                ...,
+
+                "lqip": null,
+
+                palette {
+                  lightVibrant
+                }
+              }
+            }
+          },
+
+          button {
+            ..., internal-> {
+              _id, _type, _createdAt, _updatedAt,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale],
+
+              "path": coalesce(route->path.current, "") + coalesce(
+                i18n[$locale].path.current,
+                i18n[$defaultLocale].path.current
+              )
+            }
+          }
+        }
+      },
+
+      _type == "region.cta" => {
+        ...item {
+          button {
+            ..., internal-> {
+              _id, _type, _createdAt, _updatedAt,
+
+              ...i18n[$defaultLocale],
+              ...i18n[$locale],
+
+              "path": coalesce(route->path.current, "") + coalesce(
+                i18n[$locale].path.current,
+                i18n[$defaultLocale].path.current
+              )
+            }
+          }
+        }
+      },
+
+      _type == "region.slideshow" => {
+        ...item {
+          "images": coalesce(
+            images[] {
+              ...,
+
+              asset-> {
+                ..., metadata {
+                  ...,
+
+                  "lqip": null,
+
+                  palette {
+                    lightVibrant
+                  }
+                }
+              },
+
+              button {
+                ..., internal-> {
+                  _id, _type, _createdAt, _updatedAt,
+
+                  ...i18n[$defaultLocale],
+                  ...i18n[$locale],
+
+                  "path": coalesce(route->path.current, "") + coalesce(
+                    i18n[$locale].path.current,
+                    i18n[$defaultLocale].path.current
+                  )
+                }
+              }
+            },
+            []
+          )
+        }
+      }
+    },
+    []
+  )
+}

@@ -25,7 +25,10 @@ export const propertyValueProjection = groq`
 
 export const variantOptionsProjection = config.variantOptions
   .map(option => {
-    if (typeof config?.variantOptionMapping?.[option] === 'function') {
+    if (
+      typeof config.variantOptionMapping === 'object' &&
+      typeof config.variantOptionMapping[option] === 'function'
+    ) {
       return `'${option}': ${option}`;
     } else {
       return `'${option}': ${option}->{ ${propertyValueProjection} }`;

@@ -40,12 +40,12 @@ export default {
     date: (value, { option, context = {} }) => {
       const date = parseDate(value);
       if (date) {
-        const locale = context.locale ?? defaultLocale;
+        const locale = context.locale || defaultLocale;
         const value = date.getTime();
         const _id = String(value);
         const label = date.toLocaleDateString(
           locale,
-          option.format ?? dateFormat
+          option.format || dateFormat
         );
         const shortLabel = date.toLocaleDateString(locale, shortFormat);
         return { _id, label, shortLabel, value, numeric: true };

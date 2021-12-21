@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 
+// NOTE this file us executed using ESM
+
 const fs = require('fs');
 const path = require('path');
 
@@ -19,9 +21,10 @@ const standalone = [
   'sectionsProjection',
   'relatedProductsProjection',
   'variantImageProjection',
+  'regionsProjection',
 ];
 
-const baseDir = path.join(process.cwd(), 'src', 'sanity', 'groq');
+const baseDir = path.join(__dirname, '..', 'src', 'sanity', 'groq');
 
 function preprocess(q) {
   return q.replace(/pt::text\((.*)\)/g, '$1');
