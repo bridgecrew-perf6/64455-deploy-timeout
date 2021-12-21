@@ -63,8 +63,9 @@ export const getStaticPaths = async context => {
   return { paths, fallback: false };
 };
 
-export const prepareData = (item, _props, context) =>
-  pages.resolveProps(item, { ...context });
+export const prepareData = (item, _props, context) => {
+  return pages.resolveProps(item, { ...context });
+};
 
 export const Page = props => {
   const pageProps = usePreviewQueryProps(props, { fn: prepareData });

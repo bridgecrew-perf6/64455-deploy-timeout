@@ -56,8 +56,9 @@ export const getStaticProps = async context => {
   }
 };
 
-const prepareData = (item, _props, context) =>
-  pages.resolveProps(item, { ...context });
+const prepareData = (item, _props, context) => {
+  return pages.resolveProps(item, { ...context });
+};
 
 const Index = props => {
   const { locale } = useRouter();

@@ -81,8 +81,9 @@ export const getStaticPaths = async context => {
   }
 };
 
-export const prepareData = (item, _props, context) =>
-  products.resolveProps(item, { ...context });
+export const prepareData = (item, _props, context) => {
+  return products.resolveProps(item, { ...context });
+};
 
 export const Product = props => {
   const { page } = usePreviewQueryProps(props, { fn: prepareData });

@@ -108,7 +108,9 @@ export const sendVerificationRequest = ({
         },
         error => {
           if (error) {
-            return reject(new Error(JSON.stringify(error, null, 4), error));
+            return reject(
+              new Error(JSON.stringify({ provider, error }, null, 4), error)
+            );
           }
           return resolve();
         }
