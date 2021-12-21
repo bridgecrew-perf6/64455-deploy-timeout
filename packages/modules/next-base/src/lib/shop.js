@@ -10,6 +10,7 @@ import {
   first,
   last,
   map,
+  sum,
   uniqBy,
   keyBy,
   sortBy,
@@ -699,12 +700,14 @@ export const processAvailability = data => {
     let isOrderable = !get(data, ['availability', 'isUnavailable']);
     target.pricing = mergeObjects(data.master.pricing, target.pricing);
 
-    if (
-      target._type === 'product.master' &&
-      data.hasVariants &&
-      typeof data.variants === 'number'
-    ) {
+    const hasVariants = target._type === 'product.master' && data.hasVariants;
+
+    if (hasVariants && typeof data.variants === 'number') {
       target.units = data.variants;
+    } else if (hasVariants && Array.isArray(data.variants)) {
+      target.units = sum(
+        data.variants.map(v => (typeof v === 'number' ? v : 0))
+      );
     }
 
     const isAvailable = target.units > 0;

@@ -91,7 +91,7 @@ export const variantDetailsProjection = groq`
     'color': options.color._ref
   },
   'hasVariants': defined(variantOptions) && length(variantOptions) > 0,
-  'variants': coalesce(variants[].units, 0),
+  'variants': coalesce(variants[].units, [0]),
   'availability': coalesce(
     variants[id == $target][0].attributes[_type == 'property.availability'][0]->{
       ${basePropertyTypeProjection}
