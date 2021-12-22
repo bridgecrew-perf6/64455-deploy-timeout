@@ -1,7 +1,8 @@
 import { useTranslation } from '@foundation/next';
 
 const AuthCredentialsSignIn = ({ provider = 'sanity-login', ...props }) => {
-  const { handleSignIn, email, setEmail, password, setPassword } = props;
+  const { handleSignIn, email, setEmail, password, setPassword, disabled } =
+    props;
 
   const { t } = useTranslation();
 
@@ -30,7 +31,11 @@ const AuthCredentialsSignIn = ({ provider = 'sanity-login', ...props }) => {
           />
         </div>
         <div className="uk-margin">
-          <button type="submit" className="uk-button uk-button-primary">
+          <button
+            type="submit"
+            className="uk-button uk-button-primary"
+            disabled={disabled}
+          >
             {t('auth:credentials.signIn.button')}
           </button>
         </div>

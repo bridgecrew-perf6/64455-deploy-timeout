@@ -14,11 +14,13 @@ export const useCredentialsForm = (config = {}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSent, setSent] = useState(false);
 
   const { t, lang } = useTranslation();
 
   return useMemo(() => {
-    const resetForm = () => {
+    const resetForm = (sent = true) => {
+      setSent(sent);
       setName('');
       setEmail('');
       setPassword('');
@@ -122,21 +124,21 @@ export const useCredentialsForm = (config = {}) => {
       password,
       setPassword,
       locale: lang,
+      disabled: isSent,
     };
   }, [
     router,
     session,
     loading,
     name,
-    setName,
     email,
-    setEmail,
     password,
-    setPassword,
     lang,
+    isSent,
+    setSent,
     redirectTo,
     options,
-    onSubmit,
     t,
+    onSubmit,
   ]);
 };
