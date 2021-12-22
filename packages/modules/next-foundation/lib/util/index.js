@@ -4,3 +4,4 @@ export * from './traverse';
 export * from './locale';
 export * from './misc';
 export * from './url';
+export * from './date';

@@ -5,7 +5,6 @@ import {
   unset,
   isEmpty,
   isNumber,
-  isDate,
   isNaN,
   omitBy,
   isBoolean,
@@ -19,34 +18,6 @@ export function isBlank(value) {
   return (
     (isEmpty(value) && !isNumber(value) && !isBoolean(value)) || isNaN(value)
   );
-}
-
-export function formatDate(value, options = {}) {
-  const { locale = 'en-GB', format } = options;
-  const date = parseDate(value);
-  if (isValidDate(date)) {
-    return date.toLocaleDateString(
-      locale,
-      format ?? {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }
-    );
-  }
-}
-
-export function parseDate(str) {
-  if (isDate(str)) return str;
-  try {
-    const date = new Date(str);
-    if (isValidDate(date)) return date;
-    // eslint-disable-next-line no-empty
-  } catch (e) {}
-}
-
-export function isValidDate(d) {
-  return d instanceof Date && !isNaN(d);
 }
 
 export function titleizeString(camelCase) {

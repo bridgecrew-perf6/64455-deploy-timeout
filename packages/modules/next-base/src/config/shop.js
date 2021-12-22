@@ -1,5 +1,10 @@
 import { defaultLocale } from '@root/i18n';
 
+import {
+  parseDate,
+  formatDate,
+} from '@atelierfabien/next-foundation/lib/util/date'; // specific
+
 const dateFormat = {
   weekday: 'long',
   year: 'numeric',
@@ -43,11 +48,11 @@ export default {
         const locale = context.locale || defaultLocale;
         const value = date.getTime();
         const _id = String(value);
-        const label = date.toLocaleDateString(
+        const label = formatDate(date, {
           locale,
-          option.format || dateFormat
-        );
-        const shortLabel = date.toLocaleDateString(locale, shortFormat);
+          format: option.format || dateFormat,
+        });
+        const shortLabel = formatDate(date, { locale, format: shortFormat });
         return { _id, label, shortLabel, value, numeric: true };
       }
     },
@@ -74,15 +79,3 @@ export default {
     product: 60 * 60, // 1 hour
   },
 };
-
-function parseDate(str) {
-  try {
-    const date = new Date(str);
-    if (isValidDate(date)) return date;
-    // eslint-disable-next-line no-empty
-  } catch (e) {}
-}
-
-function isValidDate(d) {
-  return d instanceof Date && !Number.isNaN(d);
-}
