@@ -1,20 +1,16 @@
-import { usePropsOrPage, usePageFragments, get } from '@foundation/next';
+import { usePropsOrPage, usePageFragments } from '@foundation/next';
+
+import { withPageWithLayout } from '@shop/hooks';
 
 import Sections, { Section } from '@shop/components/Page/Sections';
 import Regions from '@shop/components/Page/Regions';
 
-const BasicLayout = ({ page, children, inheritFragments = 'layout' }) => {
-  const { sections, layout } = usePropsOrPage(page);
+const ProductPage = ({ page, children, inheritFragments = 'layout' }) => {
+  const { sections } = usePropsOrPage(page);
   const { header, footer } = usePageFragments(page, inheritFragments);
-  const containerProps = get(layout, ['options', 'containerProps'], {});
 
   return (
-    <section
-      data-part="layout"
-      data-page-type="basic"
-      {...containerProps}
-      uk-height-viewport="expand: true"
-    >
+    <div className="main-container">
       {header && (
         <Section sectionType="section.fragment" fragment={header} main />
       )}
@@ -29,8 +25,8 @@ const BasicLayout = ({ page, children, inheritFragments = 'layout' }) => {
       {footer && (
         <Section sectionType="section.fragment" fragment={footer} main />
       )}
-    </section>
+    </div>
   );
 };
 
-export default BasicLayout;
+export default withPageWithLayout('product', ProductPage);

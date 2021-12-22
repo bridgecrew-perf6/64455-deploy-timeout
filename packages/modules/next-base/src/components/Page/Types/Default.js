@@ -1,21 +1,17 @@
 import { get, usePropsOrPage, usePageFragments } from '@foundation/next';
 
+import { withPageWithLayout } from '@shop/hooks';
+
 import Sections, { Section } from '@shop/components/Page/Sections';
 import Regions from '@shop/components/Page/Regions';
 
-const DefaultLayout = ({ page, children, inheritFragments = 'all' }) => {
+const DefaultPage = ({ page, children, inheritFragments = 'all' }) => {
   const { content, sections, images, layout } = usePropsOrPage(page);
-  const containerProps = get(layout, ['options', 'containerProps'], {});
   const imageOptions = get(layout, ['options', 'images'], {});
   const { header, footer } = usePageFragments(page, inheritFragments);
+
   return (
-    <div
-      className="uk-grid-medium uk-child-width-1-1"
-      uk-grid="true"
-      data-part="layout"
-      data-page-type="default"
-      {...containerProps}
-    >
+    <div className="main-container">
       <section>
         {header && (
           <Section sectionType="section.fragment" fragment={header} main />
@@ -44,4 +40,4 @@ const DefaultLayout = ({ page, children, inheritFragments = 'all' }) => {
   );
 };
 
-export default DefaultLayout;
+export default withPageWithLayout('default', DefaultPage);
