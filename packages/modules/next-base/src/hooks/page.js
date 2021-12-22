@@ -34,7 +34,7 @@ export const withPageWithLayout = (type, Component, options = {}) => {
     );
   };
 
-  fn.displayName = `${camelCase(type)}Page`;
+  fn.displayName = `${camelCase(type)}PageType`;
 
   return fn;
 };
