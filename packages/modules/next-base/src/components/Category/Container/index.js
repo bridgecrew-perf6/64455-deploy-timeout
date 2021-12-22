@@ -7,7 +7,7 @@ import CategoryContainerSeo from '@shop/components/Category/Container/Seo';
 
 const CategoryContainer = props => {
   return (
-    <Container inheritFragments="all">
+    <Container {...props} inheritFragments="all">
       <CategoryPage {...props} />
       <CategoryContainerSeo {...props} />
     </Container>

@@ -30,7 +30,7 @@ const ProductContainer = ({ item, variant, ...props }) => {
   const metaItem = useVariantAsProduct(item, variant, true);
 
   return (
-    <Container inheritFragments="all">
+    <Container {...props} inheritFragments="all">
       <ProductPage item={item} variant={variant} {...props} />
       <ProductContainerJsonLd
         keyOverride={variant?._id}
