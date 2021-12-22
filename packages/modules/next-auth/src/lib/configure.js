@@ -12,7 +12,7 @@ import { sendVerificationRequest } from './email';
 
 const client = getClient(true);
 
-process.env.NEXTAUTH_URL = process.env.NEXTAUTH_URL || process.env.VERCEL_URL;
+process.env.NEXTAUTH_URL = process.env.NEXTAUTH_URL ?? process.env.VERCEL_URL;
 
 export default (options = {}) => ({
   secret: process.env.AUTH_SECRET ?? 'D1F33D82-A6C2-49EC-B7E6-29234FABC93B',
