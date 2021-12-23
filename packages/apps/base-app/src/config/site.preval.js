@@ -2,7 +2,11 @@ import preval from 'next-plugin-preval';
 import config from '../../next-seo.config';
 
 const name = process.env.SITE_NAME ?? 'example';
-const baseUrl = process.env.SITE_URL ?? 'https://example.com';
+const baseUrl =
+  process.env.SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'https://example.com');
 
 const DEFAULTS = {
   name,
